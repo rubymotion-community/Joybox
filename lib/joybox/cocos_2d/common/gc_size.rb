@@ -1,27 +1,27 @@
 # TODO: Revisar el nombre de estos metodos
-#class CGSize
+class CGSize
 
-#  def double_width
+  def half_width
 
-#    width * 2
-#  end
-
-
-#  def height
-
-#    height
-#  end
+    width / 2
+  end
 
 
-#  def half_height
+  def double_width
 
-#    height / 2
-#  end
+    width * 2
+  end
 
 
-#  def double_height
+  def half_height
 
-#    height * 2
-#  end
+    height / 2
+  end
 
-#end
+
+  def double_height
+
+    height * 2
+  end
+
+end

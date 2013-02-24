@@ -58,39 +58,38 @@ class CocosMotionLayer < Joybox::Cocos2D::Layer
 
   def layout_menu
 
-    menu_item_1 = MenuImage.new image: 'cocos_motion/left_arrow.png',
+    back_item = MenuImage.new image: 'cocos_motion/left_arrow.png',
                                 selected_image: 'cocos_motion/left_arrow_selected.png' do |menu_item|
                                   
                                   skew_sprite_animation
                                 end
 
-    menu_item_2 = MenuImage.new image: 'cocos_motion/dot.png',
+    reset_item = MenuImage.new image: 'cocos_motion/dot.png',
                                 selected_image: 'cocos_motion/dot_selected.png' do |menu_item|
 
                                   Joybox::Cocos2D.director.replace_scene(CocosMotionLayer.scene)
                                 end
 
-    menu_item_3 = MenuImage.new image: 'cocos_motion/right_arrow.png',
+    next_item = MenuImage.new image: 'cocos_motion/right_arrow.png',
                                 selected_image: 'cocos_motion/right_arrow_selected.png' do |menu_item|
 
                                   simple_sprite_animation
                                 end
 
 
-    menu = Menu.new items: [menu_item_1, menu_item_2, menu_item_3],
+    menu = Menu.new items: [back_item, reset_item, next_item],
                     position: [0, 0]
 
-    menu_item_1.position = [Screen.half_width - menu_item_2.content_size.height * 2, 
-                            menu_item_2.content_size.height / 2]
+    back_item.position = [Screen.half_width - reset_item.content_size.double_width, 
+                          reset_item.content_size.half_height]
 
-    menu_item_2.position = [Screen.half_width, 
-                            menu_item_2.content_size.height / 2]
+    reset_item.position = [Screen.half_width, 
+                          reset_item.content_size.half_height]
 
-    menu_item_3.position = [Screen.half_width + menu_item_2.content_size.width * 2, 
-                            menu_item_2.content_size.height / 2]
+    next_item.position = [Screen.half_width + reset_item.content_size.double_width, 
+                          reset_item.content_size.half_height]
 
     self << menu
-
   end
 
 

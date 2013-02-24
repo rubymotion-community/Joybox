@@ -3,31 +3,39 @@
 # 2 => Usar una clase o un modulo para este escenario, se usa un modulo
 #      debido a que Screen no tendra estado
 # 3 => El nombrado de half
-module Joybox::Cocos2D::Common::Screen
+module Joybox
+  module Cocos2D
+    module Common
+      
+      module Screen
 
-  module_function
+        module_function
 
-  def self.width
+        def self.width
 
-    CCDirector.sharedDirector.winSize.width
+          CCDirector.sharedDirector.winSize.width
+        end
+
+
+        def self.half_width
+
+          CCDirector.sharedDirector.winSize.width / 2
+        end
+
+
+        def self.height
+
+          CCDirector.sharedDirector.winSize.height
+        end
+
+
+        def self.half_height
+
+          CCDirector.sharedDirector.winSize.height / 2
+        end
+
+      end
+
+    end
   end
-
-
-  def self.half_width
-
-    CCDirector.sharedDirector.winSize.width / 2
-  end
-
-
-  def self.height
-
-    CCDirector.sharedDirector.winSize.height
-  end
-
-
-  def self.half_height
-
-    CCDirector.sharedDirector.winSize.height / 2
-  end
-
 end
