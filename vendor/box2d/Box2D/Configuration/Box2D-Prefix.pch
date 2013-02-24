@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'CBBox2D' target in the 'CBBox2D' project
+//
+
+#ifdef __OBJC__
+  #import <Foundation/Foundation.h>
+  #import <CoreGraphics/CoreGraphics.h>
+  #import <Box2D/Box2D.h>
+#endif
