@@ -4,10 +4,8 @@ class AppDelegate
 
     Joybox::Cocos2D::Configuration.setup do 
 
-      director display_stats: true
-      
+      director display_stats: true      
     end
-
 
     @director = Joybox::Cocos2D.director
 
@@ -17,6 +15,8 @@ class AppDelegate
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
+
+    @director.push_scene(MenuLayer.scene)
 
     true
   end
