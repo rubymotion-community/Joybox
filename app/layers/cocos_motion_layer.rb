@@ -1,4 +1,5 @@
-# Joybox translator of the Cocos Motion example created by:
+# A Joybox translate of the Cocos Motion example created by:
+#
 # Sean Scally => https://github.com/scally
 # Ricardo Quesada => https://github.com/ricardoquesada
 # Cocos Motion => https://github.com/scally/cocosmotion
