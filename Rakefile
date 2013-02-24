@@ -9,4 +9,6 @@ Motion::Project::App.setup do |app|
   app.name = 'Joybox'
   app.identifier = 'curveberyl.joybox'
   app.version = "0.0.1"
+
+
 end

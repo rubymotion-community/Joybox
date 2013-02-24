@@ -17,7 +17,7 @@ module Joybox::Cocos2D::UI
 
       options = options.nil? ? defaults : defaults.merge!(options)
 
-      label = Label.labelWithString(options[:title], 
+      label = Label.labelWithString(options[:text], 
                                     fontName: options[:font_name], 
                                     fontSize: options[:font_size])
 

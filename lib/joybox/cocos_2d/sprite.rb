@@ -5,10 +5,10 @@ module Joybox::Cocos2D
     alias_method :stop_all_actions, :stopAllActions
     alias_method :run_action, :runAction
 
-    def self.new(options = {}, &block)
+    def self.new(options = {})
 
       sprite ||= new_with_file(options) if options.has_key? (:file_name)
-      sprite ||= new_with_testure(options) if options.has_key? (:texture)
+      sprite ||= new_with_texture(options) if options.has_key? (:texture)
 
       sprite.position = options[:position] if options.has_key? (:position)
 
@@ -25,6 +25,14 @@ module Joybox::Cocos2D
 
 
     def self.new_with_texture(options = {})
+
+      if options.has_key? (:rect)
+        
+        self.spriteWithTexture(options[:texture], rect: options[:rect])
+      else
+
+        self.spriteWithTexture(options:[:texture])
+      end
 
     end
 

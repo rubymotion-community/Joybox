@@ -15,10 +15,10 @@ class MenuLayer < Joybox::Cocos2D::Layer
 
   def layout_title
 
-    title_label = Label.new  title: 'Scenes', 
+    title_label = Label.new  text: 'Scenes', 
                              font_size: 50,
                              position: [Screen.half_width, Screen.height - 80],
-                             color: Color.from_hex('#A24B2C')
+                             color: Color.from_hex('#4AA419')
 
     self << title_label
   end
@@ -29,18 +29,26 @@ class MenuLayer < Joybox::Cocos2D::Layer
     MenuLabel.default_font_size = 40
 
     cocos_2d_menu_item = MenuLabel.new 'Cocos 2D', 
-                                        color: Color.new(162, 75, 44), 
+                                        color: Color.new(252, 253, 167), 
                                         do |menu_item|
 
+      Joybox::Cocos2D.director.replace_scene(Cocos2DLayer.scene)
     end
 
 
-    box_2d_button = MenuLabel.new 'Box 2D'
+    box_2d_button = MenuLabel.new 'Box 2D',
+                                  color: Color.from_hex('82CCFB'),
+                                  do |menu_item|
+
+      Joybox::Cocos2D.director.replace_scene(Box2DLayer.scene)
+    end
 
 
-    cocos_motion_button = MenuLabel.new 'Cocos Motion' do |menu_item|
+    cocos_motion_button = MenuLabel.new 'Cocos Motion',
+                                         color: Color.from_hex('FE7058'),
+                                         do |menu_item|
 
-      Joybox::Cocos2D.director.replace_scene(CocosMotionFirstLayer.scene)
+      Joybox::Cocos2D.director.replace_scene(CocosMotionLayer.scene)
     end
 
 

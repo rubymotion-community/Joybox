@@ -16,9 +16,9 @@ class AppDelegate
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
 
-    #@director.push_scene(MenuLayer.scene)
-
-    @director << CocosMotionLayer.scene
+    @director.push_scene(MenuLayer.scene)
+    
     true
+
   end
 end
