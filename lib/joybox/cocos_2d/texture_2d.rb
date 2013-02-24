@@ -16,7 +16,6 @@ module Joybox
       def self.configue(options = {})
 
         options = options.nil? ? default_configuration : default_configuration.merge!(options)
-          
 
         defaultAlphaPixelFormat = options[:default_alpha_pixel_format] 
         PVRImagesHavePremultipliedAlpha(options[:pvr_images_have_premultiplied_alpha])

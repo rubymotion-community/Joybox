@@ -29,7 +29,7 @@ module Joybox
         end
 
 
-        GLView.viewWithFrame(bounds,
+        GLView.viewWithFrame(UIScreen.mainScreen.bounds,
                              pixelFormat: options[:pixel_format],
                              depthFormat: options[:depth_format],
                              preserveBackbuffer: options[:preserve_backbuffer],

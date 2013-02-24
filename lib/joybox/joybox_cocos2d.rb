@@ -17,7 +17,8 @@ Motion::Project::App.setup do |app|
   app.frameworks += ["OpenGLES", "OpenAL", "AVFoundation", "AudioToolbox", "QuartzCore"]
   app.libs << "/usr/lib/libz.dylib"
 
-  # scans app.files until it finds app/ (the default)
+
+  # Scans app.files until it finds app/ (the default)
   # if found, it inserts just before those files, otherwise it will insert to
   # the end of the list
   insert_point = 0

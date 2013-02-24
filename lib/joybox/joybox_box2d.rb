@@ -10,9 +10,7 @@ Motion::Project::App.setup do |app|
                      :products => ["libBox2D.a"],
                      :headers_dir => "Box2D")
 
-  #app.files += Dir.glob(File.join(app.project_dir, 'box2d/**/*rb'))
-
-  # scans app.files until it finds app/ (the default)
+  # Scans app.files until it finds app/ (the default)
   # if found, it inserts just before those files, otherwise it will insert to
   # the end of the list
   insert_point = 0
