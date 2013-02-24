@@ -1,5 +1,0 @@
-class MenuScene < CCScene
-
-
-
-end

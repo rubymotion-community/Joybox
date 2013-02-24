@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.name          = 'joybox'
   gem.version       = Joybox::VERSION
 
-  gem.authors  = ['Juan Jose Karam']
+  gem.authors  = ['CurveBeryl']
 
   gem.description = <<-DESC
 

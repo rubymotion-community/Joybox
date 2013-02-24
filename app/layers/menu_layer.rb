@@ -15,10 +15,10 @@ class MenuLayer < Joybox::Cocos2D::Layer
 
   def layout_title
 
-    title_label = Joybox::Cocos2D::UI::Label.new 'Scenes',  
-                                                  font_size: 50,
-                                                  position: [Screen.half_width, Screen.height - 80],
-                                                  color: Color.from_hex('#A24B2C')
+    title_label = Label.new  title: 'Scenes', 
+                             font_size: 50,
+                             position: [Screen.half_width, Screen.height - 80],
+                             color: Color.from_hex('#A24B2C')
 
     self << title_label
   end
@@ -38,10 +38,14 @@ class MenuLayer < Joybox::Cocos2D::Layer
     box_2d_button = MenuLabel.new 'Box 2D'
 
 
-    cocos_motion_button = MenuLabel.new 'Cocos Motion'
+    cocos_motion_button = MenuLabel.new 'Cocos Motion' do |menu_item|
+
+      Joybox::Cocos2D.director.replace_scene(CocosMotionFirstLayer.scene)
+    end
+
 
     menu = Menu.new items: [cocos_2d_menu_item, box_2d_button, cocos_motion_button],
-    position: [Screen.half_width, (Screen.height - 80) / 2]
+                     position: [Screen.half_width, (Screen.height - 80) / 2]
 
     menu.align_items_vertically
 

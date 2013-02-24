@@ -5,6 +5,7 @@ module Joybox::Cocos2D
     alias_method :push_scene, :pushScene
     alias_method :pop_scene, :popScene
     alias_method :pop_to_root_scene, :popToRootScene
+    alias_method :replace_scene, :replaceScene
     alias_method :stop_animation, :stopAnimation
     alias_method :start_animation, :startAnimation
     alias_method :purge_cached_data, :purgeCachedData

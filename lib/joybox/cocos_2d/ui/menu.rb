@@ -6,7 +6,11 @@ module Joybox::Cocos2D::UI
 
     def self.new(options = {})
 
-      self.menuWithArray(options[:items])
+      menu = self.menuWithArray(options[:items])
+
+      menu.position = options[:position] if options.has_key? (:position)
+
+      menu
     end
 
   end
