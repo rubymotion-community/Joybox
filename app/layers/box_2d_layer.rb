@@ -1,8 +1,7 @@
 class Box2DLayer < Joybox::Cocos2D::Layer
 
-  include Joybox::Cocos2D::UI
-  include Joybox
   include Joybox::Cocos2D
+  include Joybox::Box2D
 
   enable_scene
 
@@ -35,7 +34,7 @@ class Box2DLayer < Joybox::Cocos2D::Layer
 
   def init_physics
 
-    @world = Box2D::World.new gravity:[0, -10]
+    @world = World.new gravity:[0, -10]
 
     body = @world.new_body position:[0,0] do
 
@@ -72,12 +71,12 @@ class Box2DLayer < Joybox::Cocos2D::Layer
 
     reset_menu_item = MenuLabel.new 'Reset' do |menu_item|
 
-      Joybox::Cocos2D.director.replace_scene(Box2DLayer.scene)
+      director.replace_scene(Box2DLayer.scene)
     end
 
 
     menu = Menu.new items: [reset_menu_item],
-    position: [Screen.half_width, Screen.half_height]
+                    position: [Screen.half_width, Screen.half_height]
 
     menu.align_items_vertically
 

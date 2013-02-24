@@ -7,9 +7,7 @@
 # Thank you guys!
 class CocosMotionLayer < Joybox::Cocos2D::Layer
 
-  include Joybox::Cocos2D::UI
   include Joybox::Cocos2D
-  include Joybox::Cocos2D::Actions
 
   enable_scene
 
@@ -67,7 +65,7 @@ class CocosMotionLayer < Joybox::Cocos2D::Layer
     reset_item = MenuImage.new image: 'cocos_motion/dot.png',
                                 selected_image: 'cocos_motion/dot_selected.png' do |menu_item|
 
-                                  Joybox::Cocos2D.director.replace_scene(CocosMotionLayer.scene)
+                                  director.replace_scene(CocosMotionLayer.scene)
                                 end
 
     next_item = MenuImage.new image: 'cocos_motion/right_arrow.png',

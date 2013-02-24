@@ -32,7 +32,7 @@ class MenuLayer < Joybox::Cocos2D::Layer
                                         color: Color.new(252, 253, 167), 
                                         do |menu_item|
 
-      Joybox::Cocos2D.director.replace_scene(Cocos2DLayer.scene)
+      director.replace_scene(Cocos2DLayer.scene)
     end
 
 
@@ -40,7 +40,7 @@ class MenuLayer < Joybox::Cocos2D::Layer
                                   color: Color.from_hex('82CCFB'),
                                   do |menu_item|
 
-      Joybox::Cocos2D.director.replace_scene(Box2DLayer.scene)
+      director.replace_scene(Box2DLayer.scene)
     end
 
 
@@ -48,7 +48,7 @@ class MenuLayer < Joybox::Cocos2D::Layer
                                          color: Color.from_hex('FE7058'),
                                          do |menu_item|
 
-      Joybox::Cocos2D.director.replace_scene(CocosMotionLayer.scene)
+      director.replace_scene(CocosMotionLayer.scene)
     end
 
 

@@ -1,5 +1,9 @@
-module Joybox::Cocos2D::UI
+module Joybox
+  module Cocos2D
+    module UI
 
-  include Joybox::Cocos2D::Common
+      include Joybox::Cocos2D::Common
 
+    end
+  end
 end
