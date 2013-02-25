@@ -1,4 +1,4 @@
-class MenuLayer < Joybox::Cocos2D::Layer
+class MenuLayer < Joybox::Cocos2D::Core::Layer
 
   include Joybox::Cocos2D
 

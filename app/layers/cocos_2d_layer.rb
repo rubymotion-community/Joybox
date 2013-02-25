@@ -1,4 +1,4 @@
-class Cocos2DLayer < Joybox::Cocos2D::Layer
+class Cocos2DLayer < Joybox::Cocos2D::Core::Layer
 
   include Joybox::Cocos2D::UI
 

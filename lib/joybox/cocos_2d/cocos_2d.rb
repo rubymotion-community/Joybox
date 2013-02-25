@@ -2,6 +2,7 @@ module Joybox
   module Cocos2D
 
     include Joybox::Cocos2D::Common
+    include Joybox::Cocos2D::Core
     include Joybox::Cocos2D::Actions
     include Joybox::Cocos2D::UI
     include Joybox::Cocos2D::Macros

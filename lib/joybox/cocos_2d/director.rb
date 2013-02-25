@@ -25,11 +25,11 @@ module Joybox
         }
       end
 
-
+      
       def self.configue(options = {})
 
         options = options.nil? ? default_configuration : default_configuration.merge!(options)
-        
+
         director = Director.sharedDirector
 
         director.wantsFullScreenLayout = options.fetch(:wants_full_screen_layout)

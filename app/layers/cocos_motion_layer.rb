@@ -5,7 +5,7 @@
 # Cocos Motion => https://github.com/scally/cocosmotion
 #
 # Thank you guys!
-class CocosMotionLayer < Joybox::Cocos2D::Layer
+class CocosMotionLayer < Joybox::Cocos2D::Core::Layer
 
   include Joybox::Cocos2D
 
