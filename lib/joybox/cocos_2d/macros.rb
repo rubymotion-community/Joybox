@@ -1,8 +1,8 @@
 # Extracted from the Cocos2D source: https://github.com/cocos2d/cocos2d-iphone
 # amazing work! Thank you Cocos2D team (https://github.com/cocos2d)!
 #
-# Ruby motion does detect the original functions (Ex: ccp), thats why we 
-# have to change the name of the methods to bbc (Ex: bbc)
+# Ruby Motion does detect the original functions (Ex: ccp), thats why we 
+# have to change the name of the method prefix to bb (Ex: bbc)
 #
 # Missing implementation of the following methods
 # => bbpCompOp
