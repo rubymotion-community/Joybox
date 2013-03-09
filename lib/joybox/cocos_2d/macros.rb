@@ -70,7 +70,7 @@ module Joybox
       # Perpendicular of v, rotated 90 degrees clockwise
       def bbpRPerp(point)
 
-        bbp(v.y, -v.x)
+        bbp(point.y, -point.x)
       end
 
       # Projection of first point over second point
@@ -96,7 +96,7 @@ module Joybox
       # Square lenght of a CGPoint
       def bbpLengthSQ(point)
 
-        bbpDot(v, v)
+        bbpDot(point, point)
       end
 
       # Square distance between two points
@@ -120,7 +120,7 @@ module Joybox
       # Point multiplied to a lenght of 1
       def bbpNormalize(point)
 
-        bbpMult(v, 1.0 / bbpLenght(point))
+        bbpMult(point, 1.0 / bbpLenght(point))
       end
 
       # Converts radians to a normalized vector
@@ -202,7 +202,7 @@ module Joybox
         angle = Math.atan2(first_point.x * second_point.y - first_point.y * second_point.x),
         bbpDot(first_point, second_point)
 
-        angle = 0.0 if Math.abs(angle) < Float::EPSILON
+        angle = 0.0 if angle.abs < Float::EPSILON
 
         angle
       end 
@@ -210,9 +210,9 @@ module Joybox
       # Angle in radians between two vector directions 
       def bbAngle(first_point, second_point)
 
-        angle = Math.acos(bbpDot(bbpNormalize(first_point), bbpNormalize(b)))
+        angle = Math.acos(bbpDot(bbpNormalize(first_point), bbpNormalize(second_point)))
 
-        angle = 0.0 if Math.abs(angle) < Float::EPSILON
+        angle = 0.0 if angle.abs < Float::EPSILON
 
         angle
       end

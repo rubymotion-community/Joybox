@@ -52,6 +52,29 @@ module Joybox
         body 
       end
 
+
+      def setup_collision_listener
+
+        @contact_listener = B2DContactListener.new
+        addContactListener(@contact_listener)
+
+        @listening_bodies = Hash.new
+
+        @contact_listener.beginContact = lambda { | first_body, second_body, is_touching |
+
+          @listening_bodies[first_body].call(second_body, is_touching) if @listening_bodies.include? first_body
+          @listening_bodies[second_body].call(first_body, is_touching) if @listening_bodies.include? second_body
+        }
+      end
+
+
+      def when_collide(body, &block)
+
+        setup_collision_listener unless @contact_listener
+
+        @listening_bodies[body] = block
+      end
+
     end
 
   end

@@ -22,7 +22,7 @@ module Joybox
 
         def self.new_with_file(options = {})
 
-          self.spriteWithFile(options[:file_name])
+          spriteWithFile(options[:file_name])
         end
 
 
@@ -30,10 +30,10 @@ module Joybox
 
           if options.has_key? (:rect)
 
-            self.spriteWithTexture(options[:texture], rect: options[:rect])
+            spriteWithTexture(options[:texture], rect: options[:rect])
           else
 
-            self.spriteWithTexture(options:[:texture])
+            spriteWithTexture(options:[:texture])
           end
 
         end

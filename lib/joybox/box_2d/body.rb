@@ -37,11 +37,11 @@ class B2DBody
     edge_shape = B2DEdgeShape.alloc.initWithStartPoint(options[:start_point],
                                                        endPoint: options[:end_point])
 
-    addFixureForEdgeShape(edge_shape,
-                          friction: options[:friction],
-                          restitution: options[:restitution],
-                          density: options[:density],
-                          isSensor: options[:is_sensor])
+    addFixureForShape(edge_shape,
+                      friction: options[:friction],
+                      restitution: options[:restitution],
+                      density: options[:density],
+                      isSensor: options[:is_sensor])
   end
 
 
@@ -52,11 +52,44 @@ class B2DBody
 
     polygon_shape = B2DPolygonShape.alloc.initWithBoxSize(options[:box])
 
-    addFixureForPolygonShape(polygon_shape,
-                             friction: options[:friction],
-                             restitution: options[:restitution],
-                             density: options[:density],
-                             isSensor: options[:is_sensor])
+    addFixureForShape(polygon_shape,
+                      friction: options[:friction],
+                      restitution: options[:restitution],
+                      density: options[:density],
+                      isSensor: options[:is_sensor])
   end
 
+
+  def apply_force_defaults
+    {
+      location: self.center,
+      as_impulse: true
+    }
+  end
+
+
+  def apply_force(options = {})
+
+    options = options.nil? ? apply_force_defaults : apply_force_defaults.merge!(options)
+
+    applyForce(options[:force], 
+               atLocation: options[:location], 
+               asImpulse: options[:as_impulse]) 
+  end
+
+
+  def apply_torque_defaults
+    {
+      as_impulse: true
+    }
+  end
+
+
+  def apply_torque(options = {})
+
+    options = options.nil? ? apply_torque_defaults : apply_torque_defaults.merge!(options)
+
+    applyTorque(options[:torque], 
+               asImpulse: options[:as_impulse]) 
+  end
 end

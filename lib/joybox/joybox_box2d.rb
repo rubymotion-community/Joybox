@@ -4,11 +4,12 @@ end
 
 Motion::Project::App.setup do |app|
   
-  app.vendor_project('vendor/box2d', 
-                     :xcode, :xcodeproj => 'Box2D.xcodeproj', 
-                     :target => 'Box2D', 
-                     :products => ["libBox2D.a"],
-                     :headers_dir => "Box2D")
+  app.vendor_project("vendor/Box2D.framework", 
+                     :static, 
+                     :products => ['Box2D'], 
+                     :headers_dir => "Headers")
+
+  app.frameworks += ["QuartzCore", "CoreGraphics", "Foundation", "ApplicationServices"]
 
   # Scans app.files until it finds app/ (the default)
   # if found, it inserts just before those files, otherwise it will insert to

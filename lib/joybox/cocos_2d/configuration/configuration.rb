@@ -8,6 +8,8 @@ module Joybox
 
         instance_eval(&block) if block_given?
         configure
+
+        Director.sharedDirector
       end
 
 
@@ -17,7 +19,6 @@ module Joybox
         opengl_view unless @is_opengl_view_configured
         texture_2d unless @is_texture_2d_configured
         file_utils unless @is_file_utils_configured
-
       end
 
 

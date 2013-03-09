@@ -29,4 +29,10 @@ class CGPoint
     CGPointMake(self.x + point.x, self.y + point.y)
   end
 
+
+  def - (point)
+
+    CGPointMake(self.x - point.x, self.y - point.y)
+  end
+
 end

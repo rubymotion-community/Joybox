@@ -7,6 +7,16 @@ module Joybox
 
         attr_accessor :physics_body
 
+   
+
+        def self.new(options = {})
+
+          sprite = super 
+          sprite.physics_body = options[:body] if options.include? :body
+          
+          sprite
+        end
+
 
         def dirty
 
