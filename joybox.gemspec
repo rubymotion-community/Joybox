@@ -8,14 +8,7 @@ Gem::Specification.new do |gem|
   gem.authors  = ['CurveBeryl']
 
   gem.description = <<-DESC
-
-
-Teacup is a community-driven DSL for making CSS-like styling, and layouts for
-complex and simple iOS apps with RubyMotion.
-
-By aiming at making RubyMotion less tedious, Teacup makes RubyMotion feel like
-interface builder, and work like a CSS stylesheet.
-DESC
+  DESC
 
   gem.summary = 'A Cocos2D & Box2D DSL for RubyMotion'
   gem.homepage = 'https://github.com/JuanKaram/JoyBox'
