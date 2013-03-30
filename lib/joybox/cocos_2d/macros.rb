@@ -4,8 +4,6 @@
 # Ruby Motion does detect the original functions (Ex: ccp), thats why we 
 # have to change the name of the method prefix to bb (Ex: bbc)
 #
-# Missing implementation of the following methods
-# => bbpCompOp
 module Joybox
   module Cocos2D
     module Macros
@@ -136,8 +134,8 @@ module Joybox
       end
 
       # Run a math operation function on each point component
-      def bbpCompOp
-        raise 'Method not implemented'
+      def bbpCompOp(point, &block)
+        bbp(block.call(point.x), block.call(point.y))
       end
 
       # Linear interpolation between two points
@@ -216,7 +214,7 @@ module Joybox
           return nil
         end
 
-        return { s: hit_point / denom, t: second_hit_point / denom }
+        { s: hit_point / denom, t: second_hit_point / denom }
       end
 
       # Evaluates if two segments intersect
