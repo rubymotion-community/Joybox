@@ -26,7 +26,7 @@ module Joybox
 
         hash = hash.pop
 
-        Director.configue(hash)
+        Director.configure(hash)
 
         @is_director_configured = true
       end
@@ -50,7 +50,7 @@ module Joybox
 
         hash = hash.pop
 
-        Texture2D.configue(hash)
+        Texture2D.configure(hash)
 
         @is_texture_2d_configured = true
       end
@@ -60,7 +60,7 @@ module Joybox
 
         hash = hash.pop
 
-        FileUtils.configue(hash)
+        FileUtils.configure(hash)
 
         @is_file_utils_configured = true
       end
