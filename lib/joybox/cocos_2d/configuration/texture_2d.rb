@@ -14,7 +14,7 @@ module Joybox
         end
 
 
-        def self.configue(options = {})
+        def self.configure(options = {})
 
           options = options.nil? ? default_configuration : default_configuration.merge!(options)
 
