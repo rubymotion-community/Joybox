@@ -6,9 +6,6 @@
 #
 # Missing implementation of the following methods
 # => bbpCompOp
-# => bbpLineIntersect
-# => bbpSegmentIntersect
-# => bbpIntersectPoint
 module Joybox
   module Cocos2D
     module Macros
@@ -196,18 +193,44 @@ module Joybox
       end
 
       # Evaluates if two lines intersect
-      def bbpLineIntersect(point_a, point_b, point_c, point_d, hit_point, second_hit_point)
-        raise 'Method not implemented'
+      def bbpLineIntersect(point_a, point_b, point_c, point_d)
+        # Line undefined
+        return false if point_a.x == point_b.x && point_a.y == point_b.y || point_c.x == point_d.x && point_c.y == point_d.y
+
+        x_b_to_a = point_b.x - point_a.x
+        y_b_to_a = point_b.y - point_a.y
+        x_d_to_c = point_d.x - point_c.x
+        y_d_to_c = point_d.y - point_c.y
+        x_a_to_c = point_a.x - point_c.x
+        y_a_to_c = point_a.y - point_c.y
+
+        s = x_d_to_c * y_a_to_c - y_d_to_c * x_a_to_c
+        t = x_b_to_a * y_a_to_c - y_b_to_a * x_a_to_c
+
+        denom = y_d_to_c * x_b_to_a - x_d_to_c * y_b_to_a
+        if denom == 0
+          # Lines incident
+          return { s: hit_point, t: second_hit_point } unless s != 0 && t != 0
+
+          # Lines parallel and not incident
+          return nil
+        end
+
+        return { s: hit_point / denom, t: second_hit_point / denom }
       end
 
       # Evaluates if two segments intersect
       def bbpSegmentIntersect(point_a, point_b, point_c, point_d)
-        raise 'Method not implemented'
+        r = bbpLineIntersect(point_a, point_b, point_c, point_d)
+        return false unless r[:s] >= 0.0 && r[:s] <= 1.0 && r[:t] >= 0.0 && r[:t] <= 1.0
+        return true
       end
 
       # Intersection point between the two lines
       def bbpIntersectPoint(point_a, point_b, point_c, point_d)
-        raise 'Method not implemented'
+        r = bbpLineIntersect(point_a, point_b, point_c, point_d)
+        return CGPointZero unless r
+        return CGPointMake(point_a.x + r[:s] * (point_b.x - point_a.x), point_a.y + r[:s] * (point_b.y - point_a.y))
       end
     end
   end
