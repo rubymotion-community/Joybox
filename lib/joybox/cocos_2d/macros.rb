@@ -171,8 +171,8 @@ module Joybox
         angle
       end
 
-      # Angle in radians between two vector directions 
-      def bbAngle(first_point, second_point)
+      # Angle in radians between two vector directions
+      def bbpAngle(first_point, second_point)
         angle = Math.acos(bbpDot(bbpNormalize(first_point), bbpNormalize(second_point)))
         angle = 0.0 if angle.abs < Float::EPSILON
         angle
