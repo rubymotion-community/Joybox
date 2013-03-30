@@ -16,10 +16,10 @@ module Joybox
         end
 
 
-        def self.configue(options = {})
+        def self.configure(options = {})
 
           options = options.nil? ? default_configuration : default_configuration.merge!(options)
-          
+
           file_utils = FileUtils.sharedFileUtils
 
           file_utils.setEnableFallbackSuffixes(options[:enable_fallback_suffixes])
