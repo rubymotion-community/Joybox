@@ -12,7 +12,7 @@ module Joybox
         CGPointMake(x, y)
       end
 
-      # Oposite of point
+      # Opposite of point
       def bbpNeg(point)
         bbp(-point.x, -point.y)
       end
