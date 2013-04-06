@@ -4,7 +4,7 @@ Introduced at [#Inspect 2013](http://www.rubymotion.com/conference/),
 Joybox is the easiest way to build 2D games for iPhones and iPads
 using [RubyMotion](http://www.rubymotion.com/). Joybox combines the
 most popular and widely used 2D game engine for iOS,
-[Cocoa2D](http://www.cocos2d-iphone.org/), folds in the amazing
+[Cocos2D](http://www.cocos2d-iphone.org/), folds in the amazing
 [Box2D](http://box2d.org/) physics engine, and then wraps them up into
 a clean Ruby API that will make game development faster and more
 enjoyable for both beginners and experts alike.
