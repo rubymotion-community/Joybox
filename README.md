@@ -41,7 +41,7 @@ Next, install the Joybox gem by running:
 
 ## Core Classes
 
-For building games, the core classes are Directory, Scene, Layer, and Sprite.
+For building games, the core classes are Director, Scene, Layer, and Sprite.
 
 For more info, see: [cocos2d Basic Concepts](http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:basic_concepts)
 
