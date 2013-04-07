@@ -14,20 +14,16 @@ module Joybox
 
       def self.default_configuration
         {
-
           wants_full_screen_layout: true,
           display_stats: false,
           animation_interval: 1.0/60,
           projection: KCCDirectorProjection2D,
           enable_retina_display: true,
           delegate: nil
-
         }
       end
 
-      
       def self.configure(options = {})
-
         options = options.nil? ? default_configuration : default_configuration.merge!(options)
 
         director = Director.sharedDirector
@@ -42,11 +38,9 @@ module Joybox
 
 
       def << (scene)
-
         self.push_scene(scene)
       end
 
     end
-
   end
 end

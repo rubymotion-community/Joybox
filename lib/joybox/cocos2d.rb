@@ -3,15 +3,13 @@ unless defined?(Motion::Project::Config)
 end
 
 Motion::Project::App.setup do |app|
-
-  app.vendor_project("vendor/Cocos2D", 
-                     :static, 
+  app.vendor_project("vendor/Cocos2D",
+                     :static,
                      :products => ["libcocos2d.a", "libCocosDenshion.a"],
                      :headers_dir => "include")
 
   app.frameworks += ["OpenGLES", "OpenAL", "AVFoundation", "AudioToolbox", "QuartzCore"]
   app.libs << "/usr/lib/libz.dylib"
-
 
   # Scans app.files until it finds app/ (the default)
   # if found, it inserts just before those files, otherwise it will insert to
@@ -26,7 +24,7 @@ Motion::Project::App.setup do |app|
     insert_point = index + 1
   end
 
-  Dir.glob(File.join(File.dirname(__FILE__), 'cocos_2d/**/*.rb')).reverse.each do |file|
+  Dir.glob(File.join(File.dirname(__FILE__), 'cocos2d/**/*.rb')).reverse.each do |file|
     app.files.insert(insert_point, file)
   end
 end
