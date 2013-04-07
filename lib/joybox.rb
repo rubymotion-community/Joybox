@@ -1,3 +1,2 @@
-require 'joybox/version' unless defined?(Joybox::VERSION)
-require 'joybox/cocos2d'
-require 'joybox/box2d'
+require './lib/joybox/cocos2d.rb'
+require './lib/joybox/box2d.rb'
