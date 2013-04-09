@@ -1,10 +1,10 @@
 class AppDelegate
- 
+
   def application(application, didFinishLaunchingWithOptions:launchOptions)
 
-    Joybox::Cocos2D::Configuration.setup do 
+    Joybox::Cocos2D::Configuration.setup do
 
-      director display_stats: true      
+      director display_stats: true
     end
 
     @director = Joybox::Cocos2D.director
@@ -17,8 +17,7 @@ class AppDelegate
     @window.makeKeyAndVisible
 
     @director.push_scene(MenuLayer.scene)
-    
-    true
 
+    true
   end
 end

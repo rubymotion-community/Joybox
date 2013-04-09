@@ -28,17 +28,17 @@ class MenuLayer < Joybox::Cocos2D::Core::Layer
 
     MenuLabel.default_font_size = 40
 
-    cocos_2d_menu_item = MenuLabel.new 'Cocos 2D', 
-                                        color: Color.new(252, 253, 167), 
-                                        do |menu_item|
+    cocos2d_menu_item = MenuLabel.new 'Cocos 2D', 
+                                       color: Color.new(252, 253, 167), 
+                                       do |menu_item|
 
       director.replace_scene(Cocos2DLayer.scene)
     end
 
 
-    box_2d_button = MenuLabel.new 'Box 2D',
-                                  color: Color.from_hex('82CCFB'),
-                                  do |menu_item|
+    box2d_button = MenuLabel.new 'Box 2D',
+                                 color: Color.from_hex('82CCFB'),
+                                 do |menu_item|
 
       director.replace_scene(Box2DLayer.scene)
     end
@@ -52,7 +52,7 @@ class MenuLayer < Joybox::Cocos2D::Core::Layer
     end
 
 
-    menu = Menu.new items: [cocos_2d_menu_item, box_2d_button, cocos_motion_button],
+    menu = Menu.new items: [cocos2d_menu_item, box2d_button, cocos_motion_button],
                      position: [Screen.half_width, (Screen.height - 80) / 2]
 
     menu.align_items_vertically

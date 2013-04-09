@@ -1,2 +1,2 @@
-require './lib/joybox/joybox_cocos2d.rb'
-require './lib/joybox/joybox_box2d.rb'
+require './lib/joybox/cocos2d.rb'
+require './lib/joybox/box2d.rb'
