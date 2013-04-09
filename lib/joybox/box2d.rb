@@ -3,10 +3,9 @@ unless defined?(Motion::Project::Config)
 end
 
 Motion::Project::App.setup do |app|
-  
-  app.vendor_project("vendor/Box2D.framework", 
-                     :static, 
-                     :products => ['Box2D'], 
+  app.vendor_project("vendor/Box2D.framework",
+                     :static,
+                     :products => ['Box2D'],
                      :headers_dir => "Headers")
 
   app.frameworks += ["QuartzCore", "CoreGraphics", "Foundation", "ApplicationServices"]
@@ -24,7 +23,7 @@ Motion::Project::App.setup do |app|
     insert_point = index + 1
   end
 
-  Dir.glob(File.join(File.dirname(__FILE__), 'box_2d/**/*.rb')).reverse.each do |file|
+  Dir.glob(File.join(File.dirname(__FILE__), 'box2d/**/*.rb')).reverse.each do |file|
     app.files.insert(insert_point, file)
   end
 end

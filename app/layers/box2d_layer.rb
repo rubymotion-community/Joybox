@@ -11,7 +11,7 @@ class Box2DLayer < Joybox::Cocos2D::Core::Layer
     layout_menu
     layout_title
 
-    @sprite_batch_node = SpriteBatchNode.new file_name: "box_2d/blocks_sprite_sheet.png"
+    @sprite_batch_node = SpriteBatchNode.new file_name: "box2d/blocks_sprite_sheet.png"
     self << @sprite_batch_node
 
 
