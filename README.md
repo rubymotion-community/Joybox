@@ -80,3 +80,7 @@ Joybox is released under the MIT License.
 ## Authors
 
 [Juan Karam](https://github.com/CurveBeryl) [@JuanKaram](https://twitter.com/JuanKaram)
+
+## Box 2D Wrapper
+
+If you wish to download or contribute to the Objective-C Box 2D wrapper, the repository URL is the following: https://github.com/CurveBeryl/Joybox-Box2D
