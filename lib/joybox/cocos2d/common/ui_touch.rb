@@ -7,10 +7,9 @@ class UITouch
     locationInView(view)
   end
 
-  # TODO: Otra revision de nombrado
-  def location_in_touch_view
+  def location
 
-    locationInView(self.view)
+    locationInView(self.view).to_opengl_coordinates
   end
 
 end

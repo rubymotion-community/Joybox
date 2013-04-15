@@ -8,15 +8,15 @@ class Box2DLayer < Joybox::Core::Layer
     layout_menu
     layout_title
 
-    @sprite_batch_node = SpriteBatchNode.new file_name: "box2d/blocks_sprite_sheet.png"
-    self << @sprite_batch_node
+    @sprite_batch = SpriteBatch.new file_name: "box2d/blocks_sprite_sheet.png"
+    self << @sprite_batch
 
 
     on_touches_ended do |touches, event|
 
       touch = touches.any_object
 
-      touch_location = touch.location_in_touch_view.to_opengl_coordinates
+      touch_location = touch.location
 
       add_new_sprite(touch_location)
     end
@@ -66,7 +66,7 @@ class Box2DLayer < Joybox::Core::Layer
 
     MenuLabel.default_font_size = 32
 
-    reset_menu_item = MenuLabel.new 'Reset' do |menu_item|
+    reset_menu_item = MenuLabel.new text: 'Reset' do |menu_item|
 
       director.replace_scene(Box2DLayer.scene)
     end
@@ -98,13 +98,13 @@ class Box2DLayer < Joybox::Core::Layer
     end
 
 
-    block_sprite = PhysicsSprite.new texture: @sprite_batch_node.texture,
+    block_sprite = PhysicsSprite.new texture: @sprite_batch.texture,
                                      rect: [[32 * block_column, 32 * block_row], [32, 32]],
                                      position: position
 
     block_sprite.physics_body = body
 
-    @sprite_batch_node << block_sprite
+    @sprite_batch << block_sprite
   end
 
 end

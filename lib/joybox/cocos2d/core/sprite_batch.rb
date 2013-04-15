@@ -1,7 +1,7 @@
 module Joybox
   module Core
 
-    class SpriteBatchNode < CCSpriteBatchNode
+    class SpriteBatch < CCSpriteBatchNode
 
       def self.defaults
         {
@@ -15,7 +15,7 @@ module Joybox
         options = options.nil? ? defaults : defaults.merge!(options)
 
         batchNodeWithFile(options[:file_name], 
-          capacity: options[:capacity])
+                          capacity: options[:capacity])
       end
 
     end

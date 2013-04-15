@@ -54,23 +54,23 @@ class CocosMotionLayer < Joybox::Core::Layer
 
   def layout_menu
 
-    back_item = MenuImage.new image: 'cocos_motion/left_arrow.png',
-                                selected_image: 'cocos_motion/left_arrow_selected.png' do |menu_item|
+    back_item = MenuImage.new image_file_name: 'cocos_motion/left_arrow.png',
+                              selected_image_file_name: 'cocos_motion/left_arrow_selected.png' do |menu_item|
                                   
                                   skew_sprite_animation
-                                end
+                              end
 
-    reset_item = MenuImage.new image: 'cocos_motion/dot.png',
-                                selected_image: 'cocos_motion/dot_selected.png' do |menu_item|
+    reset_item = MenuImage.new image_file_name: 'cocos_motion/dot.png',
+                               selected_image_file_name: 'cocos_motion/dot_selected.png' do |menu_item|
 
                                   director.replace_scene(CocosMotionLayer.scene)
-                                end
+                              end
 
-    next_item = MenuImage.new image: 'cocos_motion/right_arrow.png',
-                                selected_image: 'cocos_motion/right_arrow_selected.png' do |menu_item|
+    next_item = MenuImage.new image_file_name: 'cocos_motion/right_arrow.png',
+                              selected_image_file_name: 'cocos_motion/right_arrow_selected.png' do |menu_item|
 
                                   simple_sprite_animation
-                                end
+                              end
 
 
     menu = Menu.new items: [back_item, reset_item, next_item],
