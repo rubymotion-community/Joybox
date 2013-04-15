@@ -26,6 +26,12 @@ module Joybox
       end
 
 
+      def self.from_rgb(red, green, blue)
+
+        self.new(red, green, blue)
+      end
+
+
       def self.from_hex(hex)
 
         split_hex = [hex.delete(' ').delete('#')].pack('H*').unpack('C*')
