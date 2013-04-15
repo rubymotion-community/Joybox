@@ -16,7 +16,7 @@ module Joybox
       end
 
 
-      def self.enable_scene
+      def self.scene
 
         define_singleton_method(:scene) do 
 

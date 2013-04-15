@@ -1,6 +1,6 @@
 class Cocos2DLayer < Joybox::Core::Layer
 
-  enable_scene
+  scene
 
   def on_enter
     

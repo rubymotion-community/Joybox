@@ -1,7 +1,7 @@
 class MenuLayer < Joybox::Core::Layer
 
   # TODO: Revisar el nombre de este metodo
-  enable_scene
+  scene
 
   def on_enter
 
