@@ -1,55 +1,55 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/actions/</loc>
+        <loc>http://Joybox.io/actions/</loc>
         <lastmod>2013-04-13T17:46:03-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/blog/archives/</loc>
+        <loc>http://Joybox.io/blog/archives/</loc>
         <lastmod>2013-04-12T02:45:15-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/director/</loc>
+        <loc>http://Joybox.io/director/</loc>
         <lastmod>2013-04-13T17:08:06-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/game-development/</loc>
+        <loc>http://Joybox.io/game-development/</loc>
         <lastmod>2013-04-14T20:15:05-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/game-structure/</loc>
+        <loc>http://Joybox.io/game-structure/</loc>
         <lastmod>2013-04-13T00:06:41-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/</loc>
+        <loc>http://Joybox.io/</loc>
         <lastmod>2013-04-13T14:08:20-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/</loc>
+        <loc>http://Joybox.io/</loc>
         <lastmod>2013-04-14T20:14:14-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/layers/</loc>
+        <loc>http://Joybox.io/layers/</loc>
         <lastmod>2013-04-13T17:07:40-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/menus/</loc>
+        <loc>http://Joybox.io/menus/</loc>
         <lastmod>2013-04-13T17:42:29-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/physics/</loc>
+        <loc>http://Joybox.io/physics/</loc>
         <lastmod>2013-04-14T17:36:55-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/robots.txt</loc>
+        <loc>http://Joybox.io/robots.txt</loc>
         <lastmod>2013-04-10T22:11:54-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/scenes/</loc>
+        <loc>http://Joybox.io/scenes/</loc>
         <lastmod>2013-04-13T16:16:45-05:00</lastmod>
     </url>
     <url>
-        <loc>http://rubymotion.github.io/Joybox/sprites/</loc>
+        <loc>http://Joybox.io/sprites/</loc>
         <lastmod>2013-04-13T17:06:54-05:00</lastmod>
     </url>
 </urlset>

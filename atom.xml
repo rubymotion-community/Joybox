@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Joybox]]></title>
-  <link href="http://rubymotion.github.io/Joybox/atom.xml" rel="self"/>
-  <link href="http://rubymotion.github.io/Joybox/"/>
-  <updated>2013-04-14T20:36:11-05:00</updated>
-  <id>http://rubymotion.github.io/Joybox/</id>
+  <link href="http://Joybox.io/atom.xml" rel="self"/>
+  <link href="http://Joybox.io/"/>
+  <updated>2013-04-14T20:38:12-05:00</updated>
+  <id>http://Joybox.io/</id>
   <author>
     <name><![CDATA[Juan José Karam]]></name>
     
