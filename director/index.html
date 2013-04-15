@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Joybox</title>
+  <meta name="author" content="Juan José Karam">
+
+  
+  <meta name="description" content="Director Handle the Game A subclass of CCDirector Set Up To set up the Director with the default configuration you implement the following: class &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rubymotion.github.io/Joybox/director">
+  <link href="/Joybox/favicon.png" rel="icon">
+  <link href="/Joybox/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/Joybox/atom.xml" rel="alternate" title="Joybox" type="application/atom+xml">
+  <script src="/Joybox/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/Joybox/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   class="no-sidebar">
+  <header role="banner"><hgroup>
+  <a href="/Joybox/"><img id="logo" src="/Joybox/images/icnLogo.png" /></a>
+  
+  <a href="https://github.com/rubymotion/Joybox" ><img id="github" src="/Joybox/images/icnGithub.png"></a>
+  
+</hgroup>
+
+</header>
+  
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+  
+<ul class="main-navigation">
+  <li><a href="/Joybox/game-structure">Game Structure</a></li><p>Core Clases</p>
+  <li><a href="/Joybox/sprites">Sprites</a></li><p>Characters in Movement</p>
+  <li><a href="/Joybox/layers">Layers</a></li><p>Canvas &amp; Gameplay</p>
+  <li><a href="/Joybox/scenes">Scenes</a></li><p>Any Level from Easy to Hard</p>
+  <li><a href="/Joybox/director">Director</a></li><p>Handle the Game</p>
+  <li><a href="/Joybox/actions">Actions</a></li><p>Magic Tricks</p>
+  <li><a href="/Joybox/menus">Menus</a></li><p>Touch to Play</p>
+  <li><a href="/Joybox/physics">Physics</a></li><p>Apply Realism</p>
+  <li><a href="/Joybox/game-development">Video Games?</a></li><p id="subtitle">Game development resources</p>
+</ul>
+
+</nav>
+  <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Director</h1>
+    
+  </header>
+  
+  <h2 id="toc_0">Handle the Game</h2>
+
+<h3 id="toc_1">A subclass of CCDirector</h3>
+
+<h2 id="toc_2">Set Up</h2>
+
+<p>To set up the Director with the default configuration you implement the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AppDelegate</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="ss">didFinishLaunchingWithOptions</span><span class="p">:</span> <span class="n">launchOptions</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="vi">@director</span> <span class="o">=</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Configuration</span><span class="o">.</span><span class="n">setup</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="vi">@navigation_controller</span> <span class="o">=</span> <span class="no">UINavigationController</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">initWithRootViewController</span><span class="p">(</span><span class="vi">@director</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@navigation_controller</span><span class="o">.</span><span class="n">navigationBarHidden</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="vi">@window</span> <span class="o">=</span> <span class="no">UIWindow</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">initWithFrame</span><span class="p">(</span><span class="no">UIScreen</span><span class="o">.</span><span class="n">mainScreen</span><span class="o">.</span><span class="n">bounds</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@window</span><span class="o">.</span><span class="n">setRootViewController</span><span class="p">(</span><span class="vi">@navigation_controller</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@window</span><span class="o">.</span><span class="n">makeKeyAndVisible</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="toc_3">Configuration</h2>
+
+<p>In case you want to modify the Director&#39;s default configuration, you should use the following block:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@director</span> <span class="o">=</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Configuration</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">director</span> <span class="n">display_stats</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Here is the full boilerplate for the Director:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@director</span> <span class="o">=</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Configuration</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">director</span>  <span class="n">wants_full_screen_layout</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">display_stats</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">animation_interval</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span>
+</span><span class='line'>            <span class="ss">projection</span><span class="p">:</span> <span class="no">KCCDirectorProjection2D</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">enable_retina_display</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+</span><span class='line'>            <span class="ss">delegate</span><span class="p">:</span> <span class="kp">nil</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">display_stats</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">opengl_view</span> <span class="ss">bounds</span><span class="p">:</span> <span class="no">UIScreen</span><span class="o">.</span><span class="n">mainScreen</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span>
+</span><span class='line'>              <span class="n">pixel_format</span><span class="p">:</span> <span class="no">KEAGLColorFormatRGB565</span><span class="p">,</span>
+</span><span class='line'>              <span class="n">depth_format</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>              <span class="n">preserve_backbuffer</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>              <span class="n">share_group</span><span class="p">:</span> <span class="kp">nil</span><span class="p">,</span>
+</span><span class='line'>              <span class="n">multi_sampling</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+</span><span class='line'>              <span class="n">number_of_samples</span><span class="p">:</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">texture_2d</span> <span class="n">default_alpha_pixel_format</span><span class="p">:</span> <span class="no">KCCTexture2DPixelFormat_RGBA8888</span><span class="p">,</span>
+</span><span class='line'>             <span class="n">pvr_images_have_premultiplied_alpha</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">file_utils</span> <span class="n">enable_fallback_suffixes</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+</span><span class='line'>             <span class="n">set_iphone_retina_display_suffix</span><span class="p">:</span> <span class="s2">&quot;-hd&quot;</span><span class="p">,</span>
+</span><span class='line'>             <span class="n">set_ipad_suffix</span><span class="p">:</span> <span class="s2">&quot;-ipad&quot;</span><span class="p">,</span>
+</span><span class='line'>             <span class="n">set_ipad_retina_display_suffix</span><span class="p">:</span> <span class="s2">&quot;-ipadhd&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="toc_4">Handle the Interruptions</h2>
+
+<p>The Director can handle the interruptions, just implement the following methods:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AppDelegate</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">applicationWillResignActive</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@director</span><span class="o">.</span><span class="n">pause</span> <span class="k">if</span> <span class="vi">@navigation_controller</span><span class="o">.</span><span class="n">visibleViewController</span> <span class="o">==</span> <span class="vi">@director</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">applicationDidBecomeActive</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@director</span><span class="o">.</span><span class="n">resume</span> <span class="k">if</span> <span class="vi">@navigation_controller</span><span class="o">.</span><span class="n">visibleViewController</span> <span class="o">==</span> <span class="vi">@director</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">applicationDidEnterBackground</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@director</span><span class="o">.</span><span class="n">stop_animation</span> <span class="k">if</span> <span class="vi">@navigation_controller</span><span class="o">.</span><span class="n">visibleViewController</span> <span class="o">==</span> <span class="vi">@director</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">applicationWillEnterForeground</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@director</span><span class="o">.</span><span class="n">start_animation</span> <span class="k">if</span> <span class="vi">@navigation_controller</span><span class="o">.</span><span class="n">visibleViewController</span> <span class="o">==</span> <span class="vi">@director</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">applicationWillTerminate</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@director</span><span class="o">.</span><span class="n">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">applicationDidReceiveMemoryWarning</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@director</span><span class="o">.</span><span class="n">purge_cached_data</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">applicationSignificantTimeChange</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@director</span><span class="o">.</span><span class="n">set_next_delta_time_zero</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="toc_5">Access the Director</h2>
+
+<p>To access the Director anywhere in your game, you can call:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@director</span> <span class="o">=</span> <span class="no">Joybox</span><span class="o">.</span><span class="n">director</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="toc_6">Game Sceneflow</h2>
+
+<p>In order to control the video game sceneflow, the Director can push, pop, pop to root &amp; replace the scenes:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Push Scenes</span>
+</span><span class='line'><span class="vi">@director</span><span class="o">.</span><span class="n">push_scene</span><span class="p">(</span><span class="o">&lt;</span><span class="n">scene</span><span class="o">&gt;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="vi">@director</span> <span class="o">&lt;&lt;</span> <span class="o">&lt;</span><span class="n">scene</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Pop Scenes</span>
+</span><span class='line'><span class="vi">@director</span><span class="o">.</span><span class="n">pop_scene</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Pop to Root Scene</span>
+</span><span class='line'><span class="vi">@director</span><span class="o">.</span><span class="n">pop_to_root_scene</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Replace Scene</span>
+</span><span class='line'><span class="vi">@director</span><span class="o">.</span><span class="n">replace_scene</span><span class="p">(</span><span class="o">&lt;</span><span class="n">scene</span><span class="o">&gt;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>For more information, see: <a href="http://www.cocos2d-iphone.org/api-ref/2.0.0/interface_c_c_director.html">CCDirector Class Reference</a></p>
+
+  
+</article>
+
+</div>
+
+  </div>
+  <footer role="contentinfo"><div id="developers">
+  <!--<h4>Maintained by: </h4> <br/>-->
+    <span id="quote">Empower yourself and realise the importance of contributing to the world by living your talent. Work on what you love. You are responsible for the talent that has been entrusted to you. - Catharina Bruns</span>
+  <a href="https://github.com/CurveBeryl">
+  <img src="/Joybox/images/icnJuanKaram.png" /><br />
+  <span id="name">Juan José Karam<span/><br />
+  </a>
+  <span id="twitter">@juankaram</span>
+
+</div>
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

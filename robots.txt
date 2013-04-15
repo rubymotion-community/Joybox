@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://rubymotion.github.io/Joybox/sitemap.xml 

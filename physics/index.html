@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Joybox</title>
+  <meta name="author" content="Juan José Karam">
+
+  
+  <meta name="description" content="Physics Apply Realism Collection of Box2D Clases Set up the World Create and Configure a new instance of the Physics World: # Basic configuration &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rubymotion.github.io/Joybox/physics">
+  <link href="/Joybox/favicon.png" rel="icon">
+  <link href="/Joybox/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/Joybox/atom.xml" rel="alternate" title="Joybox" type="application/atom+xml">
+  <script src="/Joybox/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/Joybox/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   class="no-sidebar">
+  <header role="banner"><hgroup>
+  <a href="/Joybox/"><img id="logo" src="/Joybox/images/icnLogo.png" /></a>
+  
+  <a href="https://github.com/rubymotion/Joybox" ><img id="github" src="/Joybox/images/icnGithub.png"></a>
+  
+</hgroup>
+
+</header>
+  
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+  
+<ul class="main-navigation">
+  <li><a href="/Joybox/game-structure">Game Structure</a></li><p>Core Clases</p>
+  <li><a href="/Joybox/sprites">Sprites</a></li><p>Characters in Movement</p>
+  <li><a href="/Joybox/layers">Layers</a></li><p>Canvas &amp; Gameplay</p>
+  <li><a href="/Joybox/scenes">Scenes</a></li><p>Any Level from Easy to Hard</p>
+  <li><a href="/Joybox/director">Director</a></li><p>Handle the Game</p>
+  <li><a href="/Joybox/actions">Actions</a></li><p>Magic Tricks</p>
+  <li><a href="/Joybox/menus">Menus</a></li><p>Touch to Play</p>
+  <li><a href="/Joybox/physics">Physics</a></li><p>Apply Realism</p>
+  <li><a href="/Joybox/game-development">Video Games?</a></li><p id="subtitle">Game development resources</p>
+</ul>
+
+</nav>
+  <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Physics</h1>
+    
+  </header>
+  
+  <h2 id="toc_0">Apply Realism</h2>
+
+<h3 id="toc_1">Collection of Box2D Clases</h3>
+
+<h2 id="toc_2">Set up the World</h2>
+
+<p>Create and Configure a new instance of the Physics World:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Basic configuration</span>
+</span><span class='line'><span class="n">world</span> <span class="o">=</span> <span class="no">World</span><span class="o">.</span><span class="n">new</span> <span class="ss">gravity</span><span class="p">:</span><span class="o">&lt;</span><span class="n">point_with_gravity_direction_and_force</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Advance configuration</span>
+</span><span class='line'><span class="n">world</span> <span class="o">=</span> <span class="no">World</span><span class="o">.</span><span class="n">new</span> <span class="ss">gravity</span><span class="p">:</span><span class="o">&lt;</span><span class="n">point_with_gravity_direction_and_force</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                  <span class="c1"># Default: true</span>
+</span><span class='line'>                  <span class="n">allows_sleeping</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                  <span class="c1"># Default: true</span>
+</span><span class='line'>                  <span class="n">continuos_physics</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="toc_3">Step</h2>
+
+<p>To step forward into the Physics Simulation, you need to implement the following into the Game Loop call:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Basic step</span>
+</span><span class='line'><span class="n">schedule_update</span> <span class="k">do</span> <span class="o">|</span><span class="n">dt</span><span class="o">|</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="vi">@world</span><span class="o">.</span><span class="n">step</span> <span class="ss">delta</span><span class="p">:</span> <span class="n">dt</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Advance step</span>
+</span><span class='line'><span class="n">schedule_update</span> <span class="k">do</span> <span class="o">|</span><span class="n">dt</span><span class="o">|</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="vi">@world</span><span class="o">.</span><span class="n">step</span> <span class="ss">delta</span><span class="p">:</span> <span class="n">dt</span><span class="p">,</span>
+</span><span class='line'>              <span class="c1"># Default: 8</span>
+</span><span class='line'>              <span class="n">velocity_interactions</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">velocity_interactions</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>              <span class="c1"># Default: 1</span>
+</span><span class='line'>              <span class="n">position_interactions</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">position_interactions</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>For more information, see: <a href="http://box2d.org/manual.pdf">Chapter 10 World Class</a></p>
+
+<h2 id="toc_4">Body</h2>
+
+<p>Create bodies to be simulated in the Physics World:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">body</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">&lt;</span><span class="n">point_on_the_screen</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                          <span class="c1"># Default: KStaticBodyType</span>
+</span><span class='line'>                          <span class="ss">type</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">body_type</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>The following are the available body types:</p>
+
+<ul>
+<li><p>KStaticBodyType <br/>
+The Static Bodies does not move under the simulation. Excelent for walls or static objects.</p></li>
+<li><p>KKinematicBodyType<br/>
+A Kinematic Body is simulated according to its velocity, but it does not allow you to apply any force to it. The only way to interact with it is changing its velocity.</p></li>
+<li><p>KDynamicBodyType <br/>
+This type of bodies are fully simulated and forces can be applied to them. Also they can collide with any body type.   </p></li>
+</ul>
+
+<p>For more information, see: <a href="http://box2d.org/manual.pdf">Chapter 7 Bodies</a></p>
+
+<h2 id="toc_5">Fixures</h2>
+
+<p>The Fixures are used to give the body a shape, which is done implementing the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">body</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span> <span class="k">do</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Edge Fixure: Add lines to the body shape</span>
+</span><span class='line'>  <span class="n">edge_fixure</span> <span class="n">start_point</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">start_point_of_the_line</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                <span class="n">end_point</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">end_point_of_the_line</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Polygon Fixure: Add poligons to the body shape</span>
+</span><span class='line'>  <span class="n">polygon_fixure</span> <span class="ss">box</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">size_of_the_box</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Also the Fixures are used to give the body some of its physics properties:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">body</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span> <span class="k">do</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">polygon_fixure</span> <span class="ss">box</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>                      <span class="c1"># Default: 0.2</span>
+</span><span class='line'>                      <span class="ss">friction</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">friction</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                      <span class="c1"># Default: 0</span>
+</span><span class='line'>                      <span class="ss">restitution</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">restitution</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                      <span class="c1"># Default: 0</span>
+</span><span class='line'>                      <span class="ss">density</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">density</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                      <span class="c1"># Default: false</span>
+</span><span class='line'>                      <span class="n">is_sensor</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Setting the physics properties per Fixure instead of setting them to the full object allow us to have complex fixures, for example: A cube with a one very hard size and 5 soft size that allow some bouncing.</p>
+
+<p>For more information, see: <a href="http://box2d.org/manual.pdf">Chapter 6 Fixures</a></p>
+
+<p>Important: Adding all the Box2D shapes to Joybox is in the roadmap, but at this version it only supports Box and Edge.</p>
+
+<h2 id="toc_6">Force &amp; Torque</h2>
+
+<p>Force and Torque can be applied to bodies, here is how to do it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Apply force in the center of the Body</span>
+</span><span class='line'><span class="c1"># The force to be applied is a vector with x, y, for example: [100, 120]</span>
+</span><span class='line'><span class="n">body</span><span class="o">.</span><span class="n">apply_force</span> <span class="ss">force</span><span class="p">:</span><span class="o">&lt;</span><span class="n">point_of_vector_force</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Apply force using other options</span>
+</span><span class='line'><span class="n">body</span><span class="o">.</span><span class="n">apply_force</span> <span class="ss">force</span><span class="p">:</span><span class="o">&lt;</span><span class="n">point_of_vector_force</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                 <span class="c1"># Default: The center of the body</span>
+</span><span class='line'>                 <span class="ss">location</span><span class="p">:</span><span class="o">&lt;</span><span class="n">point_where_the_force_will_be_applied</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                 <span class="c1"># Defines if the force should be applied gradually or</span>
+</span><span class='line'>                 <span class="c1"># instantaneously</span>
+</span><span class='line'>                 <span class="c1"># Default: true (Instantaneously)</span>
+</span><span class='line'>                 <span class="n">as_impulse</span><span class="p">:</span><span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Apply torque</span>
+</span><span class='line'><span class="c1"># The torque to be applied is a number, which represent the angular movement</span>
+</span><span class='line'><span class="c1"># to be applied</span>
+</span><span class='line'><span class="n">body</span><span class="o">.</span><span class="n">apply_torque</span> <span class="ss">torque</span><span class="p">:</span><span class="o">&lt;</span><span class="n">torque</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Apply torque using other options</span>
+</span><span class='line'><span class="n">body</span><span class="o">.</span><span class="n">apply_torque</span> <span class="ss">torque</span><span class="p">:</span><span class="o">&lt;</span><span class="n">torque</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                <span class="c1"># Defines if the torque should be applied gradually or</span>
+</span><span class='line'>                <span class="c1"># instantaneously</span>
+</span><span class='line'>                <span class="c1"># Default: true (Instantaneously)</span>
+</span><span class='line'>                <span class="n">as_impulse</span><span class="p">:</span><span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>For more information, see: <a href="http://box2d.org/manual.pdf">Chapter 10 World Class - Forces And Impulses</a></p>
+
+<h2 id="toc_7">Collision Detection</h2>
+
+<p>The following is used to detect the collision detection between your bodies:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">world</span><span class="o">.</span><span class="n">when_collide</span> <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span> <span class="k">do</span> <span class="o">|</span> <span class="n">collision_body</span><span class="p">,</span> <span class="n">is_touching</span> <span class="o">|</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Handle the collision between the body you are interested and</span>
+</span><span class='line'>  <span class="c1"># the colliding body (collision_body)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="toc_8">Bodies &amp; Sprites</h2>
+
+<p>For being of any use in the vide game the Bodies must be attached to Sprites: the body will provide its position to the Sprite so the both of them will move together. </p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">physics_sprite</span> <span class="o">=</span> <span class="no">PhysicsSprite</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">file_name</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                                        <span class="ss">body</span><span class="p">:</span> <span class="n">body</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">layer</span> <span class="o">&lt;&lt;</span> <span class="n">physics_sprite</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>One of the advantages of doing this is when you apply a force to the body, the sprite will move as well presenting the User the Physics simulation on the Screen:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">physics_sprite</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">apply_force</span> <span class="ss">force</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Also because of the Physics World gravity, your Sprites will react as well to it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Example: Simulating a Ball in a Free Fall</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Create a world with Earth&#39;s Gravity</span>
+</span><span class='line'><span class="n">world</span> <span class="o">=</span> <span class="no">World</span><span class="o">.</span><span class="n">new</span> <span class="ss">gravity</span><span class="p">:</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="o">.</span><span class="mi">8</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># New body at the center of the Screen</span>
+</span><span class='line'><span class="n">body</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">[</span><span class="no">Screen</span><span class="o">.</span><span class="n">half_width</span><span class="p">,</span> <span class="no">Screen</span><span class="o">.</span><span class="n">half_height</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Physics Sprite with the image of a Ball</span>
+</span><span class='line'><span class="n">sprite_body</span> <span class="o">=</span> <span class="no">PhysicsSprite</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">&#39;ball.png&#39;</span><span class="p">,</span>
+</span><span class='line'>                                <span class="ss">body</span><span class="p">:</span> <span class="n">body</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Add the Physics Sprite to the Body</span>
+</span><span class='line'><span class="n">layer</span> <span class="o">&lt;&lt;</span> <span class="n">sprite_body</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>For more information, see: <a href="http://box2d.org/manual.pdf">Box2D Manual</a> </p>
+
+  
+</article>
+
+</div>
+
+  </div>
+  <footer role="contentinfo"><div id="developers">
+  <!--<h4>Maintained by: </h4> <br/>-->
+    <span id="quote">Empower yourself and realise the importance of contributing to the world by living your talent. Work on what you love. You are responsible for the talent that has been entrusted to you. - Catharina Bruns</span>
+  <a href="https://github.com/CurveBeryl">
+  <img src="/Joybox/images/icnJuanKaram.png" /><br />
+  <span id="name">Juan José Karam<span/><br />
+  </a>
+  <span id="twitter">@juankaram</span>
+
+</div>
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
