@@ -37,6 +37,14 @@ module Joybox
       end
 
 
+      def onExit
+
+        super
+
+        on_exit if defined? (on_exit)
+      end
+
+
       def schedule_update(&block)
 
         @schedule_update_block = block if block_given?

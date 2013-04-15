@@ -3,7 +3,6 @@ class MenuLayer < Joybox::Core::Layer
   # TODO: Revisar el nombre de este metodo
   enable_scene
 
-
   def on_enter
 
     layout_title
