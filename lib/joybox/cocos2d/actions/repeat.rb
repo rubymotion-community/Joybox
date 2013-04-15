@@ -1,26 +1,24 @@
 module Joybox
-  module Cocos2D
-    module Actions
+  module Actions
 
-      class Repeat
+    class Repeat
 
-        def self.defaults
-          {
-            action: nil
-          }
-        end
+      def self.defaults
+        {
+          action: nil
+        }
+      end
 
-        #TODO: Revisar esto, no estoy completamente seguro que deba de cambiar la implementacion
-        #      original (nombre del metodo)
-        def self.forever(options = {})
+      #TODO: Revisar esto, no estoy completamente seguro que deba de cambiar la implementacion
+      #      original (nombre del metodo)
+      def self.forever(options = {})
 
-          options = options.nil? ? defaults : defaults.merge!(options)
+        options = options.nil? ? defaults : defaults.merge!(options)
 
-          CCRepeatForever.actionWithAction(options[:action])
-        end
-        
+        CCRepeatForever.actionWithAction(options[:action])
       end
 
     end
+
   end
 end

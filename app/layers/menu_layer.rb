@@ -1,6 +1,6 @@
-class MenuLayer < Joybox::Cocos2D::Core::Layer
+class MenuLayer < Joybox::Core::Layer
 
-  include Joybox::Cocos2D
+  include Joybox
 
   # TODO: Revisar el nombre de este metodo
   enable_scene

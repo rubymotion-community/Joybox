@@ -1,9 +1,7 @@
 module Joybox
-  module Cocos2D
-    module Actions
+  module Actions
 
-      include Joybox::Cocos2D::Common
+    include Joybox::Common
 
-    end
   end
 end

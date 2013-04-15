@@ -1,45 +1,43 @@
 module Joybox
-  module Cocos2D
-    module Core
+  module Core
 
-      class Sprite < CCSprite
+    class Sprite < CCSprite
 
-        alias_method :stop_all_actions, :stopAllActions
-        alias_method :run_action, :runAction
+      alias_method :stop_all_actions, :stopAllActions
+      alias_method :run_action, :runAction
 
-        def self.new(options = {})
+      def self.new(options = {})
 
-          sprite ||= new_with_file(options) if options.has_key? (:file_name)
-          sprite ||= new_with_texture(options) if options.has_key? (:texture)
+        sprite ||= new_with_file(options) if options.has_key? (:file_name)
+        sprite ||= new_with_texture(options) if options.has_key? (:texture)
 
-          sprite.position = options[:position] if options.has_key? (:position)
+        sprite.position = options[:position] if options.has_key? (:position)
 
-          sprite
-        end
-
-
-        private 
-
-        def self.new_with_file(options = {})
-
-          spriteWithFile(options[:file_name])
-        end
+        sprite
+      end
 
 
-        def self.new_with_texture(options = {})
+      private 
 
-          if options.has_key? (:rect)
+      def self.new_with_file(options = {})
 
-            spriteWithTexture(options[:texture], rect: options[:rect])
-          else
+        spriteWithFile(options[:file_name])
+      end
 
-            spriteWithTexture(options:[:texture])
-          end
 
+      def self.new_with_texture(options = {})
+
+        if options.has_key? (:rect)
+
+          spriteWithTexture(options[:texture], rect: options[:rect])
+        else
+
+          spriteWithTexture(options:[:texture])
         end
 
       end
 
     end
+
   end
 end

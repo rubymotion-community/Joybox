@@ -5,9 +5,9 @@
 # Cocos Motion => https://github.com/scally/cocosmotion
 #
 # Thank you guys!
-class CocosMotionLayer < Joybox::Cocos2D::Core::Layer
+class CocosMotionLayer < Joybox::Core::Layer
 
-  include Joybox::Cocos2D
+  include Joybox
 
   enable_scene
 

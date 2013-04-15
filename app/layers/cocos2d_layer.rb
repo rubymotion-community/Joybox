@@ -1,6 +1,6 @@
-class Cocos2DLayer < Joybox::Cocos2D::Core::Layer
+class Cocos2DLayer < Joybox::Core::Layer
 
-  include Joybox::Cocos2D::UI
+  include Joybox::UI
 
   enable_scene
 

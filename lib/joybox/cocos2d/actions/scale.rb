@@ -1,33 +1,31 @@
 module Joybox
-  module Cocos2D
-    module Actions
+  module Actions
 
-      class Scale
+    class Scale
 
-        def self.defaults
-          {
-            duration: 0.3,
-            scale: 0
-          }
-        end
+      def self.defaults
+        {
+          duration: 0.3,
+          scale: 0
+        }
+      end
 
-        def self.by(options = {})
+      def self.by(options = {})
 
-          options = options.nil? ? defaults : defaults.merge!(options)
+        options = options.nil? ? defaults : defaults.merge!(options)
 
-          CCScaleBy.actionWithDuration(options[:duration], scale: options[:scale])
-        end
+        CCScaleBy.actionWithDuration(options[:duration], scale: options[:scale])
+      end
 
 
-        def self.to(options = {})
+      def self.to(options = {})
 
-          options = options.nil? ? defaults : defaults.merge!(options)
+        options = options.nil? ? defaults : defaults.merge!(options)
 
-          CCScaleTo.actionWithDuration(options[:duration], scale: options[:scale])
-        end
-
+        CCScaleTo.actionWithDuration(options[:duration], scale: options[:scale])
       end
 
     end
+
   end
 end

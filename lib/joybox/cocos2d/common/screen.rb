@@ -4,38 +4,36 @@
 #      debido a que Screen no tendra estado
 # 3 => El nombrado de half
 module Joybox
-  module Cocos2D
-    module Common
-      
-      module Screen
+  module Common
 
-        module_function
+    module Screen
 
-        def self.width
+      module_function
 
-          CCDirector.sharedDirector.winSize.width
-        end
+      def self.width
 
-
-        def self.half_width
-
-          CCDirector.sharedDirector.winSize.width / 2
-        end
+        CCDirector.sharedDirector.winSize.width
+      end
 
 
-        def self.height
+      def self.half_width
 
-          CCDirector.sharedDirector.winSize.height
-        end
+        CCDirector.sharedDirector.winSize.width / 2
+      end
 
 
-        def self.half_height
+      def self.height
 
-          CCDirector.sharedDirector.winSize.height / 2
-        end
+        CCDirector.sharedDirector.winSize.height
+      end
 
+
+      def self.half_height
+
+        CCDirector.sharedDirector.winSize.height / 2
       end
 
     end
+
   end
 end

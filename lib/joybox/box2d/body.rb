@@ -1,4 +1,4 @@
-Joybox::Box2D::Body = B2DBody
+Joybox::Body = B2DBody
 
 class B2DBody
 

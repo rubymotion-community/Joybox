@@ -2,7 +2,7 @@ class CGPoint
 
   def to_opengl_coordinates
 
-    Joybox::Cocos2D.director.convertToGL(self)
+    Joybox.director.convertToGL(self)
   end
 
   #TODO: Estos dos metodos estan en relacion a los de Numeric

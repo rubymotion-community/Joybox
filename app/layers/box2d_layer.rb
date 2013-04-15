@@ -1,7 +1,6 @@
-class Box2DLayer < Joybox::Cocos2D::Core::Layer
+class Box2DLayer < Joybox::Core::Layer
 
-  include Joybox::Cocos2D
-  include Joybox::Box2D
+  include Joybox
 
   enable_scene
 

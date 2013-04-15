@@ -1,81 +1,79 @@
 module Joybox
-  module Box2D
 
-    class World < B2DWorld
+  class World < B2DWorld
 
-      def self.defaults
-        {
-          gravity: [0, 0],
-          allows_sleeping: true,
-          continuos_physics: true
-        }
-      end
-
-
-      def self.new(options)
-
-        options = options.nil? ? defaults : defaults.merge!(options)
-
-        world = World.alloc.init 
-
-        world.gravity = options[:gravity]
-        world.allowsSleeping = options[:allows_sleeping]
-        world.continuosPhysics = options[:continuos_physics]
-
-        world
-      end
+    def self.defaults
+      {
+        gravity: [0, 0],
+        allows_sleeping: true,
+        continuos_physics: true
+      }
+    end
 
 
-      def step_defaults
-        {
-          velocity_interactions: 8,
-          position_interactions: 1
-        }
-      end
+    def self.new(options)
+
+      options = options.nil? ? defaults : defaults.merge!(options)
+
+      world = World.alloc.init 
+
+      world.gravity = options[:gravity]
+      world.allowsSleeping = options[:allows_sleeping]
+      world.continuosPhysics = options[:continuos_physics]
+
+      world
+    end
 
 
-      def step(options = {})
-
-        options = options.nil? ? step_defaults : step_defaults.merge!(options)
-
-        stepWithDelta(options[:delta], 
-                      velocityInteractions: options[:velocity_interactions],
-                      positionInteractions: options[:position_interactions])
-      end
+    def step_defaults
+      {
+        velocity_interactions: 8,
+        position_interactions: 1
+      }
+    end
 
 
-      def new_body(options = {}, &block)
+    def step(options = {})
 
-        body = Body.new(self, options)
-        body.instance_eval(&block)
+      options = options.nil? ? step_defaults : step_defaults.merge!(options)
 
-        body 
-      end
-
-
-      def setup_collision_listener
-
-        @contact_listener = B2DContactListener.new
-        addContactListener(@contact_listener)
-
-        @listening_bodies = Hash.new
-
-        @contact_listener.beginContact = lambda { | first_body, second_body, is_touching |
-
-          @listening_bodies[first_body].call(second_body, is_touching) if @listening_bodies.include? first_body
-          @listening_bodies[second_body].call(first_body, is_touching) if @listening_bodies.include? second_body
-        }
-      end
+      stepWithDelta(options[:delta], 
+        velocityInteractions: options[:velocity_interactions],
+        positionInteractions: options[:position_interactions])
+    end
 
 
-      def when_collide(body, &block)
+    def new_body(options = {}, &block)
 
-        setup_collision_listener unless @contact_listener
+      body = Body.new(self, options)
+      body.instance_eval(&block)
 
-        @listening_bodies[body] = block
-      end
+      body 
+    end
 
+
+    def setup_collision_listener
+
+      @contact_listener = B2DContactListener.new
+      addContactListener(@contact_listener)
+
+      @listening_bodies = Hash.new
+
+      @contact_listener.beginContact = lambda { | first_body, second_body, is_touching |
+
+        @listening_bodies[first_body].call(second_body, is_touching) if @listening_bodies.include? first_body
+        @listening_bodies[second_body].call(first_body, is_touching) if @listening_bodies.include? second_body
+      }
+    end
+
+
+    def when_collide(body, &block)
+
+      setup_collision_listener unless @contact_listener
+
+      @listening_bodies[body] = block
     end
 
   end
+
 end

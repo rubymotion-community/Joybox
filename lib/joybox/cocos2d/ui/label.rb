@@ -1,36 +1,34 @@
 module Joybox
-  module Cocos2D
-    module UI
+  module UI
 
-      class Label < CCLabelTTF
+    class Label < CCLabelTTF
 
-        alias_method :text=, :setString
-        alias_method :set_text, :setString
+      alias_method :text=, :setString
+      alias_method :set_text, :setString
 
-        def self.defaults
-          {
-            font_name: 'Marker Felt',
-            font_size: 12
-          }
-        end
+      def self.defaults
+        {
+          font_name: 'Marker Felt',
+          font_size: 12
+        }
+      end
 
 
-        def self.new(options = {})
+      def self.new(options = {})
 
-          options = options.nil? ? defaults : defaults.merge!(options)
+        options = options.nil? ? defaults : defaults.merge!(options)
 
-          label = Label.labelWithString(options[:text], 
-            fontName: options[:font_name], 
-            fontSize: options[:font_size])
+        label = Label.labelWithString(options[:text], 
+          fontName: options[:font_name], 
+          fontSize: options[:font_size])
 
-          label.position = options[:position] if options.has_key? (:position)
-          label.color = options[:color] if options.has_key? (:color)
+        label.position = options[:position] if options.has_key? (:position)
+        label.color = options[:color] if options.has_key? (:color)
 
-          label
-        end
-
+        label
       end
 
     end
+
   end
 end
