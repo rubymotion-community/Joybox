@@ -7,8 +7,6 @@
 # Thank you guys!
 class CocosMotionLayer < Joybox::Core::Layer
 
-  include Joybox
-
   enable_scene
 
   def on_enter

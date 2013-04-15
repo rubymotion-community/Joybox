@@ -1,7 +1,5 @@
 class MenuLayer < Joybox::Core::Layer
 
-  include Joybox
-
   # TODO: Revisar el nombre de este metodo
   enable_scene
 

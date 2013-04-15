@@ -7,6 +7,11 @@ class CCNode
     self.addChild(node)
   end
 
+  def self.inherited(base)
+
+    base.send(:include, Joybox)
+  end
+
   #TODO: Revisar el nombre de este metodo
   def add_childs(*nodes)
 

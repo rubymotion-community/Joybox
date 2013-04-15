@@ -1,7 +1,5 @@
 class Box2DLayer < Joybox::Core::Layer
-
-  include Joybox
-
+  
   enable_scene
 
   def on_enter
