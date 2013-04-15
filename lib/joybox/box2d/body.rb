@@ -83,7 +83,10 @@ class B2DBody
 
     options = options.nil? ? apply_force_defaults : apply_force_defaults.merge!(options)
 
-    applyForce(options[:force], 
+    # This line is needed to ensure that the force is a CGPoint
+    force = CGPointMake(options[:force][0], options[:force][1])
+
+    applyForce(force.to_pixel_coordinates, 
                atLocation: options[:location], 
                asImpulse: options[:as_impulse]) 
   end

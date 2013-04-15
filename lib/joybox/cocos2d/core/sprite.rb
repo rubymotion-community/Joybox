@@ -16,6 +16,11 @@ module Joybox
         sprite
       end
 
+      def file_name=(file_name)
+
+        texture = CCTextureCache.sharedTextureCache.addImage(file_name)
+        self.setTexture(texture)
+      end
 
       private 
 
