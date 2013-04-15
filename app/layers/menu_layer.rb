@@ -1,6 +1,5 @@
 class MenuLayer < Joybox::Core::Layer
-
-  # TODO: Revisar el nombre de este metodo
+  
   scene
 
   def on_enter
@@ -25,24 +24,24 @@ class MenuLayer < Joybox::Core::Layer
 
     MenuLabel.default_font_size = 40
 
-    cocos2d_menu_item = MenuLabel.new 'Cocos 2D', 
-                                       color: Color.new(252, 253, 167), 
+    cocos2d_menu_item = MenuLabel.new  text: 'Cocos 2D', 
+                                      color: Color.new(252, 253, 167), 
                                        do |menu_item|
 
       director.replace_scene(Cocos2DLayer.scene)
     end
 
 
-    box2d_button = MenuLabel.new 'Box 2D',
-                                 color: Color.from_hex('82CCFB'),
+    box2d_button = MenuLabel.new text: 'Box 2D',
+                                color: Color.from_hex('82CCFB'),
                                  do |menu_item|
 
       director.replace_scene(Box2DLayer.scene)
     end
 
 
-    cocos_motion_button = MenuLabel.new 'Cocos Motion',
-                                         color: Color.from_hex('FE7058'),
+    cocos_motion_button = MenuLabel.new  text: 'Cocos Motion',
+                                        color: Color.from_hex('FE7058'),
                                          do |menu_item|
 
       director.replace_scene(CocosMotionLayer.scene)

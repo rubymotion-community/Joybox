@@ -19,10 +19,17 @@ module Joybox
       alias_method :font_name, :fontName
       alias_method :font_name=, :setFontName
 
+      def self.defaults
+        {
+          text: ''
+        }
+      end
 
-      def self.new(title, options = {}, &block)
+      def self.new(options = {}, &block)
 
-        menu_item = self.itemWithString(title, block: block)
+        options = options.nil? ? defaults : defaults.merge!(options)
+
+        menu_item = self.itemWithString(options[:text], block: block)
 
         menu_item.font_size = options[:font_size] if options.has_key? (:font_size)
         menu_item.fontName = options[:font_name] if options.has_key? (:font_name)
