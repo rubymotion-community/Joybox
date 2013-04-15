@@ -14,7 +14,10 @@ class B2DBody
 
     options = options.nil? ? defaults : defaults.merge!(options)
 
-    world.createBodyInPosition(options[:position],
+    # This line is needed to ensure that the position is a CGPoint
+    position = CGPointMake(options[:position][0], options[:position][1])
+
+    world.createBodyInPosition(position.to_pixel_coordinates,
                                type: options[:type])
   end
 
@@ -34,8 +37,13 @@ class B2DBody
     options = hash.pop
     options = options.nil? ? fixure_defaults : fixure_defaults.merge!(options)
 
-    edge_shape = B2DEdgeShape.alloc.initWithStartPoint(options[:start_point],
-                                                       endPoint: options[:end_point])
+    # The following lines are needed to ensure that the start_point and 
+    # end_points are CGPoints
+    start_point = CGPointMake(options[:start_point][0], options[:start_point][1])
+    end_point = CGPointMake(options[:end_point][0], options[:end_point][1])
+
+    edge_shape = B2DEdgeShape.alloc.initWithStartPoint(start_point.to_pixel_coordinates,
+                                                       endPoint: end_point.to_pixel_coordinates)
 
     addFixureForShape(edge_shape,
                       friction: options[:friction],
@@ -50,7 +58,10 @@ class B2DBody
     options = hash.pop
     options = options.nil? ? fixure_defaults : fixure_defaults.merge!(options)
 
-    polygon_shape = B2DPolygonShape.alloc.initWithBoxSize(options[:box])
+    # This line is needed to ensure that the box is a CGSize
+    box_size = CGSizeMake(options[:box][0], options[:box][1])
+
+    polygon_shape = B2DPolygonShape.alloc.initWithBoxSize(box_size.to_pixel_coordinates)
 
     addFixureForShape(polygon_shape,
                       friction: options[:friction],
