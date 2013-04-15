@@ -7,9 +7,9 @@ module Joybox
 
       def self.new(options = {}, &block)
 
-        menu_item = self.itemWithNormalImage(options[:image],
-         selectedImage: options[:selected_image],
-         block: block)
+        menu_item = self.itemWithNormalImage(options[:image_file_name],
+                                             selectedImage: options[:selected_image_file_name],
+                                             block: block)
 
         menu_item.position = options[:position] if options.has_key? (:position)
 
