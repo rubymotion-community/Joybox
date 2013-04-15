@@ -4,12 +4,12 @@ module Joybox
 
     class PhysicsSprite < Sprite
 
-      attr_accessor :physics_body
+      attr_accessor :body
 
       def self.new(options = {})
 
         sprite = super 
-        sprite.physics_body = options[:body] if options.include? :body
+        sprite.body = options[:body] if options.include? :body
 
         sprite
       end
@@ -24,11 +24,11 @@ module Joybox
       # to call the nodeToParentTransform method
       def nodeToParentTransform
 
-        position = @physics_body.position.to_uikit_coordinates
+        position = @body.position.to_uikit_coordinates
 
         position = position + anchorPointInPoints if ignoreAnchorPointForPosition
 
-        angle = @physics_body.angle
+        angle = @body.angle
 
         x = position.x
         y = position.y
