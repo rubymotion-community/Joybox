@@ -5,15 +5,17 @@ Gem::Specification.new do |gem|
   gem.name          = 'joybox'
   gem.version       = Joybox::VERSION
 
-  gem.authors  = ['CurveBeryl']
-
+  gem.authors  = ['Juan José Karam']
+  gem.email = 'juanjokaram@gmail.com'
+  
   gem.description = <<-DESC
+    A Cocos2D & Box2D DSL for RubyMotion
   DESC
 
   gem.summary = 'A Cocos2D & Box2D DSL for RubyMotion'
-  gem.homepage = 'https://github.com/JuanKaram/JoyBox'
+  gem.homepage = 'http://joybox.io'
 
-  gem.files       = `git ls-files`.split($\)
+  #gem.files       = `git ls-files`.split($\)
   gem.require_paths = ['lib']
   gem.test_files  = gem.files.grep(%r{^spec/})
 
