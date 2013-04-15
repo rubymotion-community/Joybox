@@ -24,7 +24,7 @@ module Joybox
       # to call the nodeToParentTransform method
       def nodeToParentTransform
 
-        position = @physics_body.position.to_coordinates
+        position = @physics_body.position.to_uikit_coordinates
 
         position = position + anchorPointInPoints if ignoreAnchorPointForPosition
 

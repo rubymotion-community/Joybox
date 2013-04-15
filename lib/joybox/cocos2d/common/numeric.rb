@@ -6,7 +6,7 @@ class Numeric
     self / 32
   end
 
-  def to_coordinates
+  def from_pixels
 
     self * 32
   end

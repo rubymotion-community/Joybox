@@ -5,10 +5,9 @@ class CGPoint
     Joybox.director.convertToGL(self)
   end
 
-  #TODO: Estos dos metodos estan en relacion a los de Numeric
-  def to_coordinates
+  def to_uikit_coordinates
 
-    CGPointMake(self.x.to_coordinates, self.y.to_coordinates)
+    CGPointMake(self.x.from_pixels, self.y.from_pixels)
   end
 
 
