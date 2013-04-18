@@ -14,7 +14,8 @@ module Joybox
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        CCRotateBy.actionWithDuration(options[:duration], angle: options[:angle])
+        CCRotateBy.actionWithDuration(options[:duration], 
+                                      angle: options[:angle])
       end
 
 
@@ -22,7 +23,8 @@ module Joybox
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        CCRotateTo.actionWithDuration(options[:duration], angle: options[:angle])
+        CCRotateTo.actionWithDuration(options[:duration], 
+                                      angle: options[:angle])
       end
 
     end

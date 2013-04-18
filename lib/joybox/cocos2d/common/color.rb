@@ -7,7 +7,7 @@ module Joybox
         {
           red: 1,
           green: 1,
-          green: 1
+          blue: 1
         }
       end
 
@@ -43,6 +43,17 @@ module Joybox
         self.new(red, green, blue)
       end
 
+      def red
+        self[0]
+      end
+
+      def green
+        self[1]
+      end
+
+      def blue
+        self[2]
+      end
     end
 
   end
