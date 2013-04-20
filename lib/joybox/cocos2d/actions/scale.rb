@@ -14,7 +14,8 @@ module Joybox
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        CCScaleBy.actionWithDuration(options[:duration], scale: options[:scale])
+        CCScaleBy.actionWithDuration(options[:duration], 
+                                      scale: options[:scale])
       end
 
 
@@ -22,7 +23,8 @@ module Joybox
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        CCScaleTo.actionWithDuration(options[:duration], scale: options[:scale])
+        CCScaleTo.actionWithDuration(options[:duration],
+                                      scale: options[:scale])
       end
 
     end

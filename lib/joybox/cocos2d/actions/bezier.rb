@@ -1,12 +1,12 @@
 module Joybox
   module Actions
 
-    class Move
+    class Bezier
 
       def self.defaults
         {
           duration: 0.3,
-          position: [0, 0]
+          bezier: [[0,0], [0, 0], [0, 0]]
         }
       end
 
@@ -14,8 +14,8 @@ module Joybox
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        CCMoveBy.actionWithDuration(options[:duration], 
-                                    position: options[:position])
+        CCBezierBy.actionWithDuration(options[:duration], 
+                                      bezier: options[:bezier])
       end
 
 
@@ -23,8 +23,8 @@ module Joybox
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        CCMoveTo.actionWithDuration(options[:duration], 
-                                    position: options[:position])
+        CCBezierTo.actionWithDuration(options[:duration], 
+                                      bezier: options[:bezier])
       end
 
     end
