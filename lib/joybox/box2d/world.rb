@@ -45,7 +45,7 @@ module Joybox
 
     def new_body(options = {}, &block)
       body = Body.new(self, options)
-      body.instance_eval(&block) if block?
+      body.instance_eval(&block) if block
       body
     end
 
