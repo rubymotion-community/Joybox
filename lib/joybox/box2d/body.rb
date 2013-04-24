@@ -84,6 +84,19 @@ class B2DBody
   end
 
 
+  def circle_fixture(*hash)
+    options = hash.pop
+    options = options.nil? ? fixture_defaults : fixture_defaults.merge!(options)
+
+    circle_shape = B2DCircleShape.alloc.initWithRadius(options[:radius].to_pixels)
+    addFixtureForShape(circle_shape,
+                       friction: options[:friction],
+                       restitution: options[:restitution],
+                       density: options[:density],
+                       isSensor: options[:is_sensor])
+  end
+
+
   def apply_force_defaults
     {
       location: self.center,
@@ -119,4 +132,5 @@ class B2DBody
     applyTorque(options[:torque], 
                asImpulse: options[:as_impulse]) 
   end
+  
 end
