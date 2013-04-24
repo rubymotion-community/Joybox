@@ -35,17 +35,17 @@ class Box2DLayer < Joybox::Core::Layer
 
     body = @world.new_body position:[0,0] do
 
-      edge_fixure start_point: [0, 0],
-                  end_point: [Screen.width, 0]
+      edge_fixture start_point: [0, 0],
+                   end_point: [Screen.width, 0]
 
-      edge_fixure start_point: [0, Screen.height],
-                  end_point: [Screen.width, Screen.height]
+      edge_fixture start_point: [0, Screen.height],
+                   end_point: [Screen.width, Screen.height]
 
-      edge_fixure start_point: [0, Screen.height],
-                  end_point: [0, 0]
+      edge_fixture start_point: [0, Screen.height],
+                   end_point: [0, 0]
 
-      edge_fixure start_point: [Screen.width, Screen.height],
-                  end_point: [Screen.width, 0]
+      edge_fixture start_point: [Screen.width, Screen.height],
+                   end_point: [Screen.width, 0]
     end
 
   end
@@ -91,9 +91,9 @@ class Box2DLayer < Joybox::Core::Layer
     body = @world.new_body position: position,
                            type: KDynamicBodyType do
 
-        polygon_fixure box: [16, 16],
-                       friction: 0.3,
-                       density: 1.0
+      polygon_fixture box: [16, 16],
+                      friction: 0.3,
+                      density: 1.0
     end
 
 

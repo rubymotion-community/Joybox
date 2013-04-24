@@ -22,7 +22,7 @@ class B2DBody
   end
 
 
-  def fixure_defaults
+  def fixture_defaults
     {
       friction: 0.2,
       restitution: 0,
@@ -32,10 +32,10 @@ class B2DBody
   end
 
 
-  def edge_fixure(*hash)
+  def edge_fixture(*hash)
 
     options = hash.pop
-    options = options.nil? ? fixure_defaults : fixure_defaults.merge!(options)
+    options = options.nil? ? fixture_defaults : fixture_defaults.merge!(options)
 
     # The following lines are needed to ensure that the start_point and 
     # end_points are CGPoints
@@ -53,10 +53,10 @@ class B2DBody
   end
 
 
-  def polygon_fixure(*hash)
+  def polygon_fixture(*hash)
 
     options = hash.pop
-    options = options.nil? ? fixure_defaults : fixure_defaults.merge!(options)
+    options = options.nil? ? fixture_defaults : fixture_defaults.merge!(options)
 
     # This line is needed to ensure that the box is a CGSize
     box_size = CGSizeMake(options[:box][0], options[:box][1])
