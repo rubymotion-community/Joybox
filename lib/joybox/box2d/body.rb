@@ -45,11 +45,11 @@ class B2DBody
     edge_shape = B2DEdgeShape.alloc.initWithStartPoint(start_point.to_pixel_coordinates,
                                                        endPoint: end_point.to_pixel_coordinates)
 
-    addFixureForShape(edge_shape,
-                      friction: options[:friction],
-                      restitution: options[:restitution],
-                      density: options[:density],
-                      isSensor: options[:is_sensor])
+    addFixtureForShape(edge_shape,
+                       friction: options[:friction],
+                       restitution: options[:restitution],
+                       density: options[:density],
+                       isSensor: options[:is_sensor])
   end
 
 
@@ -63,13 +63,24 @@ class B2DBody
 
     polygon_shape = B2DPolygonShape.alloc.initWithBoxSize(box_size.to_pixel_coordinates)
 
-    addFixureForShape(polygon_shape,
-                      friction: options[:friction],
-                      restitution: options[:restitution],
-                      density: options[:density],
-                      isSensor: options[:is_sensor])
+    addFixtureForShape(polygon_shape,
+                       friction: options[:friction],
+                       restitution: options[:restitution],
+                       density: options[:density],
+                       isSensor: options[:is_sensor])
   end
 
+  def circle_fixture(*hash)
+    options = hash.pop
+    options = options.nil? ? fixture_defaults : fixture_defaults.merge!(options)
+
+    circle_shape = B2DCircleShape.alloc.initWithRadius(options[:radius].to_pixels)
+    addFixtureForShape(circle_shape,
+                       friction: options[:friction],
+                       restitution: options[:restitution],
+                       density: options[:density],
+                       isSensor: options[:is_sensor])
+  end
 
   def apply_force_defaults
     {
