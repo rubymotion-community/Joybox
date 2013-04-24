@@ -18,7 +18,7 @@
 @interface B2DBody : NSObject
 
 @property (nonatomic, assign) b2Body *body;
-@property (nonatomic, readonly, getter = position) CGPoint position;
+@property (nonatomic, getter = position, setter = setPosition:) CGPoint position;
 @property (nonatomic, readonly, getter = angle) CGFloat angle;
 @property (nonatomic, readonly, getter = center) CGPoint center;
 @property (nonatomic, getter = isSleepingAllowed, setter = setSleepingAllowed:) BOOL isSleepingAllowed;
@@ -26,11 +26,11 @@
 
 - (id)initWithBody:(b2Body *)boxBody;
 
-- (void)addFixureForShape:(B2DShape *)shape
-                 friction:(CGFloat)friction
-              restitution:(CGFloat)restitution
-                  density:(CGFloat)density
-                 isSensor:(BOOL)isSensor;
+- (void)addFixtureForShape:(B2DShape *)shape
+                  friction:(CGFloat)friction
+               restitution:(CGFloat)restitution
+                   density:(CGFloat)density
+                  isSensor:(BOOL)isSensor;
 
 - (void)applyForce:(CGPoint)force
         atLocation:(CGPoint)location

@@ -99,9 +99,7 @@ class Box2DLayer < Joybox::Core::Layer
 
     block_sprite = PhysicsSprite.new texture: @sprite_batch.texture,
                                      rect: [[32 * block_column, 32 * block_row], [32, 32]],
-                                     position: position
-
-    block_sprite.body = body
+                                     body: body
 
     @sprite_batch << block_sprite
   end

@@ -26,12 +26,12 @@ module Joybox
 
       director = Director.sharedDirector
 
-      director.wantsFullScreenLayout = options.fetch(:wants_full_screen_layout)
-      director.displayStats = options.fetch(:display_stats)
-      director.animationInterval = options.fetch(:animation_interval)
-      director.projection = options.fetch(:projection)
-      director.enableRetinaDisplay(options.fetch(:enable_retina_display))
-      director.delegate = options.fetch(:delegate)
+      director.wantsFullScreenLayout = options[:wants_full_screen_layout]
+      director.displayStats = options[:display_stats]
+      director.animationInterval = options[:animation_interval]
+      director.projection = options[:projection]
+      director.enableRetinaDisplay(options[:enable_retina_display])
+      director.delegate = options[:delegate]
     end
 
 

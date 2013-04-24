@@ -45,11 +45,11 @@ class B2DBody
     edge_shape = B2DEdgeShape.alloc.initWithStartPoint(start_point.to_pixel_coordinates,
                                                        endPoint: end_point.to_pixel_coordinates)
 
-    addFixureForShape(edge_shape,
-                      friction: options[:friction],
-                      restitution: options[:restitution],
-                      density: options[:density],
-                      isSensor: options[:is_sensor])
+    addFixtureForShape(edge_shape,
+                       friction: options[:friction],
+                       restitution: options[:restitution],
+                       density: options[:density],
+                       isSensor: options[:is_sensor])
   end
 
 
@@ -63,11 +63,24 @@ class B2DBody
 
     polygon_shape = B2DPolygonShape.alloc.initWithBoxSize(box_size.to_pixel_coordinates)
 
-    addFixureForShape(polygon_shape,
-                      friction: options[:friction],
-                      restitution: options[:restitution],
-                      density: options[:density],
-                      isSensor: options[:is_sensor])
+    addFixtureForShape(polygon_shape,
+                       friction: options[:friction],
+                       restitution: options[:restitution],
+                       density: options[:density],
+                       isSensor: options[:is_sensor])
+  end
+
+
+  def position=(position)
+
+    # This line is needed to ensure that the position is a CGPoint
+    position = CGPointMake(position[0], position[1])
+
+    # Coordinate system conversion
+    position = position.to_opengl_coordinates
+    position = position.to_pixel_coordinates
+
+    self.setPosition(position)
   end
 
 

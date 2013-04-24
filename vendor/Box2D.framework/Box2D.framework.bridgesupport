@@ -4,7 +4,7 @@
 <enum value='1' name='kKinematicBodyType'/>
 <enum value='0' name='kStaticBodyType'/>
 <class name='B2DBody'>
-<method selector='addFixureForShape:friction:restitution:density:isSensor:'>
+<method selector='addFixtureForShape:friction:restitution:density:isSensor:'>
 <arg name='shape' index='0' type='@' declared_type='B2DShape*'/>
 <arg name='friction' index='1' type='f' declared_type='CGFloat'/>
 <arg name='restitution' index='2' type='f' declared_type='CGFloat'/>

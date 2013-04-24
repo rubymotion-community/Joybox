@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    joybox (0.0.5)
+    joybox (0.0.6b)
       rake
+      thor
 
 GEM
   remote: https://rubygems.org/
