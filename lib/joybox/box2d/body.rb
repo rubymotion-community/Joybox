@@ -70,6 +70,17 @@ class B2DBody
                       isSensor: options[:is_sensor])
   end
 
+  def circle_fixure(*hash)
+    options = hash.pop
+    options = options.nil? ? fixure_defaults : fixure_defaults.merge!(options)
+
+    circle_shape = B2DCircleShape.alloc.initWithRadius(options[:radius].to_pixels)
+    addFixureForShape(circle_shape,
+                      friction: options[:friction],
+                      restitution: options[:restitution],
+                      density: options[:density],
+                      isSensor: options[:is_sensor])
+  end
 
   def apply_force_defaults
     {
