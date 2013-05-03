@@ -7,7 +7,6 @@ module Joybox
       alias_method :stop_action, :stopAction
       alias_method :stop_all_actions, :stopAllActions
 
-
       def self.new(options = {})
 
         sprite ||= new_with_file_name(options) if options.has_key? (:file_name)
@@ -24,6 +23,17 @@ module Joybox
         texture = CCTextureCache.sharedTextureCache.addImage(file_name)
         self.setTexture(texture)
       end
+
+      
+      # Review this in another version, because I dont still quite convinced
+      # that this is the correct approach. The alternative is two methods
+      # flip_x and flip_y, but I dont like them either.
+      def flip(options = {})
+
+        self.flipX = options[:x] if options.include?(:x)
+        self.flipY = options[:y] if options.include?(:y)
+      end
+
 
       private 
 
