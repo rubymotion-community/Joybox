@@ -48,7 +48,15 @@ class MenuLayer < Joybox::Core::Layer
     end
 
 
-    menu = Menu.new items: [cocos2d_menu_item, box2d_button, cocos_motion_button],
+    animation_button = MenuLabel.new text: 'Animation',
+                                     color: Color.from_hex('977bfc'),
+                                        do |menu_item|
+
+      director.replace_scene(AnimationLayer.scene)                                   
+    end
+
+
+    menu = Menu.new items: [cocos2d_menu_item, box2d_button, cocos_motion_button, animation_button],
                      position: [Screen.half_width, (Screen.height - 80) / 2]
 
     menu.align_items_vertically

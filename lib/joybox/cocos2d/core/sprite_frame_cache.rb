@@ -103,15 +103,45 @@ class CCSpriteFrameCache
   end 
 
 
-  def select(&block)
-    p valueForKey('spriteFramesAliases_').keys
-
-    valueForKey('spriteFrames_').select(&block)
+  def default_where
+  {
+    from: 0,
+    to: nil
+  }
   end
 
 
-  def frames_by_prefix(prefix)
+  def where(options = {})
 
+    options = options.nil? ? default_where : default_where.merge!(options)
+
+    frame_prefix = options[:prefix]
+    frame_suffix = options[:suffix]
+
+    frames = Array.new
+
+    from_frame = options[:from]
+    to_frame = options[:to]
+
+
+    frame = nil
+
+    # Yukihiro Matsumoto recomends using loop instead of while or until statements
+    # http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/6745
+    loop do  
+
+      frame_name = "#{frame_prefix}#{from_frame}#{frame_suffix}"
+
+      frame = self[frame_name]
+
+      frames << frame unless frame.nil?
+
+      from_frame = from_frame + 1
+
+      break if frame.nil? or (from_frame > to_frame unless to_frame.nil?)
+    end 
+
+    frames
   end
 
 end
