@@ -23,6 +23,7 @@ class AnimationLayer < Joybox::Core::Layer
     walking_animation = Animation.new frames: walking_frames, 
                                       delay: 0.1
 
+
     walking_action = Repeat.forever action: walking_animation.action
 
     sprite = Sprite.new frame_name: 'bear1.png',

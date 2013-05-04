@@ -30,13 +30,13 @@ Motion::Project::App.setup do |app|
     insert_point = index + 1
   end
 
-  cocos2d_vendor = File.expand_path(File.join(File.dirname(__FILE__), '../vendor/Cocos2D'))
+  cocos2d_vendor = File.expand_path(File.join(File.dirname(__FILE__), '../vendor/cocos_2d'))
   box2d_vendor = File.expand_path(File.join(File.dirname(__FILE__), '../vendor/Box2D.framework'))
 
   app.vendor_project(cocos2d_vendor,
                      :static,
-                     :products => ["libcocos2d.a", "libCocosDenshion.a"],
-                     :headers_dir => "include")
+                     :products => ["libcocos2d.a"],
+                     :headers_dir => "cocos_2d_include")
 
   app.vendor_project(box2d_vendor,
                      :static,
