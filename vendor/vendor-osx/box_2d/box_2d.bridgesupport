@@ -1,0 +1,176 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<enum value='2' name='kDynamicBodyType'/>
+<enum value='1' name='kKinematicBodyType'/>
+<enum value='0' name='kStaticBodyType'/>
+<class name='B2DBody'>
+<method selector='addFixtureForShape:friction:restitution:density:isSensor:'>
+<arg declared_type='B2DShape*' type='@' index='0' name='shape'/>
+<arg declared_type='CGFloat' type='f' index='1' name='friction' type64='d'/>
+<arg declared_type='CGFloat' type='f' index='2' name='restitution' type64='d'/>
+<arg declared_type='CGFloat' type='f' index='3' name='density' type64='d'/>
+<arg declared_type='BOOL' type='B' index='4' name='isSensor'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='angle'>
+<retval declared_type='CGFloat' type='f' type64='d'/>
+</method>
+<method selector='applyForce:atLocation:asImpulse:'>
+<arg declared_type='CGPoint' type='{CGPoint=ff}' index='0' name='force' type64='{CGPoint=dd}'/>
+<arg declared_type='CGPoint' type='{CGPoint=ff}' index='1' name='location' type64='{CGPoint=dd}'/>
+<arg declared_type='BOOL' type='B' index='2' name='asImpulse'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='applyTorque:asImpulse:'>
+<arg declared_type='CGFloat' type='f' index='0' name='torque' type64='d'/>
+<arg declared_type='BOOL' type='B' index='1' name='impulse'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='body'>
+<retval declared_type='int*' type='^i'/>
+</method>
+<method selector='center'>
+<retval declared_type='CGPoint' type='{CGPoint=ff}' type64='{CGPoint=dd}'/>
+</method>
+<method selector='initWithBody:'>
+<arg declared_type='id' type='@' index='0' name='boxBody'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='isSleepingAllowed'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='position'>
+<retval declared_type='CGPoint' type='{CGPoint=ff}' type64='{CGPoint=dd}'/>
+</method>
+<method selector='setBody:'>
+<arg declared_type='int*' type='^i' index='0' name='body'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPosition:'>
+<arg declared_type='CGPoint' type='{CGPoint=ff}' index='0' name='position' type64='{CGPoint=dd}'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setSleepingAllowed:'>
+<arg declared_type='BOOL' type='B' index='0' name='isSleepingAllowed'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='B2DCircleShape'>
+<method selector='initWithRadius:'>
+<arg declared_type='CGFloat' type='f' index='0' name='radius' type64='d'/>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='B2DContactListener'>
+<method selector='beginContact'>
+<retval declared_type='beginContactCallback' type='@?' function_pointer='true'>
+<arg declared_type='B2DBody*' type='@'/>
+<arg declared_type='B2DBody*' type='@'/>
+<arg declared_type='BOOL' type='B'/>
+<retval declared_type='void' type='v'/>
+</retval>
+</method>
+<method selector='contactListener'>
+<retval declared_type='int*' type='^i'/>
+</method>
+<method selector='endContact'>
+<retval declared_type='endContactCallback' type='@?' function_pointer='true'>
+<arg declared_type='B2DBody*' type='@'/>
+<arg declared_type='B2DBody*' type='@'/>
+<retval declared_type='void' type='v'/>
+</retval>
+</method>
+<method selector='setBeginContact:'>
+<arg declared_type='beginContactCallback' type='@?' index='0' name='beginContact' function_pointer='true'>
+<arg declared_type='B2DBody*' type='@'/>
+<arg declared_type='B2DBody*' type='@'/>
+<arg declared_type='BOOL' type='B'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setContactListener:'>
+<arg declared_type='int*' type='^i' index='0' name='contactListener'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setEndContact:'>
+<arg declared_type='endContactCallback' type='@?' index='0' name='endContact' function_pointer='true'>
+<arg declared_type='B2DBody*' type='@'/>
+<arg declared_type='B2DBody*' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='B2DEdgeShape'>
+<method selector='initWithStartPoint:endPoint:'>
+<arg declared_type='CGPoint' type='{CGPoint=ff}' index='0' name='startPoint' type64='{CGPoint=dd}'/>
+<arg declared_type='CGPoint' type='{CGPoint=ff}' index='1' name='endPoint' type64='{CGPoint=dd}'/>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='B2DPolygonShape'>
+<method selector='initWithBoxSize:'>
+<arg declared_type='CGSize' type='{CGSize=ff}' index='0' name='boxSize' type64='{CGSize=dd}'/>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='B2DShape'>
+<method selector='setShape:'>
+<arg declared_type='int*' type='^i' index='0' name='shape'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='shape'>
+<retval declared_type='int*' type='^i'/>
+</method>
+</class>
+<class name='B2DWorld'>
+<method selector='addContactListener:'>
+<arg declared_type='B2DContactListener*' type='@' index='0' name='contactListener'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='allowsSleeping'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='continuosPhysics'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='createBodyInPosition:type:'>
+<arg declared_type='CGPoint' type='{CGPoint=ff}' index='0' name='position' type64='{CGPoint=dd}'/>
+<arg declared_type='B2DBodyTypes' type='i' index='1' name='bodyType'/>
+<retval declared_type='B2DBody*' type='@'/>
+</method>
+<method selector='gravity'>
+<retval declared_type='CGPoint' type='{CGPoint=ff}' type64='{CGPoint=dd}'/>
+</method>
+<method selector='removeBody:'>
+<arg declared_type='B2DBody*' type='@' index='0' name='body'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAllowsSleeping:'>
+<arg declared_type='BOOL' type='B' index='0' name='allowsSleeping'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setContinuosPhysics:'>
+<arg declared_type='BOOL' type='B' index='0' name='continuosPhysics'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setGravity:'>
+<arg declared_type='CGPoint' type='{CGPoint=ff}' index='0' name='gravity' type64='{CGPoint=dd}'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setWorld:'>
+<arg declared_type='int*' type='^i' index='0' name='world'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='stepWithDelta:velocityInteractions:positionInteractions:'>
+<arg declared_type='CGFloat' type='f' index='0' name='delta' type64='d'/>
+<arg declared_type='int' type='i' index='1' name='velocityInteractions'/>
+<arg declared_type='int' type='i' index='2' name='positionInteractions'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='world'>
+<retval declared_type='int*' type='^i'/>
+</method>
+</class>
+</signatures>

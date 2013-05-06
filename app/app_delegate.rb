@@ -1,49 +1,22 @@
 class AppDelegate
 
-  def application(application, didFinishLaunchingWithOptions:launchOptions)
+  def applicationDidFinishLaunching(notification)
 
-    @director = Joybox::Configuration.setup do
+    @director = Joybox::Configuration.setup
 
-      director display_stats: true
-    end
+    @main_window = NSWindow.alloc.initWithContentRect([[240, 180], [480, 360]],
+      styleMask: NSTitledWindowMask|NSClosableWindowMask|NSMiniaturizableWindowMask|NSResizableWindowMask,
+      backing: NSBackingStoreBuffered,
+      defer: false)
 
-    @navigation_controller = UINavigationController.alloc.initWithRootViewController(@director)
-    @navigation_controller.navigationBarHidden = true
+    @main_window.title = NSBundle.mainBundle.infoDictionary['CFBundleName']
+    @main_window.setCollectionBehavior(NSWindowCollectionBehaviorFullScreenPrimary)
 
-    @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
-    @window.setRootViewController(@navigation_controller)
-    @window.makeKeyAndVisible
+    @main_window.contentView.addSubview(@director.view)
 
-    @director << MenuLayer.scene
-    true
-  end
+    @main_window.orderFrontRegardless
 
-  def applicationWillResignActive(app)
-    @director.pause if @navigation_controller.visibleViewController == @director
-  end
-
-  def applicationDidBecomeActive(app)
-    @director.resume if @navigation_controller.visibleViewController == @director
-  end
-
-  def applicationDidEnterBackground(app)
-    @director.stop_animation if @navigation_controller.visibleViewController == @director
-  end
-
-  def applicationWillEnterForeground(app)
-    @director.start_animation if @navigation_controller.visibleViewController == @director
-  end
-
-  def applicationWillTerminate(app)
-    @director.end
-  end
-
-  def applicationDidReceiveMemoryWarning(app)
-    @director.purge_cached_data
-  end
-
-  def applicationSignificantTimeChange(app)
-    @director.set_next_delta_time_zero true
+    @director.run_with_scene(Box2DLayer.scene)
   end
 
 end

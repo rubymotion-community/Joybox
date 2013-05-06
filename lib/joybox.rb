@@ -4,46 +4,28 @@ end
 
 require File.expand_path('../../support/support.rb', __FILE__)
 
+# Extracted from Teacup: https://github.com/rubymotion/teacup
+# Thanks Colin! (@colinta)
+platform = Motion::Project::App.respond_to?(:template) ? Motion::Project::App.template : :ios
+platform_setup = File.join(File.dirname(__FILE__), "joybox/joybox-#{platform}.rb") 
+
+unless File.exists? platform_setup
+  raise "Sorry, the platform #{platform.inspect} is not supported by joybox"
+end
+
+require platform_setup
+
+
 Motion::Project::App.setup do |app|
 
-  app.frameworks += ["QuartzCore", 
-                     "CoreGraphics", 
-                     "Foundation", 
-                     "ApplicationServices",
-                     "OpenAL",
-                     "AVFoundation",
-                     "AudioToolbox",
-                     "QuartzCore"]
-
-  app.libs << "/usr/lib/libz.dylib"
+  joybox = File.expand_path(File.join(File.dirname(__FILE__), '../motion/joybox'))
 
   # Scans app.files until it finds app/ (the default)
   # if found, it inserts just before those files, otherwise it will insert to
   # the end of the list
-  insert_point = 0
-  app.files.each_index do |index|
-    file = app.files[index]
-    if file =~ /^(?:\.\/)?app\//
-      # found app/, so stop looking
-      break
-    end
-    insert_point = index + 1
-  end
+  insert_point = app.files.find_index { |file| file =~ /^(?:\.\/)?app\// } || 0
 
-  cocos2d_vendor = File.expand_path(File.join(File.dirname(__FILE__), '../vendor/cocos_2d'))
-  box2d_vendor = File.expand_path(File.join(File.dirname(__FILE__), '../vendor/Box2D.framework'))
-
-  app.vendor_project(cocos2d_vendor,
-                     :static,
-                     :products => ["libcocos2d.a"],
-                     :headers_dir => "cocos_2d_include")
-
-  app.vendor_project(box2d_vendor,
-                     :static,
-                     :products => ['Box2D'],
-                     :headers_dir => "Headers")
-
-  Dir.glob(File.join(File.dirname(__FILE__), 'joybox/**/*.rb')).reverse.each do |file|
+  Dir.glob(File.join(joybox, '**/*.rb')).reverse.each do |file|
     app.files.insert(insert_point, file)
   end
 end

@@ -1,5 +1,5 @@
 $:.unshift("/Library/RubyMotion/lib")
-require 'motion/project'
+require 'motion/project/template/osx'
 require 'bundler'
 Bundler.require
 
