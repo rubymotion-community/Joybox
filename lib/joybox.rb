@@ -2,8 +2,6 @@ unless defined?(Motion::Project::Config)
   raise "The joybox gem must be required within a RubyMotion project Rakefile."
 end
 
-require File.expand_path('../../support/support.rb', __FILE__)
-
 # Extracted from Teacup: https://github.com/rubymotion/teacup
 # Thanks Colin! (@colinta)
 platform = Motion::Project::App.respond_to?(:template) ? Motion::Project::App.template : :ios

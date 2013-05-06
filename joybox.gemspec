@@ -20,7 +20,8 @@ Gem::Specification.new do |gem|
   gem.test_files  = gem.files.grep(%r{^spec/})
 
   gem.add_dependency 'rake'
-  gem.add_dependency 'thor'
   gem.add_development_dependency 'rspec'
+
+  gem.executables   = ["joybox"]
 
 end

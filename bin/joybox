@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'FileUtils'
+
+if ARGV.size != 1
+  $stderr.puts 'Usage: joybox <command> [<args...>]'
+  $stderr.puts 'Commands:'
+  $stderr.puts '  setup '.ljust(15) + 'Installs the Joybox RubyMotion template and command'
+  exit 1
+end
+
+if ARGV[0] == 'setup'
+
+  ruby_motion_directory = File.expand_path('~/Library/RubyMotion')
+  template_directory = File.join(ruby_motion_directory, 'template')
+  command_directory = File.join(ruby_motion_directory, 'command')
+
+  FileUtils.mkdir_p(template_directory) unless File.directory?(template_directory)
+  FileUtils.mkdir_p(command_directory) unless File.directory?(command_directory)
+
+  ios_template_directory = File.expand_path(File.join(__FILE__, '../../template/joybox-ios'))
+  osx_template_directory = File.expand_path(File.join(__FILE__, '../../template/joybox-osx'))
+
+  FileUtils.cp_r(ios_template_directory, template_directory)
+  FileUtils.cp_r(osx_template_directory, template_directory)
+
+  joybox_command_directory = File.expand_path(File.join(__FILE__, '../../command'))
+
+  FileUtils.cp_r(Dir.glob("#{joybox_command_directory}/*"), command_directory)
+end

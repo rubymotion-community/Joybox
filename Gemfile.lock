@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    joybox (0.0.6pre3)
+    joybox (0.0.6)
       rake
       thor
 

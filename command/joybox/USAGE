@@ -1,0 +1,24 @@
+Usage:
+    motion jb:generate <class-type> <class-name>
+
+Options:
+    class-type  # Class to be generated (Sprite, Scene, Layer)
+    class-name  # Name of the class
+
+Description:
+    Generates a new class according to the class type and name, those 
+    parameters can be sended either CamelCased or snake_cased. Also a 
+    test class will be generated and placed inside the spec folder.
+
+Example:
+    'motion jb:generate layer game'
+
+    This will generate a Layer class named 'GameLayer' with the 
+    following files:
+        class:  'app/layers/game_layer.rb'
+        spec:   'spec/layers/game_layer_spec.rb'
+    
+    The list of posible paths according to the class type:
+        Sprite: app/sprites/ - spec/sprites/
+        Layer:  app/layers/ - spec/layers/
+        Scene:  app/scenes/ - spec/scenes/
