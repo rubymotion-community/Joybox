@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
 
   gem.summary = 'A Cocos2D & Box2D DSL for RubyMotion'
   gem.homepage = 'http://joybox.io'
+  gem.license = 'MIT'
 
   gem.files       = `git ls-files`.split($\)
   gem.require_paths = ['lib']
