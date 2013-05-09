@@ -1,4 +1,3 @@
-# Temporal: A better solution is being invented ;)
 #!/usr/bin/env ruby
 
 require 'fileutils'

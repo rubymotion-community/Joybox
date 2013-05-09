@@ -3,7 +3,7 @@ Introduced at [#Inspect 2013](http://www.rubymotion.com/conference/), Joybox is 
 
 For more information, see the presentation: [Cocos2D, an Easier Way](https://speakerdeck.com/curveberyl/cocos2d-an-easier-way).
 
-## Latest version history (0.0.6)
+## Latest version (0.0.6)
 * Added OSX development support. Use 'motion create --template=joybox-osx' to create
     an OSX project.
 * Added Ruby Motion Template support. Use 'joybox install' to install the templates (joybox-ios & joybox-osx)
@@ -16,7 +16,8 @@ For more information, see the presentation: [Cocos2D, an Easier Way](https://spe
 * IMPORTANT: Changed Sequence.new items:<array of actions> for Sequence.with actions:<array of actions> in Sequence class.
 * IMPORTANT: Typo fix in the Body class, changing edge_fixure and polygon_fixure to edge_fixture and polygon_fixture.
 * Better bridgesupport generation :D, thank you Laurent Sansonetti!
-* Added: mouse and keyboard events to joybox-osx. 
+* Added: mouse and keyboard events to joybox-osx.
+* Added: Bug fixes in the Website! Thanks Francisco Granados! 
 * Joybox is stopping the madness! **Thanks all** for your support!
 
 ## Documentation and Getting Started
@@ -35,6 +36,7 @@ If you wish to help us to stop the madness, there are some ways you can do it:
 * Box2D Wrapper (C++): [Joybox - Box2D](https://github.com/CurveBeryl/Joybox-Box2D)
 * Documentation (markdown): [Joybox - Documentation](https://github.com/CurveBeryl/Joybox-Documentation) 
 
+To contribute just:
 
 1. Fork it
 2. Create your feature branch (git checkout -b my-new-feature)
