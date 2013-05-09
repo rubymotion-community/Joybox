@@ -18,7 +18,7 @@ end
 module Motion; module Project
   class JoyboxGenerateCommand < Command
 
-    self.name = 'jb:generate'
+    self.name = 'joybox:generate'
     self.help = 'Joybox: Class Generator'
 
     attr_reader :name

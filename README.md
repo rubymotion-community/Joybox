@@ -1,71 +1,40 @@
 # Joybox
+Introduced at [#Inspect 2013](http://www.rubymotion.com/conference/), Joybox is the easiest way to build 2D games for iPhones and iPads using [RubyMotion](http://www.rubymotion.com/). Joybox combines the most popular and widely used 2D game engine for iOS, [Cocos2D](http://www.cocos2d-iphone.org/), folds in the amazing [Box2D](http://box2d.org/) physics engine, and then wraps them up into a clean Ruby API that will make game development faster and more enjoyable for both beginners and experts alike.
 
-Introduced at [#Inspect 2013](http://www.rubymotion.com/conference/),
-Joybox is the easiest way to build 2D games for iPhones and iPads
-using [RubyMotion](http://www.rubymotion.com/). Joybox combines the
-most popular and widely used 2D game engine for iOS,
-[Cocos2D](http://www.cocos2d-iphone.org/), folds in the amazing
-[Box2D](http://box2d.org/) physics engine, and then wraps them up into
-a clean Ruby API that will make game development faster and more
-enjoyable for both beginners and experts alike.
+For more information, see the presentation: [Cocos2D, an Easier Way](https://speakerdeck.com/curveberyl/cocos2d-an-easier-way).
 
-For more information, see the presentation: [Cocos2D, an Easier
-Way](https://speakerdeck.com/curveberyl/cocos2d-an-easier-way).
+## Latest version history (0.0.6)
+* Added OSX development support. Use 'motion create --template=joybox-osx' to create
+    an OSX project.
+* Added Ruby Motion Template support. Use 'joybox install' to install the templates (joybox-ios & joybox-osx)
+* Added Ruby Motion Command support. Use 'motion joybox:generate <class> <name>' to generate Sprites, Layers and Scene subclases and their respective specs.
+* Added Circle Shape to Box2D Fixtures. Thank you Kenichi Yonekawa!
+* Added Sprite Batch & Sprite Frame Cache full support.
+* Added Animations and Animate Action.
+* Added Bezier, Blink, Fade, Jump, Place, Spawn, Tint action. Thanks Gabriel Sosa!
+* Added Repeat.with actions:<array of actions> times:<number of times> method to Repeat class.
+* IMPORTANT: Changed Sequence.new items:<array of actions> for Sequence.with actions:<array of actions> in Sequence class.
+* IMPORTANT: Typo fix in the Body class, changing edge_fixure and polygon_fixure to edge_fixture and polygon_fixture.
+* Better bridgesupport generation :D, thank you Laurent Sansonetti!
+* Added: mouse and keyboard events to joybox-osx. 
+* Joybox is stopping the madness! **Thanks all** for your support!
+
+## Documentation and Getting Started
+If you are looking for the installation process and the documentation, please visit: [joybox.io](http://joybox.io)
+
+Also you can look at some examples in this repository: [Joybox - Examples](https://github.com/CurveBeryl/Joybox-Examples)
 
 ## Feedback and Help
-
-For questions, feedback, bug reports, use the project's [Issue
-Tracker](https://github.com/rubymotion/Joybox/issues).
-
-## Getting Started
-
-### Installation with RubyGems
-
-First install Joybox from RubyGems. Run:
-
-    gem install joybox
-
-Next, add to your Rakefile:
-
-    require 'joybox'
-
-### Installation with Bundler
-
-First, add to your Gemfile:
-
-    gem 'joybox'
-
-Next, install the Joybox gem by running:
-
-    bundle
-
-## Core Classes
-
-For building games, the core classes are Director, Scene, Layer, and Sprite.
-
-For more info, see: [cocos2d Basic Concepts](http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:basic_concepts)
-
-### Director
-
-The director presents scenes, manages flow from one scene to another,
-manages the game loop, and responds to interruptions.
-
-### Scene
-
-A scene is composed of multiple layers. Examples of scenes are: menus,
-game levels, cut scenes, and high score screen.
-
-### Layer
-
-Layers are primarily where a game's sprites are placed. Layers handle
-user interaction, for example screen touches or device orientation.
-
-### Sprite
-
-Sprites are 2D images that have independent movement, such as
-rotation, scaling, translation and animation.
+For questions, feedback, bug reports, use the project's [Issue Tracker](https://github.com/rubymotion/Joybox/issues).
 
 ## Contributions
+
+If you wish to help us to stop the madness, there are some ways you can do it:
+
+* Joybox Wrapper (Ruby): This repository ;)
+* Box2D Wrapper (C++): [Joybox - Box2D](https://github.com/CurveBeryl/Joybox-Box2D)
+* Documentation (markdown): [Joybox - Documentation](https://github.com/CurveBeryl/Joybox-Documentation) 
+
 
 1. Fork it
 2. Create your feature branch (git checkout -b my-new-feature)
@@ -76,11 +45,10 @@ rotation, scaling, translation and animation.
 ## License
 
 Joybox is released under the MIT License.
+ 
 
 ## Authors
 
-[Juan Karam](https://github.com/CurveBeryl) [@JuanKaram](https://twitter.com/JuanKaram)
-
-## Box 2D Wrapper
-
-If you wish to download or contribute to the Objective-C Box 2D wrapper, the repository URL is the following: https://github.com/CurveBeryl/Joybox-Box2D
+**Cocos2D**: Ricardo Quesada, Zynga and contributors [cocos2d for iPhone](http://www.cocos2d-iphone.org)
+**Box2D**: Erin Catto [Box2D | A 2D Physics Engine for Games](http://box2d.org)
+**Joybox**: [Juan José Karam](https://github.com/CurveBeryl) [@JuanKaram](https://twitter.com/JuanKaram) and [Gabriel Sosa](https://github.com/mexinsane) [@mexinsane](https://twitter.com/mexinsane) and contributors
