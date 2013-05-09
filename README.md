@@ -25,6 +25,20 @@ If you are looking for the installation process and the documentation, please vi
 
 Also you can look at some examples in this repository: [Joybox - Examples](https://github.com/CurveBeryl/Joybox-Examples)
 
+## Troubleshoot Installation
+If you run into troubles running your Joybox game, please do the following, in the root folder of your project:
+```
+gem uninstall joybox -a
+
+gem install joybox
+
+rm .repl_history
+
+rake clean
+
+rake
+```
+
 ## Feedback and Help
 For questions, feedback, bug reports, use the project's [Issue Tracker](https://github.com/rubymotion/Joybox/issues).
 
