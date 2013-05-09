@@ -144,36 +144,36 @@ This type of bodies are fully simulated and forces can be applied to them. Also 
 
 <p>For more information, see: <a href="http://box2d.org/manual.pdf">Chapter 7 Bodies</a></p>
 
-<h2 id="toc_5">Fixures</h2>
+<h2 id="toc_5">Fixtures</h2>
 
-<p>The Fixures are used to give the body a shape, which is done implementing the following:</p>
+<p>The Fixtures are used to give the body a shape, which is done implementing the following:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">body</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span> <span class="k">do</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="c1"># Edge Fixure: Add lines to the body shape</span>
-</span><span class='line'>  <span class="n">edge_fixure</span> <span class="n">start_point</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">start_point_of_the_line</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>  <span class="c1"># Edge Fixture: Add lines to the body shape</span>
+</span><span class='line'>  <span class="n">edge_fixture</span> <span class="n">start_point</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">start_point_of_the_line</span><span class="o">&gt;</span><span class="p">,</span>
 </span><span class='line'>                <span class="n">end_point</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">end_point_of_the_line</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'>  <span class="c1"># Polygon Fixure: Add poligons to the body shape</span>
-</span><span class='line'>  <span class="n">polygon_fixure</span> <span class="ss">box</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">size_of_the_box</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="c1"># Polygon Fixture: Add poligons to the body shape</span>
+</span><span class='line'>  <span class="n">polygon_fixture</span> <span class="ss">box</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">size_of_the_box</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<p>Also the Fixures are used to give the body some of its physics properties:</p>
+<p>Also the Fixtures are used to give the body some of its physics properties:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">body</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span> <span class="k">do</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="n">polygon_fixure</span> <span class="ss">box</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="o">]</span><span class="p">,</span>
-</span><span class='line'>                      <span class="c1"># Default: 0.2</span>
-</span><span class='line'>                      <span class="ss">friction</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">friction</span><span class="o">&gt;</span><span class="p">,</span>
-</span><span class='line'>                      <span class="c1"># Default: 0</span>
-</span><span class='line'>                      <span class="ss">restitution</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">restitution</span><span class="o">&gt;</span><span class="p">,</span>
-</span><span class='line'>                      <span class="c1"># Default: 0</span>
-</span><span class='line'>                      <span class="ss">density</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">density</span><span class="o">&gt;</span><span class="p">,</span>
-</span><span class='line'>                      <span class="c1"># Default: false</span>
-</span><span class='line'>                      <span class="n">is_sensor</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="n">polygon_fixture</span> <span class="ss">box</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>                       <span class="c1"># Default: 0.2</span>
+</span><span class='line'>                       <span class="ss">friction</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">friction</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                       <span class="c1"># Default: 0</span>
+</span><span class='line'>                       <span class="ss">restitution</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">restitution</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                       <span class="c1"># Default: 0</span>
+</span><span class='line'>                       <span class="ss">density</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">density</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span class='line'>                       <span class="c1"># Default: false</span>
+</span><span class='line'>                       <span class="n">is_sensor</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
