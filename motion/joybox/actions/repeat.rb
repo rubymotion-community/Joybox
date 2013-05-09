@@ -5,7 +5,8 @@ module Joybox
 
       def self.defaults
         {
-          action: nil
+          action: nil,
+          times: 0
         }
       end
 
@@ -16,6 +17,14 @@ module Joybox
         options = options.nil? ? defaults : defaults.merge!(options)
 
         CCRepeatForever.actionWithAction(options[:action])
+      end
+
+      def self.with(options = {})
+        
+        options = options.nil? ? defaults : defaults.merge!(options)
+
+        CCRepeat.actionWithAction(options[:action], 
+                                  times:options[:times])
       end
 
     end

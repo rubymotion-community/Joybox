@@ -3,7 +3,6 @@ PATH
   specs:
     joybox (0.0.6)
       rake
-      thor
 
 GEM
   remote: https://rubygems.org/
@@ -18,7 +17,6 @@ GEM
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.1)
-    thor (0.18.1)
 
 PLATFORMS
   ruby
@@ -27,4 +25,3 @@ DEPENDENCIES
   joybox!
   rake (= 10.0.4)
   rspec
-  thor

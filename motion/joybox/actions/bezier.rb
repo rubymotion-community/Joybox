@@ -6,7 +6,7 @@ module Joybox
       def self.defaults
         {
           duration: 0.3,
-          bezier: [[0,0], [0, 0], [0, 0]]
+          bezier: [[0, 0], [0, 0], [0, 0]]
         }
       end
 

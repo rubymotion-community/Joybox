@@ -11,18 +11,20 @@ class Box2DLayer < Joybox::Core::Layer
     @sprite_batch = SpriteBatch.new file_name: "box2d/blocks_sprite_sheet.png"
     self << @sprite_batch
 
+
+    on_touches_ended do |touches, event|
+
+      touch = touches.any_object
+
+      touch_location = touch.location
+
+      add_new_sprite(touch_location)
+    end
+
+
     schedule_update do |dt|
 
       @world.step delta: dt 
-    end
-
-    test = CGSizeMake(12, 12)
-
-    test3 = CGPointMake(12, 12)
-
-    on_mouse_down do |event, button|
-
-      add_new_sprite(event.location)
     end
   end
 

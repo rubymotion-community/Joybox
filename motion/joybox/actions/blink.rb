@@ -1,11 +1,12 @@
 module Joybox
   module Actions
 
-    class Sequence
+    class Blink
 
       def self.defaults
         {
-          actions:[]
+          duration: 0.3,
+          times: 0
         }
       end
 
@@ -13,9 +14,10 @@ module Joybox
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        CCSequence.actionWithArray(options[:actions])
+        CCBlink.actionWithDuration(options[:duration], 
+                                   blinks: options[:times])
       end
-      
+
     end
 
   end

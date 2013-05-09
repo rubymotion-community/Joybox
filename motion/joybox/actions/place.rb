@@ -1,21 +1,21 @@
 module Joybox
   module Actions
 
-    class Sequence
+    class Place
 
       def self.defaults
         {
-          actions:[]
+          position: [0, 0]
         }
       end
 
-      def self.with(options = {})
+      def self.in(options = {})
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        CCSequence.actionWithArray(options[:actions])
+        CCPlace.actionWithPosition(options[:position])
       end
-      
+
     end
 
   end

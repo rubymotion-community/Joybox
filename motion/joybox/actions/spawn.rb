@@ -1,7 +1,7 @@
 module Joybox
   module Actions
 
-    class Sequence
+    class Spawn
 
       def self.defaults
         {
@@ -13,7 +13,7 @@ module Joybox
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        CCSequence.actionWithArray(options[:actions])
+        CCSpawn.actionWithArray(options[:actions])
       end
       
     end
