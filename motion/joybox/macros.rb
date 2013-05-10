@@ -84,18 +84,18 @@ module Joybox
     end
 
     # Distance between point an origin
-    def jbpLenght(point)
+    def jbpLength(point)
       Math.sqrt(jbpLengthSQ(point))
     end
 
     # Distance between two points
     def jbpDistance(first_point, second_point)
-      jbpLenght(jbpSub(first_point, second_point))
+      jbpLength(jbpSub(first_point, second_point))
     end
 
     # Point multiplied to a lenght of 1
     def jbpNormalize(point)
-      jbpMult(point, 1.0 / jbpLenght(point))
+      jbpMult(point, 1.0 / jbpLength(point))
     end
 
     # Converts radians to a normalized vector
