@@ -1,5 +1,3 @@
 class DefaultLayer < Joybox::Core::Layer
-	
-	scene
-
+  scene
 end
