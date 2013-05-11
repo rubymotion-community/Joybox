@@ -7,7 +7,7 @@ module Joybox
         {
           gravity: [0, 0],
           allows_sleeping: true,
-          continuos_physics: true
+          continuous_physics: true
         }
       end
 
@@ -20,7 +20,7 @@ module Joybox
 
         world.gravity = options[:gravity]
         world.allowsSleeping = options[:allows_sleeping]
-        world.continuosPhysics = options[:continuos_physics]
+        world.continuousPhysics = options[:continuous_physics]
 
         world
       end

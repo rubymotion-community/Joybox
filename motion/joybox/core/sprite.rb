@@ -3,6 +3,8 @@ module Joybox
 
     class Sprite < CCSprite
 
+      include Joybox::Common
+
       alias_method :run_action, :runAction
       alias_method :stop_action, :stopAction
       alias_method :stop_all_actions, :stopAllActions
@@ -14,6 +16,20 @@ module Joybox
         sprite ||= new_with_frame_name(options) if options.has_key? (:frame_name)
 
         sprite.position = options[:position] if options.has_key? (:position)
+
+
+        # if sprite.boundingBox.size.width < Screen.width
+
+        # view = SpriteView.alloc.initWithFrame(sprite.boundingBox)
+        # view.sprite = sprite
+
+        # sprite.view = view
+
+        # Object.send(:include, Joybox)
+
+        # Joybox.director.view.addSubview(view)
+
+        # end
 
         sprite
       end

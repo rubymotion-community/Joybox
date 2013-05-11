@@ -21,19 +21,17 @@ Motion::Project::App.setup do |app|
   
 
   cocos2d_vendor = File.expand_path(File.join(platform_vendor, "cocos_2d"))
-  box2d_vendor = File.expand_path(File.join(platform_vendor, "Box2D.framework"))
+  box2d_vendor = File.expand_path(File.join(platform_vendor, "box_2d"))
 
   app.vendor_project(cocos2d_vendor,
                      :static,
                      :products => ["libcocos2d.a"],
-                     :headers_dir => "include",
                      :bridgesupport_cflags => "-D__CC_PLATFORM_IOS -ISupport -IPlatforms -IPlatforms/iOS",
                      :bridgesupport_exceptions => ["cocos_2d_exceptions.bridgesupport"])
 
   app.vendor_project(box2d_vendor,
                      :static,
-                     :products => ['Box2D'],
-                     :headers_dir => "Headers")
+                     :products => ['libBox2D.a'])
 
 
   # Scans app.files until it finds app/ (the default)
