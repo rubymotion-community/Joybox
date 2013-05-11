@@ -16,7 +16,7 @@ module Joybox
 
         options = options.nil? ? defaults : defaults.merge!(options)
 
-        world = World.alloc.init 
+        world = World.alloc.init
 
         world.gravity = options[:gravity]
         world.allowsSleeping = options[:allows_sleeping]
@@ -38,7 +38,7 @@ module Joybox
 
         options = options.nil? ? step_defaults : step_defaults.merge!(options)
 
-        stepWithDelta(options[:delta], 
+        stepWithDelta(options[:delta],
           velocityInteractions: options[:velocity_interactions],
           positionInteractions: options[:position_interactions])
       end
