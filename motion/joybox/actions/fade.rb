@@ -25,11 +25,9 @@ module Joybox
       end
 
       def self.to(options = {})
-        p "========================="
         options = options.nil? ? defaults : defaults.merge!(options)
-        p options
 
-        CCFadeTo.actionWithDuration(options[:duration], 
+        CCFadeTo.actionWithDuration(options[:duration],
                                     opacity: options[:opacity])
       end
 
