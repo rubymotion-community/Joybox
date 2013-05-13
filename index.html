@@ -100,21 +100,41 @@
 
 <p>Finally create a new project:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">motion</span> <span class="n">create</span> <span class="o">--</span><span class="n">template</span><span class="o">=</span><span class="n">joybox</span><span class="o">-</span><span class="n">ios</span> <span class="n">game</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">motion</span> <span class="n">create</span> <span class="o">--</span><span class="n">template</span><span class="o">=</span><span class="n">joybox</span><span class="o">-</span><span class="n">ios</span> <span class="o">&lt;</span><span class="nb">name</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">#or</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">motion</span> <span class="n">create</span> <span class="o">--</span><span class="n">template</span><span class="o">=</span><span class="n">joybox</span><span class="o">-</span><span class="n">osx</span> <span class="n">game</span>
+</span><span class='line'><span class="n">motion</span> <span class="n">create</span> <span class="o">--</span><span class="n">template</span><span class="o">=</span><span class="n">joybox</span><span class="o">-</span><span class="n">osx</span> <span class="o">&lt;</span><span class="nb">name</span><span class="o">&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<h1 id="toc_2">Creating Classes</h1>
+<h1 id="toc_2">REPL Support</h1>
+
+<p>To enable the REPL in your proyect, please configure the following way in the app_delegate:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@director</span> <span class="o">=</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Configuration</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">debug</span> <span class="ss">repl</span><span class="p">:</span><span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Warning: The REPL support will hit your game performance (aka Frames per Second), so please turn it off for shipping and performance tests.</p>
+
+<p>Also you can test it without having a to create a game, using one of the following templates:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">motion</span> <span class="n">create</span> <span class="o">--</span><span class="n">template</span><span class="o">=</span><span class="n">joybox</span><span class="o">-</span><span class="n">ios</span><span class="o">-</span><span class="n">example</span><span class="o">-</span><span class="n">repl</span> <span class="o">&lt;</span><span class="nb">name</span><span class="o">&gt;</span>
+</span><span class='line'><span class="n">motion</span> <span class="n">create</span> <span class="o">--</span><span class="n">template</span><span class="o">=</span><span class="n">joybox</span><span class="o">-</span><span class="n">osx</span><span class="o">-</span><span class="n">example</span><span class="o">-</span><span class="n">repl</span> <span class="o">&lt;</span><span class="nb">name</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>See it in action:<br/>
+<a href="https://vimeo.com/66042521">RubyMotion&#39;s Joybox - REPL Demo</a></p>
+
+<h1 id="toc_3">Creating Classes</h1>
 
 <p>In this version you can generate Sprite, Layer and Scene subclasses and specs:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">motion</span> <span class="ss">joybox</span><span class="p">:</span><span class="n">generate</span> <span class="o">&lt;</span><span class="n">sprite</span><span class="o">/</span><span class="n">layer</span><span class="o">/</span><span class="n">scene</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">class_name</span><span class="o">&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<h2 id="toc_3">Troubleshoot Installation</h2>
+<h2 id="toc_4">Troubleshoot Installation</h2>
 
 <p>If you run into troubles running your Joybox game, please do the following in the root folder of your project:</p>
 
@@ -129,15 +149,15 @@
 </span><span class='line'><span class="n">rake</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<h2 id="toc_4">Examples</h2>
+<h2 id="toc_5">Examples</h2>
 
 <p>If you are looking for some examples, see <a href="https://github.com/CurveBeryl/Joybox-Examples">Joybox Examples Repository</a></p>
 
-<h2 id="toc_5">Feedback and Help</h2>
+<h2 id="toc_6">Feedback and Help</h2>
 
 <p>For questions, feedback, bug reports, use the project&#39;s <a href="https://github.com/rubymotion/Joybox/issues">Issue Tracker</a>.</p>
 
-<h2 id="toc_6">Roadmap</h2>
+<h2 id="toc_7">Roadmap</h2>
 
 <p>Next items being added to Joybox:</p>
 
@@ -149,11 +169,11 @@
 <li><p>Full support for Box2D</p></li>
 </ul>
 
-<h2 id="toc_7">Contributions</h2>
+<h2 id="toc_8">Contributions</h2>
 
 <p>The Joybox&#39;s swarm needs help to stop the madness! If you want to contribute to this goal, please go to the <a href="https://github.com/rubymotion/Joybox">Github page</a>, in there you will find all the information needed to start sending pull requests :D</p>
 
-<h2 id="toc_8">3rd Party Authors</h2>
+<h2 id="toc_9">3rd Party Authors</h2>
 
 <p><strong>Cocos2D</strong>: Ricardo Quesada, Zynga and contributors <a href="http://www.cocos2d-iphone.org">cocos2d for iPhone</a></p>
 
