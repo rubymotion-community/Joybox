@@ -26,45 +26,43 @@ Gem::Specification.new do |gem|
   gem.executables   = ["joybox"]
 
   gem.post_install_message = <<-MESSAGE
-  ** Joybox 0.0.6 **
+  ** Joybox 1.0.0 **
 
-    * Added OSX development support. Use 'motion create --template=joybox-osx' to create
-      an OSX project.
-    * Added Ruby Motion Template support. Use 'joybox install' to install the templates (joybox-ios & joybox-osx)
-    * Added Ruby Motion Command support. Use 'motion joybox:generate <class> <name>' to generate Sprites, Layers and Scene subclases and their respective specs.
-    * Added Circle Shape to Box2D Fixtures. Thank you Kenichi Yonekawa!
-    * Added Sprite Batch & Sprite Frame Cache full support.
-    * Added Animations and Animate Action.
-    * Added Bezier, Blink, Fade, Jump, Place, Spawn, Tint action. Thanks Gabriel Sosa!
-    * Added Repeat.with actions:<array of actions> times:<number of times> method to Repeat class.
-    * IMPORTANT: Changed Sequence.new items:<array of actions> for Sequence.with actions:<array of actions> in Sequence class.
-    * IMPORTANT: Typo fix in the Body class, changing edge_fixure and polygon_fixure to edge_fixture and polygon_fixture.
-    * Better bridgesupport generation :D, thank you Laurent Sansonetti!
-    * Added: mouse and keyboard events to joybox-osx. 
-    * Added: Bug fixes in the Website! Thanks Francisco Granados!
+    * Added REPL Support for iOS and OSX :D
+      * NOTE: If the iOS simulator starts on landscape orientation, please rotate and return it.
+              (cmd + => and cmd + <=)
+    * Added REPL Example Template. Use 'motion create --template=joybox-ios-example-repl <name>' or
+      'motion create --template=joybox-osx-example-repl <name>'
+    * IMPORTANT: Typo fix in World class (Joybox, Box2D and Website), changing to continuous_physics the configuration, thank you David Czarnecki!
+    * IMPORTANT: Typo fix in Macros, changing jbpLenght to jpbLength, thank you David Czarnecki!
+    * Added: Clear extra lines in iOS Template. Thank you Willrax!
+    * Added: Examples iPhone 5 support
+    * Added: iOS Template iPhone 5 support
     * Joybox is stopping the madness! Thanks all for your support!
 
-                      _+880_____________________________
-                      _++88_____________________________
-                      _++88_____________________________
-                      __+880_________________________++
-                      __+888________________________+88_
-                      __++880______________________+88__
-                      __++888_____+++88__________+++8___
-                      __++8888__+++8880++88____+++88____
-                      __+++8888+++8880++8888__++888_____
-                      ___++888++8888+++888888++888______
-                      ___++88++8888++8888888++888_______
-                      ___++++++888888888888888888_______
-                      ____++++++88888888888888888_______
-                      ____++++++++000888888888888_______
-                      _____+++++++000088888888888_______
-                      ______+++++++00088888888888_______
-                      _______+++++++088888888888________
-                      _______+++++++088888888888________
-                      ________+++++++8888888888_________
-                      ________+++++++0088888888_________
-                      ________++++++0088888888__________
+                        0
+                       101
+                      01010
+                     1010101
+                    010101010
+                   10101010101
+                  0101010101010
+                 101010101010101
+                01010101010101010
+               1010101010101010101
+              010101010101010101010
+             1                     1
+            010                   010
+           10101                 10101
+          0101010               0101010
+         101010101             101010101
+        01010101010           01010101010
+       1010101010101         1010101010101
+      010101010101010       010101010101010
+     10101010101010101     10101010101010101
+    0101010101010101010   0101010101010101010
+   1010101010101010101011101010101010101010101
+
   MESSAGE
 
 end

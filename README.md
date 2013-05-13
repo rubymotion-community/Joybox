@@ -3,22 +3,16 @@ Introduced at [#Inspect 2013](http://www.rubymotion.com/conference/), Joybox is 
 
 For more information, see the presentation: [Cocos2D, an Easier Way](https://speakerdeck.com/curveberyl/cocos2d-an-easier-way).
 
-## Latest version (0.0.6)
-* Added OSX development support. Use 'motion create --template=joybox-osx' to create
-    an OSX project.
-* Added Ruby Motion Template support. Use 'joybox install' to install the templates (joybox-ios & joybox-osx)
-* Added Ruby Motion Command support. Use 'motion joybox:generate <class> <name>' to generate Sprites, Layers and Scene subclases and their respective specs.
-* Added Circle Shape to Box2D Fixtures. Thank you Kenichi Yonekawa!
-* Added Sprite Batch & Sprite Frame Cache full support.
-* Added Animations and Animate Action.
-* Added Bezier, Blink, Fade, Jump, Place, Spawn, Tint action. Thanks Gabriel Sosa!
-* Added Repeat.with actions:<array of actions> times:<number of times> method to Repeat class.
-* IMPORTANT: Changed Sequence.new items:<array of actions> for Sequence.with actions:<array of actions> in Sequence class.
-* IMPORTANT: Typo fix in the Body class, changing edge_fixure and polygon_fixure to edge_fixture and polygon_fixture.
-* Better bridgesupport generation :D, thank you Laurent Sansonetti!
-* Added: mouse and keyboard events to joybox-osx.
-* Added: Bug fixes in the Website! Thanks Francisco Granados! 
-* Joybox is stopping the madness! **Thanks all** for your support!
+## Latest version (1.0.0)
+* Added REPL Support for iOS and OSX :D
+* NOTE: If the iOS simulator starts on landscape orientation, please rotate and return it. (cmd + => and cmd + <=)
+* Added REPL Example Template. Use 'motion create --template=joybox-ios-example-repl <name>' or 'motion create --template=joybox-osx-example-repl <name>'
+* IMPORTANT: Typo fix in World class (Joybox, Box2D and Website), changing to continuous_physics the configuration, thank you David Czarnecki!
+* IMPORTANT: Typo fix in Macros, changing jbpLenght to jpbLength, thank you David Czarnecki!
+* Added: Clear extra lines in iOS Template. Thank you Willrax!
+* Added: Examples iPhone 5 support
+* Added: iOS Template iPhone 5 support
+* Joybox is stopping the madness! Thanks all for your support!
 
 ## Documentation and Getting Started
 If you are looking for the installation process and the documentation, please visit: [joybox.io](http://joybox.io)
@@ -38,6 +32,12 @@ rake clean
 
 rake
 ```
+
+# Troubleshoot the REPL
+If the iOS application starts in landscape orientation, please rotate and return it to the original orientation. 
+
+(cmd + <= & cmd + =>) 
+
 
 ## Feedback and Help
 For questions, feedback, bug reports, use the project's [Issue Tracker](https://github.com/rubymotion/Joybox/issues).
@@ -66,5 +66,7 @@ Joybox is released under the MIT License.
 ## Authors
 
 **Cocos2D**: Ricardo Quesada, Zynga and contributors [cocos2d for iPhone](http://www.cocos2d-iphone.org)
+
 **Box2D**: Erin Catto [Box2D | A 2D Physics Engine for Games](http://box2d.org)
+
 **Joybox**: [Juan José Karam](https://github.com/CurveBeryl) [@JuanKaram](https://twitter.com/JuanKaram) and [Gabriel Sosa](https://github.com/mexinsane) [@mexinsane](https://twitter.com/mexinsane) and contributors

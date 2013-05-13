@@ -1,3 +1,3 @@
 module Joybox
-  VERSION = '0.0.6' unless defined?(Joybox::VERSION)
+  VERSION = '1.0.0' unless defined?(Joybox::VERSION)
 end
