@@ -16,6 +16,7 @@ module Joybox
 
       director unless @is_director_configured
       opengl_view unless @is_opengl_view_configured
+      debug unless @is_debug_configured
     end
 
 
@@ -40,6 +41,16 @@ module Joybox
       director.view = opengl_view
 
       @is_opengl_view_configured = true
+    end
+
+
+    def debug(*hash)
+
+      hash = hash.pop
+
+      Debug.configure(hash)
+
+      @is_debug_configured = true
     end
 
   end

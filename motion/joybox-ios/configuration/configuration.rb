@@ -1,6 +1,6 @@
 module Joybox
   module Configuration
-
+    
     module_function
 
     def setup(&block)
@@ -18,6 +18,7 @@ module Joybox
       opengl_view unless @is_opengl_view_configured
       texture_2d unless @is_texture_2d_configured
       file_utils unless @is_file_utils_configured
+      debug unless @is_debug_configured
     end
 
 
@@ -62,6 +63,16 @@ module Joybox
       FileUtils.configure(hash)
 
       @is_file_utils_configured = true
+    end
+
+
+    def debug(*hash)
+
+      hash = hash.pop
+
+      Debug.configure(hash)
+
+      @is_debug_configured = true
     end
 
   end

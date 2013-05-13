@@ -77,7 +77,6 @@ class B2DBody
     position = CGPointMake(position[0], position[1])
 
     # Coordinate system conversion
-    position = position.to_opengl_coordinates
     position = position.to_pixel_coordinates
 
     self.setPosition(position)
