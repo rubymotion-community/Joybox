@@ -14,11 +14,8 @@ module Joybox
 
 
       def self.new(options)
-
-        bounds_provided = options.include?(:bounds) unless options.nil?
-  
+        bounds_provided = options != nil and options.include?(:bounds)
         options = options.nil? ? defaults : defaults.merge!(options)
-
         bounds = options[:bounds]
 
         if bounds.class == Hash
@@ -28,7 +25,7 @@ module Joybox
 
         opengl_view = self.alloc.initWithFrame(bounds)
         opengl_view.setAutoresizingMask(options[:auto_resize_mask])
-        opengl_view.resize_to_superview = bounds_provided
+        opengl_view.resize_to_superview = !bounds_provided
 
         opengl_view
       end
@@ -42,11 +39,9 @@ module Joybox
       # => In the case the user provides the bounds in the setup, it will honor
       #    it.
       def viewDidMoveToSuperview
-
-        unless @resize_to_superview and superview.nil?
-          self.frame = superview.bounds
+        if @resize_to_superview
+          self.frame = superview.bounds unless superview.nil?
           Joybox.director.originalWinSize = self.frame.size
-
           @resize_to_superview = false
         end
       end
