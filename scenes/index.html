@@ -9,7 +9,7 @@
   <meta name="author" content="Juan José Karam">
 
   
-  <meta name="description" content="Scenes Any Level from Easy to Hard A subclass of CCScene Subclassing In order to present the Layers on the screen you need to subclass the Scene &hellip;">
+  <meta name="description" content="Scenes Any Level from Easy to Hard A subclass of CCScene These objects can represent menus, levels, cutscenes or any kind of screen. Their main &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,10 @@
 
 <h3 id="toc_1">A subclass of CCScene</h3>
 
+<p>These objects can represent menus, levels, cutscenes or any kind of screen. Their main purpose is to encapsulate functionality (like mini apps) and as stages in the game workflow. They are composed by one or more layers, stacked one behind another.</p>
+
+<p>A single level of your game will be a scene and will contain one of more layers, with each layer containing one or more sprites.</p>
+
 <h2 id="toc_2">Subclassing</h2>
 
 <p>In order to present the Layers on the screen you need to subclass the Scene class, which is accomplished by the following:</p>
@@ -103,12 +107,37 @@
 </span><span class='line'><span class="n">director</span> <span class="o">&lt;&lt;</span> <span class="n">scene</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<h2 id="toc_4">Set Up &amp; Tear Down</h2>
+<h2 id="toc_4">Transitioning to a Scene</h2>
 
-<p>Its needed to use the methods on_enter and on_exit to set up and tear down the Layers (and any other related object) of the Scene:</p>
+<h3 id="toc_5">First Scene Loaded</h3>
+
+<p>To load the first scene within your application:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">scene</span> <span class="o">=</span> <span class="no">MenuScene</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">director</span><span class="o">.</span><span class="n">run_with_scene</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h3 id="toc_6">Transitioning from a Scene to another Scene</h3>
+
+<p>From within a scene you can easily transition to another scene with the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">second_scene</span> <span class="o">=</span> <span class="no">MySecondScene</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">director</span> <span class="o">&lt;&lt;</span> <span class="n">second_scene</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="toc_7">Set Up &amp; Tear Down</h2>
+
+<p>A scene has two methods to assist with setup and teardown of your scene:</p>
+
+<ul>
+<li><p><code>on_enter</code> - when the scene has already been initialized and will be presented by the director.</p></li>
+<li><p><code>on_exit</code> - when the scene is going to no longer be presented by the director</p></li>
+</ul>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">on_enter</span>
-</span><span class='line'>  <span class="c1"># Initialize the Layers</span>
+</span><span class='line'>  <span class="c1"># Initialize Layers and other logic</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">on_exit</span>

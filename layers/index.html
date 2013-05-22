@@ -109,6 +109,7 @@
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">on_enter</span>
 </span><span class='line'>  <span class="c1"># Initialize objects like Sprites</span>
+</span><span class='line'>  <span class="c1"># Configure event-handling</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">on_exit</span>
@@ -116,7 +117,11 @@
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<h2 id="toc_5">Handle User Touches</h2>
+<h2 id="toc_5">Handling Events</h2>
+
+<p><a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ApplicationKit/Classes/NSEvent_Class/Reference/Reference.html">Event</a> is an instance of NSEvent</p>
+
+<h3 id="toc_6">User Touches</h3>
 
 <p>Handle any state of the user interaction on the screen:</p>
 
@@ -137,7 +142,39 @@
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<h1 id="toc_6">Subscribe to the Game Loop calls</h1>
+<h3 id="toc_7">Mouse Events</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">on_mouse_down</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="p">,</span> <span class="n">button</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;on_mouse_down </span><span class="si">#{</span><span class="n">event</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">button</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">on_mouse_dragged</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="p">,</span> <span class="n">button</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;on_mouse_dragged </span><span class="si">#{</span><span class="n">event</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">button</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">on_mouse_up</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="p">,</span> <span class="n">button</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;on_mouse_up </span><span class="si">#{</span><span class="n">event</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">button</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">on_mouse_scroll</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="p">,</span> <span class="n">button</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;on_mouse_scroll </span><span class="si">#{</span><span class="n">event</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">button</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h3 id="toc_8">Keyboard Events</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">on_key_down</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;on_key_down </span><span class="si">#{</span><span class="n">event</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">event</span><span class="o">.</span><span class="n">keyCode</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">event</span><span class="o">.</span><span class="n">characters</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">event</span><span class="o">.</span><span class="n">charactersIgnoringModifiers</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">event</span><span class="o">.</span><span class="n">modifierFlags</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">on_key_up</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;on_key_up </span><span class="si">#{</span><span class="n">event</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">event</span><span class="o">.</span><span class="n">keyCode</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">event</span><span class="o">.</span><span class="n">characters</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">event</span><span class="o">.</span><span class="n">charactersIgnoringModifiers</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">event</span><span class="o">.</span><span class="n">modifierFlags</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h1 id="toc_9">Subscribe to the Game Loop calls</h1>
 
 <p>There are two ways to receive the method calls of the game loop: the first using a block:</p>
 
@@ -156,7 +193,7 @@
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<h1 id="toc_7">Sceneless Layer</h1>
+<h1 id="toc_10">Sceneless Layer</h1>
 
 <p>When you only have one layer and you don&#39;t want to create the complete Scene object to present it, you add the following to your Layer class:</p>
 
