@@ -10,23 +10,33 @@ class AppDelegate
   def applicationDidFinishLaunching(notification)
     buildMenu
     buildWindow
+
+    director.run_with_scene(GameScene.new)
   end
 
   def buildWindow
-    @director = Joybox::Configuration.setup do
+    main_window.title = NSBundle.mainBundle.infoDictionary['CFBundleName']
+    main_window.contentView.addSubview(director.view)
+    main_window.orderFrontRegardless
+    main_window.setAcceptsMouseMovedEvents(true)
+    main_window.center
+  end
+
+  def director
+    @director ||= Joybox::Configuration.setup do
       director display_stats: true
       debug repl:true
     end
+  end
 
-    @main_window = NSWindow.alloc.initWithContentRect([[240, 180], [1024, 768]],
+  def main_window_size
+    [1024, 768]
+  end
+
+  def main_window
+    @main_window ||= NSWindow.alloc.initWithContentRect([[0, 0], main_window_size ],
       styleMask: NSTitledWindowMask|NSClosableWindowMask|NSMiniaturizableWindowMask|NSResizableWindowMask,
       backing: NSBackingStoreBuffered,
       defer: false)
-
-    @main_window.title = NSBundle.mainBundle.infoDictionary['CFBundleName']
-    @main_window.contentView.addSubview(@director.view)
-    @main_window.orderFrontRegardless
-
-    @director.run_with_scene(GameScene.new)
   end
 end
