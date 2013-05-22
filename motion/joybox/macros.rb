@@ -105,7 +105,7 @@ module Joybox
 
     # Converts vector to radians
     def jbpToAngle(point)
-      Math.atan2(v.y, v.x)
+      Math.atan2(point.y, point.x)
     end
 
     # Clamp a value between from and to
