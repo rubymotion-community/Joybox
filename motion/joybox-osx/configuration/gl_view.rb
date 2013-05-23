@@ -19,17 +19,26 @@ module Joybox
         bounds = options[:bounds]
 
         if bounds.class == Hash
-
           bounds = [[bounds[:x], bounds[:y]], [bounds[:width], bounds[:height]]]
         end
 
-        opengl_view = self.alloc.initWithFrame(bounds)
+        opengl_view = alloc.initWithFrame(bounds)
         opengl_view.setAutoresizingMask(options[:auto_resize_mask])
         opengl_view.resize_to_superview = !bounds_provided
-
         opengl_view
       end
 
+      def initWithFrame(frame)
+        if super
+          tracking_options = NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingInVisibleRect
+          tracking_area = NSTrackingArea.alloc.initWithRect(self.bounds,
+                                                            options: tracking_options,
+                                                            owner: self,
+                                                            userInfo: nil)
+          addTrackingArea(tracking_area)
+        end
+        self
+      end
 
       # This method will be called when we insert the view in the content view
       # of the window.
@@ -45,7 +54,6 @@ module Joybox
           @resize_to_superview = false
         end
       end
-
     end
     
   end
