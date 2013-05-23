@@ -18,6 +18,8 @@ class AppDelegate
     main_window.title = NSBundle.mainBundle.infoDictionary['CFBundleName']
     main_window.contentView.addSubview(director.view)
     main_window.orderFrontRegardless
+    # Uncomment the following line to track the on_mouse_moved event
+    # main_window.main_window.setAcceptsMouseMovedEvents(true)
     main_window.center
   end
 
