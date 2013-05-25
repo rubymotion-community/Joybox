@@ -1,6 +1,8 @@
 module Joybox
   class Director < CCDirectorDisplayLink
 
+    attr_accessor :should_enable_retina_display
+
     alias_method :push_scene, :pushScene
     alias_method :pop_scene, :popScene
     alias_method :pop_to_root_scene, :popToRootScene
@@ -30,13 +32,17 @@ module Joybox
       director.displayStats = options[:display_stats]
       director.animationInterval = options[:animation_interval]
       director.projection = options[:projection]
-      director.enableRetinaDisplay(options[:enable_retina_display])
+      director.should_enable_retina_display = options[:enable_retina_display]
       director.delegate = options[:delegate]
     end
 
+    def view=(view)
+      super
+      enableRetinaDisplay(@should_enable_retina_display)
+    end
 
     def << (scene)
-      self.push_scene(scene)
+      push_scene(scene)
     end
 
   end

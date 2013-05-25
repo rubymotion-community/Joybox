@@ -5,6 +5,7 @@ module Joybox
 
       alias_method :text=, :setString
       alias_method :set_text, :setString
+      alias_method :text, :string
 
       def self.defaults
         {
