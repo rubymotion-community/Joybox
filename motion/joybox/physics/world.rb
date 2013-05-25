@@ -11,20 +11,16 @@ module Joybox
         }
       end
 
-
       def self.new(options)
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         world = World.alloc.init
-
         world.gravity = options[:gravity]
         world.allowsSleeping = options[:allows_sleeping]
         world.continuousPhysics = options[:continuous_physics]
 
         world
       end
-
 
       def step_defaults
         {
@@ -33,9 +29,7 @@ module Joybox
         }
       end
 
-
       def step(options = {})
-
         options = options.nil? ? step_defaults : step_defaults.merge!(options)
 
         stepWithDelta(options[:delta],
@@ -43,16 +37,13 @@ module Joybox
           positionInteractions: options[:position_interactions])
       end
 
-
       def new_body(options = {}, &block)
         body = Body.new(self, options)
         body.instance_eval(&block) if block
         body
       end
 
-
       def setup_collision_listener
-
         @contact_listener = B2DContactListener.new
         addContactListener(@contact_listener)
 
@@ -65,11 +56,8 @@ module Joybox
         }
       end
 
-
       def when_collide(body, &block)
-
         setup_collision_listener unless @contact_listener
-
         @listening_bodies[body] = block
       end
 

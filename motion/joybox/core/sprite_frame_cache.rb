@@ -24,7 +24,6 @@ class CCSpriteFrameCache
 
 
   def add(options = {})
-
     add_frame_with_name(options) if options.has_key? (:name)
     add_frames_with_file(options) if options.has_key? (:file_name)
 
@@ -32,18 +31,14 @@ class CCSpriteFrameCache
     # above are sended
   end
 
-
   def add_frame_with_name(options = {})
-
     if options.has_key? (:frame)
-
       addSpriteFrame(options[:frame], name: options[:name])
     end
 
     # Check if it should fail silently or crash if any of the options
     # above are sended
   end
-
 
   def add_frames_with_file(options = {})
 
@@ -61,9 +56,7 @@ class CCSpriteFrameCache
 
   end
 
-
   def remove(options = {})
-
     remove_frame_by_name(options) if options.has_key? (:name)
     remove_frame_from_file(options) if options.has_key? (:file_name)
     remove_frame_from_texture(options) if options.has_key? (:texture)
@@ -72,36 +65,25 @@ class CCSpriteFrameCache
     # above are sended
   end
 
-
   def remove_frame_by_name(options = {})
-
     removeSpriteFrameByName(options[:name])
   end
 
-
   def remove_frame_from_file(options = {})
-
     removeSpriteFramesFromFile(options[:file_name])
   end
 
-
   def remove_frame_from_texture(options = {})
-
      removeSpriteFramesFromTexture(options[:texture])
   end
 
-
   def [](name)
-
     spriteFrameByName(name)
   end
 
-
   def []=(name, frame)
-
     addSpriteFrame(frame, name: name)
   end 
-
 
   def default_where
   {
@@ -110,11 +92,8 @@ class CCSpriteFrameCache
   }
   end
 
-
   def where(options = {})
-
     options = options.nil? ? default_where : default_where.merge!(options)
-
     frame_prefix = options[:prefix]
     frame_suffix = options[:suffix]
 
@@ -123,21 +102,16 @@ class CCSpriteFrameCache
     from_frame = options[:from]
     to_frame = options[:to]
 
-
     frame = nil
-
+    
     # Yukihiro Matsumoto recomends using loop instead of while or until statements
     # http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/6745
     loop do  
-
       frame_name = "#{frame_prefix}#{from_frame}#{frame_suffix}"
-
       frame = self[frame_name]
-
       frames << frame unless frame.nil?
 
       from_frame = from_frame + 1
-
       break if frame.nil? or (from_frame > to_frame unless to_frame.nil?)
     end 
 

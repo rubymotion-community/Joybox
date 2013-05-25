@@ -13,9 +13,7 @@ module Joybox
         }
       end
 
-
       def self.new(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         animation = self.animationWithSpriteFrames(options[:frames])
@@ -24,10 +22,8 @@ module Joybox
         animation.duration = options[:duration] if options.include?(:duration)
         animation.restoreOriginalFrame = options[:restore_original_frame] if options.include?(:restore_original_frame)
         animation.loops = options[:loops] if options.include?(:loops)
-
         animation
       end
-
 
       def add_frame(options = {})
 
@@ -50,7 +46,6 @@ module Joybox
 
 
       def action
-
         CCAnimate.actionWithAnimation(self)
       end
 

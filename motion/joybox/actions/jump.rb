@@ -13,7 +13,6 @@ module Joybox
       end
 
       def self.by(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         CCJumpBy.actionWithDuration(options[:duration], 
@@ -22,9 +21,7 @@ module Joybox
                                     jumps: options[:jumps])
       end
 
-
       def self.to(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         CCJumpTo.actionWithDuration(options[:duration], 

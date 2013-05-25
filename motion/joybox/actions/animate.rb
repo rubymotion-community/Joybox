@@ -10,7 +10,6 @@ module Joybox
       end
 
       def self.with(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         CCAnimate.actionWithAnimation(options[:animation])

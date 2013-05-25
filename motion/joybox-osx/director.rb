@@ -26,7 +26,6 @@ module Joybox
       options = options.nil? ? default_configuration : default_configuration.merge!(options)
 
       director = Director.sharedDirector
-
       director.displayStats = options[:display_stats]
       director.animationInterval = options[:animation_interval]
       director.resizeMode = options[:resize_mode]

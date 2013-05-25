@@ -11,11 +11,8 @@ module Joybox
       alias_method :align_items_in_rows, :alignItemsInRows
 
       def self.new(options = {})
-
         menu = self.menuWithArray(options[:items])
-
         menu.position = options[:position] if options.has_key? (:position)
-
         menu
       end
 

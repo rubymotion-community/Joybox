@@ -11,7 +11,6 @@ module Joybox
       end
 
       def self.with(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         CCBlink.actionWithDuration(options[:duration], 

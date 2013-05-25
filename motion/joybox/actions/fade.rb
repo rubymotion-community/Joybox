@@ -11,14 +11,12 @@ module Joybox
       end
 
       def self.in(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         CCFadeIn.actionWithDuration(options[:duration])
       end
 
       def self.out(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         CCFadeOut.actionWithDuration(options[:duration])

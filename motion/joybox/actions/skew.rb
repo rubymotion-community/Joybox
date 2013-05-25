@@ -12,7 +12,6 @@ module Joybox
       end
 
       def self.by(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         CCSkewBy.actionWithDuration(options[:duration], 
@@ -20,9 +19,7 @@ module Joybox
           skewY: options[:y])
       end
 
-
       def self.to(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         CCSkewTo.actionWithDuration(options[:duration], 

@@ -9,9 +9,7 @@ module Joybox
         }
       end
 
-
       def self.new(options = {})
-
         options = options.nil? ? defaults : defaults.merge!(options)
 
         batchNodeWithFile(options[:file_name], 

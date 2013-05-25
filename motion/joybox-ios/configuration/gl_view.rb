@@ -16,18 +16,11 @@ module Joybox
         }
       end
 
-
       def self.new(options)
-
         options = options.nil? ? defaults : defaults.merge!(options)
-
         bounds = options[:bounds]
 
-        if bounds.class == Hash
-
-          bounds = [[bounds[:x], bounds[:y]], [bounds[:width], bounds[:height]]]
-        end
-
+        bounds = [[bounds[:x], bounds[:y]], [bounds[:width], bounds[:height]]] if bounds.class == Hash
 
         GLView.viewWithFrame(UIScreen.mainScreen.bounds,
          pixelFormat: options[:pixel_format],

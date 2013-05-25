@@ -27,7 +27,6 @@ module Joybox
       options = options.nil? ? default_configuration : default_configuration.merge!(options)
 
       director = Director.sharedDirector
-
       director.wantsFullScreenLayout = options[:wants_full_screen_layout]
       director.displayStats = options[:display_stats]
       director.animationInterval = options[:animation_interval]
