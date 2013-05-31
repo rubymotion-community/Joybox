@@ -11,7 +11,6 @@ Motion::Project::App.setup do |app|
   app.frameworks += ["QuartzCore", 
                      "CoreGraphics", 
                      "Foundation", 
-                     "ApplicationServices", 
                      "OpenAL", 
                      "AVFoundation", 
                      "AudioToolbox", 
