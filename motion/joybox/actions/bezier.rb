@@ -12,16 +12,12 @@ module Joybox
 
       def self.by(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
-        CCBezierBy.actionWithDuration(options[:duration], 
-                                      bezier: options[:bezier])
+        CCBezierBy.actionWithDuration(options[:duration], bezier: options[:bezier])
       end
 
       def self.to(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
-        CCBezierTo.actionWithDuration(options[:duration], 
-                                      bezier: options[:bezier])
+        CCBezierTo.actionWithDuration(options[:duration], bezier: options[:bezier])
       end
 
     end

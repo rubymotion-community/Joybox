@@ -3,23 +3,22 @@ module Joybox
 
     class Sprite < CCSprite
 
-      include Joybox::Common
+      extend Joybox::Common::Initialize
 
       alias_method :run_action, :runAction
       alias_method :stop_action, :stopAction
       alias_method :stop_all_actions, :stopAllActions
       alias_method :bounding_box, :boundingBox
 
-
-      def self.new(options = {})
-        sprite ||= new_with_file_name(options) if options.has_key? (:file_name)
-        sprite ||= new_with_texture(options) if options.has_key? (:texture)
-        sprite ||= new_with_frame_name(options) if options.has_key? (:frame_name)
-
-        sprite.position = options[:position] if options.has_key? (:position)
-        sprite
+      
+      def initialize(options = {})
+        initialize_with_file_name(options) if options.has_key? (:file_name)
+        initialize_with_texture(options) if options.has_key? (:texture)
+        initialize_with_frame_name(options) if options.has_key? (:frame_name)
+        initialize_with_frame(options) if options.has_key? (:frame)
+        self.position = options[:position] if options.has_key? (:position)
       end
-
+      
       def file_name=(file_name)
         texture = CCTextureCache.sharedTextureCache.addImage(file_name)
         self.setTexture(texture)
@@ -49,22 +48,25 @@ module Joybox
         super
       end
 
+
       private 
 
-      def self.new_with_file_name(options = {})
-        spriteWithFile(options[:file_name])
+      def initialize_with_file_name(options = {})
+        initWithFile(options[:file_name]) if options[:rect].nil?
+        initWithFile(options[:file_name], rect: options[:rect]) unless options[:rect].nil?
       end
 
-      def self.new_with_texture(options = {})
-        if options.has_key? (:rect)
-          spriteWithTexture(options[:texture], rect: options[:rect])
-        else
-          spriteWithTexture(options:[:texture])
-        end
+      def initialize_with_texture(options = {})
+        initWithTexture(options[:texture]) if options[:rect].nil?
+        initWithTexture(options[:texture], rect: options[:rect]) unless options[:rect].nil? 
       end
 
-      def self.new_with_frame_name(options = {})
-        spriteWithSpriteFrameName(options[:frame_name])
+      def initialize_with_frame_name(options = {})
+        initWithSpriteFrameName(options[:frame_name])
+      end
+
+      def initialize_with_frame(options = {})
+        initWithSpriteFrame(options[:frame])
       end
 
     end

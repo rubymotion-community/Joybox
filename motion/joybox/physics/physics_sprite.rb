@@ -6,11 +6,9 @@ module Joybox
 
       attr_accessor :body
 
-      def self.new(options = {})
-        sprite = super 
-        sprite.body = options[:body] if options.include? :body
-
-        sprite
+      def initialize(options = {})
+        super
+        self.body = options[:body] if options.include? :body
       end
 
       # We need this method to return true, so Cocos2d continue

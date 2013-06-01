@@ -17,7 +17,6 @@ module Joybox
 
       def self.create(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
         self.new(options[:red], options[:green], options[:blue])
       end
 

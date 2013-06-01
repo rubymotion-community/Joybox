@@ -7,7 +7,7 @@ module Joybox
   include Joybox::UI
   include Joybox::Macros
   include Joybox::Physics
-  
+
   module_function
 
   def director

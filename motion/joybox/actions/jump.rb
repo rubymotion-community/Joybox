@@ -14,7 +14,6 @@ module Joybox
 
       def self.by(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
         CCJumpBy.actionWithDuration(options[:duration], 
                                     position: options[:position], 
                                     height: options[:height], 
@@ -23,7 +22,6 @@ module Joybox
 
       def self.to(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
         CCJumpTo.actionWithDuration(options[:duration], 
                                     position: options[:position], 
                                     height: options[:height], 

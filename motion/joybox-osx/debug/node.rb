@@ -7,12 +7,6 @@ module Joybox
         base.send(:attr_accessor, :bounding_box_layer)
       end
 
-      def initialize
-        @proxy_view = ProxyView.alloc.initWithFrame(translated_bounding_box)
-        @proxy_view.node = self
-        Joybox.director.view.addSubview(@proxy_view)
-      end
-
       def cleanup
         @proxy_view.removeFromSuperview
         super
@@ -42,8 +36,15 @@ module Joybox
       private
 
       def update_bounding_box
+        initialize_proxy_view if @proxy_view.nil?
         @proxy_view.frame = translated_bounding_box unless @proxy_view.nil?
         @bounding_box_layer.frame = @proxy_view.bounds unless @bounding_box_layer.nil?
+      end
+
+      def initialize_proxy_view
+        @proxy_view = ProxyView.alloc.initWithFrame(translated_bounding_box)
+        @proxy_view.node = self
+        Joybox.director.view.addSubview(@proxy_view)
       end
 
     end

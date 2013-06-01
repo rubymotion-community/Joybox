@@ -12,7 +12,6 @@ module Joybox
 
       def self.by(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
         CCTintBy.actionWithDuration(options[:duration], 
                                     red: options[:color].red, 
                                     green: options[:color].green, 
@@ -21,7 +20,6 @@ module Joybox
 
       def self.to(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
         CCTintTo.actionWithDuration(options[:duration], 
                                     red: options[:color].red, 
                                     green: options[:color].green, 

@@ -21,7 +21,7 @@ class ATSPoint
   end
 
   def == (point)
-    point.is_a?(CGPoint) && CGPointEqualToPoint(self, point)
+    point.is_a?(ATSPoint) && CGPointEqualToPoint(self, point)
   end 
 
   def + (point)

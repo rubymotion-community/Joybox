@@ -51,7 +51,7 @@ module Joybox
       jbp(-point.y, point.x)
     end
 
-    # Perpendicular of v, rotated 90 degrees clockwise
+    # Perpendicular of point, rotated 90 degrees clockwise
     def jbpRPerp(point)
       jbp(point.y, -point.x)
     end
@@ -73,7 +73,7 @@ module Joybox
           first_point.y * second_point.x - first_point.x * second_point.y)
     end
 
-    # Square lenght of a CGPoint
+    # Square lenght of a point
     def jbpLengthSQ(point)
       jbpDot(point, point)
     end
@@ -93,7 +93,7 @@ module Joybox
       jbpLength(jbpSub(first_point, second_point))
     end
 
-    # Point multiplied to a lenght of 1
+    # Point multiplied to a length of 1
     def jbpNormalize(point)
       jbpMult(point, 1.0 / jbpLength(point))
     end
@@ -127,7 +127,7 @@ module Joybox
           clamp(point.y, minimum_inclusive.y, maximum_inclusive.y))
     end
 
-    # CGSize from a CGPoint
+    # CGPoint from a CGSize
     def jbpFromSize(size)
       jbp(size.width, size.height)
     end
@@ -163,8 +163,8 @@ module Joybox
       first_point = jbpNormalize(first_point)
       second_point = jbpNormalize(second_point)
 
-      angle = Math.atan2(first_point.x * second_point.y - first_point.y * second_point.x),
-        jbpDot(first_point, second_point)
+      angle = Math.atan2(first_point.x * second_point.y - first_point.y * second_point.x,
+        jbpDot(first_point, second_point))
 
       angle = 0.0 if angle.abs < Float::EPSILON
       angle
@@ -192,7 +192,7 @@ module Joybox
     # Evaluates if two lines intersect
     def jbpLineIntersect(point_a, point_b, point_c, point_d)
       # Line undefined
-      return false if point_a.x == point_b.x && point_a.y == point_b.y || point_c.x == point_d.x && point_c.y == point_d.y
+      return nil if point_a.x == point_b.x && point_a.y == point_b.y || point_c.x == point_d.x && point_c.y == point_d.y
 
       x_b_to_a = point_b.x - point_a.x
       y_b_to_a = point_b.y - point_a.y
@@ -207,20 +207,20 @@ module Joybox
       denom = y_d_to_c * x_b_to_a - x_d_to_c * y_b_to_a
       if denom == 0
         # Lines incident
-        return { s: hit_point, t: second_hit_point } unless s != 0 && t != 0
+        return { s: s, t: t } if s == 0 && t == 0
 
         # Lines parallel and not incident
         return nil
       end
 
-      { s: hit_point / denom, t: second_hit_point / denom }
+      { s: s / denom, t: t / denom }
     end
 
     # Evaluates if two segments intersect
     def jbpSegmentIntersect(point_a, point_b, point_c, point_d)
       r = jbpLineIntersect(point_a, point_b, point_c, point_d)
-      return false unless r[:s] >= 0.0 && r[:s] <= 1.0 && r[:t] >= 0.0 && r[:t] <= 1.0
-      return true
+      return false if r.nil?
+      return r[:s] >= 0.0 && r[:s] <= 1.0 && r[:t] >= 0.0 && r[:t] <= 1.0 ? true : false
     end
 
     # Intersection point between the two lines

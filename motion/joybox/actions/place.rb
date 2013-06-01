@@ -11,7 +11,6 @@ module Joybox
 
       def self.in(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
         CCPlace.actionWithPosition(options[:position])
       end
 

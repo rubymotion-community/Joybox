@@ -12,16 +12,12 @@ module Joybox
 
       def self.by(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
-        CCMoveBy.actionWithDuration(options[:duration], 
-                                    position: options[:position])
+        CCMoveBy.actionWithDuration(options[:duration], position: options[:position])
       end
 
       def self.to(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-
-        CCMoveTo.actionWithDuration(options[:duration], 
-                                    position: options[:position])
+        CCMoveTo.actionWithDuration(options[:duration], position: options[:position])
       end
 
     end

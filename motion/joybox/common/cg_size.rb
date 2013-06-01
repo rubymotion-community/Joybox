@@ -1,4 +1,3 @@
-# TODO: Revisar el nombre de estos metodos
 class CGSize
 
   def half_width
