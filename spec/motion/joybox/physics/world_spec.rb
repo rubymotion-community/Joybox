@@ -32,8 +32,8 @@ describe Joybox::Physics::World do
   it "should remove bodies" do
     world = World.new gravity: [0, -9.8]
     body = world.new_body position: [100, 100]
-    #body.should.not == nil
-    #body.position.should == CGPointMake(3.125, 3.125)
+    body.should.not == nil
+    body.position.should == CGPointMake(3.125, 3.125)
 
     world.removeBody(body)
   end
