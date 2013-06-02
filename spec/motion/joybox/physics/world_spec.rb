@@ -50,12 +50,12 @@ describe Joybox::Physics::World do
 
     world.step delta: 100
     static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.position.should == CGPointMake(3.125, 1.125)
+    dynamic_body.position.should.be.close CGPointMake(3.125, 1.125), 0.001
     kinematic_body.position.should == CGPointMake(3.125, 3.125)
 
     world.step delta: 10, velocity_interactions:10, position_interactions: 2
     static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.position.should == CGPointMake(3.125, -0.875)
+    dynamic_body.position.should.be.close CGPointMake(3.125, -0.875), 0.001
     kinematic_body.position.should == CGPointMake(3.125, 3.125)
   end
 
@@ -66,11 +66,11 @@ describe Joybox::Physics::World do
     body.position.should == CGPointMake(3.125, 3.125)
 
     world.step delta: 10
-    body.position.should == CGPointMake(3.125, 1.125)
+    body.position.should.be.close CGPointMake(3.125, 1.125), 0.001
 
     world.gravity = [0, 9.8]
     world.step delta: 10
-    body.position.should == CGPointMake(3.125, 3.125)
+    body.position.should.be.close CGPointMake(3.125, 3.125), 0.001
 
     world.removeBody(body)
 
@@ -79,11 +79,11 @@ describe Joybox::Physics::World do
 
     world.gravity = [-9.8, 0]
     world.step delta: 100
-    body.position.should == CGPointMake(1.125, 3.125)
+    body.position.should.be.close CGPointMake(1.125, 3.125), 0.001
 
     world.gravity = [9.8, 0]
     world.step delta: 100
-    body.position.should == CGPointMake(3.125, 3.125)
+    body.position.should.be.close CGPointMake(3.125, 3.125), 0.001
   end
 
   it "should notify body collisions" do

@@ -120,35 +120,35 @@ describe Joybox::Macros do
   describe :jbpLength do
     it "should get the lenght of a point" do
       lenght = jbpLength(@point_one)
-      lenght.should == 223.606796
+      lenght.should.be.close 223.6067, 0.0001
     end
   end
 
   describe :jbpDistance do
     it "should get the distance between two points" do
       lenght = jbpDistance(@point_one, @point_two)
-      lenght.should == 282.842712474619
+      lenght.should.be.close 282.8427, 0.0001
     end
   end
 
   describe :jbpNormalize do
     it "should get a point normalized" do
       point = jbpNormalize(@point_one)
-      point.should == CGPointMake(0.447213649749756, 0.894427299499512)
+      point.should.be.close CGPointMake(0.4472, 0.8944), 0.0001
     end
   end
 
   describe :jpbForAngle do
     it "should get the normalized point of an angle in radians" do
       point = jbpForAngle(@angle)
-      point.should == CGPointMake(0.540302276611328, 0.841470956802368)
+      point.should.be.close CGPointMake(0.5403, 0.8414), 0.0001
     end
   end
 
   describe :jbpToAngle do
     it "should get an angle in radians of a point" do
       angle = jbpToAngle(@point_one)
-      angle.should == 1.107149
+      angle.should.be.close 1.1071, 0.0001
     end
   end
 
@@ -212,21 +212,21 @@ describe Joybox::Macros do
   describe :jbpAngleSigned do
     it "should get the signed angle between two points" do
       angle = jbpAngleSigned(@point_one, @point_two)
-      angle.should == -0.179853200912476
+      angle.should.be.close -0.1798, 0.0001
     end
   end
 
   describe :jbpAngle do
     it "should get the angle between two points" do
       angle = jbpAngle(@point_one, @point_two)
-      angle.should == 0.179855465888977
+      angle.should.be.close 0.1798, 0.0001
     end
   end
 
   describe :jbpRotateByAngle do
     it "should get a point rotated counter-clockwise by the angle around a pivot point" do
       point = jbpRotateByAngle(@point_one, @point_two, @angle)
-      point.should == CGPointMake(360.233734130859, 123.645385742188)
+      point.should.be.close CGPointMake(360.2337, 123.6453), 0.0001
     end
   end
 
