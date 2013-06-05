@@ -3,6 +3,8 @@ module Joybox
 
     class World < B2DWorld
 
+      extend Joybox::Common::Initialize
+      
       def self.defaults
         {
           gravity: [0, 0],

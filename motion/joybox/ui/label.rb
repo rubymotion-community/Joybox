@@ -2,9 +2,16 @@ module Joybox
   module UI
 
     class Label < CCLabelTTF
+
+      extend Joybox::Common::Initialize
+
       alias_method :text=, :setString
       alias_method :set_text, :setString
       alias_method :text, :string
+      alias_method :alignment, :horizontalAlignment
+      alias_method :vertical_alignment, :verticalAlignment
+      alias_method :font_name, :fontName
+      alias_method :font_size, :fontSize
 
       TextAlignmentLeft = 0
       TextAlignmentCenter = 1
@@ -22,12 +29,6 @@ module Joybox
         }
       end
 
-      def self.new(options = {})
-         instance = allocate
-         instance.send(:initialize, options)
-         instance
-      end
-
       def initialize(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
 
@@ -39,7 +40,6 @@ module Joybox
                             vAlignment: options[:vertical_alignment],
                             lineBreakMode: options[:line_break_mode])
         
-        self.setString(options[:text])
         self.position = options[:position] if options.has_key? (:position)
         self.color = options[:color] if options.has_key? (:color)
       end

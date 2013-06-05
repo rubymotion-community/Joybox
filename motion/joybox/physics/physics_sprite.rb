@@ -1,8 +1,7 @@
-# TODO: Revisar el nombre de esto
 module Joybox
-  module Core
+  module Physics
 
-    class PhysicsSprite < Sprite
+    class PhysicsSprite < Joybox::Core::Sprite
 
       attr_accessor :body
 

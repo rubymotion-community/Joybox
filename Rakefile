@@ -3,7 +3,6 @@ require 'motion/project/template/ios'
 require 'bundler'
 Bundler.require
 
-
 Motion::Project::App.setup do |app|
   app.name = 'Joybox'
   app.identifier = 'com.rubymotion.joybox'

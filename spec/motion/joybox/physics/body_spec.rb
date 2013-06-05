@@ -78,11 +78,8 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    static_body.should.not == nil
     static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.should.not == nil
     dynamic_body.position.should == CGPointMake(3.125, 3.125)
-    kinematic_body.should.not == nil
     kinematic_body.position.should == CGPointMake(3.125, 3.125)
 
     @world.step delta: 10
@@ -106,7 +103,6 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    body.should.not == nil
     body.position.should == CGPointMake(3.125, 3.125)
 
     @world.step delta: 10
@@ -126,7 +122,6 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    body.should.not == nil
     body.position.should == CGPointMake(3.125, 3.125)
 
     @world.step delta: 10

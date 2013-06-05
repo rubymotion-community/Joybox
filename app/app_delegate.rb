@@ -1,7 +1,7 @@
 class AppDelegate
 
   def application(application, didFinishLaunchingWithOptions:launchOptions)
-
+        
     @director = Joybox::Configuration.setup do
       debug repl:true
     end

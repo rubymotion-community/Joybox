@@ -1,9 +1,9 @@
 module Joybox
   module Common
     module Initialize
-      def new(options = {})
+      def new(*args)
         instance = allocate
-        instance.send(:initialize, options)
+        instance.send(:initialize, *args)
         instance
       end
     end
