@@ -3,15 +3,20 @@ module Joybox
 
     class MenuImage < CCMenuItemImage
 
+      extend Joybox::Common::Initialize
+      
+      alias_method :sprite, :normalImage
+      alias_method :selected_sprite, :selectedImage
+      alias_method :disabled_sprite, :disabledImage
       alias_method :content_size, :contentSize
 
-      def self.new(options = {}, &block)
-        menu_item = self.itemWithNormalImage(options[:image_file_name],
-                                             selectedImage: options[:selected_image_file_name],
-                                             block: block)
+      def initialize(options = {}, &block)
+        initWithNormalImage(options[:image_file_name],
+                            selectedImage: options[:selected_image_file_name],
+                            disabledImage: options[:disabled_image_file_name],
+                            block: block)
 
-        menu_item.position = options[:position] if options.has_key? (:position)
-        menu_item
+        self.position = options[:position] if options.has_key? (:position)
       end
 
     end
