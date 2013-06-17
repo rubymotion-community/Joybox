@@ -1,4 +1,4 @@
-# Joybox
+# Joybox [![Build Status](https://travis-ci.org/rubymotion/Joybox.png?branch=master)](https://travis-ci.org/rubymotion/Joybox)
 Introduced at [#Inspect 2013](http://www.rubymotion.com/conference/), Joybox is the easiest way to build 2D games for iPhones and iPads using [RubyMotion](http://www.rubymotion.com/). Joybox combines the most popular and widely used 2D game engine for iOS, [Cocos2D](http://www.cocos2d-iphone.org/), folds in the amazing [Box2D](http://box2d.org/) physics engine, and then wraps them up into a clean Ruby API that will make game development faster and more enjoyable for both beginners and experts alike.
 
 For more information, see the presentation: [Cocos2D, an Easier Way](https://speakerdeck.com/curveberyl/cocos2d-an-easier-way).
@@ -33,14 +33,16 @@ rake clean
 rake
 ```
 
-# Troubleshoot the REPL
+## Troubleshoot the REPL
 If the iOS application starts in landscape orientation, please rotate and return it to the original orientation. 
 
 (cmd + <= & cmd + =>) 
 
 
 ## Feedback and Help
-For questions, feedback, bug reports, use the project's [Issue Tracker](https://github.com/rubymotion/Joybox/issues).
+For questions and feedback use the project's [Google Group](https://groups.google.com/forum/?fromgroups#!forum/joybox-wrapper)
+
+For bug reports use the project's [Issue Tracker](https://github.com/rubymotion/Joybox/issues).
 
 ## Contributions
 
