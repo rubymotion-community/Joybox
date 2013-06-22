@@ -11,7 +11,7 @@
 
 #import "B2DBodyTypes.h"
 
-struct B2DBodyDef
+typedef struct _B2DBodyDef
 {
   B2DBodyTypes type;
   CGPoint position;
@@ -26,9 +26,26 @@ struct B2DBodyDef
   BOOL bullet;
   BOOL active;
   CGFloat gravityScale;
-};
-typedef struct B2DBodyDef B2DBodyDef;
+} B2DBodyDef;
+//typedef struct B2DBodyDef B2DBodyDef;
 
-B2DBodyDef B2DBodyDefMake();
-
+static inline B2DBodyDef B2DBodyDefMake()
+{
+  B2DBodyDef bodyDefinition;
+  bodyDefinition.position = CGPointMake(0.0f, 0.0f);
+  bodyDefinition.angle = 0.0f;
+  bodyDefinition.linearVelocity = CGPointMake(0.0f, 0.0f);
+  bodyDefinition.angularVelocity = 0.0f;
+  bodyDefinition.linearDamping = 0.0f;
+  bodyDefinition.angularDamping = 0.0f;
+  bodyDefinition.allowSleep = true;
+  bodyDefinition.awake = true;
+  bodyDefinition.fixedRotation = false;
+  bodyDefinition.bullet = false;
+  bodyDefinition.type = kStaticBodyType;
+  bodyDefinition.active = true;
+  bodyDefinition.gravityScale = 1.0f;
+  
+  return bodyDefinition;
+}
 #endif

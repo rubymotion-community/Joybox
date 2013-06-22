@@ -2,20 +2,69 @@ Joybox::Physics::Body = B2DBody
 
 class B2DBody
 
+  alias_method :world_center, :worldCenter
+  alias_method :local_center, :localCenter
+  alias_method :linear_velocity, :linearVelocity
+  alias_method :angular_velocity, :angularVelocity
+  alias_method :mass_data, :massData
+  alias_method :linear_damping, :linearDamping
+  alias_method :angular_damping, :angularDamping
+  alias_method :gravity_scale, :gravityScale
+  alias_method :is_bullet, :isBullet
+  alias_method :is_awake, :isAwake
+  alias_method :is_active, :isActive
+  alias_method :is_fixed_rotation, :isFixedRotation
+  alias_method :is_sleeping_allowed, :isSleepingAllowed
+
+  Static = 0
+  Kinematic = 1
+  Dynamic = 2
+
   def self.defaults
     {
       position: [0, 0],
-      type: KStaticBodyType
+      angle: 0,
+      linear_velocity: [0, 0],
+      angular_velocity: 0,
+      linear_damping: 0,
+      angular_damping: 0,
+      allow_sleep: true,
+      awake: true,
+      fixed_rotation: false,
+      bullet: false,
+      type: Static,
+      active: true,
+      gravity_scale: 1.0
     }
   end
 
   def self.new(world, options = {})
     options = options.nil? ? defaults : defaults.merge!(options)
 
+    # body_definition = B2DBodyDef.new()
+    # position = CGPointMake(options[:position][0], options[:position][1])
+    # # body_definition.position = position.to_pixel_coordinates
+    # #  body_definition.angle = options[:angle]
+    # #  body_definition.linearVelocity = CGPointMake(options[:linear_velocity][0], options[:linear_velocity][1])
+    # #  body_definition.angularVelocity = options[:angular_velocity]
+    # #  body_definition.linearDamping = options[:linear_damping]
+    # #  body_definition.angularDamping = options[:angular_damping]
+    # #  body_definition.allowSleep = options[:allow_sleep]
+    # #  body_definition.awake = options[:awake]
+    # #  body_definition.fixedRotation = options[:fixed_rotation]
+    # #  body_definition.bullet = options[:bullet]
+    # #  body_definition.type = options[:type]
+    # #  body_definition.gravityScale = options[:gravity_scale]
+
+    # p 'loooool'
+    # p body_definition
+
     # This line is needed to ensure that the position is a CGPoint
-    position = CGPointMake(options[:position][0], options[:position][1])
-    world.createBodyInPosition(position.to_pixel_coordinates,
+    position2 = CGPointMake(options[:position][0], options[:position][1])
+    world.createBodyInPosition(position2.to_pixel_coordinates,
                                type: options[:type])
+
+    #world.createBody(body_definition)
   end
 
   def fixture_defaults
