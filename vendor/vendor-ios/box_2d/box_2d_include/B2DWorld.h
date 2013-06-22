@@ -7,18 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "B2DBodyTypes.h"
+#import "B2DBodyDef.h"
+#import "B2DProfile.h"
+#import "B2DAABB.h"
 
 @class B2DBody;
 @class B2DContactListener;
-
-typedef enum {
-
-  kStaticBodyType = 0,
-  kKinematicBodyType = 1,
-  kDynamicBodyType = 2
-
-} B2DBodyTypes;
-
+@class B2DContactFilter;
+@class B2DDestructionListener;
+@class B2DQueryCallback;
+@class B2DRayCastCallback;
 
 @interface B2DWorld : NSObject {
   
@@ -26,20 +25,39 @@ typedef enum {
 }
 
 @property (nonatomic, assign) b2World *world;
-@property (nonatomic, getter = gravity, setter = setGravity:) CGPoint gravity;
-@property (nonatomic, getter = continuousPhysics, setter = setContinuousPhysics:) BOOL continuousPhysics;
-@property (nonatomic, getter = allowsSleeping, setter = setAllowsSleeping:) BOOL allowsSleeping;
+@property (nonatomic, assign, readonly) NSArray *bodyList;
+@property (nonatomic, assign) BOOL allowsSleeping;
+@property (nonatomic, assign, readonly) NSInteger proxyCount;
+@property (nonatomic, assign, readonly) NSInteger bodyCount;
+@property (nonatomic, assign, readonly) NSInteger jointCount;
+@property (nonatomic, assign, readonly) NSInteger contactCount;
+@property (nonatomic, assign, readonly) NSInteger treeHeight;
+@property (nonatomic, assign, readonly) NSInteger treeBalance;
+@property (nonatomic, assign, readonly) NSInteger treeQuality;
+@property (nonatomic, assign) CGPoint gravity;
+@property (nonatomic, assign, readonly) BOOL isLocked;
+@property (nonatomic, assign) BOOL autoClearForces;
+@property (nonatomic, assign, readonly) B2DProfile profile;
 
-- (void)stepWithDelta:(CGFloat)delta
- velocityInteractions:(int)velocityInteractions
- positionInteractions:(int)positionInteractions;
+- (id)initWithWorld:(b2World *)boxWorld;
 
-- (B2DBody *)createBodyInPosition:(CGPoint)position
-                             type:(B2DBodyTypes)bodyType;
+- (void)setContactListener:(B2DContactListener *)contactListener;
+- (void)setContactFilter:(B2DContactFilter *)contactFilter;
+- (void)setDestructionListener:(B2DDestructionListener *)destructionListener;
+- (B2DBody *)createBody:(B2DBodyDef)bodyDefinition;
+- (void)destroyBody:(B2DBody *)body;
+- (void)stepWithDelta:(CGFloat)delta velocityInteractions:(int)velocityInteractions positionInteractions:(int)positionInteractions;
+- (void)clearForces;
+- (void)queryAABBWithCallback:(B2DQueryCallback *)queryCallback andAABB:(B2DAABB)aabb;
+- (void)rayCastWithCallback:(B2DRayCastCallback *)rayCastCallback andPoint1:(CGPoint)point1 andPoint2:(CGPoint)point2;
+- (void)dump;
 
-- (void)removeBody:(B2DBody *)body;
+#pragma mark - Deprecated
 
-- (void)addContactListener:(B2DContactListener *)contactListener;
+@property (nonatomic, assign) BOOL continuousPhysics;
 
+- (void)addContactListener:(B2DContactListener *)contactListener __attribute__ ((deprecated));
+- (B2DBody *)createBodyInPosition:(CGPoint)position type:(B2DBodyTypes)bodyType __attribute__ ((deprecated));
+- (void)removeBody:(B2DBody *)body __attribute__ ((deprecated));
 
 @end

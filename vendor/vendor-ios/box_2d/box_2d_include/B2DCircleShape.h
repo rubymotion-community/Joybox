@@ -11,6 +11,13 @@
 
 @interface B2DCircleShape : B2DShape
 
+@property (nonatomic, assign, readonly) NSInteger vertexCount;
+@property (nonatomic, assign, readonly) CGPoint position;
+
 - (id)initWithRadius:(CGFloat)radius;
+
+- (NSInteger)getSupport:(CGPoint)direction;
+- (CGPoint)getSupportVertex:(CGPoint)direction;
+- (CGPoint)getVertex:(NSInteger)index;
 
 @end
