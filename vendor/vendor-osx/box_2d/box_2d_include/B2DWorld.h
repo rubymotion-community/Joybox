@@ -26,7 +26,7 @@
 
 @property (nonatomic, assign) b2World *world;
 @property (nonatomic, assign, readonly) NSArray *bodyList;
-@property (nonatomic, assign) BOOL allowsSleeping;
+@property (nonatomic, assign) bool allowsSleeping;
 @property (nonatomic, assign, readonly) NSInteger proxyCount;
 @property (nonatomic, assign, readonly) NSInteger bodyCount;
 @property (nonatomic, assign, readonly) NSInteger jointCount;

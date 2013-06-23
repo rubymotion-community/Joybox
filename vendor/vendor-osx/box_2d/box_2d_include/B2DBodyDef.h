@@ -20,11 +20,11 @@ struct B2DBodyDef
   CGFloat angularVelocity;
   CGFloat linearDamping;
   CGFloat angularDamping;
-  BOOL allowSleep;
-  BOOL awake;
-  BOOL fixedRotation;
-  BOOL bullet;
-  BOOL active;
+  bool allowSleep;
+  bool awake;
+  bool fixedRotation;
+  bool bullet;
+  bool active;
   CGFloat gravityScale;
 };
 typedef struct B2DBodyDef B2DBodyDef;

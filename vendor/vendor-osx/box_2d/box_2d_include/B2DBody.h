@@ -50,6 +50,7 @@
 
 - (id)initWithBody:(b2Body *)boxBody;
 
+- (BOOL)isEqualToBody:(B2DBody *)aBody;
 - (void)resetMassData;
 - (void)setTransformWithPosition:(CGPoint)position andAngle:(CGFloat)angle;
 - (CGPoint)worldPoint:(CGPoint)localPoint;

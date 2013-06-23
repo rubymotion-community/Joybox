@@ -3,7 +3,10 @@ module Joybox
 
     class World < B2DWorld
 
+      extend Joybox::Common::Initialize
+
       alias_method :bodies, :bodyList
+      alias_method :allows_sleeping=, :setAllowsSleeping
       alias_method :proxy_count, :proxyCount
       alias_method :body_count, :bodyCount
       alias_method :joint_count, :jointCount
@@ -18,9 +21,7 @@ module Joybox
       alias_method :continuous_physics, :continuousPhysics
       alias_method :destroy_body, :destroyBody
       alias_method :clear_forces, :clearForces
-
-      extend Joybox::Common::Initialize
-      
+    
       def defaults
         {
           gravity: [0, 0],
@@ -82,13 +83,15 @@ module Joybox
 
       def setup_collision_listener
         @contact_listener = B2DContactListener.new
-        setContactListener(@contact_listener)
+        addContactListener(@contact_listener)
 
         @listening_bodies = Hash.new
 
         @contact_listener.beginContact = lambda do |first_body, second_body, is_touching|
-          @listening_bodies[first_body].call(second_body, is_touching) if @listening_bodies.include? first_body
-          @listening_bodies[second_body].call(first_body, is_touching) if @listening_bodies.include? second_body
+          @listening_bodies.keys.each do |key|
+            @listening_bodies[key].call(second_body, is_touching) if key == first_body 
+            @listening_bodies[key].call(first_body, is_touching) if key == second_body 
+          end
         end
       end
 

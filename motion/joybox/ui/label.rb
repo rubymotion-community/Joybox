@@ -9,9 +9,13 @@ module Joybox
       alias_method :set_text, :setString
       alias_method :text, :string
       alias_method :alignment, :horizontalAlignment
+      alias_method :alignment=, :setHorizontalAlignment
       alias_method :vertical_alignment, :verticalAlignment
+      alias_method :vertical_alignment=, :setVerticalAlignment
       alias_method :font_name, :fontName
+      alias_method :font_name=, :setFontName
       alias_method :font_size, :fontSize
+      alias_method :font_size=, :setFontSize
 
       TextAlignmentLeft = 0
       TextAlignmentCenter = 1

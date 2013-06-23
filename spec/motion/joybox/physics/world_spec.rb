@@ -128,11 +128,11 @@ describe Joybox::Physics::World do
   it "should notify body collisions" do
     world = World.new gravity: [0, -9.8]
 
-    body_one = world.new_body position: [100, 100], type: Body::Dynamic do
+    body_one = world.new_body position: [100, 100], type: KDynamicBodyType do
       polygon_fixture box: [16, 16]
     end
 
-    body_two = world.new_body position: [100, 100], type: Body::Dynamic do
+    body_two = world.new_body position: [100, 100], type: KDynamicBodyType do
       polygon_fixture box: [16, 16]
     end
 
@@ -144,6 +144,14 @@ describe Joybox::Physics::World do
       is_touching.should == true
     end
 
+    #p @body_one.position
+    #p @body_two.position
+
+
+    world.step delta: 10
+    world.step delta: 10
+    world.step delta: 10
+    world.step delta: 10
     world.step delta: 10
     collision_notified.should == true
   end
