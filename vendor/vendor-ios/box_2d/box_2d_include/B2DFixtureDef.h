@@ -18,7 +18,7 @@ struct B2DFixtureDef
   CGFloat friction;
   CGFloat restitution;
   CGFloat density;
-  BOOL isSensor;
+  bool isSensor;
 };
 typedef struct B2DFixtureDef B2DFixtureDef;
 

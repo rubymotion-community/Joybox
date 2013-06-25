@@ -5,16 +5,24 @@ class B2DBody
   alias_method :world_center, :worldCenter
   alias_method :local_center, :localCenter
   alias_method :linear_velocity, :linearVelocity
+  alias_method :linear_velocity=, :setLinearVelocity
   alias_method :angular_velocity, :angularVelocity
-  alias_method :mass_data, :massData
+  alias_method :angular_velocity=, :setAngularVelocity
   alias_method :linear_damping, :linearDamping
+  alias_method :linear_damping=, :setLinearDamping
   alias_method :angular_damping, :angularDamping
+  alias_method :angular_damping=, :setAngularDamping
   alias_method :gravity_scale, :gravityScale
-  alias_method :is_bullet, :isBullet
-  alias_method :is_awake, :isAwake
-  alias_method :is_active, :isActive
-  alias_method :is_fixed_rotation, :isFixedRotation
-  alias_method :is_sleeping_allowed, :isSleepingAllowed
+  alias_method :gravity_scale=, :setGravityScale
+  alias_method :bullet?, :isBullet
+  alias_method :bullet=, :setBullet
+  alias_method :awake?, :isAwake
+  alias_method :awake=, :setAwake
+  alias_method :active?, :isActive
+  alias_method :fixed_rotation?, :isFixedRotation
+  alias_method :fixed_rotation=, :setFixedRotation
+  alias_method :sleeping_allowed?, :isSleepingAllowed
+  alias_method :sleeping_allowed=, :setSleepingAllowed
 
   Static = 0
   Kinematic = 1
@@ -38,6 +46,14 @@ class B2DBody
     }
   end
 
+  def mass_data
+    massData
+  end
+
+  def mass_data=(mass_data)
+    setMassData(mass_data)
+  end
+
   def self.new(world, options = {})
     options = options.nil? ? defaults : defaults.merge!(options)
 
@@ -46,7 +62,7 @@ class B2DBody
     body_definition.position = position.to_pixel_coordinates
     body_definition.angle = options[:angle]
     linear_velocity = CGPointMake(options[:linear_velocity][0], options[:linear_velocity][1])
-    body_definition.linearVelocity = linear_velocity
+    body_definition.linearVelocity = linear_velocity.to_pixel_coordinates
     body_definition.angularVelocity = options[:angular_velocity]
     body_definition.linearDamping = options[:linear_damping]
     body_definition.angularDamping = options[:angular_damping]
@@ -96,10 +112,12 @@ class B2DBody
     options = hash.pop
     options = options.nil? ? fixture_defaults : fixture_defaults.merge!(options)
 
+    half_width = options[:box][0]
+    half_height = options[:box][1]
     # This line is needed to ensure that the box is a CGSize
-    box_size = CGSizeMake(options[:box][0], options[:box][1])
+    #box_size = CGSizeMake(options[:box][0] / 2, options[:box][1] / 2)
 
-    polygon_shape = B2DPolygonShape.alloc.initWithBoxSize(box_size.to_pixel_coordinates)
+    polygon_shape = B2DPolygonShape.alloc.initWithHalfWidth(half_width.to_pixels, andHalfHeight:half_height.to_pixels)
     addFixtureForShape(polygon_shape,
                        friction: options[:friction],
                        restitution: options[:restitution],
@@ -113,8 +131,11 @@ class B2DBody
 
     # Coordinate system conversion
     position = position.to_pixel_coordinates
+    self.setTransformWithPosition(position, andAngle: angle)
+  end
 
-    self.setPosition(position)
+  def angle=(angle)
+    self.setTransformWithPosition(position, andAngle: angle)
   end
 
   def circle_fixture(*hash)

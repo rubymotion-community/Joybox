@@ -35,8 +35,8 @@
 @property (nonatomic, assign, readonly) NSInteger treeBalance;
 @property (nonatomic, assign, readonly) NSInteger treeQuality;
 @property (nonatomic, assign) CGPoint gravity;
-@property (nonatomic, assign, readonly) BOOL isLocked;
-@property (nonatomic, assign) BOOL autoClearForces;
+@property (nonatomic, assign, readonly) bool isLocked;
+@property (nonatomic, assign) bool autoClearForces;
 @property (nonatomic, assign, readonly) B2DProfile profile;
 
 - (id)initWithWorld:(b2World *)boxWorld;

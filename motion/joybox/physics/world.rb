@@ -6,6 +6,7 @@ module Joybox
       extend Joybox::Common::Initialize
 
       alias_method :bodies, :bodyList
+      alias_method :allows_sleeping?, :allowsSleeping
       alias_method :allows_sleeping=, :setAllowsSleeping
       alias_method :proxy_count, :proxyCount
       alias_method :body_count, :bodyCount
@@ -14,13 +15,15 @@ module Joybox
       alias_method :tree_height, :treeHeight
       alias_method :tree_balance, :treeBalance
       alias_method :tree_quality, :treeQuality
+      alias_method :locked?, :isLocked
+      alias_method :auto_clear_forces?, :autoClearForces
+      alias_method :auto_clear_forces=, :setAutoClearForces
       alias_method :create_body, :createBody
       alias_method :destroy_body, :destroyBody
       alias_method :clear_forces, :clearForces
       alias_method :draw_debug_data, :drawDebugData
       alias_method :continuous_physics, :continuousPhysics
       alias_method :destroy_body, :destroyBody
-      alias_method :clear_forces, :clearForces
     
       def defaults
         {
@@ -35,18 +38,6 @@ module Joybox
         init
         self.gravity = options[:gravity]
         self.allowsSleeping = options[:allows_sleeping]
-      end
-
-      def allows_sleeping?
-        allowsSleeping
-      end
-
-      def locked?
-        isLocked
-      end
-
-      def auto_clear_forces?
-        autoClearForces
       end
 
       def step_defaults
@@ -88,6 +79,9 @@ module Joybox
         @listening_bodies = Hash.new
 
         @contact_listener.beginContact = lambda do |first_body, second_body, is_touching|
+          # Its needed to iterate the hash keys to evaluate the equalty using isEqualToBody: 
+          # because the bodies returned in the block are not he same instance of the bodies
+          # in the hash.
           @listening_bodies.keys.each do |key|
             @listening_bodies[key].call(second_body, is_touching) if key == first_body 
             @listening_bodies[key].call(first_body, is_touching) if key == second_body 

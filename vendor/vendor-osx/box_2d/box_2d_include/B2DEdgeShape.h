@@ -13,9 +13,9 @@
 
 @property (nonatomic, assign, readonly) CGPoint startVertex;
 @property (nonatomic, assign, readonly) CGPoint endVertex;
-@property (nonatomic, assign, readonly) BOOL hasStartAdjacentVertex;
+@property (nonatomic, assign, readonly) bool hasStartAdjacentVertex;
 @property (nonatomic, assign, readonly) CGPoint startAdjacentVertex;
-@property (nonatomic, assign, readonly) BOOL hasEndAdjacentVertex;
+@property (nonatomic, assign, readonly) bool hasEndAdjacentVertex;
 @property (nonatomic, assign, readonly) CGPoint endAdjacentVertex;
 
 - (id)initWithStartVertex:(CGPoint)startVertex endVertex:(CGPoint)endVertex;

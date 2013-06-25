@@ -25,8 +25,8 @@
 @property (nonatomic, assign) b2Fixture *fixture;
 @property (nonatomic, assign, readonly) B2DShapeTypes type;
 @property (nonatomic, assign, readonly) B2DShape *shape;
-@property (nonatomic, assign, readonly) BOOL isSensor;
-@property (nonatomic, assign) BOOL sensor;
+@property (nonatomic, assign, readonly) bool isSensor;
+@property (nonatomic, assign) bool sensor;
 @property (nonatomic, assign) B2DFilter filterData;
 @property (nonatomic, assign, readonly) B2DBody *body;
 @property (nonatomic, assign) id userData;
@@ -38,8 +38,8 @@
 - (id)initWithFixture:(b2Fixture *)boxFixture;
 - (void)refilter;
 - (B2DFixture *)next;
-- (BOOL)testPoint:(CGPoint)point;
-- (BOOL)rayCastWithOutput:(B2DRayCastOutput *)output input:(B2DRayCastInput)input andChildIndex:(NSInteger)childIndex;
+- (bool)testPoint:(CGPoint)point;
+- (bool)rayCastWithOutput:(B2DRayCastOutput *)output input:(B2DRayCastInput)input andChildIndex:(NSInteger)childIndex;
 - (B2DMassData)massData;
 - (B2DAABB)aabb:(NSInteger)childIndex;
 - (void)dump:(NSInteger)bodyIndex;

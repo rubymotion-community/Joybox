@@ -12,13 +12,13 @@ describe Joybox::Physics::World do
       world.gravity.should == CGPointMake(10, 10)
       world.allows_sleeping?.should == true
     end
+  end
 
-    it "should initialize with gravity, and allows sleeping" do
-      world = World.new gravity: [10, 10], allows_sleeping: true
-      world.should.not == nil
-      world.gravity.should == CGPointMake(10, 10)
-      world.allows_sleeping?.should == true
-    end
+  it "should auto clear forces" do
+    world = World.new gravity: [10, 10], allows_sleeping: true
+    world.should.not == nil
+    world.auto_clear_forces = true
+    world.auto_clear_forces?.should == true
   end
 
   it "should create new bodies" do
@@ -144,14 +144,6 @@ describe Joybox::Physics::World do
       is_touching.should == true
     end
 
-    #p @body_one.position
-    #p @body_two.position
-
-
-    world.step delta: 10
-    world.step delta: 10
-    world.step delta: 10
-    world.step delta: 10
     world.step delta: 10
     collision_notified.should == true
   end

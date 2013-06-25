@@ -11,7 +11,7 @@
 
 @class B2DBody;
 
-typedef void (^beginContactCallback)(B2DBody *firstBody, B2DBody *secondBody, BOOL isTouching);
+typedef void (^beginContactCallback)(B2DBody *firstBody, B2DBody *secondBody, bool isTouching);
 typedef void (^endContactCallback)(B2DBody *firstBody, B2DBody *secondBody);
 
 

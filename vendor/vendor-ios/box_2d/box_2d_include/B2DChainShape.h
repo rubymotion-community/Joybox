@@ -15,8 +15,8 @@
 
 @property (nonatomic, assign, readonly) NSInteger vertexCount;
 @property (nonatomic, assign, readonly) CGPoint *vertices;
-@property (nonatomic, assign, readonly) BOOL hasPreviousVertex;
-@property (nonatomic, assign, readonly) BOOL hasNextVertex;
+@property (nonatomic, assign, readonly) bool hasPreviousVertex;
+@property (nonatomic, assign, readonly) bool hasNextVertex;
 
 - (void)createLoopWithVertices:(CGPoint *)vertices andVertexCount:(NSInteger)vertexCount;
 - (void)createChainWithVertices:(CGPoint *)vertices andVertexCount:(NSInteger)vertexCount;

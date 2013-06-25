@@ -26,8 +26,8 @@
 
 - (id)initWithShape:(b2Shape *)boxShape;
 
-- (BOOL)testPointWithTransform:(B2DTransform)transform andPoint:(CGPoint)point;
-- (BOOL)rayCastWithOutput:(B2DRayCastOutput *)output
+- (bool)testPointWithTransform:(B2DTransform)transform andPoint:(CGPoint)point;
+- (bool)rayCastWithOutput:(B2DRayCastOutput *)output
                     input:(B2DRayCastInput)input
                 transform:(B2DTransform)transform
                  andChildren:(NSInteger)childIndex;

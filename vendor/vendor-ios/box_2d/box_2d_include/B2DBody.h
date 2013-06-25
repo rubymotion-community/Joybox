@@ -38,19 +38,19 @@
 @property (nonatomic, assign) CGFloat linearDamping;
 @property (nonatomic, assign) CGFloat angularDamping;
 @property (nonatomic, assign) CGFloat gravityScale;
-@property (nonatomic, assign, readonly) BOOL isBullet;
-@property (nonatomic, assign) BOOL bullet;
-@property (nonatomic, assign, readonly) BOOL isAwake;
-@property (nonatomic, assign) BOOL awake;
-@property (nonatomic, assign, readonly) BOOL isActive;
-@property (nonatomic, assign, readonly) BOOL isFixedRotation;
-@property (nonatomic, assign) BOOL fixedRotation;
-@property (nonatomic, assign, readonly) BOOL isSleepingAllowed;
-@property (nonatomic, assign) BOOL sleepingAllowed;
+@property (nonatomic, assign, readonly) bool isBullet;
+@property (nonatomic, assign) bool bullet;
+@property (nonatomic, assign, readonly) bool isAwake;
+@property (nonatomic, assign) bool awake;
+@property (nonatomic, assign, readonly) bool isActive;
+@property (nonatomic, assign, readonly) bool isFixedRotation;
+@property (nonatomic, assign) bool fixedRotation;
+@property (nonatomic, assign, readonly) bool isSleepingAllowed;
+@property (nonatomic, assign) bool sleepingAllowed;
 
 - (id)initWithBody:(b2Body *)boxBody;
 
-- (BOOL)isEqualToBody:(B2DBody *)aBody;
+- (bool)isEqualToBody:(B2DBody *)aBody;
 - (void)resetMassData;
 - (void)setTransformWithPosition:(CGPoint)position andAngle:(CGFloat)angle;
 - (CGPoint)worldPoint:(CGPoint)localPoint;

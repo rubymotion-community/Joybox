@@ -15,11 +15,11 @@ describe Joybox::Physics::Body do
       static_body.should.not == nil
       static_body.position.should == CGPointMake(3.125, 3.125)
 
-      dynamic_body = @world.new_body position: [100, 100], type: KDynamicBodyType
+      dynamic_body = @world.new_body position: [100, 100], type: Body::Dynamic
       dynamic_body.should.not == nil
       dynamic_body.position.should == CGPointMake(3.125, 3.125)
 
-      kinematic_body = @world.new_body position: [100, 100], type: KKinematicBodyType
+      kinematic_body = @world.new_body position: [100, 100], type: Body::Kinematic
       kinematic_body.should.not == nil
       kinematic_body.position.should == CGPointMake(3.125, 3.125)
     end
@@ -27,11 +27,11 @@ describe Joybox::Physics::Body do
     it "should initialize with position and edge fixture" do
       body = @world.new_body position:  [100, 100] do
         edge_fixture start_point: [0, 480],
-                     end_point: [320, 480],
-                     friction: 1,
-                     restitution: 2,
-                     density: 3,
-                     is_sensor: true
+                    end_point: [320, 480],
+        friction: 1,
+        restitution: 2,
+        density: 3,
+        is_sensor: true
       end
 
       body.should.not == nil
@@ -41,10 +41,10 @@ describe Joybox::Physics::Body do
     it "should initialize with position and polygon fixture" do
       body = @world.new_body position:  [100, 100] do
         polygon_fixture box: [16, 16],
-                        friction: 1,
-                        restitution: 2,
-                        density: 3,
-                        is_sensor: true
+        friction: 1,
+        restitution: 2,
+        density: 3,
+        is_sensor: true
       end
 
       body.should.not == nil
@@ -54,10 +54,10 @@ describe Joybox::Physics::Body do
     it "should initialize with position and circle fixture" do
       body = @world.new_body position:  [100, 100] do
         circle_fixture radius: 30,
-                       friction: 1,
-                       restitution: 2,
-                       density: 3,
-                       is_sensor: true
+        friction: 1,
+        restitution: 2,
+        density: 3,
+        is_sensor: true
       end
 
       body.should.not == nil
@@ -70,11 +70,11 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    dynamic_body = @world.new_body position: [100, 100], type: KDynamicBodyType do
+    dynamic_body = @world.new_body position: [100, 100], type: Body::Dynamic do
       polygon_fixture box: [16, 16]
     end
 
-    kinematic_body = @world.new_body position: [100, 100], type: KKinematicBodyType do
+    kinematic_body = @world.new_body position: [100, 100], type: Body::Kinematic do
       polygon_fixture box: [16, 16]
     end
 
@@ -98,8 +98,130 @@ describe Joybox::Physics::Body do
     kinematic_body.position.should == CGPointMake(6.25, 6.25)    
   end
 
+  it "should change its angle" do
+    static_body = @world.new_body position: [100, 100] do
+      polygon_fixture box: [16, 16]
+    end
+
+    dynamic_body = @world.new_body position: [100, 100], type: Body::Dynamic do
+      polygon_fixture box: [16, 16]
+    end
+
+    kinematic_body = @world.new_body position: [100, 100], type: Body::Kinematic do
+      polygon_fixture box: [16, 16]
+    end
+
+    static_body.angle.should == 0
+    dynamic_body.angle.should == 0
+    kinematic_body.angle.should == 0
+
+    @world.step delta: 10
+
+    static_body.angle = 10
+    static_body.angle.should == 10
+    dynamic_body.angle = 10
+    dynamic_body.angle.should == 10
+    kinematic_body.angle = 10
+    kinematic_body.angle.should == 10
+    
+    @world.step delta: 10
+
+    static_body.angle.should == 10
+    dynamic_body.angle.should == 10
+    kinematic_body.angle.should == 10    
+  end
+
+  it "should have mass data" do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic do
+      polygon_fixture box: [16, 16]
+    end
+
+    body.mass_data.mass.should == 1.0
+    body.mass_data.center.should == CGPointMake(0, 0)
+    body.mass_data.rotationalInertia == 0.0
+  end 
+
+  it "should change its mass data" do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic do
+      polygon_fixture box: [16, 16]
+    end
+
+    mass_data = B2DMassData.new
+    mass_data.mass = 2.0
+    mass_data.center = [0.0, 0.0]
+    mass_data.rotationalInertia = 1.0
+
+    body.mass_data = mass_data
+
+    body.mass_data.mass.should == 2.0
+    body.mass_data.center.should == CGPointMake(0.0, 0.0)
+    body.mass_data.rotationalInertia == 1.0
+  end
+
+  it "should change its linear velocity" do
+    static_body = @world.new_body position: [100, 100] do
+      polygon_fixture box: [16, 16]
+    end
+
+    dynamic_body = @world.new_body position: [100, 100], type: Body::Dynamic do
+      polygon_fixture box: [16, 16]
+    end
+
+    kinematic_body = @world.new_body position: [100, 100], type: Body::Kinematic do
+      polygon_fixture box: [16, 16]
+    end
+
+    static_body.position.should == CGPointMake(3.125, 3.125)
+    dynamic_body.position.should == CGPointMake(3.125, 3.125)
+    kinematic_body.position.should == CGPointMake(3.125, 3.125)
+
+    static_body.linear_velocity = [10, 10]
+    static_body.linear_velocity.should == CGPointMake(0, 0)
+    dynamic_body.linear_velocity = [10, 10]
+    dynamic_body.linear_velocity.should == CGPointMake(10, 10)
+    kinematic_body.linear_velocity = [10, 10]
+    kinematic_body.linear_velocity.should == CGPointMake(10, 10)
+
+    @world.step delta: 10
+
+    static_body.position.should == CGPointMake(3.125, 3.125)
+    dynamic_body.position.should.be.close CGPointMake(5.125, 3.125), 0.01
+    kinematic_body.position.should.be.close CGPointMake(4.53, 4.53), 0.01   
+  end
+
+  it "should change its angular velocity" do
+    static_body = @world.new_body position: [100, 100] do
+      polygon_fixture box: [16, 16]
+    end
+
+    dynamic_body = @world.new_body position: [100, 100], type: Body::Dynamic do
+      polygon_fixture box: [16, 16]
+    end
+
+    kinematic_body = @world.new_body position: [100, 100], type: Body::Kinematic do
+      polygon_fixture box: [16, 16]
+    end
+
+    static_body.position.should == CGPointMake(3.125, 3.125)
+    dynamic_body.position.should == CGPointMake(3.125, 3.125)
+    kinematic_body.position.should == CGPointMake(3.125, 3.125)
+
+    static_body.angular_velocity = 10.0
+    static_body.angular_velocity.should == 0
+    dynamic_body.angular_velocity = 10.0
+    dynamic_body.angular_velocity.should == 10.0
+    kinematic_body.angular_velocity = 10.0
+    kinematic_body.angular_velocity.should == 10
+
+    @world.step delta: 10
+
+    static_body.position.should == CGPointMake(3.125, 3.125)
+    dynamic_body.position.should.be.close CGPointMake(2.76, 1.125), 0.01
+    kinematic_body.position.should == CGPointMake(3.125, 3.125)   
+  end
+
   it "should react to force applied as impulse" do
-    body = @world.new_body position: [100, 100], type: KDynamicBodyType do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic do
       polygon_fixture box: [16, 16]
     end
 
@@ -118,7 +240,7 @@ describe Joybox::Physics::Body do
   end
 
   it "should react to force applied instantaneously" do
-    body = @world.new_body position: [100, 100], type: KDynamicBodyType do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic do
       polygon_fixture box: [16, 16]
     end
 
