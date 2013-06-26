@@ -63,6 +63,19 @@ describe Joybox::Physics::Body do
       body.should.not == nil
       body.position.should == CGPointMake(3.125, 3.125)
     end
+
+    it "should initialize with position and chain fixture" do
+      body = @world.new_body position:  [100, 100] do
+        chain_fixture loop: [[20, 20], [10, 10], [30, 30]],
+                      friction: 1,
+                      restitution: 2,
+                      density: 3,
+                      is_sensor: true
+      end
+
+      body.should.not == nil
+      body.position.should == CGPointMake(3.125, 3.125)
+    end
   end
 
   it "should change its position" do

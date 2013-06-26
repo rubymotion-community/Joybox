@@ -1,6 +1,6 @@
 # We need this class to help the framework recognize 
 # CGPointMake
-class CGPoint; end
+CGPoint = ATSPoint
 
 class ATSPoint
 

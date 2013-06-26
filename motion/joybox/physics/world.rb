@@ -74,7 +74,7 @@ module Joybox
 
       def setup_collision_listener
         @contact_listener = B2DContactListener.new
-        addContactListener(@contact_listener)
+        setContactListener(@contact_listener)
 
         @listening_bodies = Hash.new
 

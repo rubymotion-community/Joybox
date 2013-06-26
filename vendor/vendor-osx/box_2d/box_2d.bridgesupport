@@ -19,8 +19,8 @@
 <field name='active' declared_type='_Bool' type='B'/>
 <field type64='d' name='gravityScale' declared_type='CGFloat' type='f'/>
 </struct>
-<struct type64='{B2DFixtureDef=&quot;shape&quot;@&quot;B2DShape&quot;&quot;userData&quot;@&quot;friction&quot;d&quot;restitution&quot;d&quot;density&quot;d&quot;isSensor&quot;B}' name='B2DFixtureDef' type='{B2DFixtureDef=&quot;shape&quot;@&quot;B2DShape&quot;&quot;userData&quot;@&quot;friction&quot;f&quot;restitution&quot;f&quot;density&quot;f&quot;isSensor&quot;B}'>
-<field name='shape' declared_type='B2DShape*' type='@&quot;B2DShape&quot;'/>
+<struct type64='{B2DFixtureDef=&quot;shape&quot;@&quot;userData&quot;@&quot;friction&quot;d&quot;restitution&quot;d&quot;density&quot;d&quot;isSensor&quot;B}' name='B2DFixtureDef' type='{B2DFixtureDef=&quot;shape&quot;@&quot;userData&quot;@&quot;friction&quot;f&quot;restitution&quot;f&quot;density&quot;f&quot;isSensor&quot;B}'>
+<field name='shape' declared_type='B2DShape*' type='@'/>
 <field name='userData' declared_type='id' type='@'/>
 <field type64='d' name='friction' declared_type='CGFloat' type='f'/>
 <field type64='d' name='restitution' declared_type='CGFloat' type='f'/>

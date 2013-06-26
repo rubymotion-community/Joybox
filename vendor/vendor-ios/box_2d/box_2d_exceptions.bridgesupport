@@ -1,0 +1,12 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='1.0'>
+<struct name='B2DFixtureDef' type='{B2DFixtureDef=&quot;shape&quot;@&quot;userData&quot;@&quot;friction&quot;f&quot;restitution&quot;f&quot;density&quot;f&quot;isSensor&quot;B}'>
+<field declared_type='B2DShape*' name='shape' type='@'/>
+<field declared_type='id' name='userData' type='@'/>
+<field declared_type='CGFloat' name='friction' type='f'/>
+<field declared_type='CGFloat' name='restitution' type='f'/>
+<field declared_type='CGFloat' name='density' type='f'/>
+<field declared_type='_Bool' name='isSensor' type='B'/>
+</struct>
+</signatures>

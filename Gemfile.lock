@@ -8,7 +8,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.4)
-    rake (10.0.4)
+    rake (10.1.0)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -23,5 +23,5 @@ PLATFORMS
 
 DEPENDENCIES
   joybox!
-  rake (= 10.0.4)
+  rake
   rspec

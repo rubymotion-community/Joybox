@@ -81,55 +81,8 @@ class B2DBody
     body.is_a?(self.class) && self.isEqualToBody(body)
   end 
 
-  def fixture_defaults
-    {
-      friction: 0.2,
-      restitution: 0,
-      density: 0,
-      is_sensor: false
-    }
-  end
-
-  def edge_fixture(*hash)
-    options = hash.pop
-    options = options.nil? ? fixture_defaults : fixture_defaults.merge!(options)
-
-    # The following lines are needed to ensure that the start_point and 
-    # end_points are CGPoints
-    start_point = CGPointMake(options[:start_point][0], options[:start_point][1])
-    end_point = CGPointMake(options[:end_point][0], options[:end_point][1])
-    edge_shape = B2DEdgeShape.alloc.initWithStartPoint(start_point.to_pixel_coordinates,
-                                                       endPoint: end_point.to_pixel_coordinates)
-
-    addFixtureForShape(edge_shape,
-                       friction: options[:friction],
-                       restitution: options[:restitution],
-                       density: options[:density],
-                       isSensor: options[:is_sensor])
-  end
-
-  def polygon_fixture(*hash)
-    options = hash.pop
-    options = options.nil? ? fixture_defaults : fixture_defaults.merge!(options)
-
-    half_width = options[:box][0]
-    half_height = options[:box][1]
-    # This line is needed to ensure that the box is a CGSize
-    #box_size = CGSizeMake(options[:box][0] / 2, options[:box][1] / 2)
-
-    polygon_shape = B2DPolygonShape.alloc.initWithHalfWidth(half_width.to_pixels, andHalfHeight:half_height.to_pixels)
-    addFixtureForShape(polygon_shape,
-                       friction: options[:friction],
-                       restitution: options[:restitution],
-                       density: options[:density],
-                       isSensor: options[:is_sensor])
-  end
-
   def position=(position)
-    # This line is needed to ensure that the position is a CGPoint
     position = CGPointMake(position[0], position[1])
-
-    # Coordinate system conversion
     position = position.to_pixel_coordinates
     self.setTransformWithPosition(position, andAngle: angle)
   end
@@ -138,34 +91,67 @@ class B2DBody
     self.setTransformWithPosition(position, andAngle: angle)
   end
 
-  def circle_fixture(*hash)
-    options = hash.pop
-    options = options.nil? ? fixture_defaults : fixture_defaults.merge!(options)
+  def edge_fixture(options = {})
+    edge_shape = EdgeShape.new(options)
+    add_fixture(options, edge_shape)
+  end
 
-    circle_shape = B2DCircleShape.alloc.initWithRadius(options[:radius].to_pixels)
-    addFixtureForShape(circle_shape,
-                       friction: options[:friction],
-                       restitution: options[:restitution],
-                       density: options[:density],
-                       isSensor: options[:is_sensor])
+  def polygon_fixture(options = {})
+    polygon_shape = PolygonShape.new(options)
+    add_fixture(options, polygon_shape)
+  end
+
+  def circle_fixture(options = {})
+    circle_shape = CircleShape.new(options)
+    add_fixture(options, circle_shape)
+  end
+
+  def chain_fixture(options = {})
+    chain_shape = ChainShape.new(options)
+    add_fixture(options, chain_shape)
+  end
+
+  def add_fixture_defaults
+    {
+      friction: 0.2,
+      restitution: 0,
+      density: 0,
+      is_sensor: false
+    }
+  end
+
+  def add_fixture(options = {}, shape)
+    options = options.nil? ? add_fixture_defaults : add_fixture_defaults.merge!(options)
+
+    fixture_definition = B2DFixtureDef.new
+    fixture_definition.shape = shape;
+    fixture_definition.friction = options[:friction];
+    fixture_definition.restitution = options[:friction];
+    fixture_definition.density = options[:density];
+    fixture_definition.isSensor = options[:is_sensor];
+
+    createFixture(fixture_definition)
   end
 
   def apply_force_defaults
     {
-      location: self.center,
       as_impulse: true
     }
   end
 
   def apply_force(options = {})
     options = options.nil? ? apply_force_defaults : apply_force_defaults.merge!(options)
+    force = CGPointMake(options[:force][0], options[:force][1]).to_pixel_coordinates
 
-    # This line is needed to ensure that the force is a CGPoint
-    force = CGPointMake(options[:force][0], options[:force][1])
+    if options.has_key? :location
+      location = CGPointMake(options[:location][0], options[:location][1])
+      location = location.to_pixel_coordinates
+    else
+      location = local_center
+    end
 
-    applyForce(force.to_pixel_coordinates, 
-               atLocation: options[:location], 
-               asImpulse: options[:as_impulse]) 
+    applyLinearImpulse(force, atPoint: location) if options[:as_impulse]
+    applyForce(force, atPoint: location) unless options[:as_impulse]
   end
 
   def apply_torque_defaults
@@ -177,8 +163,8 @@ class B2DBody
   def apply_torque(options = {})
     options = options.nil? ? apply_torque_defaults : apply_torque_defaults.merge!(options)
 
-    applyTorque(options[:torque], 
-               asImpulse: options[:as_impulse]) 
+    apply_torque(options[:torque]) unless options[:as_impulse]
+    applyAngularImpulse(options[:torque]) if options[:as_impulse]
   end
   
 end
