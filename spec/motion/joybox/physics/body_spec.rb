@@ -233,6 +233,48 @@ describe Joybox::Physics::Body do
     kinematic_body.position.should == CGPointMake(3.125, 3.125)   
   end
 
+  it "should create new fixtures" do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic
+
+    body.new_fixture do
+      polygon_fixture box: [16, 16]
+      polygon_fixture box: [16, 16]
+    end
+
+    body.fixtures.size.should == 2
+  end
+
+  it "should destroy fixtures" do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic
+
+    body.new_fixture do
+      polygon_fixture box: [16, 16]
+    end
+
+    body.destroy_fixture(body.fixtures[0])
+    body.fixtures.size.should == 0
+  end 
+
+  it "should convert from local point to world point" do
+    body = @world.new_body position: [100, 100]
+    body.to_world_point([0, 0]).should == CGPointMake(100, 100)
+  end
+
+  it "should convert from local vector to world vector" do
+    body = @world.new_body position: [100, 100]
+    body.to_world_vector([0, 0]).should == CGPointMake(0, 0)
+  end
+
+  it "should convert from world point to local point" do
+    body = @world.new_body position: [100, 100]
+    body.to_local_point([0, 0]).should == CGPointMake(-100, -100)
+  end
+
+  it "should convert from world vector to local vector" do
+    body = @world.new_body position: [100, 100]
+    body.to_local_vector([0, 0]).should == CGPointMake(-100, -100)
+  end
+
   it "should react to force applied as impulse" do
     body = @world.new_body position: [100, 100], type: Body::Dynamic do
       polygon_fixture box: [16, 16]
