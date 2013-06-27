@@ -24,7 +24,7 @@ module Joybox
 
       def position
         if @body
-          @body.position.to_pixel_coordinates
+          @body.position
         else
           [0,0]
         end  
@@ -35,7 +35,7 @@ module Joybox
 
         super
         
-        position = @body.position.to_pixel_coordinates
+        position = @body.position
         position = position + anchorPointInPoints if ignoreAnchorPointForPosition
         angle = @body.angle
 

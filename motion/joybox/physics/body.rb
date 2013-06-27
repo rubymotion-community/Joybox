@@ -26,6 +26,7 @@ class B2DBody
   alias_method :reset_mass, :resetMassData
   alias_method :fixtures, :fixtureList
   alias_method :destroy_fixture, :destroyFixture
+  alias_method :metric_position, :position
 
   Static = 0
   Kinematic = 1
@@ -83,6 +84,10 @@ class B2DBody
   def == (body)
     body.is_a?(self.class) && self.isEqualToBody(body)
   end 
+
+  def position
+    metric_position.to_pixel_coordinates
+  end
 
   def position=(position)
     position = CGPointMake(position[0], position[1])

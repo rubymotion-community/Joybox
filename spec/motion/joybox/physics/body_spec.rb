@@ -7,74 +7,35 @@ describe Joybox::Physics::Body do
     it "should initialize with position" do
       body = @world.new_body position:[100, 100]
       body.should.not == nil
-      body.position.should == CGPointMake(3.125, 3.125)
+      body.position.should == CGPointMake(100, 100)
     end
 
     it "should initialize with position and type" do
       static_body = @world.new_body position: [100, 100]
       static_body.should.not == nil
-      static_body.position.should == CGPointMake(3.125, 3.125)
+      static_body.position.should == CGPointMake(100, 100)
 
       dynamic_body = @world.new_body position: [100, 100], type: Body::Dynamic
       dynamic_body.should.not == nil
-      dynamic_body.position.should == CGPointMake(3.125, 3.125)
+      dynamic_body.position.should == CGPointMake(100, 100)
 
       kinematic_body = @world.new_body position: [100, 100], type: Body::Kinematic
       kinematic_body.should.not == nil
-      kinematic_body.position.should == CGPointMake(3.125, 3.125)
+      kinematic_body.position.should == CGPointMake(100, 100)
     end
 
-    it "should initialize with position and edge fixture" do
-      body = @world.new_body position:  [100, 100] do
+    it "should initialize with position, type and fixture" do
+      body = @world.new_body position: [100, 100], type: Body::Dynamic do
         edge_fixture start_point: [0, 480],
-                    end_point: [320, 480],
-        friction: 1,
-        restitution: 2,
-        density: 3,
-        is_sensor: true
+                     end_point: [320, 480],
+                     friction: 1,
+                     restitution: 2,
+                     density: 3,
+                     is_sensor: true
       end
 
       body.should.not == nil
-      body.position.should == CGPointMake(3.125, 3.125)
-    end
-
-    it "should initialize with position and polygon fixture" do
-      body = @world.new_body position:  [100, 100] do
-        polygon_fixture box: [16, 16],
-        friction: 1,
-        restitution: 2,
-        density: 3,
-        is_sensor: true
-      end
-
-      body.should.not == nil
-      body.position.should == CGPointMake(3.125, 3.125)
-    end
-
-    it "should initialize with position and circle fixture" do
-      body = @world.new_body position:  [100, 100] do
-        circle_fixture radius: 30,
-        friction: 1,
-        restitution: 2,
-        density: 3,
-        is_sensor: true
-      end
-
-      body.should.not == nil
-      body.position.should == CGPointMake(3.125, 3.125)
-    end
-
-    it "should initialize with position and chain fixture" do
-      body = @world.new_body position:  [100, 100] do
-        chain_fixture loop: [[20, 20], [10, 10], [30, 30]],
-                      friction: 1,
-                      restitution: 2,
-                      density: 3,
-                      is_sensor: true
-      end
-
-      body.should.not == nil
-      body.position.should == CGPointMake(3.125, 3.125)
+      body.position.should == CGPointMake(100, 100)
     end
   end
 
@@ -91,24 +52,24 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.position.should == CGPointMake(3.125, 3.125)
-    kinematic_body.position.should == CGPointMake(3.125, 3.125)
+    static_body.position.should == CGPointMake(100, 100)
+    dynamic_body.position.should == CGPointMake(100, 100)
+    kinematic_body.position.should == CGPointMake(100, 100)
 
     @world.step delta: 10
 
     static_body.position = [200, 200]
-    static_body.position.should == CGPointMake(6.25, 6.25)
+    static_body.position.should == CGPointMake(200, 200)
     dynamic_body.position = [200, 200]
-    dynamic_body.position.should.be.close CGPointMake(6.25, 6.25), 0.01
+    dynamic_body.position.should.be.close CGPointMake(200, 200), 0.01
     kinematic_body.position = [200, 200]
-    kinematic_body.position.should == CGPointMake(6.25, 6.25)
+    kinematic_body.position.should == CGPointMake(200, 200)
     
     @world.step delta: 10
 
-    static_body.position.should == CGPointMake(6.25, 6.25)
-    dynamic_body.position.should.be.close CGPointMake(6.25, 6.21), 0.01
-    kinematic_body.position.should == CGPointMake(6.25, 6.25)    
+    static_body.position.should == CGPointMake(200, 200)
+    dynamic_body.position.should.be.close CGPointMake(200, 198.81), 0.01
+    kinematic_body.position.should == CGPointMake(200, 200)  
   end
 
   it "should change its angle" do
@@ -184,9 +145,9 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.position.should == CGPointMake(3.125, 3.125)
-    kinematic_body.position.should == CGPointMake(3.125, 3.125)
+    static_body.position.should == CGPointMake(100, 100)
+    dynamic_body.position.should == CGPointMake(100, 100)
+    kinematic_body.position.should == CGPointMake(100, 100)
 
     static_body.linear_velocity = [10, 10]
     static_body.linear_velocity.should == CGPointMake(0, 0)
@@ -197,9 +158,9 @@ describe Joybox::Physics::Body do
 
     @world.step delta: 10
 
-    static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.position.should.be.close CGPointMake(5.125, 3.125), 0.01
-    kinematic_body.position.should.be.close CGPointMake(4.53, 4.53), 0.01   
+    static_body.position.should == CGPointMake(100, 100)
+    dynamic_body.position.should.be.close CGPointMake(164, 100), 0.01
+    kinematic_body.position.should.be.close CGPointMake(145.254, 145.254), 0.01   
   end
 
   it "should change its angular velocity" do
@@ -215,9 +176,9 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.position.should == CGPointMake(3.125, 3.125)
-    kinematic_body.position.should == CGPointMake(3.125, 3.125)
+    static_body.position.should == CGPointMake(100, 100)
+    dynamic_body.position.should == CGPointMake(100, 100)
+    kinematic_body.position.should == CGPointMake(100, 100)
 
     static_body.angular_velocity = 10.0
     static_body.angular_velocity.should == 0
@@ -228,9 +189,9 @@ describe Joybox::Physics::Body do
 
     @world.step delta: 10
 
-    static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.position.should.be.close CGPointMake(2.76, 1.125), 0.01
-    kinematic_body.position.should == CGPointMake(3.125, 3.125)   
+    static_body.position.should == CGPointMake(100, 100)
+    dynamic_body.position.should.be.close CGPointMake(88.38, 36), 0.01
+    kinematic_body.position.should == CGPointMake(100, 100)   
   end
 
   it "should create new fixtures" do
@@ -280,14 +241,14 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    body.position.should == CGPointMake(3.125, 3.125)
+    body.position.should == CGPointMake(100, 100)
     body.apply_force force: [1000, 1000]
 
     @world.step delta: 10
-    body.position.should.be.close CGPointMake(3.972, 1.313), 0.001
+    body.position.should.be.close CGPointMake(127.135, 42.037), 0.001
 
     @world.step delta: 100
-    body.position.should.be.close CGPointMake(3.973, -0.686), 0.001
+    body.position.should.be.close CGPointMake(127.141, -21.962), 0.001
   end
 
   it "should react to force applied instantaneously" do
@@ -295,14 +256,14 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    body.position.should == CGPointMake(3.125, 3.125)
+    body.position.should == CGPointMake(100, 100)
     body.apply_force force: [1000, 1000], as_impulse: false
 
     @world.step delta: 10
-    body.position.should.be.close CGPointMake(4.773, 4.256), 0.001
+    body.position.should.be.close CGPointMake(152.765, 136.218), 0.001
 
     @world.step delta: 100
-    body.position.should.be.close CGPointMake(4.774, 2.256), 0.001
+    body.position.should.be.close CGPointMake(152.776, 72.218), 0.001
   end
 
   it "should react to torque applied as impulse" do
@@ -310,14 +271,14 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    body.position.should == CGPointMake(3.125, 3.125)
+    body.position.should == CGPointMake(100, 100)
     body.apply_torque torque: 1000
 
     @world.step delta: 10
-    body.position.should.be.close CGPointMake(3.125, 1.125), 0.001
+    body.position.should.be.close CGPointMake(100.0, 36.0), 0.001
 
     @world.step delta: 100
-    body.position.should.be.close CGPointMake(3.125, -0.875), 0.001
+    body.position.should.be.close CGPointMake(100.0, -28.0), 0.001
   end
 
   it "should react to torque applied instantaneously" do
@@ -325,13 +286,13 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    body.position.should == CGPointMake(3.125, 3.125)
+    body.position.should == CGPointMake(100, 100)
     body.apply_torque torque: 1000, as_impulse: false
 
     @world.step delta: 10
-    body.position.should.be.close CGPointMake(3.125, 1.125), 0.001
+    body.position.should.be.close CGPointMake(100.0, 36.0), 0.001
 
     @world.step delta: 100
-    body.position.should.be.close CGPointMake(3.125, -0.875), 0.001
+    body.position.should.be.close CGPointMake(100.0, -28.0), 0.001
   end
 end

@@ -25,7 +25,7 @@ describe Joybox::Physics::World do
     world = World.new gravity: [0, -9.8]
     body = world.new_body position: [100, 100]
     body.should.not == nil
-    body.position.should == CGPointMake(3.125, 3.125)
+    body.position.should == CGPointMake(100, 100)
     world.bodies.size.should == 1
   end
 
@@ -42,48 +42,48 @@ describe Joybox::Physics::World do
     world = World.new gravity: [0, -9.8]
 
     static_body = world.new_body position: [100, 100]
-    static_body.position.should == CGPointMake(3.125, 3.125)
+    static_body.position.should == CGPointMake(100, 100)
     dynamic_body = world.new_body position: [100, 100], type: Body::Dynamic
-    dynamic_body.position.should == CGPointMake(3.125, 3.125)
+    dynamic_body.position.should == CGPointMake(100, 100)
     kinematic_body = world.new_body position: [100, 100], type: Body::Kinematic
-    kinematic_body.position.should == CGPointMake(3.125, 3.125)
+    kinematic_body.position.should == CGPointMake(100, 100)
 
     world.step delta: 100
-    static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.position.should.be.close CGPointMake(3.125, 1.125), 0.001
-    kinematic_body.position.should == CGPointMake(3.125, 3.125)
+    static_body.position.should == CGPointMake(100, 100)
+    dynamic_body.position.should.be.close CGPointMake(100, 36), 0.001
+    kinematic_body.position.should == CGPointMake(100, 100)
 
     world.step delta: 10, velocity_interactions:10, position_interactions: 2
-    static_body.position.should == CGPointMake(3.125, 3.125)
-    dynamic_body.position.should.be.close CGPointMake(3.125, -0.875), 0.001
-    kinematic_body.position.should == CGPointMake(3.125, 3.125)
+    static_body.position.should == CGPointMake(100, 100)
+    dynamic_body.position.should.be.close CGPointMake(100, -28.0), 0.001
+    kinematic_body.position.should == CGPointMake(100, 100)
   end
 
   it "should change its gravity" do
     world = World.new gravity: [0, -9.8]
 
     body = world.new_body position: [100, 100], type: Body::Dynamic
-    body.position.should == CGPointMake(3.125, 3.125)
+    body.position.should == CGPointMake(100, 100)
 
     world.step delta: 10
-    body.position.should.be.close CGPointMake(3.125, 1.125), 0.001
+    body.position.should.be.close CGPointMake(100, 36), 0.001
 
     world.gravity = [0, 9.8]
     world.step delta: 10
-    body.position.should.be.close CGPointMake(3.125, 3.125), 0.001
+    body.position.should.be.close CGPointMake(100, 100), 0.001
 
     world.destroy_body(body)
 
     body = world.new_body position: [100, 100], type: Body::Dynamic
-    body.position.should == CGPointMake(3.125, 3.125)
+    body.position.should == CGPointMake(100, 100)
 
     world.gravity = [-9.8, 0]
     world.step delta: 100
-    body.position.should.be.close CGPointMake(1.125, 3.125), 0.001
+    body.position.should.be.close CGPointMake(36, 100), 0.001
 
     world.gravity = [9.8, 0]
     world.step delta: 100
-    body.position.should.be.close CGPointMake(3.125, 3.125), 0.001
+    body.position.should.be.close CGPointMake(100, 100), 0.001
   end
 
   it "should have a profile" do
@@ -177,7 +177,7 @@ describe Joybox::Physics::World do
     world.clearForces
     world.step delta: 10
 
-    body.position.should == CGPointMake(3.125, 1.125)
+    body.position.should == CGPointMake(100, 36)
   end
 
   it "should query the world with a lower bound & upper bound" do

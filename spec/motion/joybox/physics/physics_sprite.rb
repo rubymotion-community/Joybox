@@ -26,7 +26,7 @@ describe Joybox::Physics::PhysicsSprite do
   it "should return its position" do
     physics_sprite = PhysicsSprite.new file_name: 'sprite.png', body: @body
     physics_sprite.position.should == CGPointMake(100, 100)
-    physics_sprite.body.position.should == CGPointMake(3.125, 3.125)
+    physics_sprite.body.position.should == CGPointMake(100, 100)
   end
 
   it "should change its position" do
@@ -35,7 +35,7 @@ describe Joybox::Physics::PhysicsSprite do
 
     physics_sprite.position = CGPointMake(200, 200)
     physics_sprite.position.should == CGPointMake(200, 200)
-    physics_sprite.body.position.should == CGPointMake(6.25, 6.25)
+    physics_sprite.body.position.should == CGPointMake(200, 200)
   end
 
   it "should adjust to its body position" do
@@ -45,6 +45,6 @@ describe Joybox::Physics::PhysicsSprite do
     @world.step delta:10
 
     physics_sprite.position.should == CGPointMake(100, 36)
-    physics_sprite.body.position.should == CGPointMake(3.125, 1.125)
+    physics_sprite.body.position.should == CGPointMake(100, 36)
   end
 end
