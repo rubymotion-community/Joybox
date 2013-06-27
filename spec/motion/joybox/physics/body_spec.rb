@@ -120,16 +120,16 @@ describe Joybox::Physics::Body do
       polygon_fixture box: [16, 16]
     end
 
-    mass_data = B2DMassData.new
+    mass_data = MassData.new
     mass_data.mass = 2.0
     mass_data.center = [0.0, 0.0]
-    mass_data.rotationalInertia = 1.0
+    mass_data.rotational_inertia = 1.0
 
     body.mass_data = mass_data
 
     body.mass_data.mass.should == 2.0
     body.mass_data.center.should == CGPointMake(0.0, 0.0)
-    body.mass_data.rotationalInertia == 1.0
+    body.mass_data.rotational_inertia == 1.0
   end
 
   it "should change its linear velocity" do
