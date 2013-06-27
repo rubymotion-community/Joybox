@@ -116,10 +116,10 @@ class B2DBody
 
   def to_local_vector(world_vector)
     world_vector = world_vector.to_point.from_pixel_coordinates
-    localPoint(world_vector).to_pixel_coordinates
+    localVector(world_vector).to_pixel_coordinates
   end
 
-  def linear_velocity_from(options = {})
+  def linear_velocity_at(options = {})
     point = options[:local_point] if options.has_key? :local_point
     point = options[:world_point] if options.has_key? :world_point
     point = point.to_point.from_pixel_coordinates

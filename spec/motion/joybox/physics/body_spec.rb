@@ -233,19 +233,19 @@ describe Joybox::Physics::Body do
 
   it "should convert from world vector to local vector" do
     body = @world.new_body position: [100, 100]
-    body.to_local_vector([0, 0]).should == CGPointMake(-100, -100)
+    body.to_local_vector([0, 0]).should == CGPointMake(0, 0)
   end
 
   it "should return the linear velocity at world point" do
     body = @world.new_body position: [100, 100], type: Body::Dynamic
     body.linear_velocity = [10, 10]
-    body.linear_velocity_from(world_point: [100, 100]).should == CGPointMake(10, 10)
+    body.linear_velocity_at(world_point: [100, 100]).should == CGPointMake(10, 10)
   end 
 
   it "should return the linear velocity at local point" do
     body = @world.new_body position: [100, 100], type: Body::Dynamic
     body.linear_velocity = [10, 10]
-    body.linear_velocity_from(local_point: [0, 0]).should == CGPointMake(10, 10)
+    body.linear_velocity_at(local_point: [0, 0]).should == CGPointMake(10, 10)
   end 
 
   it "should react to force applied as impulse" do
