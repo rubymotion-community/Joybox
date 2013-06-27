@@ -62,10 +62,10 @@ class B2DBody
 
     body_definition = B2DBodyDef.new()
     position = CGPointMake(options[:position][0], options[:position][1])
-    body_definition.position = position.to_pixel_coordinates
+    body_definition.position = position.from_pixel_coordinates
     body_definition.angle = options[:angle]
     linear_velocity = CGPointMake(options[:linear_velocity][0], options[:linear_velocity][1])
-    body_definition.linearVelocity = linear_velocity.to_pixel_coordinates
+    body_definition.linearVelocity = linear_velocity.from_pixel_coordinates
     body_definition.angularVelocity = options[:angular_velocity]
     body_definition.linearDamping = options[:linear_damping]
     body_definition.angularDamping = options[:angular_damping]
@@ -86,7 +86,7 @@ class B2DBody
 
   def position=(position)
     position = CGPointMake(position[0], position[1])
-    position = position.to_pixel_coordinates
+    position = position.from_pixel_coordinates
     self.setTransformWithPosition(position, andAngle: angle)
   end
 
@@ -172,11 +172,11 @@ class B2DBody
 
   def apply_force(options = {})
     options = options.nil? ? apply_force_defaults : apply_force_defaults.merge!(options)
-    force = CGPointMake(options[:force][0], options[:force][1]).to_pixel_coordinates
+    force = CGPointMake(options[:force][0], options[:force][1]).from_pixel_coordinates
 
     if options.has_key? :location
       location = CGPointMake(options[:location][0], options[:location][1])
-      location = location.to_pixel_coordinates
+      location = location.from_pixel_coordinates
     else
       location = local_center
     end

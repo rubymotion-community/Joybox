@@ -20,12 +20,12 @@ class CGSize
   end
 
 
-  def to_pixel_coordinates
+  def from_pixel_coordinates
     CGSizeMake(self.width.to_pixels, self.height.to_pixels)
   end
 
 
-  def from_pixel_coordinates
+  def to_pixel_coordinates
     CGSizeMake(self.width.from_pixels, self.height.from_pixels)
   end
   

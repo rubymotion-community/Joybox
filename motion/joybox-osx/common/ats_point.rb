@@ -12,11 +12,11 @@ class ATSPoint
     Joybox.director.convertToUI(self)
   end
 
-  def to_pixel_coordinates
+  def from_pixel_coordinates
     CGPointMake(self.x.to_pixels, self.y.to_pixels)
   end
 
-  def from_pixel_coordinates
+  def to_pixel_coordinates
     CGPointMake(self.x.from_pixels, self.y.from_pixels)
   end
 

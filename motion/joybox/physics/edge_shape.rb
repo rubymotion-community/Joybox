@@ -6,7 +6,7 @@ class EdgeShape < B2DEdgeShape
     start_point = CGPointMake(options[:start_point][0], options[:start_point][1])
     end_point = CGPointMake(options[:end_point][0], options[:end_point][1])
 
-    initWithStartVertex(start_point.to_pixel_coordinates, endVertex: end_point.to_pixel_coordinates)
+    initWithStartVertex(start_point.from_pixel_coordinates, endVertex: end_point.from_pixel_coordinates)
   end
 
 end

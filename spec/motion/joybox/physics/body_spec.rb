@@ -239,17 +239,13 @@ describe Joybox::Physics::Body do
     end
 
     body.position.should == CGPointMake(3.125, 3.125)
-
-    @world.step delta: 10
-    body.position.should == CGPointMake(3.125, 1.125)
-
     body.apply_force force: [1000, 1000]
 
     @world.step delta: 10
-    body.position.should.be.close CGPointMake(3.970, -0.687), 0.001
+    body.position.should.be.close CGPointMake(3.972, 1.313), 0.001
 
     @world.step delta: 100
-    body.position.should.be.close CGPointMake(3.971, -2.687), 0.001
+    body.position.should.be.close CGPointMake(3.973, -0.686), 0.001
   end
 
   it "should react to force applied instantaneously" do
@@ -258,16 +254,42 @@ describe Joybox::Physics::Body do
     end
 
     body.position.should == CGPointMake(3.125, 3.125)
-
-    @world.step delta: 10
-    body.position.should == CGPointMake(3.125, 1.125)
-
     body.apply_force force: [1000, 1000], as_impulse: false
 
     @world.step delta: 10
-    body.position.should.be.close CGPointMake(4.7744, 2.2561), 0.0001
+    body.position.should.be.close CGPointMake(4.773, 4.256), 0.001
 
     @world.step delta: 100
-    body.position.should.be.close CGPointMake(4.7747, 0.2561), 0.0001
+    body.position.should.be.close CGPointMake(4.774, 2.256), 0.001
+  end
+
+  it "should react to torque applied as impulse" do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic do
+      polygon_fixture box: [16, 16]
+    end
+
+    body.position.should == CGPointMake(3.125, 3.125)
+    body.apply_torque torque: 1000
+
+    @world.step delta: 10
+    body.position.should.be.close CGPointMake(3.125, 1.125), 0.001
+
+    @world.step delta: 100
+    body.position.should.be.close CGPointMake(3.125, -0.875), 0.001
+  end
+
+  it "should react to torque applied instantaneously" do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic do
+      polygon_fixture box: [16, 16]
+    end
+
+    body.position.should == CGPointMake(3.125, 3.125)
+    body.apply_torque torque: 1000, as_impulse: false
+
+    @world.step delta: 10
+    body.position.should.be.close CGPointMake(3.125, 1.125), 0.001
+
+    @world.step delta: 100
+    body.position.should.be.close CGPointMake(3.125, -0.875), 0.001
   end
 end

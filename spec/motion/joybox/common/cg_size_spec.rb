@@ -19,11 +19,11 @@ describe CGSize do
     @size.double_height.should == 100
   end
 
-  it "should convert to pixel coordinates" do
-    @size.to_pixel_coordinates.should == CGSizeMake(1.5625, 1.5625)
+  it "should convert from pixel coordinates" do
+    @size.from_pixel_coordinates.should == CGSizeMake(1.5625, 1.5625)
   end
 
-  it "should convert from pixel coordinates" do
-    CGSizeMake(1.5625, 1.5625).from_pixel_coordinates.should == @size
+  it "should convert to pixel coordinates" do
+    CGSizeMake(1.5625, 1.5625).to_pixel_coordinates.should == @size
   end
 end

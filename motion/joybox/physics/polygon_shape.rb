@@ -21,7 +21,7 @@ class PolygonShape < B2DPolygonShape
   def initialize_with_vertices(options = {})
     vertices = Pointer.new(CGPoint.type, options[:vertices].size)
     options[:vertices].each_with_index do |vertex, index|
-      vertices[index] = CGPointMake(vertex[0], vertex[1]).to_pixel_coordinates
+      vertices[index] = CGPointMake(vertex[0], vertex[1]).from_pixel_coordinates
     end
 
     initWithVertices(vertices, andVertexCount: options[:vertices].size)
