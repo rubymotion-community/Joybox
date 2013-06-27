@@ -49,7 +49,8 @@ module Joybox
           y = y + sine * -anchorPointInPoints.x + cosine * -anchorPointInPoints.y        
         end
 
-        CGAffineTransformMake(cosine, sine, -sine, cosine, x, y)
+        rotated_transform = CGAffineTransformMake(cosine, sine, -sine, cosine, x, y)
+        CGAffineTransformScale(rotated_transform, self.scaleX, self.scaleY)
       end
 
     end
