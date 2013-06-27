@@ -23,6 +23,9 @@ class B2DBody
   alias_method :fixed_rotation=, :setFixedRotation
   alias_method :sleeping_allowed?, :isSleepingAllowed
   alias_method :sleeping_allowed=, :setSleepingAllowed
+  alias_method :reset_mass, :resetMassData
+  alias_method :fixtures, :fixtureList
+  alias_method :destroy_fixture, :destroyFixture
 
   Static = 0
   Kinematic = 1
@@ -89,6 +92,34 @@ class B2DBody
 
   def angle=(angle)
     self.setTransformWithPosition(position, andAngle: angle)
+  end
+
+  def to_world_point(local_point)
+    local_point = local_point.to_point.from_pixel_coordinates
+    worldPoint(local_point).to_pixel_coordinates
+  end
+
+  def to_world_vector(local_vector)
+    local_vector = local_vector.to_point.from_pixel_coordinates
+    worldVector(local_vector).to_pixel_coordinates
+  end
+
+  def to_local_point(world_point)
+    world_point = world_point.to_point.from_pixel_coordinates
+    localPoint(world_point).to_pixel_coordinates
+  end
+
+  def to_local_vector(world_vector)
+    world_vector = world_vector.to_point.from_pixel_coordinates
+    localPoint(world_vector).to_pixel_coordinates
+  end
+
+  def new_fixture(&block)
+    instance_eval(&block) if block
+  end
+
+  def fixture(options = {})
+    add_fixture(options, options[:shape])
   end
 
   def edge_fixture(options = {})
@@ -163,7 +194,7 @@ class B2DBody
   def apply_torque(options = {})
     options = options.nil? ? apply_torque_defaults : apply_torque_defaults.merge!(options)
 
-    apply_torque(options[:torque]) unless options[:as_impulse]
+    applyTorque(options[:torque]) unless options[:as_impulse]
     applyAngularImpulse(options[:torque]) if options[:as_impulse]
   end
   
