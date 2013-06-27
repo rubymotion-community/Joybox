@@ -236,6 +236,18 @@ describe Joybox::Physics::Body do
     body.to_local_vector([0, 0]).should == CGPointMake(-100, -100)
   end
 
+  it "should return the linear velocity at world point" do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic
+    body.linear_velocity = [10, 10]
+    body.linear_velocity_from(world_point: [100, 100]).should == CGPointMake(10, 10)
+  end 
+
+  it "should return the linear velocity at local point" do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic
+    body.linear_velocity = [10, 10]
+    body.linear_velocity_from(local_point: [0, 0]).should == CGPointMake(10, 10)
+  end 
+
   it "should react to force applied as impulse" do
     body = @world.new_body position: [100, 100], type: Body::Dynamic do
       polygon_fixture box: [16, 16]
@@ -268,7 +280,8 @@ describe Joybox::Physics::Body do
 
   it "should react to torque applied as impulse" do
     body = @world.new_body position: [100, 100], type: Body::Dynamic do
-      polygon_fixture box: [16, 16]
+      polygon_fixture box: [16, 16],
+                      density: 20
     end
 
     body.position.should == CGPointMake(100, 100)
@@ -283,7 +296,8 @@ describe Joybox::Physics::Body do
 
   it "should react to torque applied instantaneously" do
     body = @world.new_body position: [100, 100], type: Body::Dynamic do
-      polygon_fixture box: [16, 16]
+      polygon_fixture box: [16, 16],
+                      density: 1
     end
 
     body.position.should == CGPointMake(100, 100)

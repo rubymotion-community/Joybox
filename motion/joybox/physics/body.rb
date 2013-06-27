@@ -119,6 +119,15 @@ class B2DBody
     localPoint(world_vector).to_pixel_coordinates
   end
 
+  def linear_velocity_from(options = {})
+    point = options[:local_point] if options.has_key? :local_point
+    point = options[:world_point] if options.has_key? :world_point
+    point = point.to_point.from_pixel_coordinates
+
+    return linearVelocityFromLocalPoint(point) if options.has_key? :local_point
+    return linearVelocityFromWorldPoint(point) if options.has_key? :world_point
+  end
+
   def new_fixture(&block)
     instance_eval(&block) if block
   end
