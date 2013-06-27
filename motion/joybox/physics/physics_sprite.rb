@@ -17,11 +17,17 @@ module Joybox
       end
 
       def position=(position)
-        @body.position = position
+        if @body
+          @body.position = position
+        end
       end
 
       def position
-        @body.position.from_pixel_coordinates
+        if @body
+          @body.position.from_pixel_coordinates
+        else
+          [0,0]
+        end  
       end
 
       def nodeToParentTransform
