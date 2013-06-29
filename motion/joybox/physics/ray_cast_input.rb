@@ -26,4 +26,5 @@ class B2DRayCastInput
     point = point.to_point unless point.is_a? (CGPoint)
     self.point2 = point.from_pixel_coordinates
   end
+  
 end
