@@ -11,13 +11,13 @@ describe Joybox::Physics::Fixture do
 
   it "should have type" do
     fixture = @body.fixtures[0]
-    fixture.type.should == Fixture::Polygon
+    fixture.type.should == Fixture::PolygonType
   end
 
   it "should have a shape" do
     fixture = @body.fixtures[0]
     fixture.shape.should.not == nil
-    fixture.shape.type.should == Fixture::Polygon
+    fixture.shape.type.should == Fixture::PolygonType
   end
 
   it "should have filter data" do
@@ -29,7 +29,6 @@ describe Joybox::Physics::Fixture do
 
   it "should change its filter data" do
     fixture = @body.fixtures[0]
-
     filter = Filter.new
     filter.category_bits = 0x0001
     filter.mask_bits = 0xFFFF

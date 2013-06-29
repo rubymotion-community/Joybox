@@ -1,4 +1,4 @@
-describe Joybox::UI::MenuLabel do
+shared Joybox::UI::MenuLabel do
   after do
     MenuLabel.default_font_size = 32
     MenuLabel.default_font_name = 'Marker Felt'
@@ -16,16 +16,6 @@ describe Joybox::UI::MenuLabel do
       menu_label.should.not == nil
       menu_label.text.should == 'MenuLabel'
       menu_label.position.should == CGPointMake(100, 100)
-    end
-
-    it "should initialize with text & color" do 
-      color = "#FFFFFF".to_color
-      menu_label = MenuLabel.new text: 'MenuLabel', color: color
-      menu_label.should.not == nil
-      menu_label.text.should == 'MenuLabel'
-      menu_label.color.r.should == color.red
-      menu_label.color.g.should == color.green
-      menu_label.color.b.should == color.blue
     end
 
     it "should initialize with text & font" do

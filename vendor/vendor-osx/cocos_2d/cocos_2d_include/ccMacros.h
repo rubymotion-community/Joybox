@@ -231,10 +231,10 @@ extern float __ccContentScaleFactor;
 	CGRectMake( (__rect_in_pixels__).origin.x / CC_CONTENT_SCALE_FACTOR(), (__rect_in_pixels__).origin.y / CC_CONTENT_SCALE_FACTOR(),	\
 			(__rect_in_pixels__).size.width / CC_CONTENT_SCALE_FACTOR(), (__rect_in_pixels__).size.height / CC_CONTENT_SCALE_FACTOR() )
 
-/** @def CC_RECT_POINTS_from_pixels
+/** @def CC_RECT_POINTS_TO_PIXELS
  Converts a rect in points to pixels
  */
-#define CC_RECT_POINTS_from_pixels(__rect_in_points_points__)																		\
+#define CC_RECT_POINTS_TO_PIXELS(__rect_in_points_points__)																		\
 	CGRectMake( (__rect_in_points_points__).origin.x * CC_CONTENT_SCALE_FACTOR(), (__rect_in_points_points__).origin.y * CC_CONTENT_SCALE_FACTOR(),	\
 			(__rect_in_points_points__).size.width * CC_CONTENT_SCALE_FACTOR(), (__rect_in_points_points__).size.height * CC_CONTENT_SCALE_FACTOR() )
 
@@ -244,10 +244,10 @@ extern float __ccContentScaleFactor;
 #define CC_POINT_PIXELS_TO_POINTS(__pixels__)																		\
 CGPointMake( (__pixels__).x / CC_CONTENT_SCALE_FACTOR(), (__pixels__).y / CC_CONTENT_SCALE_FACTOR())
 
-/** @def CC_POINT_POINTS_from_pixels
+/** @def CC_POINT_POINTS_TO_PIXELS
  Converts a rect in points to pixels
  */
-#define CC_POINT_POINTS_from_pixels(__points__)																		\
+#define CC_POINT_POINTS_TO_PIXELS(__points__)																		\
 CGPointMake( (__points__).x * CC_CONTENT_SCALE_FACTOR(), (__points__).y * CC_CONTENT_SCALE_FACTOR())
 
 /** @def CC_POINT_PIXELS_TO_POINTS
@@ -256,10 +256,10 @@ CGPointMake( (__points__).x * CC_CONTENT_SCALE_FACTOR(), (__points__).y * CC_CON
 #define CC_SIZE_PIXELS_TO_POINTS(__size_in_pixels__)																		\
 CGSizeMake( (__size_in_pixels__).width / CC_CONTENT_SCALE_FACTOR(), (__size_in_pixels__).height / CC_CONTENT_SCALE_FACTOR())
 
-/** @def CC_POINT_POINTS_from_pixels
+/** @def CC_POINT_POINTS_TO_PIXELS
  Converts a rect in points to pixels
  */
-#define CC_SIZE_POINTS_from_pixels(__size_in_points__)																		\
+#define CC_SIZE_POINTS_TO_PIXELS(__size_in_points__)																		\
 CGSizeMake( (__size_in_points__).width * CC_CONTENT_SCALE_FACTOR(), (__size_in_points__).height * CC_CONTENT_SCALE_FACTOR())
 
 
@@ -271,11 +271,11 @@ CGSizeMake( (__size_in_points__).width * CC_CONTENT_SCALE_FACTOR(), (__size_in_p
 
 #define CC_CONTENT_SCALE_FACTOR() 1
 #define CC_RECT_PIXELS_TO_POINTS(__pixels__) __pixels__
-#define CC_RECT_POINTS_from_pixels(__points__) __points__
+#define CC_RECT_POINTS_TO_PIXELS(__points__) __points__
 #define CC_SIZE_PIXELS_TO_POINTS(__pixels__) __pixels__
-#define CC_SIZE_POINTS_from_pixels(__points__) __points__
+#define CC_SIZE_POINTS_TO_PIXELS(__points__) __points__
 #define CC_POINT_PIXELS_TO_POINTS(__pixels__) __pixels__
-#define CC_POINT_POINTS_from_pixels(__points__) __points__
+#define CC_POINT_POINTS_TO_PIXELS(__points__) __points__
 
 
 #endif // __CC_PLATFORM_MAC

@@ -177,7 +177,7 @@ describe Joybox::Physics::World do
     world.clearForces
     world.step delta: 10
 
-    body.position.should == CGPointMake(100, 36)
+    body.position.should.be.close CGPointMake(100, 36), 0.1
   end
 
   it "should query the world with a lower bound & upper bound" do
@@ -209,7 +209,7 @@ describe Joybox::Physics::World do
 
     world.ray_cast first_point: [0, 0], second_point: [100, 100] do |fixture, point, normal, fraction|
       ray_cast_notified = true
-      fixture.type.should == Fixture::Polygon
+      fixture.type.should == Fixture::PolygonType
       point.should.be.close CGPointMake(0.08, 0.08), 0.01
       normal.should == CGPointMake(0, -1.0)
       fraction.should.be.close 0.83, 0.01

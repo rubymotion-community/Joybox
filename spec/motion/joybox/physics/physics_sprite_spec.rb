@@ -44,7 +44,7 @@ describe Joybox::Physics::PhysicsSprite do
 
     @world.step delta:10
 
-    physics_sprite.position.should == CGPointMake(100, 36)
-    physics_sprite.body.position.should == CGPointMake(100, 36)
+    physics_sprite.position.should.be.close CGPointMake(100, 36), 0.1
+    physics_sprite.body.position.should.be.close CGPointMake(100, 36), 0.1
   end
 end

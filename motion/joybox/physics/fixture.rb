@@ -6,11 +6,11 @@ class B2DFixture
   alias_method :mass_data, :massData
   alias_method :metric_aabb, :aabb
 
-  Circle = 0
-  Edge = 1
-  Polygon = 2
-  Chain = 3
-  Count = 4 
+  CircleType = 0
+  EdgeType = 1
+  PolygonType = 2
+  ChainType = 3
+  CountType = 4 
 
   def filter_data
     filterData

@@ -1,4 +1,4 @@
-describe Joybox::Physics::Fixture do
+describe Joybox::Physics::Shape do
   before do
     @world = World.new gravity: [0, -9.8]
     @body = @world.new_body position: [100, 100], type: Body::Dynamic do

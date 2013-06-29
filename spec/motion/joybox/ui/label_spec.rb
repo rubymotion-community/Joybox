@@ -1,20 +1,6 @@
-describe Joybox::UI::Label do
+shared Joybox::UI::Label do
   
   describe "Initialization" do
-    it "should initialize with text" do 
-      color = "#FFFFFF".to_color
-      label = Label.new text: 'Label',
-                        position: [100, 100],
-                        color: color
-
-      label.should.not == nil
-      label.text.should == 'Label'
-      label.position.should == CGPointMake(100, 100)
-      label.color.r.should == color.red
-      label.color.g.should == color.green
-      label.color.b.should == color.blue
-    end
-
     it "should initialize with text & alignment" do
       label = Label.new text: 'Label',
                         position: [100, 100],

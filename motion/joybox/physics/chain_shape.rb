@@ -4,7 +4,6 @@ class B2DChainShape
 
   extend Joybox::Common::Initialize
 
-  alias_method :vertices_count, :vertexCount
   alias_method :metric_vertices, :vertices
   alias_method :has_previous_vertex?, :hasPreviousVertex
   alias_method :has_next_vertex?, :hasNextVertex
@@ -35,6 +34,10 @@ class B2DChainShape
     end
 
     createChainWithVertices(vertices, andVertexCount: options[:chain].size)
+  end
+
+  def vertices_count
+    vertexCount
   end
 
   def vertices

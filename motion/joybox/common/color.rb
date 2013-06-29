@@ -30,7 +30,7 @@ module Joybox
         red = split_hex[0]
         green = split_hex[1]
         blue = split_hex[2]
-
+        
         self.new(red, green, blue)
       end
 

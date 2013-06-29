@@ -137,22 +137,22 @@ class B2DBody
   end
 
   def edge_fixture(options = {})
-    edge_shape = EdgeShape.new(options)
+    edge_shape = B2DEdgeShape.new(options)
     add_fixture(options, edge_shape)
   end
 
   def polygon_fixture(options = {})
-    polygon_shape = PolygonShape.new(options)
+    polygon_shape = B2DPolygonShape.new(options)
     add_fixture(options, polygon_shape)
   end
 
   def circle_fixture(options = {})
-    circle_shape = CircleShape.new(options)
+    circle_shape = B2DCircleShape.new(options)
     add_fixture(options, circle_shape)
   end
 
   def chain_fixture(options = {})
-    chain_shape = ChainShape.new(options)
+    chain_shape = B2DChainShape.new(options)
     add_fixture(options, chain_shape)
   end
 

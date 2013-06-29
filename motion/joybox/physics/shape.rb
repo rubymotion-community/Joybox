@@ -5,11 +5,11 @@ class B2DShape
   alias_method :child_count, :childCount
   alias_method :metric_radius, :radius
 
-  Circle = 0
-  Edge = 1
-  Polygon = 2
-  Chain = 3
-  Count = 4 
+  CircleType = 0
+  EdgeType = 1
+  PolygonType = 2
+  ChainType = 3
+  CountType = 4 
 
   def radius
     metric_radius.to_pixels
