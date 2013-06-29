@@ -112,7 +112,7 @@ describe Joybox::Physics::Body do
 
     body.mass_data.mass.should == 1.0
     body.mass_data.center.should == CGPointMake(0, 0)
-    body.mass_data.rotationalInertia == 0.0
+    body.mass_data.rotational_inertia == 0.0
   end 
 
   it "should change its mass data" do
@@ -122,13 +122,13 @@ describe Joybox::Physics::Body do
 
     mass_data = MassData.new
     mass_data.mass = 2.0
-    mass_data.center = [0.0, 0.0]
+    mass_data.center = [0.1, 0.1]
     mass_data.rotational_inertia = 1.0
 
     body.mass_data = mass_data
 
     body.mass_data.mass.should == 2.0
-    body.mass_data.center.should == CGPointMake(0.0, 0.0)
+    body.mass_data.center.should.be.close CGPointMake(0.1, 0.1), 0.1
     body.mass_data.rotational_inertia == 1.0
   end
 

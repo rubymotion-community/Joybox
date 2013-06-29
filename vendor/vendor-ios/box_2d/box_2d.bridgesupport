@@ -19,6 +19,11 @@
 <field name='active' type='B' declared_type='_Bool'/>
 <field name='gravityScale' type='f' declared_type='CGFloat'/>
 </struct>
+<struct name='B2DFilter' type='{B2DFilter=&quot;categoryBits&quot;I&quot;maskBits&quot;I&quot;groupIndex&quot;i}'>
+<field name='categoryBits' type='I' declared_type='NSUInteger'/>
+<field name='maskBits' type='I' declared_type='NSUInteger'/>
+<field name='groupIndex' type='i' declared_type='NSInteger'/>
+</struct>
 <struct name='B2DFixtureDef' type='{B2DFixtureDef=&quot;shape&quot;@&quot;userData&quot;@&quot;friction&quot;f&quot;restitution&quot;f&quot;density&quot;f&quot;isSensor&quot;B}'>
 <field declared_type='B2DShape*' name='shape' type='@'/>
 <field declared_type='id' name='userData' type='@'/>
@@ -55,15 +60,14 @@
 <field name='position' type='{CGPoint=&quot;x&quot;f&quot;y&quot;f}' declared_type='CGPoint'/>
 <field name='angle' type='f' declared_type='CGFloat'/>
 </struct>
-<opaque name='B2DFilter' type='^{B2DFilter=}'/>
-<enum value='3' name='kChainShapeType'/>
-<enum value='0' name='kCircleShapeType'/>
-<enum value='2' name='kDynamicBodyType'/>
-<enum value='1' name='kEdgeShapeType'/>
-<enum value='1' name='kKinematicBodyType'/>
-<enum value='2' name='kPolygonShapeType'/>
-<enum value='0' name='kStaticBodyType'/>
-<enum value='4' name='kTypeCountShapeType'/>
+<enum name='kChainShapeType' value='3'/>
+<enum name='kCircleShapeType' value='0'/>
+<enum name='kDynamicBodyType' value='2'/>
+<enum name='kEdgeShapeType' value='1'/>
+<enum name='kKinematicBodyType' value='1'/>
+<enum name='kPolygonShapeType' value='2'/>
+<enum name='kStaticBodyType' value='0'/>
+<enum name='kTypeCountShapeType' value='4'/>
 <function name='B2DAABBMake'>
 <arg name='lowerBound' type='{CGPoint=ff}' declared_type='CGPoint'/>
 <arg name='upperBound' type='{CGPoint=ff}' declared_type='CGPoint'/>
@@ -73,10 +77,10 @@
 <retval type='{B2DBodyDef=i{CGPoint=ff}f{CGPoint=ff}fffBBBBBf}' declared_type='B2DBodyDef'/>
 </function>
 <function name='B2DFilterMake'>
-<arg name='categoryBits' type='S' declared_type='uint16'/>
-<arg name='maskBits' type='S' declared_type='uint16'/>
-<arg name='groupIndex' type='i' declared_type='int'/>
-<retval type='{B2DFilter=SSi}' declared_type='B2DFilter'/>
+<arg name='categoryBits' type='I' declared_type='NSUInteger'/>
+<arg name='maskBits' type='I' declared_type='NSUInteger'/>
+<arg name='groupIndex' type='i' declared_type='NSInteger'/>
+<retval type='{B2DFilter=IIi}' declared_type='B2DFilter'/>
 </function>
 <function name='B2DFixtureDefMake'>
 <retval type='{B2DFixtureDef=@@fffB}' declared_type='B2DFixtureDef'/>
@@ -429,7 +433,7 @@
 <retval type='v' declared_type='void'/>
 </method>
 <method selector='setShouldCollide:'>
-<arg index='0' function_pointer='true' name='shouldCollide' type='@?' declared_type='shouldCollideCallback'>
+<arg index='0' name='shouldCollide' function_pointer='true' type='@?' declared_type='shouldCollideCallback'>
 <arg type='@' declared_type='B2DFixture*'/>
 <arg type='@' declared_type='B2DFixture*'/>
 <retval type='B' declared_type='_Bool'/>
@@ -464,7 +468,7 @@
 </retval>
 </method>
 <method selector='setBeginContact:'>
-<arg index='0' function_pointer='true' name='beginContact' type='@?' declared_type='beginContactCallback'>
+<arg index='0' name='beginContact' function_pointer='true' type='@?' declared_type='beginContactCallback'>
 <arg type='@' declared_type='B2DBody*'/>
 <arg type='@' declared_type='B2DBody*'/>
 <arg type='B' declared_type='_Bool'/>
@@ -477,7 +481,7 @@
 <retval type='v' declared_type='void'/>
 </method>
 <method selector='setEndContact:'>
-<arg index='0' function_pointer='true' name='endContact' type='@?' declared_type='endContactCallback'>
+<arg index='0' name='endContact' function_pointer='true' type='@?' declared_type='endContactCallback'>
 <arg type='@' declared_type='B2DBody*'/>
 <arg type='@' declared_type='B2DBody*'/>
 <retval type='v' declared_type='void'/>
@@ -500,7 +504,7 @@
 <retval type='v' declared_type='void'/>
 </method>
 <method selector='setFixtureSayGoodbye:'>
-<arg index='0' function_pointer='true' name='fixtureSayGoodbye' type='@?' declared_type='fixtureSayGoodbyeCallback'>
+<arg index='0' name='fixtureSayGoodbye' function_pointer='true' type='@?' declared_type='fixtureSayGoodbyeCallback'>
 <arg type='@' declared_type='B2DFixture*'/>
 <retval type='v' declared_type='void'/>
 </arg>
@@ -553,7 +557,7 @@
 <retval type='v' declared_type='void'/>
 </method>
 <method selector='filterData'>
-<retval type='{B2DFilter=SSi}' declared_type='B2DFilter'/>
+<retval type='{B2DFilter=IIi}' declared_type='B2DFilter'/>
 </method>
 <method selector='fixture'>
 <retval type='^i' declared_type='int*'/>
@@ -594,7 +598,7 @@
 <retval type='v' declared_type='void'/>
 </method>
 <method selector='setFilterData:'>
-<arg index='0' name='filterData' type='{B2DFilter=SSi}' declared_type='B2DFilter'/>
+<arg index='0' name='filterData' type='{B2DFilter=IIi}' declared_type='B2DFilter'/>
 <retval type='v' declared_type='void'/>
 </method>
 <method selector='setFixture:'>
@@ -685,7 +689,7 @@
 <retval type='v' declared_type='void'/>
 </method>
 <method selector='setReportFixture:'>
-<arg index='0' function_pointer='true' name='reportFixture' type='@?' declared_type='reportQueryFixtureCallback'>
+<arg index='0' name='reportFixture' function_pointer='true' type='@?' declared_type='reportQueryFixtureCallback'>
 <arg type='@' declared_type='B2DFixture*'/>
 <retval type='B' declared_type='_Bool'/>
 </arg>
@@ -710,7 +714,7 @@
 <retval type='v' declared_type='void'/>
 </method>
 <method selector='setReportFixture:'>
-<arg index='0' function_pointer='true' name='reportFixture' type='@?' declared_type='reportRaycastFixtureCallback'>
+<arg index='0' name='reportFixture' function_pointer='true' type='@?' declared_type='reportRaycastFixtureCallback'>
 <arg type='@' declared_type='B2DFixture*'/>
 <arg type='{CGPoint=ff}' declared_type='CGPoint'/>
 <arg type='{CGPoint=ff}' declared_type='CGPoint'/>

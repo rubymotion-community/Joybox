@@ -112,12 +112,9 @@ module Joybox
           @query.call(fixture)
         end
 
-        aabb = B2DAABB.new
-        lower_bound = CGPointMake(options[:lower_bound][0], options[:lower_bound][1])
-        aabb.lowerBound = lower_bound.to_pixel_coordinates
-        upper_bound = CGPointMake(options[:upper_bound][0], options[:upper_bound][1])
-        aabb.upperBound = upper_bound.to_pixel_coordinates
-        
+        aabb = AABB.new
+        aabb.lower_bound = CGPointMake(options[:lower_bound][0], options[:lower_bound][1])
+        aabb.upper_bound = CGPointMake(options[:upper_bound][0], options[:upper_bound][1])
         queryAABBWithCallback(@query_callback, andAABB:aabb)
       end
 
@@ -132,8 +129,8 @@ module Joybox
         second_point = CGPointMake(options[:second_point][0], options[:second_point][1])
 
         rayCastWithCallback(@ray_cast_callback, 
-                            andPoint1:first_point.to_pixel_coordinates, 
-                            andPoint2:second_point.to_pixel_coordinates)
+                            andPoint1:first_point.from_pixel_coordinates, 
+                            andPoint2:second_point.from_pixel_coordinates)
       end
 
     end

@@ -92,11 +92,11 @@ describe Joybox::Physics::World do
     world.profile.step.should == 0
     world.profile.collide.should == 0
     world.profile.solve.should == 0
-    world.profile.solveInit.should == 0
-    world.profile.solveVelocity.should == 0
-    world.profile.solvePosition.should == 0
+    world.profile.solve_init.should == 0
+    world.profile.solve_velocity.should == 0
+    world.profile.solve_position.should == 0
     world.profile.broadphase.should == 0
-    world.profile.solveTOI.should == 0
+    world.profile.solve_TOI.should == 0
   end
 
   it "should filter body collisions" do
@@ -187,10 +187,15 @@ describe Joybox::Physics::World do
       polygon_fixture box: [16, 16]
     end
 
-    world.query lower_bound:[0, 0], upper_bound:[1, 1] do |fixture|
+    query_notified = false
+
+    world.query lower_bound:[0, 0], upper_bound:[100, 100] do |fixture|
+      query_notified = true
       fixture.should.not == nil
       true
     end
+
+    query_notified.should == true
   end
 
   it "should ray cast the world with a first point and second point" do
@@ -200,12 +205,17 @@ describe Joybox::Physics::World do
       polygon_fixture box: [16, 16]
     end
 
-    world.ray_cast first_point: [0, 0], second_point: [1, 1] do |fixture, point, normal, fraction|
-      fixture.should.not == nil
+    ray_cast_notified = false
+
+    world.ray_cast first_point: [0, 0], second_point: [100, 100] do |fixture, point, normal, fraction|
+      ray_cast_notified = true
+      fixture.type.should == Fixture::Polygon
       point.should.be.close CGPointMake(0.08, 0.08), 0.01
       normal.should == CGPointMake(0, -1.0)
-      fraction.should.be.close 0.08203125, 0.01
+      fraction.should.be.close 0.83, 0.01
       0.0
     end
+
+    ray_cast_notified.should == true
   end
 end

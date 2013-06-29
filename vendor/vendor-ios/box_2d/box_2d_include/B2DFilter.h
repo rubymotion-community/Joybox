@@ -11,13 +11,13 @@
 
 struct B2DFilter
 {  
-  uint16 categoryBits;
-  uint16 maskBits;
-  int16 groupIndex;
+  NSUInteger categoryBits;
+  NSUInteger maskBits;
+  NSInteger groupIndex;
 };
 typedef struct B2DFilter B2DFilter;
 
 B2DFilter B2DFilterMake();
-B2DFilter B2DFilterMake(uint16 categoryBits, uint16 maskBits, int16 groupIndex);
+B2DFilter B2DFilterMake(NSUInteger categoryBits, NSUInteger maskBits, NSInteger groupIndex);
 
 #endif

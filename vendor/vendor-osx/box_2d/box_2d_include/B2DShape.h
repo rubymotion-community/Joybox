@@ -16,15 +16,16 @@
 
 @interface B2DShape : NSObject {
   
-  b2Shape *shape;
+  b2Shape* shape;
+  bool isTransientEntity;
 }
 
-@property (nonatomic, assign) b2Shape *shape;
+@property (nonatomic, assign) b2Shape* shape;
 @property (nonatomic, assign, readonly) B2DShapeTypes type;
 @property (nonatomic, assign, readonly) NSInteger childCount;
 @property (nonatomic, assign, readonly) CGFloat radius;
 
-- (id)initWithShape:(b2Shape *)boxShape;
+- (id)initWithShape:(b2Shape*)boxShape;
 
 - (bool)testPointWithTransform:(B2DTransform)transform andPoint:(CGPoint)point;
 - (bool)rayCastWithOutput:(B2DRayCastOutput *)output

@@ -26,4 +26,6 @@ Motion::Project::App.setup do |app|
   Dir.glob(File.join(joybox, '**/*.rb')).reverse.each do |file|
     app.files.insert(insert_point, file)
   end
+
+  app.files_dependencies File.join(joybox, 'physics/aabb.rb') => File.join(joybox, 'physics/world.rb')
 end
