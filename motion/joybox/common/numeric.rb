@@ -1,10 +1,10 @@
 class Numeric
 
-  def to_pixels
+  def from_pixels
     self / 32.0
   end
 
-  def from_pixels
+  def to_pixels
     self * 32.0
   end
 

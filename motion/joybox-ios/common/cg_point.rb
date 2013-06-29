@@ -9,11 +9,11 @@ class CGPoint
   end
 
   def from_pixel_coordinates
-    CGPointMake(self.x.to_pixels, self.y.to_pixels)
+    CGPointMake(self.x.from_pixels, self.y.from_pixels)
   end
 
   def to_pixel_coordinates
-    CGPointMake(self.x.from_pixels, self.y.from_pixels)
+    CGPointMake(self.x.to_pixels, self.y.to_pixels)
   end
 
   def == (point)

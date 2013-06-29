@@ -4,10 +4,10 @@ describe Numeric do
   end
 
   it "should convert to pixel coordinates" do
-    @number.to_pixels.should == 1.5625
+    @number.from_pixels.should == 1.5625
   end
 
   it "should convert from pixel coordinates" do
-    1.5625.from_pixels.should == @number
+    1.5625.to_pixels.should == @number
   end
 end
