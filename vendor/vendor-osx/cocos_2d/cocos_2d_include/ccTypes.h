@@ -32,8 +32,19 @@
 #import <Foundation/Foundation.h>
 #import "ccMacros.h"
 
+#ifdef __CC_PLATFORM_IOS
+#import <CoreGraphics/CGGeometry.h>	// CGPoint
+#endif
+
 #import "Platforms/CCGL.h"
 
+/** RGB color composed of bytes 3 bytes
+@since v0.8
+ */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef struct _ccColor3B
 {
@@ -374,5 +385,58 @@ typedef CGFloat ccTime;
 //typedef double ccTime;
 
 typedef float ccMat4[16];
-	
+    
+    
+typedef struct _ccFontShadow
+{
+    // true if shadow enabled
+    bool   m_shadowEnabled;
+    // shadow x and y offset
+    CGSize m_shadowOffset;
+    // shadow blurrines
+    float  m_shadowBlur;
+    // shadow opacity
+    float  m_shadowOpacity;
+    
+} ccFontShadow;
+
+typedef struct _ccFontStroke
+{
+    // true if stroke enabled
+    bool        m_strokeEnabled;
+    // stroke color
+    ccColor3B   m_strokeColor;
+    // stroke size
+    float       m_strokeSize;
+    
+} ccFontStroke;
+    
+/*
+typedef struct _ccFontDefinition
+{
+    // font name
+    NSString                *m_fontName;
+    // font size
+    int                     m_fontSize;
+    // horizontal alignment
+    CCTextAlignment         m_alignment;
+    // vertical alignment
+    CCVerticalTextAlignment m_vertAlignment;
+    // line break mode
+    CCLineBreakMode         m_lineBreakMode;
+    // renering box
+    CGSize                  m_dimensions;
+    // font color
+    ccColor3B               m_fontFillColor;
+    // font shadow
+    ccFontShadow            m_shadow;
+    // font stroke
+    ccFontStroke            m_stroke;
+    
+} ccFontDefinition;
+*/
+    
+#ifdef __cplusplus
+}
+#endif
 

@@ -20,6 +20,8 @@ Motion::Project::App.setup do |app|
   
 
   cocos2d_vendor = File.expand_path(File.join(platform_vendor, "cocos_2d"))
+  cocos_denshion_vendor = File.expand_path(File.join(platform_vendor, "cocos_denshion"))
+  cocos_builder_reader_vendor = File.expand_path(File.join(platform_vendor, "cocos_builder_reader"))
   box2d_vendor = File.expand_path(File.join(platform_vendor, "box_2d"))
 
   app.vendor_project(cocos2d_vendor,
@@ -27,6 +29,16 @@ Motion::Project::App.setup do |app|
                      :products => ["libcocos2d.a"],
                      :bridgesupport_cflags => "-D__CC_PLATFORM_IOS -ISupport -IPlatforms -IPlatforms/iOS",
                      :bridgesupport_exceptions => ["cocos_2d_exceptions.bridgesupport"])
+
+  app.vendor_project(cocos_denshion_vendor,
+                     :static,
+                     :products => ['libCocosDenshion.a'],
+                     :bridgesupport_cflags => "-DNDEBUG")
+
+  app.vendor_project(cocos_builder_reader_vendor,
+                     :static,
+                     :products => ['libCocosBuilderReader.a'],
+                     :bridgesupport_cflags => "-DNDEBUG -I../../cocos_2d/cocos_2d_include/.")
 
   app.vendor_project(box2d_vendor,
                      :static,
