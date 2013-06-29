@@ -1,7 +1,7 @@
 describe Joybox::Physics::Fixture do
   before do
     @world = World.new gravity: [0, -9.8]
-    @body = @world.new_body position: [100, 100], type: KDynamicBodyType do
+    @body = @world.new_body position: [100, 100], type: Body::Dynamic do
       polygon_fixture box: [16, 16],
                       density: 1.0,
                       friction: 1.0,

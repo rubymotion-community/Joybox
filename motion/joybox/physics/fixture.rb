@@ -38,15 +38,15 @@ class B2DFixture
       return # Todo print error message on the console
     end
 
-    ray_cast_input = B2DRayCastInput.new
-    ray_cast_input.point1 = options[:first_point].to_point.from_pixel_coordinates
-    ray_cast_input.point2 = options[:second_point].to_point.from_pixel_coordinates
-    ray_cast_input.maxFraction = options[:maximum_fraction]
+    ray_cast_input = RayCastInput.new
+    ray_cast_input.first_point = options[:first_point]
+    ray_cast_input.second_point = options[:second_point]
+    ray_cast_input.maximum_fraction = options[:maximum_fraction]
 
-    ray_cast_output = Pointer.new(B2DRayCastOutput.type)
+    ray_cast_output = Pointer.new(RayCastOutput.type)
 
     hits = rayCastWithOutput(ray_cast_output, input:ray_cast_input, andChildIndex: options[:child_index])
-    block.call(hits, ray_cast_output[0].normal.to_pixel_coordinates, ray_cast_output[0].fraction)
+    block.call(hits, ray_cast_output[0].normal, ray_cast_output[0].fraction)
   end
   
 end

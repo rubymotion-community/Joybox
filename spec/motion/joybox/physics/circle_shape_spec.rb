@@ -1,7 +1,7 @@
 describe Joybox::Physics::CircleShape do
   before do
     @world = World.new gravity: [0, -9.8]
-    @body = @world.new_body position: [100, 100], type: KDynamicBodyType 
+    @body = @world.new_body position: [100, 100], type: Body::Dynamic 
   end
 
   describe "Initialization" do
