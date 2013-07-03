@@ -19,6 +19,8 @@ module Joybox
       def position=(position)
         if @body
           @body.position = position
+        else
+          super
         end
       end
 
@@ -26,8 +28,8 @@ module Joybox
         if @body
           @body.position
         else
-          [0,0]
-        end  
+          super
+        end
       end
 
       def nodeToParentTransform
