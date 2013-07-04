@@ -23,6 +23,8 @@ module Joybox
         end
 
         opengl_view = alloc.initWithFrame(bounds)
+
+        #opengl_view.pixelFormat = KCCTexture2DPixelFormat_RGBA8888
         opengl_view.setAutoresizingMask(options[:auto_resize_mask])
         opengl_view.resize_to_superview = !bounds_provided
         opengl_view

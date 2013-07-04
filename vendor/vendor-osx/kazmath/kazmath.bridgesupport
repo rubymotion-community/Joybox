@@ -1,0 +1,865 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<struct type='{kmAABB=&quot;min&quot;{kmVec3=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}&quot;max&quot;{kmVec3=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}}' name='kmAABB'>
+<field type='{kmVec3=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}' declared_type='kmVec3' name='min'/>
+<field type='{kmVec3=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}' declared_type='kmVec3' name='max'/>
+</struct>
+<struct type='{kmMat3=&quot;mat&quot;[9f]}' name='kmMat3'>
+<field type='[9f]' declared_type='float*' name='mat'/>
+</struct>
+<struct type='{kmMat4=&quot;mat&quot;[16f]}' name='kmMat4'>
+<field type='[16f]' declared_type='float*' name='mat'/>
+</struct>
+<struct type='{kmPlane=&quot;a&quot;f&quot;b&quot;f&quot;c&quot;f&quot;d&quot;f}' name='kmPlane'>
+<field type='f' declared_type='float' name='a'/>
+<field type='f' declared_type='float' name='b'/>
+<field type='f' declared_type='float' name='c'/>
+<field type='f' declared_type='float' name='d'/>
+</struct>
+<struct type='{kmQuaternion=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f&quot;w&quot;f}' name='kmQuaternion'>
+<field type='f' declared_type='float' name='x'/>
+<field type='f' declared_type='float' name='y'/>
+<field type='f' declared_type='float' name='z'/>
+<field type='f' declared_type='float' name='w'/>
+</struct>
+<struct type='{kmRay2=&quot;start&quot;{kmVec2=&quot;x&quot;f&quot;y&quot;f}&quot;dir&quot;{kmVec2=&quot;x&quot;f&quot;y&quot;f}}' name='kmRay2'>
+<field type='{kmVec2=&quot;x&quot;f&quot;y&quot;f}' declared_type='kmVec2' name='start'/>
+<field type='{kmVec2=&quot;x&quot;f&quot;y&quot;f}' declared_type='kmVec2' name='dir'/>
+</struct>
+<struct type='{kmVec2=&quot;x&quot;f&quot;y&quot;f}' name='kmVec2'>
+<field type='f' declared_type='float' name='x'/>
+<field type='f' declared_type='float' name='y'/>
+</struct>
+<struct type='{kmVec3=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}' name='kmVec3'>
+<field type='f' declared_type='float' name='x'/>
+<field type='f' declared_type='float' name='y'/>
+<field type='f' declared_type='float' name='z'/>
+</struct>
+<struct type='{kmVec4=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f&quot;w&quot;f}' name='kmVec4'>
+<field type='f' declared_type='float' name='x'/>
+<field type='f' declared_type='float' name='y'/>
+<field type='f' declared_type='float' name='z'/>
+<field type='f' declared_type='float' name='w'/>
+</struct>
+<struct type='{km_mat4_stack=&quot;capacity&quot;i&quot;item_count&quot;i&quot;top&quot;^{kmMat4}&quot;stack&quot;^{kmMat4}}' name='km_mat4_stack'>
+<field type='i' declared_type='int' name='capacity'/>
+<field type='i' declared_type='int' name='item_count'/>
+<field type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='top'/>
+<field type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='stack'/>
+</struct>
+<enum value='0' name='KM_FALSE'/>
+<enum value='5888' name='KM_GL_MODELVIEW'/>
+<enum value='5889' name='KM_GL_PROJECTION'/>
+<enum value='5890' name='KM_GL_TEXTURE'/>
+<enum value='2' name='KM_PLANE_BOTTOM'/>
+<enum value='5' name='KM_PLANE_FAR'/>
+<enum value='0' name='KM_PLANE_LEFT'/>
+<enum value='4' name='KM_PLANE_NEAR'/>
+<enum value='1' name='KM_PLANE_RIGHT'/>
+<enum value='3' name='KM_PLANE_TOP'/>
+<enum value='1' name='KM_TRUE'/>
+<enum value='1' name='POINT_BEHIND_PLANE'/>
+<enum value='0' name='POINT_INFRONT_OF_PLANE'/>
+<enum value='2' name='POINT_ON_PLANE'/>
+<enum value='0.015625' name='kmEpsilon'/>
+<enum value='3.141592f' name='kmPI'/>
+<enum value='0.017453f' name='kmPIOver180'/>
+<enum value='57.295779f' name='kmPIUnder180'/>
+<function name='NEON_Matrix4Mul'>
+<arg const='true' type='^f' declared_type='float*' name='a'/>
+<arg const='true' type='^f' declared_type='float*' name='b'/>
+<arg type='^f' declared_type='float*' name='output'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='NEON_Matrix4Vector4Mul'>
+<arg const='true' type='^f' declared_type='float*' name='m'/>
+<arg const='true' type='^f' declared_type='float*' name='v'/>
+<arg type='^f' declared_type='float*' name='output'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmAABBAssign'>
+<arg type='^{kmAABB={kmVec3=fff}{kmVec3=fff}}' declared_type='kmAABB*' name='pOut'/>
+<arg const='true' type='^{kmAABB={kmVec3=fff}{kmVec3=fff}}' declared_type='kmAABB*' name='pIn'/>
+<retval const='true' type='^{kmAABB={kmVec3=fff}{kmVec3=fff}}' declared_type='kmAABB*'/>
+</function>
+<function name='kmAABBContainsPoint'>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pPoint'/>
+<arg const='true' type='^{kmAABB={kmVec3=fff}{kmVec3=fff}}' declared_type='kmAABB*' name='pBox'/>
+<retval const='true' type='i' declared_type='int'/>
+</function>
+<function name='kmAABBScale'>
+<arg type='^{kmAABB={kmVec3=fff}{kmVec3=fff}}' declared_type='kmAABB*' name='pOut'/>
+<arg const='true' type='^{kmAABB={kmVec3=fff}{kmVec3=fff}}' declared_type='kmAABB*' name='pIn'/>
+<arg type='f' declared_type='float' name='s'/>
+<retval const='true' type='^{kmAABB={kmVec3=fff}{kmVec3=fff}}' declared_type='kmAABB*'/>
+</function>
+<function name='kmAlmostEqual'>
+<arg type='f' declared_type='float' name='lhs'/>
+<arg type='f' declared_type='float' name='rhs'/>
+<retval type='C' declared_type='unsigned char'/>
+</function>
+<function name='kmDegreesToRadians'>
+<arg type='f' declared_type='float' name='degrees'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmGLFreeAll'>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLGetMatrix'>
+<arg type='I' declared_type='kmGLEnum' name='mode'/>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLLoadIdentity'>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLLoadMatrix'>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLMatrixMode'>
+<arg type='I' declared_type='kmGLEnum' name='mode'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLMultMatrix'>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLPopMatrix'>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLPushMatrix'>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLRotatef'>
+<arg type='f' declared_type='float' name='angle'/>
+<arg type='f' declared_type='float' name='x'/>
+<arg type='f' declared_type='float' name='y'/>
+<arg type='f' declared_type='float' name='z'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLScalef'>
+<arg type='f' declared_type='float' name='x'/>
+<arg type='f' declared_type='float' name='y'/>
+<arg type='f' declared_type='float' name='z'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmGLTranslatef'>
+<arg type='f' declared_type='float' name='x'/>
+<arg type='f' declared_type='float' name='y'/>
+<arg type='f' declared_type='float' name='z'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmMat3Adjugate'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pIn'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3AreEqual'>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pM1'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pM2'/>
+<retval const='true' type='i' declared_type='int'/>
+</function>
+<function name='kmMat3Assign'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pIn'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3Determinant'>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pIn'/>
+<retval const='true' type='f' declared_type='float'/>
+</function>
+<function name='kmMat3Fill'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='^f' declared_type='float*' name='pMat'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3Identity'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3Inverse'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='pDeterminate'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pM'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3IsIdentity'>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pIn'/>
+<retval const='true' type='i' declared_type='int'/>
+</function>
+<function name='kmMat3Multiply'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pM1'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pM2'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3Rotation'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='radians'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3RotationAxisAngle'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='axis'/>
+<arg type='f' declared_type='float' name='radians'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3RotationQuaternion'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='struct kmQuaternion*' name='pIn'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3RotationToAxisAngle'>
+<arg type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pAxis'/>
+<arg type='^f' declared_type='float*' name='radians'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pIn'/>
+<retval const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*'/>
+</function>
+<function name='kmMat3RotationX'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='radians'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3RotationY'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='radians'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3RotationZ'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='radians'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3ScalarMultiply'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pM'/>
+<arg const='true' type='f' declared_type='float' name='pFactor'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3Scaling'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='x'/>
+<arg const='true' type='f' declared_type='float' name='y'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3Translation'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='x'/>
+<arg const='true' type='f' declared_type='float' name='y'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat3Transpose'>
+<arg type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pOut'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*' name='pIn'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='kmMat3*'/>
+</function>
+<function name='kmMat4AreEqual'>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pM1'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pM2'/>
+<retval const='true' type='i' declared_type='int'/>
+</function>
+<function name='kmMat4Assign'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4ExtractPlane'>
+<arg type='^{kmPlane=ffff}' declared_type='struct kmPlane*' name='pOut'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<arg const='true' type='I' declared_type='unsigned int' name='plane'/>
+<retval const='true' type='^{kmPlane=ffff}' declared_type='struct kmPlane*'/>
+</function>
+<function name='kmMat4ExtractRotation'>
+<arg type='^{kmMat3=[9f]}' declared_type='struct kmMat3*' name='pOut'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval const='true' type='^{kmMat3=[9f]}' declared_type='struct kmMat3*'/>
+</function>
+<function name='kmMat4Fill'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='^f' declared_type='float*' name='pMat'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4GetForwardVec3'>
+<arg type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*'/>
+</function>
+<function name='kmMat4GetRightVec3'>
+<arg type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*'/>
+</function>
+<function name='kmMat4GetUpVec3'>
+<arg type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*'/>
+</function>
+<function name='kmMat4Identity'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4Inverse'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pM'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4IsIdentity'>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval const='true' type='i' declared_type='int'/>
+</function>
+<function name='kmMat4LookAt'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pEye'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pCenter'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pUp'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4Multiply'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pM1'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pM2'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4OrthographicProjection'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg type='f' declared_type='float' name='left'/>
+<arg type='f' declared_type='float' name='right'/>
+<arg type='f' declared_type='float' name='bottom'/>
+<arg type='f' declared_type='float' name='top'/>
+<arg type='f' declared_type='float' name='nearVal'/>
+<arg type='f' declared_type='float' name='farVal'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4PerspectiveProjection'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg type='f' declared_type='float' name='fovY'/>
+<arg type='f' declared_type='float' name='aspect'/>
+<arg type='f' declared_type='float' name='zNear'/>
+<arg type='f' declared_type='float' name='zFar'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4RotationAxisAngle'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='axis'/>
+<arg type='f' declared_type='float' name='radians'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4RotationPitchYawRoll'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='pitch'/>
+<arg const='true' type='f' declared_type='float' name='yaw'/>
+<arg const='true' type='f' declared_type='float' name='roll'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4RotationQuaternion'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='struct kmQuaternion*' name='pQ'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4RotationToAxisAngle'>
+<arg type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pAxis'/>
+<arg type='^f' declared_type='float*' name='radians'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*'/>
+</function>
+<function name='kmMat4RotationTranslation'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='struct kmMat3*' name='rotation'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='translation'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4RotationX'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='radians'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4RotationY'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='radians'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4RotationZ'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='radians'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4Scaling'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='x'/>
+<arg const='true' type='f' declared_type='float' name='y'/>
+<arg const='true' type='f' declared_type='float' name='z'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4Translation'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='f' declared_type='float' name='x'/>
+<arg const='true' type='f' declared_type='float' name='y'/>
+<arg const='true' type='f' declared_type='float' name='z'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmMat4Transpose'>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pIn'/>
+<retval const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*'/>
+</function>
+<function name='kmPlaneClassifyPoint'>
+<arg const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pIn'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pP'/>
+<retval const='true' type='i' declared_type='POINT_CLASSIFICATION'/>
+</function>
+<function name='kmPlaneDot'>
+<arg const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pP'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='struct kmVec4*' name='pV'/>
+<retval const='true' type='f' declared_type='float'/>
+</function>
+<function name='kmPlaneDotCoord'>
+<arg const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pP'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pV'/>
+<retval const='true' type='f' declared_type='float'/>
+</function>
+<function name='kmPlaneDotNormal'>
+<arg const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pP'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pV'/>
+<retval const='true' type='f' declared_type='float'/>
+</function>
+<function name='kmPlaneFromPointNormal'>
+<arg type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pPoint'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pNormal'/>
+<retval const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*'/>
+</function>
+<function name='kmPlaneFromPoints'>
+<arg type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='p1'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='p2'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='p3'/>
+<retval const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*'/>
+</function>
+<function name='kmPlaneIntersectLine'>
+<arg type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pP'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pV1'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pV2'/>
+<retval const='true' type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmPlaneNormalize'>
+<arg type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pOut'/>
+<arg const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pP'/>
+<retval const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*'/>
+</function>
+<function name='kmPlaneScale'>
+<arg type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pOut'/>
+<arg const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*' name='pP'/>
+<arg type='f' declared_type='float' name='s'/>
+<retval const='true' type='^{kmPlane=ffff}' declared_type='kmPlane*'/>
+</function>
+<function name='kmQuaternionAdd'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pQ1'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pQ2'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionAssign'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionConjugate'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<retval const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionDot'>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='q1'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='q2'/>
+<retval const='true' type='f' declared_type='float'/>
+</function>
+<function name='kmQuaternionExp'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionIdentity'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionInverse'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionIsIdentity'>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<retval type='i' declared_type='int'/>
+</function>
+<function name='kmQuaternionLength'>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmQuaternionLengthSq'>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmQuaternionLn'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionMultiply'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='q1'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='q2'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionMultiplyVec3'>
+<arg type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='q'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='v'/>
+<retval type='^{kmVec3=fff}' declared_type='struct kmVec3*'/>
+</function>
+<function name='kmQuaternionNormalize'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionRotationAxis'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pV'/>
+<arg type='f' declared_type='float' name='angle'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionRotationBetweenVec3'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='vec1'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='vec2'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='fallback'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionRotationMatrix'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='struct kmMat3*' name='pIn'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionRotationYawPitchRoll'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg type='f' declared_type='float' name='yaw'/>
+<arg type='f' declared_type='float' name='pitch'/>
+<arg type='f' declared_type='float' name='roll'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionScale'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<arg type='f' declared_type='float' name='s'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionSlerp'>
+<arg type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pOut'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='q1'/>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='q2'/>
+<arg type='f' declared_type='float' name='t'/>
+<retval type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*'/>
+</function>
+<function name='kmQuaternionToAxisAngle'>
+<arg const='true' type='^{kmQuaternion=ffff}' declared_type='kmQuaternion*' name='pIn'/>
+<arg type='^{kmVec3=fff}' declared_type='struct kmVec3*' name='pVector'/>
+<arg type='^f' declared_type='float*' name='pAngle'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmRadiansToDegrees'>
+<arg type='f' declared_type='float' name='radians'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmRay2Fill'>
+<arg type='^{kmRay2={kmVec2=ff}{kmVec2=ff}}' declared_type='kmRay2*' name='ray'/>
+<arg type='f' declared_type='float' name='px'/>
+<arg type='f' declared_type='float' name='py'/>
+<arg type='f' declared_type='float' name='vx'/>
+<arg type='f' declared_type='float' name='vy'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='kmRay2IntersectCircle'>
+<arg const='true' type='^{kmRay2={kmVec2=ff}{kmVec2=ff}}' declared_type='kmRay2*' name='ray'/>
+<arg const='true' type='{kmVec2=ff}' declared_type='kmVec2' name='centre'/>
+<arg const='true' type='f' declared_type='float' name='radius'/>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='intersection'/>
+<retval type='C' declared_type='unsigned char'/>
+</function>
+<function name='kmRay2IntersectLineSegment'>
+<arg const='true' type='^{kmRay2={kmVec2=ff}{kmVec2=ff}}' declared_type='kmRay2*' name='ray'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='p1'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='p2'/>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='intersection'/>
+<retval type='C' declared_type='unsigned char'/>
+</function>
+<function name='kmRay2IntersectTriangle'>
+<arg const='true' type='^{kmRay2={kmVec2=ff}{kmVec2=ff}}' declared_type='kmRay2*' name='ray'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='p1'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='p2'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='p3'/>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='intersection'/>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='normal_out'/>
+<retval type='C' declared_type='unsigned char'/>
+</function>
+<function name='kmSQR'>
+<arg type='f' declared_type='float' name='s'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec2Add'>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='pOut'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pV1'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pV2'/>
+<retval type='^{kmVec2=ff}' declared_type='kmVec2*'/>
+</function>
+<function name='kmVec2AreEqual'>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='p1'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='p2'/>
+<retval type='i' declared_type='int'/>
+</function>
+<function name='kmVec2Dot'>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pV1'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pV2'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec2Fill'>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='pOut'/>
+<arg type='f' declared_type='float' name='x'/>
+<arg type='f' declared_type='float' name='y'/>
+<retval type='^{kmVec2=ff}' declared_type='kmVec2*'/>
+</function>
+<function name='kmVec2Length'>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pIn'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec2LengthSq'>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pIn'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec2Normalize'>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='pOut'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pIn'/>
+<retval type='^{kmVec2=ff}' declared_type='kmVec2*'/>
+</function>
+<function name='kmVec2Scale'>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='pOut'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pIn'/>
+<arg const='true' type='f' declared_type='float' name='s'/>
+<retval type='^{kmVec2=ff}' declared_type='kmVec2*'/>
+</function>
+<function name='kmVec2Subtract'>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='pOut'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pV1'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pV2'/>
+<retval type='^{kmVec2=ff}' declared_type='kmVec2*'/>
+</function>
+<function name='kmVec2Transform'>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='pOut'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pV1'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='struct kmMat3*' name='pM'/>
+<retval type='^{kmVec2=ff}' declared_type='kmVec2*'/>
+</function>
+<function name='kmVec2TransformCoord'>
+<arg type='^{kmVec2=ff}' declared_type='kmVec2*' name='pOut'/>
+<arg const='true' type='^{kmVec2=ff}' declared_type='kmVec2*' name='pV'/>
+<arg const='true' type='^{kmMat3=[9f]}' declared_type='struct kmMat3*' name='pM'/>
+<retval type='^{kmVec2=ff}' declared_type='kmVec2*'/>
+</function>
+<function name='kmVec3Add'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV1'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV2'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3AreEqual'>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='p1'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='p2'/>
+<retval type='i' declared_type='int'/>
+</function>
+<function name='kmVec3Assign'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pIn'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3Cross'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV1'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV2'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3Dot'>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV1'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV2'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec3Fill'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg type='f' declared_type='float' name='x'/>
+<arg type='f' declared_type='float' name='y'/>
+<arg type='f' declared_type='float' name='z'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3InverseTransform'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='struct kmMat4*' name='pM'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3InverseTransformNormal'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pVect'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='struct kmMat4*' name='pM'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3Length'>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pIn'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec3LengthSq'>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pIn'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec3Normalize'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pIn'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3Scale'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pIn'/>
+<arg const='true' type='f' declared_type='float' name='s'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3Subtract'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV1'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV2'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3Transform'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV1'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='struct kmMat4*' name='pM'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3TransformCoord'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='struct kmMat4*' name='pM'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3TransformNormal'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<arg const='true' type='^{kmVec3=fff}' declared_type='kmVec3*' name='pV'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='struct kmMat4*' name='pM'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec3Zero'>
+<arg type='^{kmVec3=fff}' declared_type='kmVec3*' name='pOut'/>
+<retval type='^{kmVec3=fff}' declared_type='kmVec3*'/>
+</function>
+<function name='kmVec4Add'>
+<arg type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pOut'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV1'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV2'/>
+<retval type='^{kmVec4=ffff}' declared_type='kmVec4*'/>
+</function>
+<function name='kmVec4AreEqual'>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='p1'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='p2'/>
+<retval type='i' declared_type='int'/>
+</function>
+<function name='kmVec4Assign'>
+<arg type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pOut'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pIn'/>
+<retval type='^{kmVec4=ffff}' declared_type='kmVec4*'/>
+</function>
+<function name='kmVec4Dot'>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV1'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV2'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec4Fill'>
+<arg type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pOut'/>
+<arg type='f' declared_type='float' name='x'/>
+<arg type='f' declared_type='float' name='y'/>
+<arg type='f' declared_type='float' name='z'/>
+<arg type='f' declared_type='float' name='w'/>
+<retval type='^{kmVec4=ffff}' declared_type='kmVec4*'/>
+</function>
+<function name='kmVec4Length'>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pIn'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec4LengthSq'>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pIn'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='kmVec4Lerp'>
+<arg type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pOut'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV1'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV2'/>
+<arg type='f' declared_type='float' name='t'/>
+<retval type='^{kmVec4=ffff}' declared_type='kmVec4*'/>
+</function>
+<function name='kmVec4Normalize'>
+<arg type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pOut'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pIn'/>
+<retval type='^{kmVec4=ffff}' declared_type='kmVec4*'/>
+</function>
+<function name='kmVec4Scale'>
+<arg type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pOut'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pIn'/>
+<arg const='true' type='f' declared_type='float' name='s'/>
+<retval type='^{kmVec4=ffff}' declared_type='kmVec4*'/>
+</function>
+<function name='kmVec4Subtract'>
+<arg type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pOut'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV1'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV2'/>
+<retval type='^{kmVec4=ffff}' declared_type='kmVec4*'/>
+</function>
+<function name='kmVec4Transform'>
+<arg type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pOut'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='struct kmMat4*' name='pM'/>
+<retval type='^{kmVec4=ffff}' declared_type='kmVec4*'/>
+</function>
+<function name='kmVec4TransformArray'>
+<arg type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pOut'/>
+<arg type='I' declared_type='unsigned int' name='outStride'/>
+<arg const='true' type='^{kmVec4=ffff}' declared_type='kmVec4*' name='pV'/>
+<arg type='I' declared_type='unsigned int' name='vStride'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='struct kmMat4*' name='pM'/>
+<arg type='I' declared_type='unsigned int' name='count'/>
+<retval type='^{kmVec4=ffff}' declared_type='kmVec4*'/>
+</function>
+<function name='km_mat4_stack_initialize'>
+<arg type='^{km_mat4_stack=ii^{kmMat4}^{kmMat4}}' declared_type='km_mat4_stack*' name='stack'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='km_mat4_stack_pop'>
+<arg type='^{km_mat4_stack=ii^{kmMat4}^{kmMat4}}' declared_type='km_mat4_stack*' name='stack'/>
+<arg type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='pOut'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='km_mat4_stack_push'>
+<arg type='^{km_mat4_stack=ii^{kmMat4}^{kmMat4}}' declared_type='km_mat4_stack*' name='stack'/>
+<arg const='true' type='^{kmMat4=[16f]}' declared_type='kmMat4*' name='item'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='km_mat4_stack_release'>
+<arg type='^{km_mat4_stack=ii^{kmMat4}^{kmMat4}}' declared_type='km_mat4_stack*' name='stack'/>
+<retval type='v' declared_type='void'/>
+</function>
+<function name='max'>
+<arg type='f' declared_type='float' name='lhs'/>
+<arg type='f' declared_type='float' name='rhs'/>
+<retval type='f' declared_type='float'/>
+</function>
+<function name='min'>
+<arg type='f' declared_type='float' name='lhs'/>
+<arg type='f' declared_type='float' name='rhs'/>
+<retval type='f' declared_type='float'/>
+</function>
+</signatures>

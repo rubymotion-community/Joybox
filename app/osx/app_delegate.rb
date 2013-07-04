@@ -8,7 +8,8 @@ class AppDelegate
   def buildWindow
     @director = Joybox::Configuration.setup do
       director display_stats: true
-      debug repl:true
+      debug repl:true,
+                  physics: [:shapes, :aabb, :center_of_mass]
     end
 
 

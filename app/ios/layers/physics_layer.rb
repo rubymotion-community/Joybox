@@ -3,27 +3,20 @@ class PhysicsLayer < Joybox::Core::Layer
   scene
 
   def on_enter
-
     init_physics
-    layout_menu
-    layout_title
+    #layout_menu
+    #layout_title
 
     @sprite_batch = SpriteBatch.new file_name: "sprites/blocks_sprite_sheet.png"
     self << @sprite_batch
 
-
     on_touches_ended do |touches, event|
-
       touch = touches.any_object
-
       touch_location = touch.location
-
       add_new_sprite(touch_location)
     end
 
-
     schedule_update do |dt|
-
       @world.step delta: dt 
     end
   end
@@ -38,8 +31,8 @@ class PhysicsLayer < Joybox::Core::Layer
       edge_fixture start_point: [0, 0],
                    end_point: [Screen.width, 0]
 
-      edge_fixture start_point: [0, Screen.height],
-                   end_point: [Screen.width, Screen.height]
+      # edge_fixture start_point: [0, Screen.height - 21],
+      #              end_point: [Screen.width, Screen.height - 21]
 
       edge_fixture start_point: [0, Screen.height],
                    end_point: [0, 0]
@@ -47,9 +40,7 @@ class PhysicsLayer < Joybox::Core::Layer
       edge_fixture start_point: [Screen.width, Screen.height],
                    end_point: [Screen.width, 0]
     end
-
   end
-
 
   def layout_title
 
@@ -94,14 +85,29 @@ class PhysicsLayer < Joybox::Core::Layer
       polygon_fixture box: [16, 16],
                       friction: 0.3,
                       density: 1.0
+
+                      circle_fixture radius: 32,
+                                    friction: 0.3,
+                                    density: 0.3,
+                                    restitution: 0.5
+                      chain_fixture chain: [[10, 10], [20, 20], [30, 30]],
+                                    friction: 0.3,
+                                    density: 0.3,
+                                    restitution: 0.5
     end
 
+    # body = @world.new_body position: position,
+    #                        type: Body::Dynamic do
 
-    block_sprite = PhysicsSprite.new texture: @sprite_batch.texture,
+                         
+
+    #                        end
+
+     block_sprite = PhysicsSprite.new texture: @sprite_batch.texture,
                                      rect: [[32 * block_column, 32 * block_row], [32, 32]],
                                      body: body
 
-    @sprite_batch << block_sprite
+     @sprite_batch << block_sprite
   end
 
 end

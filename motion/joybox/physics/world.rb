@@ -23,7 +23,6 @@ module Joybox
       alias_method :clear_forces, :clearForces
       alias_method :draw_debug_data, :drawDebugData
       alias_method :continuous_physics, :continuousPhysics
-      alias_method :destroy_body, :destroyBody
     
       def defaults
         {

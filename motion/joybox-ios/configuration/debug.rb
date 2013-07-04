@@ -14,11 +14,13 @@ module Joybox
         options = options.nil? ? default_configuration : default_configuration.merge!(options)
         options[:repl] = true if options[:bounding_box]
 
-        Object.send(:include, Joybox) if options[:repl]
-        Sprite.send(:include, Joybox::Debug::Node) if options[:repl]
+        Object.send(:include, Joybox)
+        Sprite.send(:include, Joybox::Debug::REPL) if options.has_key? :repl
+        Layer.send(:include, Joybox::Debug::Physics) if options.has_key? :physics
 
-        Joybox::Debug.repl = options[:repl]
-        Joybox::Debug.bounding_box = options[:bounding_box]
+        Joybox::Debug::REPL.active = options[:repl]
+        Joybox::Debug::REPL.bounding_box = options[:bounding_box]
+        Joybox::Debug::Physics.modes = options[:physics]
       end 
 
     end

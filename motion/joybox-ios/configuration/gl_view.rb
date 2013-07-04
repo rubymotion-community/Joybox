@@ -5,7 +5,6 @@ module Joybox
 
       def self.defaults
         {
-
           bounds: UIScreen.mainScreen.bounds,
           pixel_format: KEAGLColorFormatRGB565,
           depth_format: 0,

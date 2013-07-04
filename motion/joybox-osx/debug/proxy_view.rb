@@ -5,9 +5,9 @@ module Joybox
 
       attr_accessor :node
 
-  	  def to_s
-  	  	@node.to_s
-  	  end
+      def to_s
+        @node.to_s
+      end
 
       def position
         @node.position
@@ -25,7 +25,7 @@ module Joybox
         end
       end
       
-  	end
+    end
 
   end
- end
+end

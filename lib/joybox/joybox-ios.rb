@@ -11,6 +11,7 @@ Motion::Project::App.setup do |app|
   app.frameworks += ["QuartzCore", 
                      "CoreGraphics", 
                      "Foundation", 
+                     "OpenGLES",
                      "OpenAL", 
                      "AVFoundation", 
                      "AudioToolbox", 
@@ -23,6 +24,7 @@ Motion::Project::App.setup do |app|
   cocos_denshion_vendor = File.expand_path(File.join(platform_vendor, "cocos_denshion"))
   cocos_builder_reader_vendor = File.expand_path(File.join(platform_vendor, "cocos_builder_reader"))
   box2d_vendor = File.expand_path(File.join(platform_vendor, "box_2d"))
+  kazmath_vendor = File.expand_path(File.join(platform_vendor, "kazmath"))
 
   app.vendor_project(cocos2d_vendor,
                      :static,
@@ -44,6 +46,9 @@ Motion::Project::App.setup do |app|
                      :static,
                      :products => ['libBox2D.a'])
 
+  app.vendor_project(kazmath_vendor,
+                     :static,
+                     :products => ['libkazmath.a'])
 
   # Scans app.files until it finds app/ (the default)
   # if found, it inserts just before those files, otherwise it will insert to

@@ -1,5 +1,9 @@
 class CGPoint
 
+  def coerce(other)
+    [self, other]
+  end
+
   def to_opengl_coordinates
     Joybox.director.convertToGL(self)
   end
@@ -16,16 +20,30 @@ class CGPoint
     CGPointMake(self.x.to_pixels, self.y.to_pixels)
   end
 
-  def == (point)
-    point.is_a?(CGPoint) && CGPointEqualToPoint(self, point)
+  def ==(other)
+    other.is_a?(CGPoint) && CGPointEqualToPoint(self, other)
   end 
 
-  def + (point)
-    CGPointMake(self.x + point.x, self.y + point.y)
+  def +(other)
+    case other
+    when Numeric
+      return CGPointMake(self.x + other, self.y + other)
+    when CGPoint
+      return CGPointMake(self.x + other.x, self.y + other.y)
+    end
   end
 
-  def - (point)
-    CGPointMake(self.x - point.x, self.y - point.y)
+  def -(other)
+    self.+(-other)
+  end
+
+  def *(other)
+    case other
+    when Numeric
+      return CGPointMake(self.x * other, self.y * other)
+    when CGPoint
+      return CGPointMake(self.x * other.x, self.y * other.y)
+    end
   end
 
 end
