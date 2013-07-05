@@ -76,21 +76,22 @@ class CCSpriteFrameCache
 
     frames = Array.new
 
-    from_frame = options[:from]
+    frame_order = options[:order]
+    from_frame = frame_order ? frame_order.pop : options[:from]
     to_frame = options[:to]
 
     frame = nil
     
     # Yukihiro Matsumoto recomends using loop instead of while or until statements
     # http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/6745
-    loop do  
+    loop do
       frame_name = "#{frame_prefix}#{from_frame}#{frame_suffix}"
       frame = self[frame_name]
       frames << frame unless frame.nil?
 
-      from_frame = from_frame + 1
+      from_frame = frame_order ? frame_order.pop : (from_frame + 1)
       break if frame.nil? or (from_frame > to_frame unless to_frame.nil?)
-    end 
+    end
 
     frames
   end
