@@ -95,13 +95,18 @@ class PhysicsLayer < Joybox::Core::Layer
     body = @world.new_body position: position,
                            type: KDynamicBodyType do
 
-      polygon_fixture box: [16, 16],
-                      friction: 0.3,
-                      density: 1.0
+                            polygon_fixture box: [16, 16],
+                                            friction: 0.3,
+                                            density: 1.0
 
-      circle_fixture radius: 30
-
-      chain_fixture loop: [[0, 0], [20, 20], [40, 40]]
+                                            circle_fixture radius: 32,
+                                                          friction: 0.3,
+                                                          density: 0.3,
+                                                          restitution: 0.5
+                                            chain_fixture chain: [[10, 10], [20, 20], [30, 30]],
+                                                          friction: 0.3,
+                                                          density: 0.3,
+                                                          restitution: 0.5
     end
 
 

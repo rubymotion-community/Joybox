@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "B2DBodyTypes.h"
-#import "B2DTransform.h"
-#import "B2DMassData.h"
-#import "B2DFixtureDef.h"
 
-@class B2DWorld;
+@class B2DTransform;
+@class B2DMassData;
+@class B2DFixtureDef;
 @class B2DShape;
 @class B2DFixture;
 
@@ -25,7 +24,7 @@
 @property (nonatomic, assign) b2Body *body;
 @property (nonatomic, retain) id userData;
 @property (nonatomic, assign) B2DBodyTypes type;
-@property (nonatomic, assign, readonly) B2DTransform transform;
+@property (nonatomic, assign, readonly) B2DTransform *transform;
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign, readonly) CGFloat angle;
 @property (nonatomic, assign, readonly) CGPoint worldCenter;
@@ -34,7 +33,7 @@
 @property (nonatomic, assign) CGFloat angularVelocity;
 @property (nonatomic, assign, readonly) CGFloat mass;
 @property (nonatomic, assign, readonly) CGFloat inertia;
-@property (nonatomic, assign) B2DMassData massData;
+@property (nonatomic, assign) B2DMassData *massData;
 @property (nonatomic, assign) CGFloat linearDamping;
 @property (nonatomic, assign) CGFloat angularDamping;
 @property (nonatomic, assign) CGFloat gravityScale;
@@ -66,7 +65,7 @@
 - (void)applyTorque:(CGFloat)torque;
 - (void)applyLinearImpulse:(CGPoint)impulse atPoint:(CGPoint)point;
 - (void)applyAngularImpulse:(CGFloat)impulse;
-- (void)createFixture:(B2DFixtureDef)fixtureDefinition;
+- (void)createFixture:(B2DFixtureDef *)fixtureDefinition;
 - (void)createFixtureWithShape:(B2DShape *)shape andDensity:(CGFloat)density;
 - (void)destroyFixture:(B2DFixture *)fixture;
 - (void)dump;

@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DRayCastOutput_h
-#define Box2D_B2DRayCastOutput_h
+#import <Foundation/Foundation.h>
 
-struct B2DRayCastOutput
-{
+@interface B2DRayCastOutput : NSObject {
   CGPoint normal;
-  CGFloat fraction;
-};
-typedef struct B2DRayCastOutput B2DRayCastOutput;
+  Float32 fraction;
+}
 
-B2DRayCastOutput B2DRayCastOutputMake(CGPoint normal, CGFloat fraction);
+@property (nonatomic, assign) CGPoint normal;
+@property (nonatomic, assign) Float32 fraction;
 
-#endif
+- (id)initWithRayCastOutput:(b2RayCastOutput)rayCastOutput;
+
+@end

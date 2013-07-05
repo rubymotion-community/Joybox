@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "B2DShapeTypes.h"
-#import "B2DTransform.h"
-#import "B2DRayCastOutput.h"
-#import "B2DRayCastInput.h"
-#import "B2DAABB.h"
-#import "B2DMassData.h"
+
+@class B2DTransform;
+@class B2DRayCastOutput;
+@class B2DRayCastInput;
+@class B2DAABB;
+@class B2DMassData;
 
 @interface B2DShape : NSObject {
-  
   b2Shape* shape;
   bool isTransientEntity;
 }
@@ -27,12 +27,12 @@
 
 - (id)initWithShape:(b2Shape*)boxShape;
 
-- (bool)testPointWithTransform:(B2DTransform)transform andPoint:(CGPoint)point;
+- (bool)testPointWithTransform:(B2DTransform *)transform andPoint:(CGPoint)point;
 - (bool)rayCastWithOutput:(B2DRayCastOutput *)output
-                    input:(B2DRayCastInput)input
-                transform:(B2DTransform)transform
+                    input:(B2DRayCastInput *)input
+                transform:(B2DTransform *)transform
                  andChildren:(NSInteger)childIndex;
-- (void)computeAABB:(B2DAABB *)aabb withTransform:(B2DTransform)transform andChildIndex:(NSInteger)childIndex;
+- (void)computeAABB:(B2DAABB *)aabb withTransform:(B2DTransform *)transform andChildIndex:(NSInteger)childIndex;
 - (void)computeMass:(B2DMassData *)massData withDensity:(CGFloat)density;
 
 @end

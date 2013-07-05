@@ -6,17 +6,18 @@
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DMassData_h
-#define Box2D_B2DMassData_h
+#import <Foundation/Foundation.h>
 
-struct B2DMassData
-{
-  CGFloat mass;
-  CGPoint center;
-  CGFloat rotationalInertia;
-};
-typedef struct B2DMassData B2DMassData;
+@interface B2DMassData : NSObject {
+  Float32 mass;
+  CGPoint centre;
+  Float32 I;
+}
 
-B2DMassData B2DMassDataMake(CGFloat mass, CGPoint center, CGFloat rotationalInertia);
+@property (nonatomic, assign) Float32 mass;
+@property (nonatomic, assign) CGPoint centre;
+@property (nonatomic, assign) Float32 I;
 
-#endif
+- (id)initWithMassData:(b2MassData)massData;
+
+@end

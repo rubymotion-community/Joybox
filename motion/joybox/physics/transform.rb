@@ -2,8 +2,8 @@ Joybox::Physics::Transform = B2DTransform
 
 class B2DTransform
 
-  alias_method :metric_position, :position
-  alias_method :metric_position=, :position=
+  alias_method :metric_position, :point
+  alias_method :metric_position=, :setPoint
 
   def position
     metric_position.to_pixel_coordinates

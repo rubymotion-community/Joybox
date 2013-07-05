@@ -6,13 +6,10 @@
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DBodyDef_h
-#define Box2D_B2DBodyDef_h
-
+#import <Foundation/Foundation.h>
 #import "B2DBodyTypes.h"
 
-struct B2DBodyDef
-{
+@interface B2DBodyDef : NSObject {
   B2DBodyTypes type;
   CGPoint position;
   CGFloat angle;
@@ -26,9 +23,22 @@ struct B2DBodyDef
   bool bullet;
   bool active;
   CGFloat gravityScale;
-};
-typedef struct B2DBodyDef B2DBodyDef;
+}
 
-B2DBodyDef B2DBodyDefMake();
+@property (nonatomic, assign) B2DBodyTypes type;
+@property (nonatomic, assign) CGPoint position;
+@property (nonatomic, assign) CGFloat angle;
+@property (nonatomic, assign) CGPoint linearVelocity;
+@property (nonatomic, assign) CGFloat angularVelocity;
+@property (nonatomic, assign) CGFloat linearDamping;
+@property (nonatomic, assign) CGFloat angularDamping;
+@property (nonatomic, assign) bool allowSleep;
+@property (nonatomic, assign) bool awake;
+@property (nonatomic, assign) bool fixedRotation;
+@property (nonatomic, assign) bool bullet;
+@property (nonatomic, assign) bool active;
+@property (nonatomic, assign) CGFloat gravityScale;
 
-#endif
+- (id)initWithBodyDef:(b2BodyDef)bodyDef;
+
+@end

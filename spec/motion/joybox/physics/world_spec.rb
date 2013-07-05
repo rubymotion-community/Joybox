@@ -201,18 +201,18 @@ describe Joybox::Physics::World do
   it "should ray cast the world with a first point and second point" do
     world = World.new gravity: [0, -9.8]
 
-    body = world.new_body position: [100, 100], type: Body::Dynamic do
+    body = world.new_body position: [320, 320], type: Body::Dynamic do
       polygon_fixture box: [16, 16]
     end
 
     ray_cast_notified = false
 
-    world.ray_cast first_point: [0, 0], second_point: [100, 100] do |fixture, point, normal, fraction|
+    world.ray_cast first_point: [0, 0], second_point: [320, 320] do |fixture, point, normal, fraction|
       ray_cast_notified = true
       fixture.type.should == Fixture::PolygonType
-      point.should.be.close CGPointMake(0.08, 0.08), 0.01
+      point.should.be.close CGPointMake(0.29, 0.29), 0.01
       normal.should == CGPointMake(0, -1.0)
-      fraction.should.be.close 0.83, 0.01
+      fraction.should.be.close 0.94, 0.01
       0.0
     end
 

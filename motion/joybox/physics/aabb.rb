@@ -3,9 +3,9 @@ Joybox::Physics::AABB = B2DAABB
 class B2DAABB
   
   alias_method :metric_lower_bound, :lowerBound
-  alias_method :metric_lower_bound=, :lowerBound=
+  alias_method :metric_lower_bound=, :setLowerBound
   alias_method :metric_upper_bound, :upperBound
-  alias_method :metric_upper_bound=, :upperBound=
+  alias_method :metric_upper_bound=, :setUpperBound
 
   def lower_bound
     lowerBound.to_pixel_coordinates

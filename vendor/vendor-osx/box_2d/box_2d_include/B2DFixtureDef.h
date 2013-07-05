@@ -6,22 +6,24 @@
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DFixtureDef_h
-#define Box2D_B2DFixtureDef_h
+#import <Foundation/Foundation.h>
 
 @class B2DShape;
 
-struct B2DFixtureDef
-{
+@interface B2DFixtureDef : NSObject {
   B2DShape *shape;
   id userData;
   CGFloat friction;
   CGFloat restitution;
   CGFloat density;
   bool isSensor;
-};
-typedef struct B2DFixtureDef B2DFixtureDef;
+}
 
-B2DFixtureDef B2DFixtureDefMake();
+@property (nonatomic, assign) B2DShape *shape;
+@property (nonatomic, assign) id userData;
+@property (nonatomic, assign) CGFloat friction;
+@property (nonatomic, assign) CGFloat restitution;
+@property (nonatomic, assign) CGFloat density;
+@property (nonatomic, assign) bool isSensor;
 
-#endif
+@end

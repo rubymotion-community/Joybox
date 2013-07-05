@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "B2DShapeTypes.h"
-#import "B2DFilter.h"
-#import "B2DRayCastOutput.h"
-#import "B2DRayCastInput.h"
-#import "B2DAABB.h"
-#import "B2DMassData.h"
 
-@class B2DBody;
 @class B2DShape;
+@class B2DFilter;
+@class B2DBody;
+@class B2DRayCastOutput;
+@class B2DRayCastInput;
+@class B2DMassData;
+@class B2DAABB;
 
 @interface B2DFixture : NSObject {
   
@@ -27,7 +27,7 @@
 @property (nonatomic, assign, readonly) B2DShape *shape;
 @property (nonatomic, assign, readonly) bool isSensor;
 @property (nonatomic, assign) bool sensor;
-@property (nonatomic, assign) B2DFilter filterData;
+@property (nonatomic, assign) B2DFilter *filterData;
 @property (nonatomic, assign, readonly) B2DBody *body;
 @property (nonatomic, assign) id userData;
 @property (nonatomic, assign) CGFloat density;
@@ -39,9 +39,9 @@
 - (void)refilter;
 - (B2DFixture *)next;
 - (bool)testPoint:(CGPoint)point;
-- (bool)rayCastWithOutput:(B2DRayCastOutput *)output input:(B2DRayCastInput)input andChildIndex:(NSInteger)childIndex;
-- (B2DMassData)massData;
-- (B2DAABB)aabb:(NSInteger)childIndex;
+- (bool)rayCastWithOutput:(B2DRayCastOutput *)output input:(B2DRayCastInput *)input andChildIndex:(NSInteger)childIndex;
+- (B2DMassData *)massData;
+- (B2DAABB *)aabb:(NSInteger)childIndex;
 - (void)dump:(NSInteger)bodyIndex;
 
 @end

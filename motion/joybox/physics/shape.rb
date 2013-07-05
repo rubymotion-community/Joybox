@@ -43,13 +43,13 @@ class B2DShape
     ray_cast_input.second_point = options[:second_point]
     ray_cast_input.maximum_fraction = options[:maximum_fraction]
 
-    ray_cast_output = Pointer.new(RayCastOutput.type)
+    ray_cast_output = RayCastOutput.new
 
     hits = rayCastWithOutput(ray_cast_output, 
                              input: ray_cast_input, 
                              transform: transform, 
                              andChildren: options[:child_index])
-    block.call(hits, ray_cast_output[0].normal, ray_cast_output[0].fraction)
+    block.call(hits, ray_cast_output.normal, ray_cast_output.fraction)
   end
   
   def compute_aabb(options = {})
@@ -60,11 +60,10 @@ class B2DShape
     transform = Transform.new
     transform.position = options[:position]
     transform.angle = options[:angle]
-
-    aabb = Pointer.new(AABB.type)
-
+    
+    aabb = AABB.new
     computeAABB(aabb, withTransform: transform, andChildIndex: options[:child_index])
-    aabb[0]
+    aabb
   end
 
   def compute_mass(options = {})
@@ -72,8 +71,8 @@ class B2DShape
       return # Todo print error message on the console
     end
 
-    mass_data = Pointer.new(MassData.type)
+    mass_data = MassData.new
     computeMass(mass_data, withDensity: options[:density])
-    mass_data[0]
+    mass_data
   end
 end

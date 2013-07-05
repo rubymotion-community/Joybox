@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "B2DColor.h"
-#import "B2DTransform.h"
-#include "Draw.h"
+#import "Draw.h"
+
+@class B2DColor;
+@class B2DTransform;
 
 typedef enum {
   
@@ -21,12 +22,12 @@ typedef enum {
   
 } B2DDrawingFlags;
 
-typedef void (^drawPolygonCallback) (CGPoint *vertices, NSInteger vertexCount, B2DColor color);
-typedef void (^drawSolidPolygonCallback) (CGPoint *vertices, NSInteger vertexCount, B2DColor color);
-typedef void (^drawCircleCallback) (CGPoint center, float radius, B2DColor color);
-typedef void (^drawSolidCircleCallback) (CGPoint center, float radius, CGPoint axis, B2DColor color);
-typedef void (^drawSegmentCallback) (CGPoint point1, CGPoint point2, B2DColor color);
-typedef void (^drawTransformCallback) (B2DTransform transform);
+typedef void (^drawPolygonCallback) (CGPoint *vertices, NSInteger vertexCount, B2DColor *color);
+typedef void (^drawSolidPolygonCallback) (CGPoint *vertices, NSInteger vertexCount, B2DColor *color);
+typedef void (^drawCircleCallback) (CGPoint center, float radius, B2DColor *color);
+typedef void (^drawSolidCircleCallback) (CGPoint center, float radius, CGPoint axis, B2DColor *color);
+typedef void (^drawSegmentCallback) (CGPoint point1, CGPoint point2, B2DColor *color);
+typedef void (^drawTransformCallback) (B2DTransform *transform);
 
 @interface B2DDraw : NSObject {
   Draw *draw;

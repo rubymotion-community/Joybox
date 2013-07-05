@@ -6,11 +6,9 @@
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DProfile_h
-#define Box2D_B2DProfile_h
+#import <Foundation/Foundation.h>
 
-struct B2DProfile
-{  
+@interface B2DProfile : NSObject {
   CGFloat step;
   CGFloat collide;
   CGFloat solve;
@@ -19,16 +17,15 @@ struct B2DProfile
   CGFloat solvePosition;
   CGFloat broadphase;
   CGFloat solveTOI;
-};
-typedef struct B2DProfile B2DProfile;
+}
 
-B2DProfile B2DProfileMake(CGFloat step,
-                          CGFloat collide,
-                          CGFloat solve,
-                          CGFloat solveInit,
-                          CGFloat solveVelocity,
-                          CGFloat solvePosition,
-                          CGFloat broadphase,
-                          CGFloat solveTOI);
+@property (nonatomic, assign) CGFloat step;
+@property (nonatomic, assign) CGFloat collide;
+@property (nonatomic, assign) CGFloat solve;
+@property (nonatomic, assign) CGFloat solveInit;
+@property (nonatomic, assign) CGFloat solveVelocity;
+@property (nonatomic, assign) CGFloat solvePosition;
+@property (nonatomic, assign) CGFloat broadphase;
+@property (nonatomic, assign) CGFloat solveTOI;
 
-#endif
+@end

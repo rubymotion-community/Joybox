@@ -2,10 +2,10 @@ Joybox::Physics::MassData = B2DMassData
 
 class B2DMassData
 
-  alias_method :rotational_inertia, :rotationalInertia
-  alias_method :rotational_inertia=, :rotationalInertia=
-  alias_method :metric_center, :center
-  alias_method :metric_center=, :center=
+  alias_method :rotational_inertia, :I
+  alias_method :rotational_inertia=, :setI
+  alias_method :metric_center, :centre
+  alias_method :metric_center=, :setCentre
 
   def center
     metric_center.to_pixel_coordinates

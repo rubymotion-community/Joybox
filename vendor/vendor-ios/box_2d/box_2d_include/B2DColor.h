@@ -2,21 +2,22 @@
 //  B2DColor.h
 //  Box2D
 //
-//  Created by Juan José Karam on 6/29/13.
+//  Created by Juan José Karam on 7/4/13.
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DColor_h
-#define Box2D_B2DColor_h
+#import <Foundation/Foundation.h>
 
-struct B2DColor
-{
-  CGFloat red;
-  CGFloat green;
-  CGFloat blue;
-};
-typedef struct B2DColor B2DColor;
+@interface B2DColor : NSObject {
+  Float32 red;
+  Float32 green;
+  Float32 blue;
+}
 
-B2DColor B2DColorMake(CGFloat red, CGFloat green, CGFloat blue);
+@property (nonatomic, assign) Float32 red;
+@property (nonatomic, assign) Float32 green;
+@property (nonatomic, assign) Float32 blue;
 
-#endif
+- (id)initWithColor:(b2Color)color;
+
+@end

@@ -43,10 +43,10 @@ class B2DFixture
     ray_cast_input.second_point = options[:second_point]
     ray_cast_input.maximum_fraction = options[:maximum_fraction]
 
-    ray_cast_output = Pointer.new(RayCastOutput.type)
+    ray_cast_output = RayCastOutput.new
 
     hits = rayCastWithOutput(ray_cast_output, input:ray_cast_input, andChildIndex: options[:child_index])
-    block.call(hits, ray_cast_output[0].normal, ray_cast_output[0].fraction)
+    block.call(hits, ray_cast_output.normal, ray_cast_output.fraction)
   end
   
 end

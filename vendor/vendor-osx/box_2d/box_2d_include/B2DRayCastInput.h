@@ -6,17 +6,18 @@
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DRayCastInput_h
-#define Box2D_B2DRayCastInput_h
+#import <Foundation/Foundation.h>
 
-struct B2DRayCastInput
-{
+@interface B2DRayCastInput : NSObject {
   CGPoint point1;
   CGPoint point2;
-  CGFloat maxFraction;
-};
-typedef struct B2DRayCastInput B2DRayCastInput;
+  Float32 maxFraction;
+}
 
-B2DRayCastInput B2DRayCastInputMake(CGPoint point1, CGPoint point2, CGFloat maxFraction);
+@property (nonatomic, assign) CGPoint point1;
+@property (nonatomic, assign) CGPoint point2;
+@property (nonatomic, assign) Float32 maxFraction;
 
-#endif
+- (id)initWithRayCastInput:(b2RayCastInput)rayCastInput;
+
+@end

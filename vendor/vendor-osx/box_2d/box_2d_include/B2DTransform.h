@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DTransform_h
-#define Box2D_B2DTransform_h
+#import <Foundation/Foundation.h>
 
-struct B2DTransform
-{
-  CGPoint position;
-  CGFloat angle;
-};
-typedef struct B2DTransform B2DTransform;
+@interface B2DTransform : NSObject {
+  CGPoint point;
+  Float32 angle;
+}
 
-B2DTransform B2DTransformMake(CGPoint position, CGFloat angle);
+@property (nonatomic, assign) CGPoint point;
+@property (nonatomic, assign) Float32 angle;
 
-#endif
+- (id)initWithTransform:(b2Transform)transform;
+
+@end

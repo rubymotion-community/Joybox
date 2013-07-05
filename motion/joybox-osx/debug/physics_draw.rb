@@ -1,5 +1,5 @@
-# module Joybox
-#   module Debug
+module Joybox
+  module Debug
     class PhysicsDraw
 
       attr_accessor :draw
@@ -127,8 +127,6 @@
           theta += increment
         end
 
-        p color
-
         set_drawing_color(color, 1.0)
         glVertexAttribPointer(KCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, 0, vertices)
         glDrawArrays(GL_LINE_LOOP, 0, vertex_count)
@@ -177,8 +175,6 @@
         axis_scale = 0.4
         first_point = transform.metric_position
 
-        #p first_point.x
-
         angle_x_axis = CGPointMake(Math.cos(transform.angle), Math.sin(transform.angle))
         angle_y_axis = CGPointMake(-Math.sin(transform.angle), Math.cos(transform.angle)) 
 
@@ -186,10 +182,10 @@
         draw_segment(first_point, second_point, Color.new(1, 0, 0))
 
         second_point = first_point + axis_scale * angle_y_axis
-        draw_segment(first_point, second_point, Color.new(0, 1, 0))
+        draw_segment(first_point, second_point, Color.new(0, 0, 1))
       end
 
     end
 
-#   end
-# end
+  end
+end

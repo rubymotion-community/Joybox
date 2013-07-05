@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "B2DBodyTypes.h"
-#import "B2DBodyDef.h"
-#import "B2DProfile.h"
-#import "B2DAABB.h"
 
+@class B2DProfile;
 @class B2DBody;
 @class B2DContactListener;
 @class B2DContactFilter;
 @class B2DDestructionListener;
 @class B2DDraw;
+@class B2DBodyDef;
 @class B2DQueryCallback;
+@class B2DAABB;
 @class B2DRayCastCallback;
 
 @interface B2DWorld : NSObject {
@@ -38,7 +38,7 @@
 @property (nonatomic, assign) CGPoint gravity;
 @property (nonatomic, assign, readonly) bool isLocked;
 @property (nonatomic, assign) bool autoClearForces;
-@property (nonatomic, assign, readonly) B2DProfile profile;
+@property (nonatomic, assign, readonly) B2DProfile *profile;
 
 - (id)initWithWorld:(b2World *)boxWorld;
 
@@ -46,11 +46,11 @@
 - (void)setContactFilter:(B2DContactFilter *)contactFilter;
 - (void)setDestructionListener:(B2DDestructionListener *)destructionListener;
 - (void)setDebugDraw:(B2DDraw *)draw;
-- (B2DBody *)createBody:(B2DBodyDef)bodyDefinition;
+- (B2DBody *)createBody:(B2DBodyDef *)bodyDefinition;
 - (void)destroyBody:(B2DBody *)body;
 - (void)stepWithDelta:(CGFloat)delta velocityInteractions:(int)velocityInteractions positionInteractions:(int)positionInteractions;
 - (void)clearForces;
-- (void)queryAABBWithCallback:(B2DQueryCallback *)queryCallback andAABB:(B2DAABB)aabb;
+- (void)queryAABBWithCallback:(B2DQueryCallback *)queryCallback andAABB:(B2DAABB *)aabb;
 - (void)rayCastWithCallback:(B2DRayCastCallback *)rayCastCallback andPoint1:(CGPoint)point1 andPoint2:(CGPoint)point2;
 - (void)drawDebugData;
 - (void)dump;

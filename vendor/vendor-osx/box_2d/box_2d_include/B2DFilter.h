@@ -6,18 +6,18 @@
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DFilter_h
-#define Box2D_B2DFilter_h
+#import <Foundation/Foundation.h>
 
-struct B2DFilter
-{  
+@interface B2DFilter : NSObject {
   NSUInteger categoryBits;
   NSUInteger maskBits;
   NSInteger groupIndex;
-};
-typedef struct B2DFilter B2DFilter;
+}
 
-B2DFilter B2DFilterMake();
-B2DFilter B2DFilterMake(NSUInteger categoryBits, NSUInteger maskBits, NSInteger groupIndex);
+@property (nonatomic, assign) NSUInteger categoryBits;
+@property (nonatomic, assign) NSUInteger maskBits;
+@property (nonatomic, assign) NSInteger groupIndex;
 
-#endif
+- (id)initWithFilter:(b2Filter)filter;
+
+@end

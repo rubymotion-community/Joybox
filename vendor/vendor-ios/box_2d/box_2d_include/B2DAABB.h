@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Joybox. All rights reserved.
 //
 
-#ifndef Box2D_B2DAABB_h
-#define Box2D_B2DAABB_h
+#import <Foundation/Foundation.h>
 
-struct B2DAABB
-{
+@interface B2DAABB : NSObject {
   CGPoint lowerBound;
   CGPoint upperBound;
-};
-typedef struct B2DAABB B2DAABB;
+}
 
-B2DAABB B2DAABBMake(CGPoint lowerBound, CGPoint upperBound);
+@property (nonatomic, assign) CGPoint lowerBound;
+@property (nonatomic, assign) CGPoint upperBound;
 
-#endif
+- (id)initWithAABB:(b2AABB)aabb;
+
+@end
