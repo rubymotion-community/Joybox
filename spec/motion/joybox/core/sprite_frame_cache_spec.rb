@@ -98,5 +98,14 @@ describe Joybox::Core::SpriteFrameCache do
       end
       sprite_frames.size.should == 1
     end
+
+    it "should get frames using a prefix, suffix and order" do
+      sprite_frames = SpriteFrameCache.frames.where prefix: "bear", suffix: ".png", order: [1, 5, 3]
+      sprite_frames.each do |frame|
+        frame.texture.should.not == nil
+        frame.rect.should.not == CGRectMake(0, 0, 0, 0)
+      end
+      sprite_frames.size.should == 3
+    end
   end
 end
