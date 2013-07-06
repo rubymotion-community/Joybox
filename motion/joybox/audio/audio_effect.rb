@@ -1,7 +1,7 @@
 module Joybox
   module Audio
 
-    class AudioEffects
+    class AudioEffect
 
       attr_reader :effects
 
@@ -9,12 +9,12 @@ module Joybox
         @effects = Hash.new
       end
 
-      def [](event)
-        @effects[event]
+      def [](effect)
+        @effects[effect]
       end
 
-      def []=(event, file_name)
-        add event: event, file_name: file_name
+      def []=(effect, file_name)
+        add effect: effect, file_name: file_name
       end
 
       def events
@@ -23,20 +23,20 @@ module Joybox
 
       def add(options = {})
         # Todo print error message on the console
-        return unless [:event, :file_name].all? { |k| options.key? k }
+        return unless [:effect, :file_name].all? { |k| options.key? k }
 
-        @effects[options[:event]] = options[:file_name]
+        @effects[options[:effect]] = options[:file_name]
         SimpleAudioEngine.sharedEngine.preloadEffect(options[:file_name])
       end
 
-      def play(event, options = {})
+      def play(effect, options = {})
         if [:pitch, :pan, :gain].all? { |k| options.key? k }
-          return SimpleAudioEngine.sharedEngine.playEffect(@effects[event],
+          return SimpleAudioEngine.sharedEngine.playEffect(@effects[effect],
                                                            pitch: options[:pitch],
                                                            pan: options[:pan],
                                                            gain: options[:gain])
         else
-          return SimpleAudioEngine.sharedEngine.playEffect(@effects[event])
+          return SimpleAudioEngine.sharedEngine.playEffect(@effects[effect])
         end
       end
 
@@ -44,8 +44,8 @@ module Joybox
         SimpleAudioEngine.sharedEngine.stopEffect(audio_id) 
       end
 
-      def delete(event)
-        SimpleAudioEngine.sharedEngine.unloadEffect(@effects[event])
+      def delete(effect)
+        SimpleAudioEngine.sharedEngine.unloadEffect(@effects[effect])
       end
 
       def volume

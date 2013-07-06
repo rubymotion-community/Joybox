@@ -29,4 +29,3 @@ module Joybox
 
   end
 end
-

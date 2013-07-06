@@ -16,13 +16,13 @@ class PhysicsLayer < Joybox::Core::Layer
       @world.step delta: dt 
     end
 
-    @audio_effects = AudioEffects.new
-    @audio_effects[:jump] = 'audios/auEffect.wav'
+    # @audio_effect = AudioEffect.new
+    # @audio_effect[:jump] = 'audios/auEffect.wav'
 
-    @background_audio = BackgroundAudio.new
-    @background_audio[:easy] = 'audios/auBackground.mp3'
-    @background_audio[:hard] = 'audios/auEffect.wav'
-    @background_audio.play :easy
+    # @background_audio = BackgroundAudio.new
+    # @background_audio[:easy] = 'audios/auBackground.mp3'
+    # @background_audio[:hard] = 'audios/auEffect.wav'
+    # @background_audio.play :easy
     #p 
     #audio_effects.delete :jump
     # #SimpleAudioEngine.sharedEngine.preloadBackgroundMusic('audios/auBackground.mp3')
