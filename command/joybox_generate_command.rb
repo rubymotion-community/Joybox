@@ -14,7 +14,6 @@ class String
 
 end
 
-
 module Motion; module Project
   class JoyboxGenerateCommand < Command
 
@@ -65,28 +64,22 @@ module Motion; module Project
 
 
     def find_app_directory(directory = 'app')
-
       finded_directories = Dir.glob(directory)
 
       if finded_directories.size != 1
-
         find_app_directory(File.join('..', directory))
       else
-
         finded_directories[0]
       end 
     end
 
 
     def find_spec_directory(directory = 'spec')
-
       finded_directories = Dir.glob(directory)
 
       if finded_directories.size != 1
-
         find_app_directory(File.join('..', directory))
       else
-
         finded_directories[0]
       end 
     end

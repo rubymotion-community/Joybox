@@ -7,6 +7,7 @@ module Joybox
   include Joybox::UI
   include Joybox::Macros
   include Joybox::Physics
+  include Joybox::Audio
 
   module_function
 

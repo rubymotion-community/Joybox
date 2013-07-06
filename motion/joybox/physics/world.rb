@@ -31,7 +31,7 @@ module Joybox
         }
       end
 
-      def initialize(options)
+      def initialize(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
 
         init

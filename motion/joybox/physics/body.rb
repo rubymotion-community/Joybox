@@ -83,7 +83,7 @@ class B2DBody
     body
   end
 
-  def == (body)
+  def ==(body)
     body.is_a?(self.class) && self.isEqualToBody(body)
   end 
 

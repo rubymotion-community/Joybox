@@ -16,9 +16,63 @@ class PhysicsLayer < Joybox::Core::Layer
       @world.step delta: dt 
     end
 
-    on_mouse_down do |event, button|
+    @audio_effects = AudioEffects.new
+    @audio_effects[:jump] = 'audios/auEffect.wav'
 
-      add_new_sprite(event.location)
+    @background_audio = BackgroundAudio.new
+    @background_audio[:easy] = 'audios/auBackground.mp3'
+    @background_audio[:hard] = 'audios/auEffect.wav'
+    @background_audio.play :easy
+    #p 
+    #audio_effects.delete :jump
+    # #SimpleAudioEngine.sharedEngine.preloadBackgroundMusic('audios/auBackground.mp3')
+    # Audio.background.preload file_name: 'audios/auBackground.mp3'
+    # #Audio.background.play file_name: 'audios/auBackground.mp3'
+    # Audio.effect.preload file_name: 'audios/auEffect.wav'
+    # #Audio.background.stop
+    # if Audio.background.playing?
+    #    p 'lol'
+    # end
+
+    on_mouse_down do |event, button|
+      # @audio_effects.play :jump
+      # @background_audio.rewind
+      @background_audio.play :hard
+      #audio_effects.volume = 0.0
+       #Audio.background.mute
+    end
+
+    on_gesture_begin do |event|
+      p 'begin'
+    end
+
+    on_gesture_end do |event|
+      p 'end'
+    end
+
+    on_gesture_swipe do |event|
+      p 'swipe'
+    end
+
+    on_gesture_magnify do |event|
+     # p 'magnify'
+    end
+
+    on_gesture_smart_magnify do |event|
+      p 'smart'
+      Joybox::Audio.enabled = true
+      p Joybox::Audio.enabled?
+      @background_audio.play
+      # audio_id = Audio.effect.play file_name: 'audios/auEffect.wav'
+
+      # Audio.effect.stop audio_id: audio_id
+
+      #Audio.effect.play file_name: 'audios/auEffect.wav'
+      #Audio.effect.unload file_name: 'audios/auEffect.wav'
+    end
+
+    on_gesture_rotate do |event|
+      p 'rotate'
     end
 
     # @physics_draw = PhysicsDraw.new([:shapes])
