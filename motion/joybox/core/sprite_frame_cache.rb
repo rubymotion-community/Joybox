@@ -11,7 +11,6 @@ module Joybox
   end
 end
 
-# Open the CCSpriteFrameCache Class because of the singleton pattern
 class CCSpriteFrameCache
 
   alias_method :remove_all, :removeSpriteFrames

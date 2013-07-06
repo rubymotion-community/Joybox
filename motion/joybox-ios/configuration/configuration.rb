@@ -18,40 +18,30 @@ module Joybox
       debug unless @is_debug_configured
     end
 
-    def director(*hash)
-      hash = hash.pop
-      
-      Director.configure(hash)
+    def director(options = {})      
+      Director.configure(options)
       @is_director_configured = true
     end
 
-    def opengl_view(*hash)
-      hash = hash.pop
-
-      opengl_view = GLView.new(hash)
+    def opengl_view(options = {})
+      opengl_view = GLView.new(options)
       director = Director.sharedDirector
       director.view = opengl_view
       @is_opengl_view_configured = true
     end
 
-    def texture_2d(*hash)
-      hash = hash.pop
-
-      Texture2D.configure(hash)
+    def texture_2d(options = {})
+      Texture2D.configure(options)
       @is_texture_2d_configured = true
     end
 
-    def file_utils(*hash)
-      hash = hash.pop
-
-      FileUtils.configure(hash)
+    def file_utils(options = {})
+      FileUtils.configure(options)
       @is_file_utils_configured = true
     end
 
-    def debug(*hash)
-      hash = hash.pop
-
-      Debug.configure(hash)
+    def debug(options = {})
+      Debug.configure(options)
       @is_debug_configured = true
     end
 
