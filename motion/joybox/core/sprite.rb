@@ -16,6 +16,7 @@ module Joybox
         initialize_with_texture(options) if options.has_key? (:texture)
         initialize_with_frame_name(options) if options.has_key? (:frame_name)
         initialize_with_frame(options) if options.has_key? (:frame)
+        initialize_with_cg_image(options) if options.has_key?(:cg_image) && options.has_key?(:key)
         self.position = options[:position] if options.has_key? (:position)
       end
       
@@ -67,6 +68,10 @@ module Joybox
 
       def initialize_with_frame(options = {})
         initWithSpriteFrame(options[:frame])
+      end
+
+      def initialize_with_cg_image(options = {})
+        initWithCGImage(options[:cg_image].CGImage, key:options[:key])
       end
 
     end
