@@ -22,7 +22,7 @@
 }
 
 @property (nonatomic, assign) b2Body *body;
-@property (nonatomic, retain) id userData;
+@property (nonatomic, assign) id userData;
 @property (nonatomic, assign) B2DBodyTypes type;
 @property (nonatomic, assign, readonly) B2DTransform *transform;
 @property (nonatomic, assign) CGPoint position;
