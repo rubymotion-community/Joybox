@@ -78,7 +78,9 @@ class B2DBody
     body_definition.active = options[:active]
     body_definition.gravityScale = options[:gravity_scale]
 
-    world.createBody(body_definition)
+    body = world.createBody(body_definition)
+    body.userData = Hash.new
+    body
   end
 
   def == (body)
@@ -127,6 +129,14 @@ class B2DBody
     return linearVelocityFromLocalPoint(point) if options.has_key? :local_point
     return linearVelocityFromWorldPoint(point) if options.has_key? :world_point
   end
+
+  def [](key)
+    self.userData[key]
+  end
+
+  def []=(key, value)
+    self.userData[key] = value
+  end 
 
   def new_fixture(&block)
     instance_eval(&block) if block

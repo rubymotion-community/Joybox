@@ -132,15 +132,20 @@ describe Joybox::Physics::World do
       polygon_fixture box: [16, 16]
     end
 
+    body_one[:message] = 'First Body'
+
     body_two = world.new_body position: [100, 100], type: KDynamicBodyType do
       polygon_fixture box: [16, 16]
     end
+
+    body_two[:message] = 'Second Body'
 
     collision_notified = false
 
     world.when_collide body_one do |collision_body, is_touching|
       collision_notified = true
       collision_body.should == body_two
+      collision_body[:message] = 'Second Body'
       is_touching.should == true
     end
 

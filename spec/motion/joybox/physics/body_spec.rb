@@ -194,6 +194,12 @@ describe Joybox::Physics::Body do
     kinematic_body.position.should == CGPointMake(100, 100)   
   end
 
+  it "should save a value using a key" do
+    body = @world.new_body position: [100, 100], type: Body::Dynamic
+    body[:message] = 'Body Information'
+    body[:message].should == 'Body Information'
+  end
+
   it "should create new fixtures" do
     body = @world.new_body position: [100, 100], type: Body::Dynamic
 
