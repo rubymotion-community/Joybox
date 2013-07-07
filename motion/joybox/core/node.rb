@@ -1,6 +1,9 @@
 class CCNode
 
   alias_method :add_child, :addChild
+  alias_method :run_action, :runAction
+  alias_method :stop_action, :stopAction
+  alias_method :stop_all_actions, :stopAllActions
 
   def << (node)
     self.addChild(node)
@@ -10,11 +13,19 @@ class CCNode
     base.send(:include, Joybox)
   end
 
-  #TODO: Revisar el nombre de este metodo
   def add_childs(*nodes)
     nodes.each do |node|
       self.addChild(node)
     end
   end 
+
+  def schedule_update(&block)
+    @schedule_update_block = block if block_given?
+    scheduleUpdate
+  end
+
+  def update(dt)
+    @schedule_update_block.call(dt) if @schedule_update_block
+  end
 
 end

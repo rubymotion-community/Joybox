@@ -23,14 +23,14 @@ module Joybox
 
       def add(options = {})
         # Todo print error message on the console
-        return unless [:effect, :file_name].all? { |k| options.key? k }
+        return unless [:effect, :file_name].all? { |k| options.has_key? k }
 
         @effects[options[:effect]] = options[:file_name]
         SimpleAudioEngine.sharedEngine.preloadEffect(options[:file_name])
       end
 
       def play(effect, options = {})
-        if [:pitch, :pan, :gain].all? { |k| options.key? k }
+        if [:pitch, :pan, :gain].all? { |k| options.has_key? k }
           return SimpleAudioEngine.sharedEngine.playEffect(@effects[effect],
                                                            pitch: options[:pitch],
                                                            pan: options[:pan],

@@ -35,9 +35,10 @@ class PhysicsLayer < Joybox::Core::Layer
     # end
 
     on_mouse_down do |event, button|
+      add_new_sprite(event.location)
       # @audio_effects.play :jump
       # @background_audio.rewind
-      @background_audio.play :hard
+      #@background_audio.play :hard
       #audio_effects.volume = 0.0
        #Audio.background.mute
     end

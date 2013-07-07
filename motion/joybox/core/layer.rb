@@ -21,15 +21,6 @@ module Joybox
         on_exit if defined? (on_exit)
       end
 
-      def schedule_update(&block)
-        @schedule_update_block = block if block_given?
-        scheduleUpdate
-      end
-
-      def update(dt)
-        @schedule_update_block.call(dt) if @schedule_update_block
-      end
-
     end
 
   end

@@ -21,11 +21,6 @@ module Joybox
       alias_method :text=, :setString
       alias_method :set_text, :setString
 
-      # action alias methods
-      alias_method :run_action, :runAction
-      alias_method :stop_action, :stopAction
-      alias_method :stop_all_actions, :stopAllActions
-
       def defaults
         {
           text: ''

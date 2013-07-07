@@ -16,7 +16,7 @@ class B2DShape
   end
 
   def contains_point?(options = {})
-    unless [:point, :position, :angle].all? { |k| options.key? k }
+    unless [:point, :position, :angle].all? { |k| options.has_key? k }
       return # Todo print error message on the console
     end
 
@@ -30,7 +30,7 @@ class B2DShape
 
   def ray_cast(options = {}, &block)
     unless [:first_point, :second_point, :maximum_fraction, 
-            :position, :angle, :child_index].all? { |k| options.key? k }
+            :position, :angle, :child_index].all? { |k| options.has_key? k }
       return # Todo print error message on the console
     end
 
@@ -53,7 +53,7 @@ class B2DShape
   end
   
   def compute_aabb(options = {})
-    unless [:position, :angle, :child_index].all? { |k| options.key? k }
+    unless [:position, :angle, :child_index].all? { |k| options.has_key? k }
       return # Todo print error message on the console
     end
 

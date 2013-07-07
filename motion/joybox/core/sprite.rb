@@ -5,11 +5,7 @@ module Joybox
 
       extend Joybox::Common::Initialize
 
-      alias_method :run_action, :runAction
-      alias_method :stop_action, :stopAction
-      alias_method :stop_all_actions, :stopAllActions
       alias_method :bounding_box, :boundingBox
-
       
       def initialize(options = {})
         initialize_with_file_name(options) if options.has_key? (:file_name)

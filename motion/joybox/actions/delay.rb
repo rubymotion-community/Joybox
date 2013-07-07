@@ -1,20 +1,19 @@
 module Joybox
   module Actions
 
-    class DelayTime
+    class Delay
+      
       def self.defaults
         {
-          duration: 1
+          by: 1
         }
       end
 
-      def self.by(options = {})
+      def self.time(options = {})
         options = options.nil? ? defaults : defaults.merge!(options)
-        CCDelayTime.actionWithDuration (options[:duration])
+        CCDelayTime.actionWithDuration(options[:by])
       end
     end
 
   end
 end
-
-

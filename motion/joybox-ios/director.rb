@@ -12,6 +12,9 @@ module Joybox
     alias_method :purge_cached_data, :purgeCachedData
     alias_method :set_next_delta_time_zero, :setNextDeltaTimeZero
 
+    Projection2D = KCCDirectorProjection2D
+    Projection3D = KCCDirectorProjection3D
+
     def self.default_configuration
       {
         wants_full_screen_layout: true,

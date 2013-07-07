@@ -17,11 +17,6 @@ module Joybox
       alias_method :font_size, :fontSize
       alias_method :font_size=, :setFontSize
 
-      # action alias methods
-      alias_method :run_action, :runAction
-      alias_method :stop_action, :stopAction
-      alias_method :stop_all_actions, :stopAllActions
-
       TextAlignmentLeft = 0
       TextAlignmentCenter = 1
       TextAlignmentRight = 2

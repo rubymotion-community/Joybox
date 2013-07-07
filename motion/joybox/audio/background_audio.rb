@@ -23,7 +23,7 @@ module Joybox
 
       def add(options = {})
         # Todo print error message on the console
-        return unless [:audio, :file_name].all? { |k| options.key? k }
+        return unless [:audio, :file_name].all? { |k| options.has_key? k }
 
         @audios[options[:audio]] = options[:file_name]
         SimpleAudioEngine.sharedEngine.preloadBackgroundMusic(options[:file_name])
@@ -32,7 +32,7 @@ module Joybox
       def play(audio, options = {})
         stop if playing?
         
-        if [:loop].all? { |k| options.key? k }
+        if [:loop].all? { |k| options.has_key? k }
           SimpleAudioEngine.sharedEngine.playBackgroundMusic(@audios[audio], loop: options[:loop])
         else
           SimpleAudioEngine.sharedEngine.playBackgroundMusic(@audios[audio])

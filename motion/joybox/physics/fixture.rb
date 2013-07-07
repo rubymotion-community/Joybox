@@ -26,7 +26,7 @@ class B2DFixture
   end
 
   def aabb(options = {})
-    unless [:child_index].all? { |k| options.key? k }
+    unless [:child_index].all? { |k| options.has_key? k }
       return # Todo print error message on the console
     end
 
@@ -34,7 +34,7 @@ class B2DFixture
   end
 
   def ray_cast(options = {}, &block)
-    unless [:first_point, :second_point, :maximum_fraction, :child_index].all? { |k| options.key? k }
+    unless [:first_point, :second_point, :maximum_fraction, :child_index].all? { |k| options.has_key? k }
       return # Todo print error message on the console
     end
 
