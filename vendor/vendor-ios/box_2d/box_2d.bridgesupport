@@ -15,1278 +15,1278 @@
 <enum value='4' name='kTypeCountShapeType'/>
 <class name='B2DAABB'>
 <method selector='initWithAABB:'>
-<arg name='aabb' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='aabb'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='lowerBound'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='setLowerBound:'>
-<arg name='lowerBound' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='lowerBound'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setUpperBound:'>
-<arg name='upperBound' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='upperBound'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='upperBound'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 </class>
 <class name='B2DBody'>
 <method selector='addFixtureForShape:friction:restitution:density:isSensor:'>
-<arg name='shape' declared_type='B2DShape*' index='0' type='@'/>
-<arg name='friction' declared_type='CGFloat' index='1' type='f'/>
-<arg name='restitution' declared_type='CGFloat' index='2' type='f'/>
-<arg name='density' declared_type='CGFloat' index='3' type='f'/>
-<arg name='isSensor' declared_type='BOOL' index='4' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DShape*' name='shape'/>
+<arg index='1' type='f' declared_type='CGFloat' name='friction'/>
+<arg index='2' type='f' declared_type='CGFloat' name='restitution'/>
+<arg index='3' type='f' declared_type='CGFloat' name='density'/>
+<arg index='4' type='B' declared_type='BOOL' name='isSensor'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='angle'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='angularDamping'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='angularVelocity'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='applyAngularImpulse:'>
-<arg name='impulse' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='impulse'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='applyForce:atLocation:asImpulse:'>
-<arg name='force' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<arg name='location' declared_type='CGPoint' index='1' type='{CGPoint=ff}'/>
-<arg name='asImpulse' declared_type='BOOL' index='2' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='force'/>
+<arg index='1' type='{CGPoint=ff}' declared_type='CGPoint' name='location'/>
+<arg index='2' type='B' declared_type='BOOL' name='asImpulse'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='applyForce:atPoint:'>
-<arg name='force' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<arg name='point' declared_type='CGPoint' index='1' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='force'/>
+<arg index='1' type='{CGPoint=ff}' declared_type='CGPoint' name='point'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='applyForceToCenter:'>
-<arg name='force' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='force'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='applyLinearImpulse:atPoint:'>
-<arg name='impulse' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<arg name='point' declared_type='CGPoint' index='1' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='impulse'/>
+<arg index='1' type='{CGPoint=ff}' declared_type='CGPoint' name='point'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='applyTorque:'>
-<arg name='torque' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='torque'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='applyTorque:asImpulse:'>
-<arg name='torque' declared_type='CGFloat' index='0' type='f'/>
-<arg name='impulse' declared_type='BOOL' index='1' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='torque'/>
+<arg index='1' type='B' declared_type='BOOL' name='impulse'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='awake'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='body'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 <method selector='bullet'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='center'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='createFixture:'>
-<arg name='fixtureDefinition' declared_type='B2DFixtureDef*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DFixtureDef*' name='fixtureDefinition'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='createFixtureWithShape:andDensity:'>
-<arg name='shape' declared_type='B2DShape*' index='0' type='@'/>
-<arg name='density' declared_type='CGFloat' index='1' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DShape*' name='shape'/>
+<arg index='1' type='f' declared_type='CGFloat' name='density'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='destroyFixture:'>
-<arg name='fixture' declared_type='B2DFixture*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DFixture*' name='fixture'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='dump'>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='fixedRotation'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='fixtureList'>
-<retval declared_type='NSArray*' type='@'/>
+<retval type='@' declared_type='NSArray*'/>
 </method>
 <method selector='gravityScale'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='inertia'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='initWithBody:'>
-<arg name='boxBody' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='boxBody'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='isActive'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='isAwake'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='isBullet'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='isEqualToBody:'>
-<arg name='aBody' declared_type='B2DBody*' index='0' type='@'/>
-<retval declared_type='_Bool' type='B'/>
+<arg index='0' type='@' declared_type='B2DBody*' name='aBody'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='isFixedRotation'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='isSleepingAllowed'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='linearDamping'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='linearVelocity'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='linearVelocityFromLocalPoint:'>
-<arg name='localPoint' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='localPoint'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='linearVelocityFromWorldPoint:'>
-<arg name='worldPoint' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='worldPoint'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='localCenter'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='localPoint:'>
-<arg name='worldPoint' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='worldPoint'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='localVector:'>
-<arg name='worldVector' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='worldVector'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='mass'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='massData'>
-<retval declared_type='B2DMassData*' type='@'/>
+<retval type='@' declared_type='B2DMassData*'/>
 </method>
 <method selector='next'>
-<retval declared_type='B2DBody*' type='@'/>
+<retval type='@' declared_type='B2DBody*'/>
 </method>
 <method selector='position'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='resetMassData'>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAngularDamping:'>
-<arg name='angularDamping' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='angularDamping'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAngularVelocity:'>
-<arg name='angularVelocity' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='angularVelocity'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAwake:'>
-<arg name='awake' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='awake'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setBody:'>
-<arg name='body' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='body'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setBullet:'>
-<arg name='bullet' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='bullet'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setFixedRotation:'>
-<arg name='fixedRotation' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='fixedRotation'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setGravityScale:'>
-<arg name='gravityScale' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='gravityScale'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setLinearDamping:'>
-<arg name='linearDamping' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='linearDamping'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setLinearVelocity:'>
-<arg name='linearVelocity' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='linearVelocity'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setMassData:'>
-<arg name='massData' declared_type='B2DMassData*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DMassData*' name='massData'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setPosition:'>
-<arg name='position' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='position'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setSleepingAllowed:'>
-<arg name='sleepingAllowed' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='sleepingAllowed'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setTransformWithPosition:andAngle:'>
-<arg name='position' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<arg name='angle' declared_type='CGFloat' index='1' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='position'/>
+<arg index='1' type='f' declared_type='CGFloat' name='angle'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setType:'>
-<arg name='type' declared_type='B2DBodyTypes' index='0' type='i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='i' declared_type='B2DBodyTypes' name='type'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setUserData:'>
-<arg name='userData' declared_type='id' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='id' name='userData'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='sleepingAllowed'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='transform'>
-<retval declared_type='B2DTransform*' type='@'/>
+<retval type='@' declared_type='B2DTransform*'/>
 </method>
 <method selector='type'>
-<retval declared_type='B2DBodyTypes' type='i'/>
+<retval type='i' declared_type='B2DBodyTypes'/>
 </method>
 <method selector='userData'>
-<retval declared_type='id' type='@'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='worldCenter'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='worldPoint:'>
-<arg name='localPoint' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='localPoint'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='worldVector:'>
-<arg name='localVector' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='localVector'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 </class>
 <class name='B2DBodyDef'>
 <method selector='active'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='allowSleep'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='angle'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='angularDamping'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='angularVelocity'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='awake'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='bullet'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='fixedRotation'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='gravityScale'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='initWithBodyDef:'>
-<arg name='bodyDef' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='bodyDef'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='linearDamping'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='linearVelocity'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='position'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='setActive:'>
-<arg name='active' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='active'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAllowSleep:'>
-<arg name='allowSleep' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='allowSleep'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAngle:'>
-<arg name='angle' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='angle'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAngularDamping:'>
-<arg name='angularDamping' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='angularDamping'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAngularVelocity:'>
-<arg name='angularVelocity' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='angularVelocity'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAwake:'>
-<arg name='awake' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='awake'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setBullet:'>
-<arg name='bullet' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='bullet'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setFixedRotation:'>
-<arg name='fixedRotation' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='fixedRotation'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setGravityScale:'>
-<arg name='gravityScale' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='gravityScale'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setLinearDamping:'>
-<arg name='linearDamping' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='linearDamping'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setLinearVelocity:'>
-<arg name='linearVelocity' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='linearVelocity'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setPosition:'>
-<arg name='position' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='position'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setType:'>
-<arg name='type' declared_type='B2DBodyTypes' index='0' type='i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='i' declared_type='B2DBodyTypes' name='type'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='type'>
-<retval declared_type='B2DBodyTypes' type='i'/>
+<retval type='i' declared_type='B2DBodyTypes'/>
 </method>
 </class>
 <class name='B2DChainShape'>
 <method selector='createChainWithVertices:andVertexCount:'>
-<arg name='vertices' declared_type='CGPoint*' index='0' type='^{CGPoint=ff}'/>
-<arg name='vertexCount' declared_type='NSInteger' index='1' type='i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^{CGPoint=ff}' declared_type='CGPoint*' name='vertices'/>
+<arg index='1' type='i' declared_type='NSInteger' name='vertexCount'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='createLoopWithVertices:andVertexCount:'>
-<arg name='vertices' declared_type='CGPoint*' index='0' type='^{CGPoint=ff}'/>
-<arg name='vertexCount' declared_type='NSInteger' index='1' type='i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^{CGPoint=ff}' declared_type='CGPoint*' name='vertices'/>
+<arg index='1' type='i' declared_type='NSInteger' name='vertexCount'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='getChildEdge:withIndex:'>
-<arg name='edgeShape' declared_type='B2DEdgeShape*' index='0' type='@'/>
-<arg name='index' declared_type='NSInteger' index='1' type='i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DEdgeShape*' name='edgeShape'/>
+<arg index='1' type='i' declared_type='NSInteger' name='index'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='hasNextVertex'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='hasPreviousVertex'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='nextVertex'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='previousVertex'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='setNextVertex:'>
-<arg name='vertex' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='vertex'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setPreviousVertex:'>
-<arg name='vertex' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='vertex'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='vertexCount'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='vertices'>
-<retval declared_type='CGPoint*' type='^{CGPoint=ff}'/>
+<retval type='^{CGPoint=ff}' declared_type='CGPoint*'/>
 </method>
 </class>
 <class name='B2DCircleShape'>
 <method selector='getSupport:'>
-<arg name='direction' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='NSInteger' type='i'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='direction'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='getSupportVertex:'>
-<arg name='direction' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='direction'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='getVertex:'>
-<arg name='index' declared_type='NSInteger' index='0' type='i'/>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<arg index='0' type='i' declared_type='NSInteger' name='index'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='initWithRadius:'>
-<arg name='radius' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='f' declared_type='CGFloat' name='radius'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='position'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='vertexCount'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 </class>
 <class name='B2DColor'>
 <method selector='blue'>
-<retval declared_type='Float32' type='f'/>
+<retval type='f' declared_type='Float32'/>
 </method>
 <method selector='green'>
-<retval declared_type='Float32' type='f'/>
+<retval type='f' declared_type='Float32'/>
 </method>
 <method selector='initWithColor:'>
-<arg name='color' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='color'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='red'>
-<retval declared_type='Float32' type='f'/>
+<retval type='f' declared_type='Float32'/>
 </method>
 <method selector='setBlue:'>
-<arg name='blue' declared_type='Float32' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='Float32' name='blue'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setGreen:'>
-<arg name='green' declared_type='Float32' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='Float32' name='green'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setRed:'>
-<arg name='red' declared_type='Float32' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='Float32' name='red'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DContactFilter'>
 <method selector='contactFilter'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 <method selector='setContactFilter:'>
-<arg name='contactFilter' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='contactFilter'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setShouldCollide:'>
-<arg function_pointer='true' name='shouldCollide' declared_type='shouldCollideCallback' index='0' type='@?'>
-<arg declared_type='B2DFixture*' type='@'/>
-<arg declared_type='B2DFixture*' type='@'/>
-<retval declared_type='_Bool' type='B'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='shouldCollideCallback' name='shouldCollide'>
+<arg type='@' declared_type='B2DFixture*'/>
+<arg type='@' declared_type='B2DFixture*'/>
+<retval type='B' declared_type='_Bool'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='shouldCollide'>
-<retval function_pointer='true' declared_type='shouldCollideCallback' type='@?'>
-<arg declared_type='B2DFixture*' type='@'/>
-<arg declared_type='B2DFixture*' type='@'/>
-<retval declared_type='_Bool' type='B'/>
+<retval type='@?' function_pointer='true' declared_type='shouldCollideCallback'>
+<arg type='@' declared_type='B2DFixture*'/>
+<arg type='@' declared_type='B2DFixture*'/>
+<retval type='B' declared_type='_Bool'/>
 </retval>
 </method>
 </class>
 <class name='B2DContactListener'>
 <method selector='beginContact'>
-<retval function_pointer='true' declared_type='beginContactCallback' type='@?'>
-<arg declared_type='B2DBody*' type='@'/>
-<arg declared_type='B2DBody*' type='@'/>
-<arg declared_type='_Bool' type='B'/>
-<retval declared_type='void' type='v'/>
+<retval type='@?' function_pointer='true' declared_type='beginContactCallback'>
+<arg type='@' declared_type='B2DBody*'/>
+<arg type='@' declared_type='B2DBody*'/>
+<arg type='B' declared_type='_Bool'/>
+<retval type='v' declared_type='void'/>
 </retval>
 </method>
 <method selector='contactListener'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 <method selector='endContact'>
-<retval function_pointer='true' declared_type='endContactCallback' type='@?'>
-<arg declared_type='B2DBody*' type='@'/>
-<arg declared_type='B2DBody*' type='@'/>
-<retval declared_type='void' type='v'/>
+<retval type='@?' function_pointer='true' declared_type='endContactCallback'>
+<arg type='@' declared_type='B2DBody*'/>
+<arg type='@' declared_type='B2DBody*'/>
+<retval type='v' declared_type='void'/>
 </retval>
 </method>
 <method selector='setBeginContact:'>
-<arg function_pointer='true' name='beginContact' declared_type='beginContactCallback' index='0' type='@?'>
-<arg declared_type='B2DBody*' type='@'/>
-<arg declared_type='B2DBody*' type='@'/>
-<arg declared_type='_Bool' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='beginContactCallback' name='beginContact'>
+<arg type='@' declared_type='B2DBody*'/>
+<arg type='@' declared_type='B2DBody*'/>
+<arg type='B' declared_type='_Bool'/>
+<retval type='v' declared_type='void'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setContactListener:'>
-<arg name='contactListener' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='contactListener'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setEndContact:'>
-<arg function_pointer='true' name='endContact' declared_type='endContactCallback' index='0' type='@?'>
-<arg declared_type='B2DBody*' type='@'/>
-<arg declared_type='B2DBody*' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='endContactCallback' name='endContact'>
+<arg type='@' declared_type='B2DBody*'/>
+<arg type='@' declared_type='B2DBody*'/>
+<retval type='v' declared_type='void'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DDestructionListener'>
 <method selector='destructionListener'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 <method selector='fixtureSayGoodbye'>
-<retval function_pointer='true' declared_type='fixtureSayGoodbyeCallback' type='@?'>
-<arg declared_type='B2DFixture*' type='@'/>
-<retval declared_type='void' type='v'/>
+<retval type='@?' function_pointer='true' declared_type='fixtureSayGoodbyeCallback'>
+<arg type='@' declared_type='B2DFixture*'/>
+<retval type='v' declared_type='void'/>
 </retval>
 </method>
 <method selector='setDestructionListener:'>
-<arg name='destructionListener' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='destructionListener'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setFixtureSayGoodbye:'>
-<arg function_pointer='true' name='fixtureSayGoodbye' declared_type='fixtureSayGoodbyeCallback' index='0' type='@?'>
-<arg declared_type='B2DFixture*' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='fixtureSayGoodbyeCallback' name='fixtureSayGoodbye'>
+<arg type='@' declared_type='B2DFixture*'/>
+<retval type='v' declared_type='void'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DDraw'>
 <method selector='appendDrawFlags:'>
-<arg name='flags' declared_type='unsigned int' index='0' type='I'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='I' declared_type='unsigned int' name='flags'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='clearDrawFlags:'>
-<arg name='flags' declared_type='unsigned int' index='0' type='I'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='I' declared_type='unsigned int' name='flags'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='draw'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 <method selector='drawCircle'>
-<retval function_pointer='true' declared_type='drawCircleCallback' type='@?'>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='float' type='f'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<retval type='@?' function_pointer='true' declared_type='drawCircleCallback'>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='f' declared_type='float'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </retval>
 </method>
 <method selector='drawFlags'>
-<retval declared_type='unsigned int' type='I'/>
+<retval type='I' declared_type='unsigned int'/>
 </method>
 <method selector='drawPolygon'>
-<retval function_pointer='true' declared_type='drawPolygonCallback' type='@?'>
-<arg declared_type='CGPoint*' type='^{CGPoint=ff}'/>
-<arg declared_type='NSInteger' type='i'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<retval type='@?' function_pointer='true' declared_type='drawPolygonCallback'>
+<arg type='^{CGPoint=ff}' declared_type='CGPoint*'/>
+<arg type='i' declared_type='NSInteger'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </retval>
 </method>
 <method selector='drawSegment'>
-<retval function_pointer='true' declared_type='drawSegmentCallback' type='@?'>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<retval type='@?' function_pointer='true' declared_type='drawSegmentCallback'>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </retval>
 </method>
 <method selector='drawSolidCircle'>
-<retval function_pointer='true' declared_type='drawSolidCircleCallback' type='@?'>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='float' type='f'/>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<retval type='@?' function_pointer='true' declared_type='drawSolidCircleCallback'>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='f' declared_type='float'/>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </retval>
 </method>
 <method selector='drawSolidPolygon'>
-<retval function_pointer='true' declared_type='drawSolidPolygonCallback' type='@?'>
-<arg declared_type='CGPoint*' type='^{CGPoint=ff}'/>
-<arg declared_type='NSInteger' type='i'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<retval type='@?' function_pointer='true' declared_type='drawSolidPolygonCallback'>
+<arg type='^{CGPoint=ff}' declared_type='CGPoint*'/>
+<arg type='i' declared_type='NSInteger'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </retval>
 </method>
 <method selector='drawTransform'>
-<retval function_pointer='true' declared_type='drawTransformCallback' type='@?'>
-<arg declared_type='B2DTransform*' type='@'/>
-<retval declared_type='void' type='v'/>
+<retval type='@?' function_pointer='true' declared_type='drawTransformCallback'>
+<arg type='@' declared_type='B2DTransform*'/>
+<retval type='v' declared_type='void'/>
 </retval>
 </method>
 <method selector='setDraw:'>
-<arg name='draw' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='draw'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setDrawCircle:'>
-<arg function_pointer='true' name='drawCircle' declared_type='drawCircleCallback' index='0' type='@?'>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='float' type='f'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='drawCircleCallback' name='drawCircle'>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='f' declared_type='float'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setDrawFlags:'>
-<arg name='drawFlags' declared_type='unsigned int' index='0' type='I'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='I' declared_type='unsigned int' name='drawFlags'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setDrawPolygon:'>
-<arg function_pointer='true' name='drawPolygon' declared_type='drawPolygonCallback' index='0' type='@?'>
-<arg declared_type='CGPoint*' type='^{CGPoint=ff}'/>
-<arg declared_type='NSInteger' type='i'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='drawPolygonCallback' name='drawPolygon'>
+<arg type='^{CGPoint=ff}' declared_type='CGPoint*'/>
+<arg type='i' declared_type='NSInteger'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setDrawSegment:'>
-<arg function_pointer='true' name='drawSegment' declared_type='drawSegmentCallback' index='0' type='@?'>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='drawSegmentCallback' name='drawSegment'>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setDrawSolidCircle:'>
-<arg function_pointer='true' name='drawSolidCircle' declared_type='drawSolidCircleCallback' index='0' type='@?'>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='float' type='f'/>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='drawSolidCircleCallback' name='drawSolidCircle'>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='f' declared_type='float'/>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setDrawSolidPolygon:'>
-<arg function_pointer='true' name='drawSolidPolygon' declared_type='drawSolidPolygonCallback' index='0' type='@?'>
-<arg declared_type='CGPoint*' type='^{CGPoint=ff}'/>
-<arg declared_type='NSInteger' type='i'/>
-<arg declared_type='B2DColor*' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='drawSolidPolygonCallback' name='drawSolidPolygon'>
+<arg type='^{CGPoint=ff}' declared_type='CGPoint*'/>
+<arg type='i' declared_type='NSInteger'/>
+<arg type='@' declared_type='B2DColor*'/>
+<retval type='v' declared_type='void'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setDrawTransform:'>
-<arg function_pointer='true' name='drawTransform' declared_type='drawTransformCallback' index='0' type='@?'>
-<arg declared_type='B2DTransform*' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='drawTransformCallback' name='drawTransform'>
+<arg type='@' declared_type='B2DTransform*'/>
+<retval type='v' declared_type='void'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DEdgeShape'>
 <method selector='endAdjacentVertex'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='endVertex'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='hasEndAdjacentVertex'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='hasStartAdjacentVertex'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='initWithStartPoint:endPoint:'>
-<arg name='startPoint' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<arg name='endPoint' declared_type='CGPoint' index='1' type='{CGPoint=ff}'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='startPoint'/>
+<arg index='1' type='{CGPoint=ff}' declared_type='CGPoint' name='endPoint'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='initWithStartVertex:endVertex:'>
-<arg name='startVertex' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<arg name='endVertex' declared_type='CGPoint' index='1' type='{CGPoint=ff}'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='startVertex'/>
+<arg index='1' type='{CGPoint=ff}' declared_type='CGPoint' name='endVertex'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='startAdjacentVertex'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='startVertex'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 </class>
 <class name='B2DFilter'>
 <method selector='categoryBits'>
-<retval declared_type='NSUInteger' type='I'/>
+<retval type='I' declared_type='NSUInteger'/>
 </method>
 <method selector='groupIndex'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='initWithFilter:'>
-<arg name='filter' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='filter'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='maskBits'>
-<retval declared_type='NSUInteger' type='I'/>
+<retval type='I' declared_type='NSUInteger'/>
 </method>
 <method selector='setCategoryBits:'>
-<arg name='categoryBits' declared_type='NSUInteger' index='0' type='I'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='I' declared_type='NSUInteger' name='categoryBits'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setGroupIndex:'>
-<arg name='groupIndex' declared_type='NSInteger' index='0' type='i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='i' declared_type='NSInteger' name='groupIndex'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setMaskBits:'>
-<arg name='maskBits' declared_type='NSUInteger' index='0' type='I'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='I' declared_type='NSUInteger' name='maskBits'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DFixture'>
 <method selector='aabb:'>
-<arg name='childIndex' declared_type='NSInteger' index='0' type='i'/>
-<retval declared_type='B2DAABB*' type='@'/>
+<arg index='0' type='i' declared_type='NSInteger' name='childIndex'/>
+<retval type='@' declared_type='B2DAABB*'/>
 </method>
 <method selector='body'>
-<retval declared_type='B2DBody*' type='@'/>
+<retval type='@' declared_type='B2DBody*'/>
 </method>
 <method selector='density'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='dump:'>
-<arg name='bodyIndex' declared_type='NSInteger' index='0' type='i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='i' declared_type='NSInteger' name='bodyIndex'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='filterData'>
-<retval declared_type='B2DFilter*' type='@'/>
+<retval type='@' declared_type='B2DFilter*'/>
 </method>
 <method selector='fixture'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 <method selector='friction'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='initWithFixture:'>
-<arg name='boxFixture' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='boxFixture'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='isSensor'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='massData'>
-<retval declared_type='B2DMassData*' type='@'/>
+<retval type='@' declared_type='B2DMassData*'/>
 </method>
 <method selector='next'>
-<retval declared_type='B2DFixture*' type='@'/>
+<retval type='@' declared_type='B2DFixture*'/>
 </method>
 <method selector='rayCastWithOutput:input:andChildIndex:'>
-<arg name='output' declared_type='B2DRayCastOutput*' index='0' type='@'/>
-<arg name='input' declared_type='B2DRayCastInput*' index='1' type='@'/>
-<arg name='childIndex' declared_type='NSInteger' index='2' type='i'/>
-<retval declared_type='_Bool' type='B'/>
+<arg index='0' type='@' declared_type='B2DRayCastOutput*' name='output'/>
+<arg index='1' type='@' declared_type='B2DRayCastInput*' name='input'/>
+<arg index='2' type='i' declared_type='NSInteger' name='childIndex'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='refilter'>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='restitution'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='sensor'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='setDensity:'>
-<arg name='density' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='density'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setFilterData:'>
-<arg name='filterData' declared_type='B2DFilter*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DFilter*' name='filterData'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setFixture:'>
-<arg name='fixture' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='fixture'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setFriction:'>
-<arg name='friction' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='friction'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setRestitution:'>
-<arg name='restitution' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='restitution'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setSensor:'>
-<arg name='sensor' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='sensor'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setUserData:'>
-<arg name='userData' declared_type='id' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='id' name='userData'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='shape'>
-<retval declared_type='B2DShape*' type='@'/>
+<retval type='@' declared_type='B2DShape*'/>
 </method>
 <method selector='testPoint:'>
-<arg name='point' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='_Bool' type='B'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='point'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='type'>
-<retval declared_type='B2DShapeTypes' type='i'/>
+<retval type='i' declared_type='B2DShapeTypes'/>
 </method>
 <method selector='userData'>
-<retval declared_type='id' type='@'/>
+<retval type='@' declared_type='id'/>
 </method>
 </class>
 <class name='B2DFixtureDef'>
 <method selector='density'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='friction'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='isSensor'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='restitution'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='setDensity:'>
-<arg name='density' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='density'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setFriction:'>
-<arg name='friction' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='friction'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setIsSensor:'>
-<arg name='isSensor' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='isSensor'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setRestitution:'>
-<arg name='restitution' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='restitution'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setShape:'>
-<arg name='shape' declared_type='B2DShape*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DShape*' name='shape'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setUserData:'>
-<arg name='userData' declared_type='id' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='id' name='userData'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='shape'>
-<retval declared_type='B2DShape*' type='@'/>
+<retval type='@' declared_type='B2DShape*'/>
 </method>
 <method selector='userData'>
-<retval declared_type='id' type='@'/>
+<retval type='@' declared_type='id'/>
 </method>
 </class>
 <class name='B2DMassData'>
 <method selector='I'>
-<retval declared_type='Float32' type='f'/>
+<retval type='f' declared_type='Float32'/>
 </method>
 <method selector='centre'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='initWithMassData:'>
-<arg name='massData' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='massData'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='mass'>
-<retval declared_type='Float32' type='f'/>
+<retval type='f' declared_type='Float32'/>
 </method>
 <method selector='setCentre:'>
-<arg name='centre' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='centre'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setI:'>
-<arg name='I' declared_type='Float32' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='Float32' name='I'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setMass:'>
-<arg name='mass' declared_type='Float32' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='Float32' name='mass'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DPolygonShape'>
 <method selector='centroid'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='getVertex:'>
-<arg name='index' declared_type='NSInteger' index='0' type='i'/>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<arg index='0' type='i' declared_type='NSInteger' name='index'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='initWithBoxSize:'>
-<arg name='boxSize' declared_type='CGSize' index='0' type='{CGSize=ff}'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='{CGSize=ff}' declared_type='CGSize' name='boxSize'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='initWithHalfWidth:andHalfHeight:'>
-<arg name='halfWidth' declared_type='CGFloat' index='0' type='f'/>
-<arg name='halfHeight' declared_type='CGFloat' index='1' type='f'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='f' declared_type='CGFloat' name='halfWidth'/>
+<arg index='1' type='f' declared_type='CGFloat' name='halfHeight'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='initWithHalfWidth:halfHeight:center:andAngle:'>
-<arg name='halfWidth' declared_type='CGFloat' index='0' type='f'/>
-<arg name='halfHeight' declared_type='CGFloat' index='1' type='f'/>
-<arg name='center' declared_type='CGPoint' index='2' type='{CGPoint=ff}'/>
-<arg name='angle' declared_type='CGFloat' index='3' type='f'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='f' declared_type='CGFloat' name='halfWidth'/>
+<arg index='1' type='f' declared_type='CGFloat' name='halfHeight'/>
+<arg index='2' type='{CGPoint=ff}' declared_type='CGPoint' name='center'/>
+<arg index='3' type='f' declared_type='CGFloat' name='angle'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='initWithVertices:andVertexCount:'>
-<arg name='vertices' declared_type='CGPoint*' index='0' type='^{CGPoint=ff}'/>
-<arg name='vertexCount' declared_type='NSInteger' index='1' type='i'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='^{CGPoint=ff}' declared_type='CGPoint*' name='vertices'/>
+<arg index='1' type='i' declared_type='NSInteger' name='vertexCount'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='normals'>
-<retval declared_type='CGPoint*' type='^{CGPoint=ff}'/>
+<retval type='^{CGPoint=ff}' declared_type='CGPoint*'/>
 </method>
 <method selector='vertexCount'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='vertices'>
-<retval declared_type='CGPoint*' type='^{CGPoint=ff}'/>
+<retval type='^{CGPoint=ff}' declared_type='CGPoint*'/>
 </method>
 </class>
 <class name='B2DProfile'>
 <method selector='broadphase'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='collide'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='setBroadphase:'>
-<arg name='broadphase' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='broadphase'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setCollide:'>
-<arg name='collide' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='collide'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setSolve:'>
-<arg name='solve' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='solve'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setSolveInit:'>
-<arg name='solveInit' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='solveInit'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setSolvePosition:'>
-<arg name='solvePosition' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='solvePosition'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setSolveTOI:'>
-<arg name='solveTOI' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='solveTOI'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setSolveVelocity:'>
-<arg name='solveVelocity' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='solveVelocity'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setStep:'>
-<arg name='step' declared_type='CGFloat' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='step'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='solve'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='solveInit'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='solvePosition'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='solveTOI'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='solveVelocity'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='step'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 </class>
 <class name='B2DQueryCallback'>
 <method selector='queryCallback'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 <method selector='reportFixture'>
-<retval function_pointer='true' declared_type='reportQueryFixtureCallback' type='@?'>
-<arg declared_type='B2DFixture*' type='@'/>
-<retval declared_type='_Bool' type='B'/>
+<retval type='@?' function_pointer='true' declared_type='reportQueryFixtureCallback'>
+<arg type='@' declared_type='B2DFixture*'/>
+<retval type='B' declared_type='_Bool'/>
 </retval>
 </method>
 <method selector='setQueryCallback:'>
-<arg name='queryCallback' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='queryCallback'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setReportFixture:'>
-<arg function_pointer='true' name='reportFixture' declared_type='reportQueryFixtureCallback' index='0' type='@?'>
-<arg declared_type='B2DFixture*' type='@'/>
-<retval declared_type='_Bool' type='B'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='reportQueryFixtureCallback' name='reportFixture'>
+<arg type='@' declared_type='B2DFixture*'/>
+<retval type='B' declared_type='_Bool'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DRayCastCallback'>
 <method selector='rayCastCallback'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 <method selector='reportFixture'>
-<retval function_pointer='true' declared_type='reportRaycastFixtureCallback' type='@?'>
-<arg declared_type='B2DFixture*' type='@'/>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='CGFloat' type='f'/>
-<retval declared_type='float' type='f'/>
+<retval type='@?' function_pointer='true' declared_type='reportRaycastFixtureCallback'>
+<arg type='@' declared_type='B2DFixture*'/>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='f' declared_type='CGFloat'/>
+<retval type='f' declared_type='float'/>
 </retval>
 </method>
 <method selector='setRayCastCallback:'>
-<arg name='rayCastCallback' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='rayCastCallback'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setReportFixture:'>
-<arg function_pointer='true' name='reportFixture' declared_type='reportRaycastFixtureCallback' index='0' type='@?'>
-<arg declared_type='B2DFixture*' type='@'/>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='CGPoint' type='{CGPoint=ff}'/>
-<arg declared_type='CGFloat' type='f'/>
-<retval declared_type='float' type='f'/>
+<arg index='0' type='@?' function_pointer='true' declared_type='reportRaycastFixtureCallback' name='reportFixture'>
+<arg type='@' declared_type='B2DFixture*'/>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='{CGPoint=ff}' declared_type='CGPoint'/>
+<arg type='f' declared_type='CGFloat'/>
+<retval type='f' declared_type='float'/>
 </arg>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DRayCastInput'>
 <method selector='initWithRayCastInput:'>
-<arg name='rayCastInput' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='rayCastInput'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='maxFraction'>
-<retval declared_type='Float32' type='f'/>
+<retval type='f' declared_type='Float32'/>
 </method>
 <method selector='point1'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='point2'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='setMaxFraction:'>
-<arg name='maxFraction' declared_type='Float32' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='Float32' name='maxFraction'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setPoint1:'>
-<arg name='point1' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='point1'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setPoint2:'>
-<arg name='point2' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='point2'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DRayCastOutput'>
 <method selector='fraction'>
-<retval declared_type='Float32' type='f'/>
+<retval type='f' declared_type='Float32'/>
 </method>
 <method selector='initWithRayCastOutput:'>
-<arg name='rayCastOutput' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='rayCastOutput'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='normal'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='setFraction:'>
-<arg name='fraction' declared_type='Float32' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='Float32' name='fraction'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setNormal:'>
-<arg name='normal' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='normal'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DShape'>
 <method selector='childCount'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='computeAABB:withTransform:andChildIndex:'>
-<arg name='aabb' declared_type='B2DAABB*' index='0' type='@'/>
-<arg name='transform' declared_type='B2DTransform*' index='1' type='@'/>
-<arg name='childIndex' declared_type='NSInteger' index='2' type='i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DAABB*' name='aabb'/>
+<arg index='1' type='@' declared_type='B2DTransform*' name='transform'/>
+<arg index='2' type='i' declared_type='NSInteger' name='childIndex'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='computeMass:withDensity:'>
-<arg name='massData' declared_type='B2DMassData*' index='0' type='@'/>
-<arg name='density' declared_type='CGFloat' index='1' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DMassData*' name='massData'/>
+<arg index='1' type='f' declared_type='CGFloat' name='density'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='initWithShape:'>
-<arg name='boxShape' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='boxShape'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='radius'>
-<retval declared_type='CGFloat' type='f'/>
+<retval type='f' declared_type='CGFloat'/>
 </method>
 <method selector='rayCastWithOutput:input:transform:andChildren:'>
-<arg name='output' declared_type='B2DRayCastOutput*' index='0' type='@'/>
-<arg name='input' declared_type='B2DRayCastInput*' index='1' type='@'/>
-<arg name='transform' declared_type='B2DTransform*' index='2' type='@'/>
-<arg name='childIndex' declared_type='NSInteger' index='3' type='i'/>
-<retval declared_type='_Bool' type='B'/>
+<arg index='0' type='@' declared_type='B2DRayCastOutput*' name='output'/>
+<arg index='1' type='@' declared_type='B2DRayCastInput*' name='input'/>
+<arg index='2' type='@' declared_type='B2DTransform*' name='transform'/>
+<arg index='3' type='i' declared_type='NSInteger' name='childIndex'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='setShape:'>
-<arg name='shape' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='shape'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='shape'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 <method selector='testPointWithTransform:andPoint:'>
-<arg name='transform' declared_type='B2DTransform*' index='0' type='@'/>
-<arg name='point' declared_type='CGPoint' index='1' type='{CGPoint=ff}'/>
-<retval declared_type='_Bool' type='B'/>
+<arg index='0' type='@' declared_type='B2DTransform*' name='transform'/>
+<arg index='1' type='{CGPoint=ff}' declared_type='CGPoint' name='point'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='type'>
-<retval declared_type='B2DShapeTypes' type='i'/>
+<retval type='i' declared_type='B2DShapeTypes'/>
 </method>
 </class>
 <class name='B2DTransform'>
 <method selector='angle'>
-<retval declared_type='Float32' type='f'/>
+<retval type='f' declared_type='Float32'/>
 </method>
 <method selector='initWithTransform:'>
-<arg name='transform' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='transform'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='point'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='setAngle:'>
-<arg name='angle' declared_type='Float32' index='0' type='f'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='Float32' name='angle'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setPoint:'>
-<arg name='point' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='point'/>
+<retval type='v' declared_type='void'/>
 </method>
 </class>
 <class name='B2DWorld'>
 <method selector='addContactListener:'>
-<arg name='contactListener' declared_type='B2DContactListener*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DContactListener*' name='contactListener'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='allowsSleeping'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='autoClearForces'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='bodyCount'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='bodyList'>
-<retval declared_type='NSArray*' type='@'/>
+<retval type='@' declared_type='NSArray*'/>
 </method>
 <method selector='clearForces'>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='contactCount'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='continuousPhysics'>
-<retval declared_type='BOOL' type='B'/>
+<retval type='B' declared_type='BOOL'/>
 </method>
 <method selector='createBody:'>
-<arg name='bodyDefinition' declared_type='B2DBodyDef*' index='0' type='@'/>
-<retval declared_type='B2DBody*' type='@'/>
+<arg index='0' type='@' declared_type='B2DBodyDef*' name='bodyDefinition'/>
+<retval type='@' declared_type='B2DBody*'/>
 </method>
 <method selector='createBodyInPosition:type:'>
-<arg name='position' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<arg name='bodyType' declared_type='B2DBodyTypes' index='1' type='i'/>
-<retval declared_type='B2DBody*' type='@'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='position'/>
+<arg index='1' type='i' declared_type='B2DBodyTypes' name='bodyType'/>
+<retval type='@' declared_type='B2DBody*'/>
 </method>
 <method selector='destroyBody:'>
-<arg name='body' declared_type='B2DBody*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DBody*' name='body'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='drawDebugData'>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='dump'>
-<retval declared_type='void' type='v'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='gravity'>
-<retval declared_type='CGPoint' type='{CGPoint=ff}'/>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
 </method>
 <method selector='initWithWorld:'>
-<arg name='boxWorld' declared_type='id' index='0' type='@'/>
-<retval declared_type='id' type='@'/>
+<arg index='0' type='@' declared_type='id' name='boxWorld'/>
+<retval type='@' declared_type='id'/>
 </method>
 <method selector='isLocked'>
-<retval declared_type='_Bool' type='B'/>
+<retval type='B' declared_type='_Bool'/>
 </method>
 <method selector='jointCount'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='profile'>
-<retval declared_type='B2DProfile*' type='@'/>
+<retval type='@' declared_type='B2DProfile*'/>
 </method>
 <method selector='proxyCount'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='queryAABBWithCallback:andAABB:'>
-<arg name='queryCallback' declared_type='B2DQueryCallback*' index='0' type='@'/>
-<arg name='aabb' declared_type='B2DAABB*' index='1' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DQueryCallback*' name='queryCallback'/>
+<arg index='1' type='@' declared_type='B2DAABB*' name='aabb'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='rayCastWithCallback:andPoint1:andPoint2:'>
-<arg name='rayCastCallback' declared_type='B2DRayCastCallback*' index='0' type='@'/>
-<arg name='point1' declared_type='CGPoint' index='1' type='{CGPoint=ff}'/>
-<arg name='point2' declared_type='CGPoint' index='2' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DRayCastCallback*' name='rayCastCallback'/>
+<arg index='1' type='{CGPoint=ff}' declared_type='CGPoint' name='point1'/>
+<arg index='2' type='{CGPoint=ff}' declared_type='CGPoint' name='point2'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='removeBody:'>
-<arg name='body' declared_type='B2DBody*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DBody*' name='body'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAllowsSleeping:'>
-<arg name='allowsSleeping' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='allowsSleeping'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setAutoClearForces:'>
-<arg name='autoClearForces' declared_type='_Bool' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='_Bool' name='autoClearForces'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setContactFilter:'>
-<arg name='contactFilter' declared_type='B2DContactFilter*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DContactFilter*' name='contactFilter'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setContactListener:'>
-<arg name='contactListener' declared_type='B2DContactListener*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DContactListener*' name='contactListener'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setContinuousPhysics:'>
-<arg name='continuousPhysics' declared_type='BOOL' index='0' type='B'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='B' declared_type='BOOL' name='continuousPhysics'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setDebugDraw:'>
-<arg name='draw' declared_type='B2DDraw*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DDraw*' name='draw'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setDestructionListener:'>
-<arg name='destructionListener' declared_type='B2DDestructionListener*' index='0' type='@'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='@' declared_type='B2DDestructionListener*' name='destructionListener'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setGravity:'>
-<arg name='gravity' declared_type='CGPoint' index='0' type='{CGPoint=ff}'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='{CGPoint=ff}' declared_type='CGPoint' name='gravity'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='setWorld:'>
-<arg name='world' declared_type='int*' index='0' type='^i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='^i' declared_type='int*' name='world'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='stepWithDelta:velocityInteractions:positionInteractions:'>
-<arg name='delta' declared_type='CGFloat' index='0' type='f'/>
-<arg name='velocityInteractions' declared_type='int' index='1' type='i'/>
-<arg name='positionInteractions' declared_type='int' index='2' type='i'/>
-<retval declared_type='void' type='v'/>
+<arg index='0' type='f' declared_type='CGFloat' name='delta'/>
+<arg index='1' type='i' declared_type='int' name='velocityInteractions'/>
+<arg index='2' type='i' declared_type='int' name='positionInteractions'/>
+<retval type='v' declared_type='void'/>
 </method>
 <method selector='treeBalance'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='treeHeight'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='treeQuality'>
-<retval declared_type='NSInteger' type='i'/>
+<retval type='i' declared_type='NSInteger'/>
 </method>
 <method selector='world'>
-<retval declared_type='int*' type='^i'/>
+<retval type='^i' declared_type='int*'/>
 </method>
 </class>
 </signatures>
