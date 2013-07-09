@@ -7,14 +7,14 @@ describe Joybox::Actions::Jump do
 
     wait 0.2 do
       @sprite.position.should.not == CGPointMake(5, 5)
-      @sprite.position.x.should.not.be.close 20, 1
-      @sprite.position.y.should.not.be.close 20, 1
+      @sprite.position.x.should.not.be.close 20, 0.1
+      @sprite.position.y.should.not.be.close 20, 0.1
     end
 
-    wait 0.4 do
+    wait 0.5 do
       @sprite.position.should.not == CGPointMake(5, 5)
-      @sprite.position.x.should.be.close 20, 2
-      @sprite.position.y.should.be.close 20, 2
+      @sprite.position.x.should.be.close 20, 0.1
+      @sprite.position.y.should.be.close 20, 0.1
     end
   end
 
@@ -24,14 +24,14 @@ describe Joybox::Actions::Jump do
 
     wait 0.2 do
       @sprite.position.should.not == CGPointMake(5, 5)
-      @sprite.position.x.should.not.be.close 10, 1
-      @sprite.position.y.should.not.be.close 10, 1
+      @sprite.position.x.should.not.be.close 10, 0.1
+      @sprite.position.y.should.not.be.close 10, 0.1
     end
 
-    wait 0.4 do
+    wait 0.5 do
       @sprite.position.should.not == CGPointMake(5, 5)
-      @sprite.position.x.should.be.close 10, 2
-      @sprite.position.y.should.be.close 10, 2
+      @sprite.position.x.should.be.close 10, 0.1
+      @sprite.position.y.should.be.close 10, 0.1
     end
   end
 end

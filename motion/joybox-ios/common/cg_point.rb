@@ -33,6 +33,10 @@ class CGPoint
     end
   end
 
+  def -@
+    CGPointMake(-x, -y)   
+  end
+
   def -(other)
     self.+(-other)
   end

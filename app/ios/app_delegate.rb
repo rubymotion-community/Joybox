@@ -15,7 +15,7 @@ class AppDelegate
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
 
-    @director << PhysicsLayer.scene
+    @director << GameScene.new
     true
   end
 

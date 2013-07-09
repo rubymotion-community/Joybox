@@ -21,6 +21,10 @@ module Joybox
         Joybox.director.winSize.height / 2
       end
 
+      def center
+        [half_width, half_height].to_point
+      end
+
     end
 
   end
