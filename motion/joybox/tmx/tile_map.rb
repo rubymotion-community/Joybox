@@ -16,7 +16,6 @@ module Joybox
       extend Joybox::Common::Initialize
 
       alias_method :tiles_size, :mapSize
-      alias_method :tile_size, :tileSize
       alias_method :orientation, :mapOrientation
       alias_method :objects, :objectGroups
       alias_method :properties_for_gid, :propertiesForGID
@@ -36,13 +35,22 @@ module Joybox
         initWithXML(options[:xml], resourcePath: options[:resource_path]) unless options.has_key? :file_name
       end
 
-      def [](kind, key)
-        return layerNamed(key) if kind == :tile
-        return objectGroupNamed(key) if kind == :object
-      end
+      def object(query)
+        keys = query.split('#')
+        key = keys.shift
 
-      def where(options = {})
-        return query_object_layers(options) if options.has_key? :object_layer
+        layer = objectGroupNamed(key) unless key.nil?
+        return layer unless key = keys.shift
+        object = layer[key]
+        return object unless key = keys.shift
+
+        if key.casecmp(:position)
+          position = [object[:x], object[:y]].to_point
+          position = position.half if Device.retina?
+          position
+        else
+          object[key]
+        end
       end
 
       def tile_layers
@@ -53,8 +61,13 @@ module Joybox
         ObjectLayers.new(self)
       end
 
+      def tile_size
+        return tileSize unless Device.retina?
+        return tileSize.half if Device.retina?
+      end
+
       def size
-        [mapSize.width * tileSize.width, mapSize.height * tileSize.height].to_size
+        [mapSize.width * tile_size.width, mapSize.height * tile_size.height].to_size
       end
 
       def bounding_box
@@ -71,14 +84,16 @@ module Joybox
         [x, y].to_point
       end
 
-      private
-
-      def query_object_layers(options = {})
-        object_layer = objectGroupNamed(options[:object_layer])
-        return object_layer unless options.has_key? :object
-        object = object_layer[options[:object]] 
-        return object unless options.has_key? :key
-        object[options[:key]]
+      def step_by(position, new_position)
+        delta =  new_position - position
+        if delta.x.abs > delta.y.abs
+          position.x += tile_size.width if delta.x > 0
+          position.x -= tile_size.width unless delta.x > 0
+        else
+          position.y += tile_size.height if delta.y > 0
+          position.y -= tile_size.height unless delta.y > 0
+        end
+        position
       end
 
     end

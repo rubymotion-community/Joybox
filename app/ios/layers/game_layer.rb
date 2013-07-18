@@ -35,7 +35,7 @@ class GameLayer < Joybox::Core::Layer
       end_touch_location = end_touch.location
       banana = new_banana_sprite
       self << banana
-      banana.body.apply_force force: ([end_touch_location.x - @starting_touch_location.x, end_touch_location.y - @starting_touch_location.y])
+      banana.body.apply_force force: (end_touch_location - @starting_touch_location)
     end
   end
 
@@ -51,7 +51,6 @@ class GameLayer < Joybox::Core::Layer
     @banana_sprite = PhysicsSprite.new file_name: 'banana.png', body: banana_body
 
     @world.when_collide banana_body do |collision_body, is_touching|
-      p collision_body[:message]
       @banana_sprite.file_name = 'banana_hit.png'
       @enemy_gorilla.file_name = 'gorilla_hit.png'
     end

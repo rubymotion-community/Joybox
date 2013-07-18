@@ -7,6 +7,7 @@ class AppDelegate
       debug repl: true,
             physics: [:shapes, :aabb]
     end
+    @director.should_enable_retina_display = true
 
     @navigation_controller = UINavigationController.alloc.initWithRootViewController(@director)
     @navigation_controller.navigationBarHidden = true
@@ -15,7 +16,7 @@ class AppDelegate
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
 
-    @director << GameScene.new
+    @director << MapLayer.scene
     true
   end
 

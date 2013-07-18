@@ -9,7 +9,6 @@ module Joybox
     alias_method :stop_animation, :stopAnimation
     alias_method :start_animation, :startAnimation
     alias_method :purge_cached_data, :purgeCachedData
-    alias_method :set_next_delta_time_zero, :setNextDeltaTimeZero
     alias_method :set_full_screen, :setFullScreen
     alias_method :is_full_screen, :isFullScreen
 
@@ -32,9 +31,12 @@ module Joybox
       director.delegate = options[:delegate]
     end
 
-
     def << (scene)
       self.push_scene(scene)
+    end
+
+    def set_next_delta_time_zero(delta_time_zero)
+      setNextDeltaTimeZero(delta_time_zero)
     end
 
   end

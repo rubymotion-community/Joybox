@@ -37,6 +37,10 @@ class ATSPoint
     end
   end
 
+  def -@
+    CGPointMake(-x, -y)   
+  end
+
   def -(other)
     self.+(-other)
   end
@@ -48,6 +52,10 @@ class ATSPoint
     when ATSPoint || CGPoint
       return CGPointMake(self.x * other.x, self.y * other.y)
     end
+  end
+
+  def half
+    self / 2
   end
 
 end

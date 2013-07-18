@@ -50,4 +50,17 @@ class CGPoint
     end
   end
 
+  def /(other)
+    case other
+    when Numeric
+      return CGPointMake(self.x / other, self.y / other)
+    when CGPoint
+      return CGPointMake(self.x / other.x, self.y / other.y)
+    end
+  end
+
+  def half
+    self / 2
+  end
+  
 end

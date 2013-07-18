@@ -2,6 +2,7 @@ module Joybox
   module Core
 
     class LayerColor < CCLayerColor
+
       def onEnter
         super
         on_enter if defined?(on_enter)
@@ -28,6 +29,7 @@ module Joybox
         layer.position = options[:position] || CGPointZero
         layer
       end
+      
     end
 
   end
