@@ -11,6 +11,11 @@ module Joybox
       def [](key); @map.layerNamed(key); end
     end
 
+    class Tiles
+      def initialize(map); @map = map; end
+      def [](key); @map.propertiesForGID(key) || Hash.new; end
+    end
+
     class TileMap < CCTMXTiledMap
 
       extend Joybox::Common::Initialize
@@ -18,14 +23,12 @@ module Joybox
       alias_method :tiles_size, :mapSize
       alias_method :orientation, :mapOrientation
       alias_method :objects, :objectGroups
+      alias_method :objects=, :setObjectGroups
       alias_method :properties_for_gid, :propertiesForGID
 
       Orthogonal = 0
       Hexagonal = 1
       Isometric = 2
-
-      Tile = :tile
-      Object = :object
 
       def initialize(options = {})
         # Todo print error message on the console
@@ -61,6 +64,10 @@ module Joybox
         ObjectLayers.new(self)
       end
 
+      def tiles
+        Tiles.new(self)
+      end
+
       def tile_size
         return tileSize unless Device.retina?
         return tileSize.half if Device.retina?
@@ -80,8 +87,8 @@ module Joybox
 
       def coordinate_for_point(point)
         x = point.x / tile_size.width
-        y = size.height - point.y / tile_size.height
-        [x, y].to_point
+        y = (size.height - point.y) / tile_size.height
+        [x.floor, y.floor].to_point
       end
 
       def step_by(position, new_position)
@@ -97,5 +104,6 @@ module Joybox
       end
 
     end
+    
   end
 end

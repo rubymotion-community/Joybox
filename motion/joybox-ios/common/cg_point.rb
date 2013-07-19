@@ -20,6 +20,14 @@ class CGPoint
     CGPointMake(self.x.to_pixels, self.y.to_pixels)
   end
 
+  def to_local_coordinates(node)
+    node.convertToNodeSpace(self)
+  end
+
+  def from_local_coordinates(node)
+    node.convertToWorldSpace(self)
+  end
+
   def ==(other)
     other.is_a?(CGPoint) && CGPointEqualToPoint(self, other)
   end 

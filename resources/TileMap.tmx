@@ -3,12 +3,38 @@
  <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1">
   <image source="tmw_desert_spacing.png" width="265" height="199"/>
  </tileset>
+ <tileset firstgid="49" name="meta_tiles" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="meta_tiles.png" width="67" height="34"/>
+  <tile id="0">
+   <properties>
+    <property name="Collidable" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Collectable" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Background" width="50" height="50">
+  <properties>
+   <property name="Test" value="1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztl91OAjEQRhsvBAIKGAyISiBAoqjA+z8d06TEptntTpnu9rP24mRJ+rNz+k0TdqWUWhleiGUAr9ZaFM7EhtgRBwZ7YkucAGp32ZjaYs/tKgepB1omurZvVd377t35ActD82Gen+q3/7+Ie6JH9J0xe07q2pucjsQjMSYm1phN6lpteh4ejMeoZrwPUP+Vcct05TEXsGCcUYps3P73wc06db9xWBtQPNYVcOfnkEcTxQOL4oFF8cCieGDRpceMeBLyDOAxjLDHAMzDdeI65u6hOf5hj5n1O+SOSe5nLI87i1vunC9Tzto28sjF483Jx0fVHiE91abHLRkg5hHLg5vpewseTe8c1qxDyCOEHD1spir8fiN6SPivHnUZ+/77x665qrYUeXDOxXc+iB6SHiwe8u/fpv1DzjFlHsWjeOTuIbnnUi+uR9fEendqj1hoj5BvaVT09+AF+KwIGA==
   </data>
  </layer>
- <objectgroup name="Spawn" width="50" height="50">
-  <object name="SpawnPoint" x="59" y="259" width="32" height="26"/>
+ <objectgroup name="Objects" width="50" height="50">
+  <object name="SpawnPoint" x="32" y="256" width="32" height="26"/>
  </objectgroup>
+ <layer name="Foreground" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt07EJAAAIA0E3cf8tHcDGQgThrkod+Ag+yMEGZnQDnS7u+RwAAAAAAABgXwEwzwC7
+  </data>
+ </layer>
+ <layer name="Meta" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmN0KgCAMRn2lev+Hi64SG9P96GZ9BwSLnJ6cSpXycChKNjQO2V1uzuo+Vc/mcDT10bHVz2byueHyZYecqt/rzh41XK5wDuf7cQA+hebs+8K6yLZn9fbT9p3vsO8CAAAAf8LyfyHTue4xhmwe1LesNEYUsz1WOc7woP4lrSgeHtZ1b5k3Tw9NO2ubuu0sD0suSNvP8hiF61saJ7NHxDqX9D3qMYqXh7TPXl0TM9KDGos0hwpxL9LDGvOPHtK5nzFmamwR89HG99hboz16cP3DQ5cHvf1Scu3lYQUefCx46MjkscM6X41X39EeXnicB1nKBUqEV+I=
+  </data>
+ </layer>
 </map>

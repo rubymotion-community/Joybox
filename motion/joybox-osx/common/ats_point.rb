@@ -24,6 +24,14 @@ class ATSPoint
     CGPointMake(self.x.to_pixels, self.y.to_pixels)
   end
 
+  def to_local_coordinates(node)
+    node.convertToNodeSpace(self)
+  end
+
+  def from_local_coordinates(node)
+    node.convertToWorldSpace(self)
+  end
+
   def == (point)
     point.is_a?(ATSPoint) && CGPointEqualToPoint(self, point)
   end 
@@ -51,6 +59,15 @@ class ATSPoint
       return CGPointMake(self.x * other, self.y * other)
     when ATSPoint || CGPoint
       return CGPointMake(self.x * other.x, self.y * other.y)
+    end
+  end
+
+  def /(other)
+    case other
+    when Numeric
+      return CGPointMake(self.x / other, self.y / other)
+    when ATSPoint || CGPoint
+      return CGPointMake(self.x / other.x, self.y / other.y)
     end
   end
 
