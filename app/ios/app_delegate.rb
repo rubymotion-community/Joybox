@@ -16,7 +16,7 @@ class AppDelegate
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
 
-    @director << MapLayer.scene
+    @director << GameScene.new
     true
   end
 

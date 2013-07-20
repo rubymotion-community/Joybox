@@ -22,6 +22,6 @@ class AppDelegate
     @main_window.contentView.addSubview(@director.view)
     @main_window.orderFrontRegardless
 
-    @director.run_with_scene(MapLayer.scene)
+    @director.run_with_scene(PhysicsLayer.scene)
   end
 end

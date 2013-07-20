@@ -7,7 +7,7 @@ class GameLayer < Joybox::Core::Layer
       @world.step delta: dt
     end
 
-    @player_gorilla = Sprite.new file_name: 'gorilla.png', position: [108, 147]
+    @player_gorilla = Sprite.new file_name: 'gorilla.png', position: [108, 147], attack: 1, life: 50
     self << @player_gorilla
 
     body = @world.new_body position: [389, 154] do
@@ -16,8 +16,10 @@ class GameLayer < Joybox::Core::Layer
 
     @enemy_gorilla = PhysicsSprite.new file_name: 'gorilla.png', body: body
     self << @enemy_gorilla
+
+    @enemy_gorilla[:lol] = true
+
     body[:message] = 'LOL'
-    p body[:message]
     body[:message] = "LAL"
 
     init_controls
@@ -48,11 +50,12 @@ class GameLayer < Joybox::Core::Layer
                         density: 1.0
     end 
 
-    @banana_sprite = PhysicsSprite.new file_name: 'banana.png', body: banana_body
+    @banana_sprite = PhysicsSprite.new file_name: 'banana.png', body: banana_body, attack: 1, life: 50
 
     @world.when_collide banana_body do |collision_body, is_touching|
       @banana_sprite.file_name = 'banana_hit.png'
       @enemy_gorilla.file_name = 'gorilla_hit.png'
+      p @enemy_gorilla[:lol]
     end
 
     @banana_sprite

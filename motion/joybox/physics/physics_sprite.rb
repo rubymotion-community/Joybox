@@ -7,7 +7,7 @@ module Joybox
 
       def initialize(options = {})
         super
-        self.body = options[:body] if options.include? :body
+        self.body = options.delete(:body) if options.has_key? :body
       end
 
       # We need this method to return true, so Cocos2d continue

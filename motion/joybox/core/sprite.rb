@@ -6,6 +6,7 @@ module Joybox
       extend Joybox::Common::Initialize
 
       alias_method :bounding_box, :boundingBox
+      attr_accessor :properties
       
       def initialize(options = {})
         initialize_with_file_name(options) if options.has_key? (:file_name)
@@ -13,7 +14,8 @@ module Joybox
         initialize_with_frame_name(options) if options.has_key? (:frame_name)
         initialize_with_frame(options) if options.has_key? (:frame)
         initialize_with_cg_image(options) if options.has_key?(:cg_image) && options.has_key?(:key)
-        self.position = options[:position] if options.has_key? (:position)
+        self.position = options.delete(:position) if options.has_key? (:position)
+        self.properties = options
       end
       
       def file_name=(file_name)
@@ -45,29 +47,36 @@ module Joybox
         super
       end
 
+      def [](key)
+        @properties[key]
+      end
+
+      def []=(key, value)
+        @properties[key] = value
+      end
 
       private 
 
       def initialize_with_file_name(options = {})
-        initWithFile(options[:file_name]) if options[:rect].nil?
-        initWithFile(options[:file_name], rect: options[:rect]) unless options[:rect].nil?
+        initWithFile(options.delete(:file_name)) if options[:rect].nil?
+        initWithFile(options.delete(:file_name), rect: options.delete(:rect)) unless options[:rect].nil?
       end
 
       def initialize_with_texture(options = {})
-        initWithTexture(options[:texture]) if options[:rect].nil?
-        initWithTexture(options[:texture], rect: options[:rect]) unless options[:rect].nil? 
+        initWithTexture(options.delete(:texture)) if options[:rect].nil?
+        initWithTexture(options.delete(:texture), rect: options.delete(:rect)) unless options[:rect].nil? 
       end
 
       def initialize_with_frame_name(options = {})
-        initWithSpriteFrameName(options[:frame_name])
+        initWithSpriteFrameName(options.delete(:frame_name))
       end
 
       def initialize_with_frame(options = {})
-        initWithSpriteFrame(options[:frame])
+        initWithSpriteFrame(options.delete(:frame))
       end
 
       def initialize_with_cg_image(options = {})
-        initWithCGImage(options[:cg_image].CGImage, key:options[:key])
+        initWithCGImage(options.delete(:cg_image).CGImage, key: options.delete(:key))
       end
 
     end

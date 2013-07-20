@@ -165,11 +165,17 @@ class PhysicsLayer < Joybox::Core::Layer
     end
 
 
-    # block_sprite = PhysicsSprite.new texture: @sprite_batch.texture,
-    #                                  rect: [[32 * block_column, 32 * block_row], [32, 32]],
-    #                                  body: body
+    block_sprite = PhysicsSprite.new texture: @sprite_batch.texture,
+                                     rect: [[32 * block_column, 32 * block_row], [32, 32]],
+                                     body: body,
+                                     attack: 1
 
-    # @sprite_batch << block_sprite
+    p block_sprite[:attack]
+    block_sprite[:defense] = 'loling'
+
+    p block_sprite[:defense]
+
+    @sprite_batch << block_sprite
   end
 
 end
