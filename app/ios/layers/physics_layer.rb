@@ -121,8 +121,9 @@ class PhysicsLayer < Joybox::Core::Layer
      fade = Fade.out
      fade_in = Fade.in
      move = Move.by position: [50, 50]
+     rotate = Rotate.by angle:30
 
-     block_sprite.run_action Sequence.with actions:[bezier, fade, fade_in]
+     block_sprite.run_action rotate#Sequence.with actions:[bezier, fade, fade_in]
 
      @sprite_batch << block_sprite
   end

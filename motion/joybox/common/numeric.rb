@@ -12,4 +12,12 @@ class Numeric
     self * 32.0
   end
 
+  def to_radians
+    self * (Math::PI / 180) 
+  end
+
+  def from_radians
+    self * (180 / Math::PI)
+  end
+
 end

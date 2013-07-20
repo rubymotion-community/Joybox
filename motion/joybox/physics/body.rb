@@ -27,6 +27,7 @@ class B2DBody
   alias_method :fixtures, :fixtureList
   alias_method :destroy_fixture, :destroyFixture
   alias_method :metric_position, :position
+  alias_method :radian_angle, :angle
 
   Static = 0
   Kinematic = 1
@@ -94,11 +95,15 @@ class B2DBody
   def position=(position)
     position = CGPointMake(position[0], position[1])
     position = position.from_pixel_coordinates
-    self.setTransformWithPosition(position, andAngle: angle)
+    self.setTransformWithPosition(position, andAngle: radian_angle)
+  end
+
+  def angle
+    radian_angle.from_radians * -1
   end
 
   def angle=(angle)
-    self.setTransformWithPosition(position, andAngle: angle)
+    self.setTransformWithPosition(metric_position, andAngle: angle.to_radians * -1)
   end
 
   def to_world_point(local_point)

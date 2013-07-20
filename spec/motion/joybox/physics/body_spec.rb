@@ -92,17 +92,17 @@ describe Joybox::Physics::Body do
     @world.step delta: 10
 
     static_body.angle = 10
-    static_body.angle.should == 10
+    static_body.angle.should.be.close 10, 1
     dynamic_body.angle = 10
-    dynamic_body.angle.should == 10
+    dynamic_body.angle.should.be.close 10, 1
     kinematic_body.angle = 10
-    kinematic_body.angle.should == 10
+    kinematic_body.angle.should.be.close 10, 1
     
     @world.step delta: 10
 
-    static_body.angle.should == 10
-    dynamic_body.angle.should == 10
-    kinematic_body.angle.should == 10    
+    static_body.angle.should.be.close 10, 1
+    dynamic_body.angle.should.be.close 10, 1
+    kinematic_body.angle.should.be.close 10, 1 
   end
 
   it "should have mass data" do

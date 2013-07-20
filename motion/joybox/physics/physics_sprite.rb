@@ -16,14 +16,6 @@ module Joybox
         true 
       end
 
-      def position=(position)
-        if @body and not self.running_actions?
-          @body.position = position
-        else
-          super
-        end
-      end
-
       def position
         if @body and not self.running_actions?
           @body.position
@@ -32,8 +24,35 @@ module Joybox
         end
       end
 
+      def position=(position)
+        if @body and not self.running_actions?
+          @body.position = position
+        else
+          super
+        end
+      end
+
+      def rotation
+        if @body and not self.running_actions?
+          @body.rotation
+        else
+          super
+        end
+      end
+
+      def rotation=(rotation)
+        if @body and not self.running_actions?
+          @body.rotation = rotation
+        else
+          super
+        end
+      end
+
       def run_action(action)
-        callback = Callback.with { @body.position = self.position }
+        callback = Callback.with do 
+          @body.position = self.position 
+          @body.angle = self.rotation
+        end
         sequence = Sequence.with actions: [action, callback]
         super(sequence)
 
@@ -47,7 +66,7 @@ module Joybox
         
         position = @body.position
         position = position + anchorPointInPoints if ignoreAnchorPointForPosition
-        angle = @body.angle
+        angle = @body.radian_angle
 
         x = position.x
         y = position.y
