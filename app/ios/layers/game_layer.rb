@@ -1,10 +1,18 @@
 class GameLayer < Joybox::Core::Layer
 
+  include Joybox::Physics
+
   def on_enter
     @world = World.new gravity: [0.0, -9.8]
 
     schedule_update do |dt|
       @world.step delta: dt
+
+      @world.destroy_body @banana_land if @banana_land
+      if @banana_land
+        @banana_land = nil
+      end
+      #p @world.listening_bodies
     end
 
     @player_gorilla = Sprite.new file_name: 'gorilla.png', position: [108, 147], attack: 1, life: 50
@@ -50,14 +58,24 @@ class GameLayer < Joybox::Core::Layer
                         density: 1.0
     end 
 
-    @banana_sprite = PhysicsSprite.new file_name: 'banana.png', body: banana_body, attack: 1, life: 50
+    banana_sprite = PhysicsSprite.new file_name: 'banana.png', body: banana_body, attack: 1, life: 50
 
-    @world.when_collide banana_body do |collision_body, is_touching|
-      @banana_sprite.file_name = 'banana_hit.png'
-      @enemy_gorilla.file_name = 'gorilla_hit.png'
-      p @enemy_gorilla[:lol]
+    @world.when_collide banana_sprite do |collision_sprite, is_touching|
+      if collision_sprite == @enemy_gorilla
+        banana_sprite.file_name = 'banana_hit.png'
+        collision_sprite.file_name = 'gorilla_hit.png'
+      end
     end
 
-    @banana_sprite
+    @world.on_collision do |first_body, second_body, is_touching|
+      p 'lal'
+    end
+
+    # p @world.listening_sprites
+    # @world.destroy_body banana_body
+    # p @world.listening_sprites
+
+
+    banana_sprite
   end
 end

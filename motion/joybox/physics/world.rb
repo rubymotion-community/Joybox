@@ -5,6 +5,8 @@ module Joybox
 
       extend Joybox::Common::Initialize
 
+      attr_accessor :listening_sprites
+
       alias_method :bodies, :bodyList
       alias_method :allows_sleeping?, :allowsSleeping
       alias_method :allows_sleeping=, :setAllowsSleeping
@@ -19,11 +21,10 @@ module Joybox
       alias_method :auto_clear_forces?, :autoClearForces
       alias_method :auto_clear_forces=, :setAutoClearForces
       alias_method :create_body, :createBody
-      alias_method :destroy_body, :destroyBody
       alias_method :clear_forces, :clearForces
       alias_method :draw_debug_data, :drawDebugData
       alias_method :continuous_physics, :continuousPhysics
-    
+
       def defaults
         {
           gravity: [0, 0],
@@ -50,14 +51,19 @@ module Joybox
         options = options.nil? ? step_defaults : step_defaults.merge!(options)
 
         stepWithDelta(options[:delta],
-          velocityInteractions: options[:velocity_interactions],
-          positionInteractions: options[:position_interactions])
+                      velocityInteractions: options[:velocity_interactions],
+                      positionInteractions: options[:position_interactions])
       end
 
       def new_body(options = {}, &block)
         body = Body.new(self, options)
         body.instance_eval(&block) if block
         body
+      end
+
+      def destroy_body(body)
+        destroyBody(body)
+        @listening_sprites.delete(body[:sprite]) unless @listening_sprites.nil?
       end
 
       def should_collide(&block)
@@ -75,25 +81,33 @@ module Joybox
         @contact_listener = B2DContactListener.new
         setContactListener(@contact_listener)
 
-        @listening_bodies = Hash.new
+        @listening_sprites = Hash.new
 
         @contact_listener.beginContact = lambda do |first_body, second_body, is_touching|
-          # Its needed to iterate the hash keys to evaluate the equalty using isEqualToBody: 
-          # because the bodies returned in the block are not he same instance of the bodies
-          # in the hash.
-          @listening_bodies.keys.each do |key|
-            @listening_bodies[key].call(second_body, is_touching) if key == first_body 
-            @listening_bodies[key].call(first_body, is_touching) if key == second_body 
+          # TODO: Find a better way to do this assignment
+          collision = [first_body, second_body] if @listening_sprites.has_key? first_body[:sprite]
+          collision = [second_body, first_body] if @listening_sprites.has_key? second_body[:sprite]
+  
+          unless collision.nil?
+            object = collision[1][:sprite].nil? ? collision[1] : collision[1][:sprite]
+            @listening_sprites[collision[0][:sprite]].call(object, is_touching)
           end
+
+          @on_collision.call(first_body, second_body, is_touching) unless @on_collision.nil?
         end
       end
 
-      def when_collide(body, &block)
+      def when_collide(sprite, &block)
         setup_collision_listener unless @contact_listener
-        @listening_bodies[body] = block
+        @listening_sprites[sprite] = block
       end
 
-      def when_fixture_destroyed(&block)
+      def on_collision(&block)
+        setup_collision_listener unless @contact_listener
+        @on_collision = block
+      end
+
+      def on_fixture_destroyed(&block)
         @when_fixture_destroyed = block
 
         @destruction_listener = B2DDestructionListener.new;
@@ -102,7 +116,7 @@ module Joybox
         end
 
         setDestructionListener(@destruction_listener)
-      end
+      end 
 
       def query(options = {}, &block)
         @query = block
@@ -127,8 +141,8 @@ module Joybox
         first_point = CGPointMake(options[:first_point][0], options[:first_point][1])
         second_point = CGPointMake(options[:second_point][0], options[:second_point][1])
 
-        rayCastWithCallback(@ray_cast_callback, 
-                            andPoint1:first_point.from_pixel_coordinates, 
+        rayCastWithCallback(@ray_cast_callback,
+                            andPoint1:first_point.from_pixel_coordinates,
                             andPoint2:second_point.from_pixel_coordinates)
       end
 

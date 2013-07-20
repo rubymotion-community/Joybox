@@ -142,10 +142,10 @@ describe Joybox::Physics::World do
 
     collision_notified = false
 
-    world.when_collide body_one do |collision_body, is_touching|
+    world.on_collision do |first_body, second_body, is_touching|
       collision_notified = true
-      collision_body.should == body_two
-      collision_body[:message] == 'Second Body'
+      second_body.should == body_two
+      second_body[:message] == 'Second Body'
       is_touching.should == true
     end
 
@@ -162,7 +162,7 @@ describe Joybox::Physics::World do
 
     fixture_destroyed_notified = false
 
-    world.when_fixture_destroyed do |fixture|
+    world.on_fixture_destroyed do |fixture|
       fixture_destroyed_notified = true
       fixture.should.not == nil
     end
