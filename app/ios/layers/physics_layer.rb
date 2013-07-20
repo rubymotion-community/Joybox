@@ -32,7 +32,7 @@ class PhysicsLayer < Joybox::Core::Layer
 
   def init_physics
 
-    @world = World.new gravity:[0, -10]
+    @world = World.new gravity:[0, -1]
 
     body = @world.new_body position:[0,0] do
 
@@ -94,14 +94,14 @@ class PhysicsLayer < Joybox::Core::Layer
                       friction: 0.3,
                       density: 1.0
 
-                      circle_fixture radius: 32,
-                                    friction: 0.3,
-                                    density: 0.3,
-                                    restitution: 0.5
-                      chain_fixture chain: [[10, 10], [20, 20], [30, 30]],
-                                    friction: 0.3,
-                                    density: 0.3,
-                                    restitution: 0.5
+                      # circle_fixture radius: 32,
+                      #               friction: 0.3,
+                      #               density: 0.3,
+                      #               restitution: 0.5
+                      # chain_fixture chain: [[10, 10], [20, 20], [30, 30]],
+                      #               friction: 0.3,
+                      #               density: 0.3,
+                      #               restitution: 0.5
     end
 
     # body = @world.new_body position: position,
@@ -114,6 +114,15 @@ class PhysicsLayer < Joybox::Core::Layer
      block_sprite = PhysicsSprite.new texture: @sprite_batch.texture,
                                      rect: [[32 * block_column, 32 * block_row], [32, 32]],
                                      body: body
+
+     block_sprite.position = position
+    
+     bezier = Bezier.by bezier: [[20, 20], [30, 30], [50, 50]]
+     fade = Fade.out
+     fade_in = Fade.in
+     move = Move.by position: [50, 50]
+
+     block_sprite.run_action Sequence.with actions:[bezier, fade, fade_in]
 
      @sprite_batch << block_sprite
   end

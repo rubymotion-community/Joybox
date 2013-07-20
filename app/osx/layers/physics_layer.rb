@@ -170,11 +170,6 @@ class PhysicsLayer < Joybox::Core::Layer
                                      body: body,
                                      attack: 1
 
-    p block_sprite[:attack]
-    block_sprite[:defense] = 'loling'
-
-    p block_sprite[:defense]
-
     @sprite_batch << block_sprite
   end
 

@@ -17,7 +17,7 @@ module Joybox
       end
 
       def position=(position)
-        if @body
+        if @body and not self.running_actions?
           @body.position = position
         else
           super
@@ -25,15 +25,23 @@ module Joybox
       end
 
       def position
-        if @body
+        if @body and not self.running_actions?
           @body.position
         else
           super
         end
       end
 
+      def run_action(action)
+        callback = Callback.with { @body.position = self.position }
+        sequence = Sequence.with actions: [action, callback]
+        super(sequence)
+
+        self.position = @body.position unless @body.nil?
+      end
+
       def nodeToParentTransform
-        return super if @body.nil?
+        return super if @body.nil? or self.running_actions?
 
         super
         
