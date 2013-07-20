@@ -3,6 +3,24 @@ Introduced at [#Inspect 2013](http://www.rubymotion.com/conference/), Joybox is 
 
 For more information, see the presentation: [Cocos2D, an Easier Way](https://speakerdeck.com/curveberyl/cocos2d-an-easier-way).
 
+## Warning for the Repository Version
+
+### Critical change on Physics Collisions
+
+Now for use when_collide method of the World instance, you need to pass an instance of a PhysicsSprite and it will return in the block the colliding physics sprite if available, or the body that is colliding. Example:
+
+```ruby
+@world.when_colide physics_sprite do |collision_sprite, is_touching|
+end
+```
+
+If you still need to get the collisions of the physics bodies you can use the following:
+
+```ruby
+@world.on_collision do |first_body, second_body, is_touching|
+end
+```
+
 ## Latest version (1.0.0)
 * Added REPL Support for iOS and OSX :D
 * NOTE: If the iOS simulator starts on landscape orientation, please rotate and return it. (cmd + => and cmd + <=)
