@@ -50,8 +50,8 @@ module Joybox
 
       def run_action(action)
         callback = Callback.with do 
-          @body.position = self.position 
-          @body.angle = self.rotation
+          @body.position = self.position unless @body.nil?
+          @body.angle = self.rotation unless @body.nil?
         end
         sequence = Sequence.with actions: [action, callback]
         super(sequence)
