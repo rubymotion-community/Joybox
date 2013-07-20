@@ -9,7 +9,7 @@ class MapLayer < Joybox::Core::Layer
     @background = @tile_map.tile_layers[:Background]
     @foreground = @tile_map.tile_layers[:Foreground]
     @meta = @tile_map.tile_layers[:Meta]
-    @meta.visible = false
+    #@meta.visible = false
 
     position = @tile_map.object 'Objects#SpawnPoint#Position'
 
