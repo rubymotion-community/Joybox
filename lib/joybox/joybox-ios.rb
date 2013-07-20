@@ -1,5 +1,4 @@
 Motion::Project::App.setup do |app|
-
   # Extracted from Teacup: https://github.com/rubymotion/teacup
   # Thanks Colin! (@colinta)
   platform = app.respond_to?(:template) ? app.template : :ios

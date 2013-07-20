@@ -1,35 +1,39 @@
-<?xml version="1.0" ?><map height="50" orientation="orthogonal" tileheight="64" tilewidth="64" version="1.0" width="50">
- <tileset firstgid="1" margin="2" name="tmw_desert_spacing" spacing="2" tileheight="64" tilewidth="64">
-  <image height="398" source="tmw_desert_spacing.png" width="530"/>
+<?xml version='1.0' encoding='UTF-8'?>
+<map version='1.0' width='50' tilewidth='64' orientation='orthogonal' height='50' tileheight='64'>
+ <tileset margin='2' firstgid='1' name='tmw_desert_spacing' tilewidth='64' spacing='2' tileheight='64'>
+  <image width='530' source='tmw_desert_spacing-hd.png' height='398'/>
  </tileset>
- <tileset firstgid="49" margin="1" name="meta_tiles" spacing="1" tileheight="64" tilewidth="64">
-  <image height="68" source="meta_tiles.png" width="134"/>
-  <tile id="0">
+ <tileset margin='2' firstgid='49' name='meta_tiles' tilewidth='64' spacing='2' tileheight='64'>
+  <image width='134' source='meta_tiles-hd.png' height='68'/>
+  <tile id='0'>
    <properties>
-    <property name="Collidable" value="True"/>
+    <property value='True' name='Collidable'/>
    </properties>
   </tile>
-  <tile id="1">
+  <tile id='1'>
    <properties>
-    <property name="Collectable" value="True"/>
+    <property value='True' name='Collectable'/>
    </properties>
   </tile>
  </tileset>
- <layer height="50" name="Background" width="50">
-  <data compression="zlib" encoding="base64">
+ <layer name='Background' width='50' height='50'>
+  <properties>
+   <property value='1' name='Test'/>
+  </properties>
+  <data compression='zlib' encoding='base64'>
    eJztl91OAjEQRhsvBAIKGAyISiBAoqjA+z8d06TEptntTpnu9rP24mRJ+rNz+k0TdqWUWhleiGUAr9ZaFM7EhtgRBwZ7YkucAGp32ZjaYs/tKgepB1omurZvVd377t35ActD82Gen+q3/7+Ie6JH9J0xe07q2pucjsQjMSYm1phN6lpteh4ejMeoZrwPUP+Vcct05TEXsGCcUYps3P73wc06db9xWBtQPNYVcOfnkEcTxQOL4oFF8cCieGDRpceMeBLyDOAxjLDHAMzDdeI65u6hOf5hj5n1O+SOSe5nLI87i1vunC9Tzto28sjF483Jx0fVHiE91abHLRkg5hHLg5vpewseTe8c1qxDyCOEHD1spir8fiN6SPivHnUZ+/77x665qrYUeXDOxXc+iB6SHiwe8u/fpv1DzjFlHsWjeOTuIbnnUi+uR9fEendqj1hoj5BvaVT09+AF+KwIGA==
   </data>
  </layer>
- <objectgroup height="50" name="Objects" width="50">
-  <object height="52" name="SpawnPoint" width="64" x="64" y="512"/>
+ <objectgroup name='Objects' width='50' height='50'>
+  <object name='SpawnPoint' width='64' x='64' y='512' height='52'/>
  </objectgroup>
- <layer height="50" name="Foreground" width="50">
-  <data compression="zlib" encoding="base64">
+ <layer name='Foreground' width='50' height='50'>
+  <data compression='zlib' encoding='base64'>
    eJzt07EJAAAIA0E3cf8tHcDGQgThrkod+Ag+yMEGZnQDnS7u+RwAAAAAAABgXwEwzwC7
   </data>
  </layer>
- <layer height="50" name="Meta" width="50">
-  <data compression="zlib" encoding="base64">
+ <layer name='Meta' width='50' height='50'>
+  <data compression='zlib' encoding='base64'>
    eJztmN0KgCAMRn2lev+Hi64SG9P96GZ9BwSLnJ6cSpXycChKNjQO2V1uzuo+Vc/mcDT10bHVz2byueHyZYecqt/rzh41XK5wDuf7cQA+hebs+8K6yLZn9fbT9p3vsO8CAAAAf8LyfyHTue4xhmwe1LesNEYUsz1WOc7woP4lrSgeHtZ1b5k3Tw9NO2ubuu0sD0suSNvP8hiF61saJ7NHxDqX9D3qMYqXh7TPXl0TM9KDGos0hwpxL9LDGvOPHtK5nzFmamwR89HG99hboz16cP3DQ5cHvf1Scu3lYQUefCx46MjkscM6X41X39EeXnicB1nKBUqEV+I=
   </data>
  </layer>

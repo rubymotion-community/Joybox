@@ -144,8 +144,10 @@ describe Joybox::Physics::World do
 
     world.on_collision do |first_body, second_body, is_touching|
       collision_notified = true
+      first_body.should == body_one
+      first_body[:message].should == 'First Body'
       second_body.should == body_two
-      second_body[:message] == 'Second Body'
+      second_body[:message].should == 'Second Body'
       is_touching.should == true
     end
 
