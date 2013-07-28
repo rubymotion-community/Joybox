@@ -18,6 +18,7 @@ module Joybox
 
     class TileMap < CCTMXTiledMap
 
+      include Joybox::Common
       extend Joybox::Common::Initialize
 
       alias_method :tiles_size, :mapSize

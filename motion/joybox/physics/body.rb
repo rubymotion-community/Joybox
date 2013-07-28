@@ -65,7 +65,7 @@ class B2DBody
     body_definition = B2DBodyDef.new()
     position = CGPointMake(options[:position][0], options[:position][1])
     body_definition.position = position.from_pixel_coordinates
-    body_definition.angle = options[:angle]
+    body_definition.angle = options[:angle].to_radians * -1
     linear_velocity = CGPointMake(options[:linear_velocity][0], options[:linear_velocity][1])
     body_definition.linearVelocity = linear_velocity.from_pixel_coordinates
     body_definition.angularVelocity = options[:angular_velocity]

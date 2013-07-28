@@ -5,8 +5,6 @@ module Joybox
 
       extend Joybox::Common::Initialize
 
-      attr_accessor :listening_sprites
-
       alias_method :bodies, :bodyList
       alias_method :allows_sleeping?, :allowsSleeping
       alias_method :allows_sleeping=, :setAllowsSleeping

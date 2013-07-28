@@ -18,6 +18,7 @@ class PhysicsLayer < Joybox::Core::Layer
 
     # @audio_effect = AudioEffect.new
     # @audio_effect[:jump] = 'audios/auEffect.wav'
+    # @audio_effect.play :jump, pan: 1.0
 
     # @background_audio = BackgroundAudio.new
     # @background_audio[:easy] = 'audios/auBackground.mp3'

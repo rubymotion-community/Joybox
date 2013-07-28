@@ -18,6 +18,10 @@ class MapLayer < Joybox::Core::Layer
 
     center_at(@player.position)
 
+    on_gesture_swipe do |event|
+      p 'magnify'
+    end
+
     on_mouse_down do |event, button|
       location =  event.location.to_local_coordinates(self)
       position = @tile_map.step_by(@player.position, location)

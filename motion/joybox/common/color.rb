@@ -5,9 +5,9 @@ module Joybox
 
       def self.defaults
         {
-          red: 1,
-          green: 1,
-          blue: 1
+          red: 255,
+          green: 255,
+          blue: 255
         }
       end
 

@@ -15,16 +15,16 @@ module Joybox
       SimpleAudioEngine.sharedEngine.mute = false
     end
 
+    def enable
+      SimpleAudioEngine.sharedEngine.setEnabled(true)
+    end
+
+    def disable
+      SimpleAudioEngine.sharedEngine.setEnabled(false)
+    end
+
     def enabled?
       SimpleAudioEngine.sharedEngine.enabled
-    end
-
-    def enabled
-      SimpleAudioEngine.sharedEngine.enabled
-    end
-
-    def enabled=(enabled)
-      SimpleAudioEngine.sharedEngine.setEnabled(enabled)
     end
 
   end

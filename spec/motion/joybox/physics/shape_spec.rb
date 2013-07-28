@@ -15,12 +15,9 @@ describe Joybox::Physics::Shape do
   end
 
   it "should know if contains a point" do
-    # @shape.contains_point?(point: [0, 0], position: [0, 0], angle: 0).should == true
-    # @shape.contains_point?(point: [101, 101], position: [100, 100], angle: 30).should == false
-
-    shape = CircleShape.new radius: 320
-    shape.contains_point?(point: [0, 0], position: [0, 0], angle: 0).should == true
-    shape.contains_point?(point: [352, 352], position: [0, 0], angle: 0).should == false
+    @shape.contains_point?([0, 0]).should == true
+    @shape.contains_point?([30, 30]).should == true
+    @shape.contains_point?([61, 61]).should == false
   end
 
   it "should ray cast the shape" do
@@ -29,8 +26,6 @@ describe Joybox::Physics::Shape do
     @shape.ray_cast first_point:[60, 60], 
                     second_point:[1, 1], 
                     maximum_fraction: 20, 
-                    position: [0, 0],
-                    angle: 0,
                     child_index: 0 do |hits, normal, fraction|
                       ray_cast_notified = true
                       hits.should == true
@@ -41,14 +36,9 @@ describe Joybox::Physics::Shape do
   end
 
   it "should compute its aabb" do
-    # aabb = @shape.compute_aabb position: [10, 10], angle: 0, child_index: 0
-    # aabb.lower_bound.should == CGPointMake(-50, -50)
-    # aabb.upper_bound.should == CGPointMake(70, 70)
-
-    shape = CircleShape.new radius: 320
-    aabb = shape.compute_aabb position: [32, 32], angle: 0, child_index: 0
-    aabb.lower_bound.should == CGPointMake(-288, -288)
-    aabb.upper_bound.should == CGPointMake(352, 352)
+    aabb = @shape.compute_aabb child_index: 0
+    aabb.lower_bound.should == CGPointMake(-60, -60)
+    aabb.upper_bound.should == CGPointMake(60, 60)
   end
 
   it "should compute its mass" do

@@ -2,6 +2,8 @@ Joybox::TMX::TileSet = CCTMXTilesetInfo
 
 class CCTMXTilesetInfo
   
+  include Joybox::Common
+  
   alias_method :first_tile_type, :firstGid
   alias_method :first_tile_type, :setFirstGid
   alias_method :image_file_name, :sourceImage

@@ -21,15 +21,25 @@ module Joybox
       TextAlignmentCenter = 1
       TextAlignmentRight = 2
 
+      TextAlignmentTop = 0
+      TextAlignmentBottom = 2
+
+      LineBreakWordWrap = 0
+      LineBreakCharacterWrap = 1
+      LineBreakClip = 2
+      LineBreakHeadTruncation = 3
+      LineBreakTailTruncation = 4
+      LineBreakMiddleTruncation = 5
+
       def defaults
         {
           text: '',
           dimensions: CGSizeZero,
           alignment: TextAlignmentCenter,
-          vertical_alignment: KCCVerticalTextAlignmentTop,
+          vertical_alignment: TextAlignmentTop,
           font_name: 'Marker Felt',
           font_size: 12,
-          line_break_mode: KCCLineBreakModeWordWrap
+          line_break_mode: LineBreakWordWrap
         }
       end
 

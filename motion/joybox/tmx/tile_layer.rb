@@ -2,6 +2,8 @@ Joybox::TMX::TileLayer = CCTMXLayer
 
 class CCTMXLayer
 
+  include Joybox::Common
+
   alias_method :name, :layerName
   alias_method :name=, :setLayerName
   alias_method :tiles_size, :layerSize

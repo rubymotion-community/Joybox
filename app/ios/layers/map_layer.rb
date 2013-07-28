@@ -5,6 +5,8 @@ class MapLayer < Joybox::Core::Layer
   scene
 
   def on_enter
+    p Math::PI
+    p [5, 5].to_point - [1, 4].to_point
     @tile_map = TileMap.new file_name: 'TileMap.tmx'
     @background = @tile_map.tile_layers[:Background]
     @foreground = @tile_map.tile_layers[:Foreground]
@@ -22,6 +24,10 @@ class MapLayer < Joybox::Core::Layer
     self << @player
 
     center_at(@player.position)
+
+    on_gesture_magnify do |event|
+      p 'gesture'
+    end
 
     on_touches_ended do |touches, event|
       location = touches.any_object.location.to_local_coordinates(self)

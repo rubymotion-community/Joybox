@@ -3,30 +3,41 @@ module Joybox
 
     class LayerColor < CCLayerColor
 
+      def self.scene
+        define_singleton_method(:scene) do 
+          scene = CCScene.new
+          menu_layer = self.new
+          scene << menu_layer
+        end
+      end
+
       def onEnter
         super
-        on_enter if defined?(on_enter)
+        on_enter if defined? (on_enter)
       end
 
       def onExit
         super
-        on_exit if defined?(on_exit)
+        on_exit if defined? (on_exit)
+      end
+
+      def self.defaults
+      {
+        opacity: 255,
+        width: Screen.width,
+        height: Screen.height
+      }
       end
 
       def self.new(options = {})
-        color4b = CcColor4B.new
-        color4b.r = options[:red] || 0
-        color4b.g = options[:green] || 0
-        color4b.b = options[:blue] || 0
-        color4b.a = options[:opacity] || 255
+        options = options.nil? ? defaults : defaults.merge!(options)
+        options[:color] << options[:opacity]
 
-        layer = CCLayerColor.layerWithColor(
-          color4b,
-          width: options[:width] || Screen.width,
-          height: options[:height] || Screen.height
-        )
+        layer = CCLayerColor.layerWithColor(options[:color], 
+                                            width: options[:width], 
+                                            height: options[:height])
 
-        layer.position = options[:position] || CGPointZero
+        layer.position = options[:position] if options.has_key? :position
         layer
       end
       

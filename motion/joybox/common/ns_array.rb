@@ -1,7 +1,5 @@
 class NSArray
 
-  alias_method :max_old, :max
-
   def to_point
     CGPointMake(self[0], self[1]) if size == 2
   end

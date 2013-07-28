@@ -29,22 +29,29 @@ module Joybox
         SimpleAudioEngine.sharedEngine.preloadEffect(options[:file_name])
       end
 
+
+      def play_defaults
+        {
+          pitch: 1.0,
+          pan: 0.0,
+          gain: 1.0
+        }
+      end
+
       def play(effect, options = {})
-        if [:pitch, :pan, :gain].all? { |k| options.has_key? k }
-          return SimpleAudioEngine.sharedEngine.playEffect(@effects[effect],
-                                                           pitch: options[:pitch],
-                                                           pan: options[:pan],
-                                                           gain: options[:gain])
-        else
-          return SimpleAudioEngine.sharedEngine.playEffect(@effects[effect])
-        end
+        options = options.nil? ? play_defaults : play_defaults.merge!(options)
+
+        SimpleAudioEngine.sharedEngine.playEffect(@effects[effect],
+                                                  pitch: options[:pitch],
+                                                  pan: options[:pan],
+                                                  gain: options[:gain])
       end
 
       def stop(audio_id)
         SimpleAudioEngine.sharedEngine.stopEffect(audio_id) 
       end
 
-      def delete(effect)
+      def remove(effect)
         SimpleAudioEngine.sharedEngine.unloadEffect(@effects[effect])
       end
 

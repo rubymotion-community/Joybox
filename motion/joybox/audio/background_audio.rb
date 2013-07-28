@@ -39,7 +39,7 @@ module Joybox
         end
       end
 
-      def stop(options = {})
+      def stop
         SimpleAudioEngine.sharedEngine.stopBackgroundMusic
       end
 
@@ -49,10 +49,6 @@ module Joybox
 
       def volume=(volume)
         SimpleAudioEngine.sharedEngine.setBackgroundMusicVolume(volume)
-      end
-
-      def stop
-        SimpleAudioEngine.sharedEngine.stopBackgroundMusic
       end
 
       def pause
