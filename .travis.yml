@@ -1,4 +1,3 @@
 language: objective-c
-before_install:
-  - (ruby --version)
+before_script: sudo chown -R travis ~/Library/RubyMotion
 script: "(bundle install) && (bundle exec rake clean) && (bundle exec rake spec) && (bundle exec rake clean) && (bundle exec rake spec osx=true)"
