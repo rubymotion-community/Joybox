@@ -94,4 +94,28 @@ describe Joybox::Core::Sprite do
     end
   end
 
+  describe "Frame" do
+    it "should return if it is displaying a frame" do
+      SpriteFrameCache.frames.add file_name: 'animation_frames.plist'
+      sprite = Sprite.new frame_name: 'bear1.png', position: CGPointMake(100, 100)
+
+      sprite.displays_frame?(SpriteFrameCache.frames['bear1.png']).should == true
+    end
+
+    it "should return its displayed frame" do
+      SpriteFrameCache.frames.add file_name: 'animation_frames.plist'
+      sprite = Sprite.new frame_name: 'bear1.png', position: CGPointMake(100, 100)
+
+      sprite.frame.should.not == nil
+    end
+
+    it "should change its displayed frame" do
+      SpriteFrameCache.frames.add file_name: 'animation_frames.plist'
+      sprite = Sprite.new frame_name: 'bear1.png', position: CGPointMake(100, 100)
+
+      sprite.frame = SpriteFrameCache.frames['bear2.png']
+      sprite.displays_frame?(SpriteFrameCache.frames['bear2.png']).should == true
+    end
+  end
+
 end

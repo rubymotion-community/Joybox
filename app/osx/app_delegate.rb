@@ -9,9 +9,8 @@ class AppDelegate
     @director = Joybox::Configuration.setup do
       director display_stats: true
       debug repl:true,
-                  physics: [:shapes, :aabb, :center_of_mass]
+            physics: [:shapes, :aabb, :center_of_mass]
     end
-
 
     @main_window = NSWindow.alloc.initWithContentRect([[240, 180], [480, 320]],
       styleMask: NSTitledWindowMask|NSClosableWindowMask|NSMiniaturizableWindowMask|NSResizableWindowMask,
@@ -22,6 +21,6 @@ class AppDelegate
     @main_window.contentView.addSubview(@director.view)
     @main_window.orderFrontRegardless
 
-    @director.run_with_scene(MapLayer.scene)
+    @director.run_with_scene(GameLayer.scene)
   end
 end

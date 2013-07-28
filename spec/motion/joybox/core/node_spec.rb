@@ -1,6 +1,6 @@
 describe CCNode do
 
-  describe "Childs" do 
+  describe "Children" do 
     before do
       @node = CCNode.new
     end
@@ -18,7 +18,7 @@ describe CCNode do
     it "should add many subclasses as childs" do
       sprite = Sprite.new file_name: 'sprite.png'
       layer = Layer.new
-      @node.add_childs(sprite, layer)
+      @node.add_children(sprite, layer)
       @node.children.count.should == 2
     end
 

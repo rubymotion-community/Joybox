@@ -6,6 +6,8 @@ module Joybox
       extend Joybox::Common::Initialize
 
       alias_method :bounding_box, :boundingBox
+      alias_method :frame, :displayFrame
+      alias_method :frame=, :setDisplayFrame
       attr_accessor :properties
       
       def initialize(options = {})
@@ -21,6 +23,10 @@ module Joybox
       def file_name=(file_name)
         texture = CCTextureCache.sharedTextureCache.addImage(file_name)
         self.setTexture(texture)
+      end
+
+      def displays_frame?(frame)
+        isFrameDisplayed(frame)
       end
       
       # Review this in another version, because I dont still quite convinced

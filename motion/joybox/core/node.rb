@@ -14,7 +14,7 @@ class CCNode
     base.send(:include, Joybox)
   end
 
-  def add_childs(*nodes)
+  def add_children(*nodes)
     nodes.each do |node|
       self.addChild(node)
     end

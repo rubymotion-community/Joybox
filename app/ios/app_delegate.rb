@@ -7,13 +7,6 @@ class AppDelegate
       debug repl: true,
             physics: [:shapes, :aabb]
     end
-    @director.should_enable_retina_display = true
-
-
-    sprite_batch = SpriteBatch.new file_name: 'sprite_sheet.png'
-    p_tex = Pointer.new(CcTexParams.type)
-    p_tex[0] = CcTexParams.new(GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT)
-    sprite_batch.texture.setTexParameters(p_tex)
 
     @navigation_controller = UINavigationController.alloc.initWithRootViewController(@director)
     @navigation_controller.navigationBarHidden = true
@@ -22,7 +15,6 @@ class AppDelegate
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
 
-    @director << GameScene.new
     true
   end
 
