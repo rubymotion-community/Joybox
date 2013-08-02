@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Ease</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ACTIONS &amp; ANIMATIONS</h4> <article><h2>Ease</h2>
+<p></p>
+<p>The Ease class provides an action that alters the speed of the inner action without modifying the total time of the running action.</p>
+<p>These type of actions accelerate or decelerate in 3 ways:</p>
+<ul>
+<li>In actions: acceleration occurs at the beginning of the action.</li>
+<li>Out actions: acceleration occurs at the end of the action.</li>
+<li>InOut actions: acceleration occurs at the beginning and at the end of the action.</li>
+</ul>
+<h3 id="in">
+<a name="//apple_ref/cpp/clm/in" class="dashAnchor"></a>In</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning, represented by a cubic function:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">rotate_by_action</span> <span class="o">=</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">359</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_in_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">in</span> <span class="ss">action</span><span class="p">:</span> <span class="n">rotate_by_action</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_in_action</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>rate:</strong> - Float - Default: 1.0<br> Sets the rate of the Action.</p>
+<h3 id="out">
+<a name="//apple_ref/cpp/clm/out" class="dashAnchor"></a>Out</h3>
+<p>Creates an instance of Ease, with acceleration at the end, represented by a cubic function:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">rotate_by_action</span> <span class="o">=</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">359</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">rotate_by_action</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_out_action</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>rate:</strong> - Float - Default: 1.0<br> Sets the rate of the Action.</p>
+<h3 id="in-out">
+<a name="//apple_ref/cpp/clm/in_out" class="dashAnchor"></a>In Out</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning and at the end, represented by a cubic function:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">rotate_by_action</span> <span class="o">=</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">359</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_in_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">in_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">rotate_by_action</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span><span class="p">(</span><span class="n">ease_in_out_action</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>rate:</strong> - Float - Default: 1.0<br> Sets the rate of the Action.</p>
+<h3 id="exponential-in">
+<a name="//apple_ref/cpp/clm/exponential_in" class="dashAnchor"></a>Exponential In</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning, represented by an exponential function:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">move_by_action</span> <span class="o">=</span> <span class="no">Move</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_exponential_in_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">exponential_in</span> <span class="ss">action</span><span class="p">:</span> <span class="n">move_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span><span class="p">(</span><span class="n">ease_exponential_in_action</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="exponential-out">
+<a name="//apple_ref/cpp/clm/exponential_out" class="dashAnchor"></a>Exponential Out</h3>
+<p>Creates an instance of Ease, with acceleration at the end, represented by an exponential function:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">move_by_action</span> <span class="o">=</span> <span class="no">Move</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_exponential_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">exponential_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">move_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span><span class="p">(</span><span class="n">ease_exponential_out_action</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="exponential-in-out">
+<a name="//apple_ref/cpp/clm/exponential_in_out" class="dashAnchor"></a>Exponential In Out</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning and at the end, represented by an exponential function:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">move_by_action</span> <span class="o">=</span> <span class="no">Move</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_exponential_in_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">exponential_in_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">move_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_exponential_in_out_action</span>
+</code></pre></div>
+<h3 id="sine-in">
+<a name="//apple_ref/cpp/clm/sine_in" class="dashAnchor"></a>Sine In</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning, represented by a sine function:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">jump_by_action</span> <span class="o">=</span> <span class="no">Jump</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_sine_in_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">sine_in</span> <span class="ss">action</span><span class="p">:</span> <span class="n">jump_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_sine_in_action</span>
+</code></pre></div>
+<h3 id="sine-out">
+<a name="//apple_ref/cpp/clm/sine_out" class="dashAnchor"></a>Sine Out</h3>
+<p>Creates an instance of Ease, with acceleration at the end, represented by a sine function:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">jump_by_action</span> <span class="o">=</span> <span class="no">Jump</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_sine_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">sine_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">jump_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_sine_out_action</span>
+</code></pre></div>
+<h3 id="sine-in-out">
+<a name="//apple_ref/cpp/clm/sine_in_out" class="dashAnchor"></a>Sine In Out</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning and at the end, represented by a sine function:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">jump_by_action</span> <span class="o">=</span> <span class="no">Jump</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_sine_in_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">sine_in_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">jump_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_sine_in_out_action</span>
+</code></pre></div>
+<h3 id="elastic-in">
+<a name="//apple_ref/cpp/clm/elastic_in" class="dashAnchor"></a>Elastic In</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning, simulating an elastic:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scale_by_action</span> <span class="o">=</span> <span class="no">Scale</span><span class="o">.</span><span class="n">by</span> <span class="ss">scale</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_elastic_in_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">elastic_in</span> <span class="ss">action</span><span class="p">:</span> <span class="n">scale_by_action</span><span class="p">,</span> <span class="ss">period</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_elastic_in_action</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>period</strong> - Float - Default: 1.0<br> Sets the period of the action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.</p>
+</div>
+<h3 id="elastic-out">
+<a name="//apple_ref/cpp/clm/elastic_out" class="dashAnchor"></a>Elastic Out</h3>
+<p>Creates an instance of Ease, with acceleration at the end, simulating an elastic:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scale_by_action</span> <span class="o">=</span> <span class="no">Scale</span><span class="o">.</span><span class="n">by</span> <span class="ss">scale</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_elastic_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">elastic_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">scale_by_action</span><span class="p">,</span> <span class="ss">period</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_elastic_out_action</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>period:</strong> - Float - Default: 1.0<br> Sets the period of the Action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.</p>
+</div>
+<h3 id="elastic-in-out">
+<a name="//apple_ref/cpp/clm/elastic_in_out" class="dashAnchor"></a>Elastic In Out</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning and at the end, simulating an elastic:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scale_by_action</span> <span class="o">=</span> <span class="no">Scale</span><span class="o">.</span><span class="n">by</span> <span class="ss">scale</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_elastic_in_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">elastic_in_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">scale_by_action</span><span class="p">,</span> <span class="ss">period</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_elastic_in_out_action</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>period:</strong> - Float - Default: 1.0<br> Sets the period of the Action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.</p>
+</div>
+<h3 id="bounce-in">
+<a name="//apple_ref/cpp/clm/bounce_in" class="dashAnchor"></a>Bounce In</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning, simulating a bouncing effect:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">rotate_by_action</span> <span class="o">=</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">359</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_bounce_in_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">bounce_in</span> <span class="ss">action</span><span class="p">:</span> <span class="n">rotate_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_bounce_in_action</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.</p>
+</div>
+<h3 id="bounce-out">
+<a name="//apple_ref/cpp/clm/bounce_out" class="dashAnchor"></a>Bounce Out</h3>
+<p>Creates an instance of Ease, with acceleration at the end, simulating a bouncing effect:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">rotate_by_action</span> <span class="o">=</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">359</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_bounce_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">bounce_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">rotate_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_bounce_out_action</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.</p>
+</div>
+<h3 id="bounce-in-out">
+<a name="//apple_ref/cpp/clm/bounce_in_out" class="dashAnchor"></a>Bounce In Out</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning and at the end, simulating a bouncing effect:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">rotate_by_action</span> <span class="o">=</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">359</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_bounce_in_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">bounce_in_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">rotate_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_bounce_in_out_action</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.</p>
+</div>
+<h3 id="back-in">
+<a name="//apple_ref/cpp/clm/back_in" class="dashAnchor"></a>Back In</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning, simulating a back effect:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">move_by_action</span> <span class="o">=</span> <span class="no">Move</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_back_in_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">back_in</span> <span class="ss">action</span><span class="p">:</span> <span class="n">move_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_back_in_action</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.</p>
+</div>
+<h3 id="back-out">
+<a name="//apple_ref/cpp/clm/back_out" class="dashAnchor"></a>Back Out</h3>
+<p>Creates an instance of Ease, with acceleration at the end, simulating a back effect:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">move_by_action</span> <span class="o">=</span> <span class="no">Move</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_back_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">back_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">move_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_back_out_action</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.</p>
+</div>
+<h3 id="back-in-out">
+<a name="//apple_ref/cpp/clm/back_in_out" class="dashAnchor"></a>Back In Out</h3>
+<p>Creates an instance of Ease, with acceleration at the beginning, and at the end, simulating a back effect:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">move_by_action</span> <span class="o">=</span> <span class="no">Move</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="ss">duration</span><span class="p">:</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ease_back_in_out_action</span> <span class="o">=</span> <span class="no">Ease</span><span class="o">.</span><span class="n">back_in_out</span> <span class="ss">action</span><span class="p">:</span> <span class="n">move_by_action</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">ease_back_in_out_action</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't use a bijective function. Actions like Sequence might have an unexpected result when used with this action.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

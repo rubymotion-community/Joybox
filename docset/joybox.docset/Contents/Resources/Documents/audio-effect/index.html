@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Audio Effect</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>SOUNDS &amp; MUSIC</h4> <article><h2>Audio Effect</h2>
+<p></p>
+<p>Provides the reproduction of audio effects for Game Events. The Audio Files are loaded using a event key, which later will be used to play the audio effect. It is recommended to use 16-bit mono wave files for uncompressed audio and IMA4 for lossy compressed audio, but MP3 is also supported.</p>
+<p>Although the AudioEffect class has its own stop and volume functionality, it can be overridden using the mute and enable methods of the Audio Module.</p>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Returns a new instance of the AudioEffect class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">audio_effect</span> <span class="o">=</span> <span class="no">AudioEfect</span><span class="o">.</span><span class="n">new</span>
+</code></pre></div>
+<h3 id="add">
+<a name="//apple_ref/cpp/clm/add" class="dashAnchor"></a>Add</h3>
+<p>Loads a new audio file with its event key:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">audio_effect</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="ss">:light_speed_jump</span><span class="p">,</span> <span class="s1">'light_speed_jump.caf'</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/%5B%5D" class="dashAnchor"></a>[]</h3>
+<p>Gets the audio related to the event key:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">audio_effect</span><span class="o">[</span><span class="ss">:light_speed_jump</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/%5B%5D=" class="dashAnchor"></a>[]=</h3>
+<p>Loads a new audio file with its event key:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">audio_effect</span><span class="o">[</span><span class="ss">:light_speed_jump</span><span class="o">]</span> <span class="o">=</span> <span class="s1">'light_speed_jump.caf'</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The []= and add method are equivalent.</p>
+</div>
+<h3 id="play">
+<a name="//apple_ref/cpp/clm/play" class="dashAnchor"></a>Play</h3>
+<p>Starts the Audio Effect playback and returns the playback identifier:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">playback_identifier</span> <span class="o">=</span> <span class="n">audio_effect</span><span class="o">.</span><span class="n">play</span> <span class="ss">:light_speed_jump</span>
+</code></pre></div>
+<h4 id="options">Options:</h4>
+<p><strong>pitch:</strong> - Float - <em>0.5 - 2.0</em> - Default: 1.0<br> The Audio Effect reproduction speed.</p>
+<p><strong>pan:</strong> - Float - <em>-1.0 - 1.0</em> - Default: 0.0<br> Play back the effect on the Left or Right channel. Please note that this option only works on mono audio files.</p>
+<p><strong>gain:</strong> - Float <em>0.0 - 1.0</em> - Default: 1.0<br> Attenuation or Amplification of the audio playback.</p>
+<h3 id="stop">
+<a name="//apple_ref/cpp/clm/stop" class="dashAnchor"></a>Stop</h3>
+<p>Stops the Audio Effect reproduction based on the playback identifier:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">audio_effect</span><span class="o">.</span><span class="n">stop</span> <span class="n">playback_identifier</span>
+</code></pre></div>
+<h3 id="remove">
+<a name="//apple_ref/cpp/clm/remove" class="dashAnchor"></a>Remove</h3>
+<p>Unloads the audio file assigned to the event key:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">audio_effect</span><span class="o">.</span><span class="n">remove</span> <span class="p">:</span> <span class="n">light_speed_jump</span>
+</code></pre></div>
+<h3 id="volume">
+<a name="//apple_ref/cpp/clm/volume" class="dashAnchor"></a>Volume</h3>
+<p>Gets and Sets the playback volume:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">audio_effect</span><span class="o">.</span><span class="n">volume</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span>
+
+<span class="nb">p</span> <span class="s2">"The effect volume is: </span><span class="si">#{</span><span class="n">audio_effect</span><span class="o">.</span><span class="n">volume</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The playback volume range starts in 0.0 and ends in 1.0.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

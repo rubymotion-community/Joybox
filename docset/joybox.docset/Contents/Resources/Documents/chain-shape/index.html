@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Chain Shape</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>PHYSICS ENVIRONMENT</h4> <article><h2>Chain Shape</h2>
+<p></p>
+<p>A Subclass of Shape that allows the Physics Environment to simulate a free form sequence of line segments which can or can't form loops.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../shape">Shape documentation page</a></p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The Chain Shape will not collide properly if there are self-intersections.</p>
+</div>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Returns a new instance of the ChainShape class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">chain_shape</span> <span class="o">=</span> <span class="no">ChainShape</span><span class="o">.</span><span class="n">new</span> <span class="kp">loop</span><span class="p">:</span> <span class="o">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="o">]]</span>
+
+<span class="n">chain_shape</span> <span class="o">=</span> <span class="no">ChainShape</span><span class="o">.</span><span class="n">new</span> <span class="ss">chain</span><span class="p">:</span> <span class="o">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="o">]]</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The difference between loop: and chain: is that the loop: option will add a final segment to close the shape.</p>
+</div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The minimum number of vertices in the ChainShape is three and the maximum is eight.</p>
+</div>
+<h3 id="vertices-count">
+<a name="//apple_ref/cpp/clm/vertices_count" class="dashAnchor"></a>Vertices Count</h3>
+<p>Returns the number of vertices in the Chain Shape:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">chain_shape</span> <span class="o">=</span> <span class="no">ChainShape</span><span class="o">.</span><span class="n">new</span> <span class="kp">loop</span><span class="p">:</span> <span class="o">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="o">]]</span>
+
+<span class="c1"># The following is 3</span>
+<span class="n">chain_shape</span><span class="o">.</span><span class="n">vertices_count</span>
+</code></pre></div>
+<h3 id="vertices">
+<a name="//apple_ref/cpp/clm/vertices" class="dashAnchor"></a>Vertices</h3>
+<p>Retrieves the vertices that composes the Chain Shape:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">chain_shape</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">vertex</span><span class="o">|</span>
+    <span class="nb">p</span> <span class="s2">"The vertex is: </span><span class="si">#{</span><span class="n">vertex</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">vertex</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>Each vertex returned is a instance of a Point.</p>
+</div>
+<h3 id="metric-vertices">
+<a name="//apple_ref/cpp/clm/metric_vertices" class="dashAnchor"></a>Metric Vertices</h3>
+<p>Retrieves the vertices in Metric coordinates that composes the Chain Shape.</p>
+<h3 id="previous-vertex">
+<a name="//apple_ref/cpp/clm/previous_vertex" class="dashAnchor"></a>Previous Vertex</h3>
+<p>Gets or Sets a previous vertex to a Chain Shape:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">chain_shape</span><span class="o">.</span><span class="n">previous_vertex</span> <span class="o">=</span> <span class="o">[-</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="o">]</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is unavailable if the ChainShape was created using the loop: option.</p>
+</div>
+<h3 id="metric-previous-vertex">
+<a name="//apple_ref/cpp/clm/metric_previous_vertex" class="dashAnchor"></a>Metric Previous Vertex</h3>
+<p>Gets or Sets a previous vertex in Metric Coordinates to a Chain Shape.</p>
+<h3 id="has-previous-vertex">
+<a name="//apple_ref/cpp/clm/has_previous_vertex?" class="dashAnchor"></a>Has Previous Vertex?</h3>
+<p>Returns if the Chain Shape has a previous vertex:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">chain_shape</span><span class="o">.</span><span class="n">previous_vertex</span> <span class="o">=</span> <span class="o">[-</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="o">]</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">chain_shape</span><span class="o">.</span><span class="n">previous_vertex?</span>
+</code></pre></div>
+<h3 id="next-vertex">
+<a name="//apple_ref/cpp/clm/next_vertex" class="dashAnchor"></a>Next Vertex</h3>
+<p>Retrieves or Updates a next vertex to a Chain Shape:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">chain_shape</span><span class="o">.</span><span class="n">next_vertex</span> <span class="o">=</span> <span class="o">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="o">]</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is unavailable if the ChainShape was created using the loop: option.</p>
+</div>
+<h3 id="metric-next-vertex">
+<a name="//apple_ref/cpp/clm/metric_next_vertex" class="dashAnchor"></a>Metric Next Vertex</h3>
+<p>Retrieves or Updates a next vertex in Metric Coordinates to a Chain Shape.</p>
+<h3 id="has-next-vertex">
+<a name="//apple_ref/cpp/clm/has_next_vertex?" class="dashAnchor"></a>Has Next Vertex?</h3>
+<p>Returns if the Chain Shape has a next vertex:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">chain_shape</span><span class="o">.</span><span class="n">next_vertex</span> <span class="o">=</span> <span class="o">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="o">]</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">chain_shape</span><span class="o">.</span><span class="n">next_vertex?</span>
+</code></pre></div>
+<h3 id="edge-shape-by-index">
+<a name="//apple_ref/cpp/clm/edge_shape_by_index" class="dashAnchor"></a>Edge Shape by Index</h3>
+<p>Converts a vertex into a Edge Shape using its index:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">edge_shape</span> <span class="o">=</span> <span class="n">chain_shape</span><span class="o">.</span><span class="n">edge_shape_by_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">p</span> <span class="s2">"The edge shape is: </span><span class="si">#{</span><span class="n">edge_shape</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

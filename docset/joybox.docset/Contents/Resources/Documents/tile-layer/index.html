@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Tile Layer</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>TILED MAPS</h4> <article><h2>Tile Layer</h2>
+<p></p>
+<p>The TileLayer class represents a single tile layer of the Tiled Map (TMX), the instance of this class will be automatically created when the TileMap class loads the map file. For access a particular instance, see: <a href="../tile-map">TileMap documentation page</a>.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The TileLayer class cannot be instantiated by itself, is required to be created using the TileMap class.</p>
+</div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>In order to use this class is required to include Joybox::TMX.</p>
+</div>
+<h3 id="orthogonal">
+<a name="//apple_ref/cpp/Constant/::Orthogonal" class="dashAnchor"></a>::Orthogonal</h3>
+<h3 id="hexagonal">
+<a name="//apple_ref/cpp/Constant/::Hexagonal" class="dashAnchor"></a>::Hexagonal</h3>
+<h3 id="isometric">
+<a name="//apple_ref/cpp/Constant/::Isometric" class="dashAnchor"></a>::Isometric</h3>
+<p>Constants that represent the orientations of the Tile Layer.</p>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>In order to retrieve an instance of the TileLayer is needed to use the tile layers method of the TileMap class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span> <span class="o">=</span> <span class="n">tle_map</span><span class="o">.</span><span class="n">tile_layers</span><span class="o">[</span><span class="ss">:obstacles</span><span class="o">]</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The tile layer name is set on the TMX Map Editor.</p>
+</div>
+<h3 id="properties">
+<a name="//apple_ref/cpp/clm/properties" class="dashAnchor"></a>Properties</h3>
+<p>Access the TileLayer's properties:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">keys</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="o">|</span>
+    <span class="nb">p</span> <span class="s2">"The property </span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2"> has the value: </span><span class="si">#{</span><span class="n">object_layer</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The tile layer properties are set on the TMX Map Editor.</p>
+</div>
+<h3 id="name">
+<a name="//apple_ref/cpp/clm/name" class="dashAnchor"></a>Name</h3>
+<p>Gets or sets the TileLayer name:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="ss">:stars</span>
+
+<span class="nb">p</span> <span class="s2">"The tile layer name is: </span><span class="si">#{</span><span class="n">tile_layer</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="tiles-size">
+<a name="//apple_ref/cpp/clm/tiles_size" class="dashAnchor"></a>Tiles Size</h3>
+<p>Retrieves or updates the size of the layer in number of tiles:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># The layer is 32 x 32 tiles</span>
+<span class="n">tile_layer</span><span class="o">.</span><span class="n">tiles_size</span> <span class="o">=</span> <span class="o">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="o">]</span>
+
+<span class="c1"># The following is [32, 32]</span>
+<span class="n">tile_layer</span><span class="o">.</span><span class="n">tiles_size</span>
+</code></pre></div>
+<h3 id="tile-set">
+<a name="//apple_ref/cpp/clm/tile_set" class="dashAnchor"></a>Tile Set</h3>
+<p>Gets or sets the TileLayer's tile set instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span><span class="o">.</span><span class="n">tile_set</span> <span class="o">=</span> <span class="n">space_vortex_tile_set</span>
+
+<span class="nb">p</span> <span class="s2">"The tile set is: </span><span class="si">#{</span><span class="n">tile_layer</span><span class="o">.</span><span class="n">tile_set</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="orientation">
+<a name="//apple_ref/cpp/clm/orientation" class="dashAnchor"></a>Orientation</h3>
+<p>Retrieves or updates the TileLayer orientation:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="ss">TileLayer</span><span class="p">:</span><span class="ss">:Ortogonal</span>
+
+<span class="c1"># The following is TileLayer::Ortogonal</span>
+<span class="n">tile_layer</span><span class="o">.</span><span class="n">orientation</span>
+</code></pre></div>
+<h3 id="tile-size">
+<a name="//apple_ref/cpp/clm/tile_size" class="dashAnchor"></a>Tile Size</h3>
+<p>Returns the size of a Tile:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The size of a tile is: </span><span class="si">#{</span><span class="n">tile_layer</span><span class="o">.</span><span class="n">tile_size</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">tile_layer</span><span class="o">.</span><span class="n">tile_size</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>This method is optimized for Retina Display.</p>
+</div>
+<h3 id="size">
+<a name="//apple_ref/cpp/clm/size" class="dashAnchor"></a>Size</h3>
+<p>Returns the size of the TileLayer in Pixels:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The size of the TileLayer is: </span><span class="si">#{</span><span class="n">tile_layer</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">tile_layer</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="coordinate-for-point">
+<a name="//apple_ref/cpp/clm/coordinate_for_point" class="dashAnchor"></a>Coordinate for Point</h3>
+<p>Gets the tile coordinate for a Pixel coordinates point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># If the tile layer is 32 x 32 and the tile size is 10 x 10, the following is 20 x 20</span>
+<span class="n">tile_layer</span><span class="o">.</span><span class="n">coordinate_for_point</span><span class="p">(</span><span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="point-for-coordinate">
+<a name="//apple_ref/cpp/clm/point_for_coordinate" class="dashAnchor"></a>Point for Coordinate</h3>
+<p>Retrieves the Pixel coordinate point for a tile coordinate:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># If the tile layer is 32 x 32 and the tile size is 10 x 10, the following is 200 x 200</span>
+<span class="n">tile_layer</span><span class="o">.</span><span class="n">point_for_coordinate</span><span class="p">(</span><span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="sprite-at">
+<a name="//apple_ref/cpp/clm/sprite_at" class="dashAnchor"></a>Sprite At</h3>
+<p>Returns the sprite for a particular point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span> <span class="o">=</span> <span class="n">tile_layer</span><span class="o">.</span><span class="n">sprite_at</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The sprite is: </span><span class="si">#{</span><span class="n">sprite</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="remove-tile-at">
+<a name="//apple_ref/cpp/clm/remove_tile_at" class="dashAnchor"></a>Remove Tile At</h3>
+<p>Removes the tile at a particular point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span><span class="o">.</span><span class="n">remove_tile_at</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="tile-type-at">
+<a name="//apple_ref/cpp/clm/tile_type_at" class="dashAnchor"></a>Tile Type At</h3>
+<p>Returns the tile type in a particular point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_type</span> <span class="o">=</span> <span class="n">tile_layer</span><span class="o">.</span><span class="n">tile_type_at</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>Each tile type is defined from its position in the tile set from left to right and top to bottom starting with the number one.</p>
+</div>
+<h3 id="set-tile-type-at">
+<a name="//apple_ref/cpp/clm/set_tile_type_at" class="dashAnchor"></a>Set Tile Type At</h3>
+<p>Sets a particular tile using its type at a Pixel coordinates point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span><span class="o">.</span><span class="n">set_tile_type_at</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span><span class="p">,</span> <span class="n">nebula_tile_type</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>This is the correct way of changing a tile in the TileLayer.</p>
+</div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/%5B%5D" class="dashAnchor"></a>[]</h3>
+<p>Returns the tile type at a particular point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_type</span> <span class="o">=</span> <span class="n">tile_layer</span><span class="o">[</span><span class="n">star_position</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The tile type is: </span><span class="si">#{</span><span class="n">tile_type</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The [] and tile_type_at methods are equivalent.</p>
+</div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/%5B%5D=" class="dashAnchor"></a>[]=</h3>
+<p>Sets a tile type at a particular point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span><span class="o">[</span><span class="n">collectable_position</span><span class="o">]</span> <span class="o">=</span> <span class="n">empty_collectable_tile_type</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The []= and set_tile_type_at methods are equivalent.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

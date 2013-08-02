@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Director</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ESSENTIALS</h4> <article><h2>Director</h2>
+<p></p>
+<p>Its main responsibility is to manage the game flow: presenting and dismissing Scenes. Also its to initialize the OpenGL context, setting the Pixel Format, the Buffer Depth and controlling the Game Projection.</p>
+<p>Another of its features its to keep the Game Loop running, the Game Loop is the constant calls to our game classes needed to update the drawing on the screen and the logic of the game.</p>
+<p>Usually the Game will start with the configuration of the Director in the AppDelegate class, and then pushing a new Scene so it can be presented on the screen.</p>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>It allows to pause the entire game on a single method call, this is very useful to handle game interruptions like Phone Calls or Text Messages.</p>
+</div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The Director cannot be initialized by itself, also only one instance can exist in the entire game lifecycle, please refer to the new method for more information.</p>
+</div>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Starts the Game default configuration and returns the instance of the Director:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="vi">@director</span> <span class="o">=</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Configuration</span><span class="o">.</span><span class="n">setup</span>
+</code></pre></div>
+<p>If you need more control in the Game configuration, you can pass another settings in the setup block:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="vi">@director</span> <span class="o">=</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Configuration</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span>
+    <span class="n">director</span> <span class="n">display_stats</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>When no different option is provided, the following settings are applied in the game configuration:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="vi">@director</span> <span class="o">=</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Configuration</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span>
+
+  <span class="n">director</span>  <span class="n">wants_full_screen_layout</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="n">display_stats</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+            <span class="n">animation_interval</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span>
+            <span class="ss">projection</span><span class="p">:</span> <span class="no">KCCDirectorProjection2D</span><span class="p">,</span>
+            <span class="n">enable_retina_display</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+            <span class="ss">delegate</span><span class="p">:</span> <span class="kp">nil</span><span class="p">,</span>
+            <span class="n">display_stats</span><span class="p">:</span> <span class="kp">true</span>
+
+  <span class="n">opengl_view</span> <span class="ss">bounds</span><span class="p">:</span> <span class="no">UIScreen</span><span class="o">.</span><span class="n">mainScreen</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span>
+              <span class="n">pixel_format</span><span class="p">:</span> <span class="no">KEAGLColorFormatRGB565</span><span class="p">,</span>
+              <span class="n">depth_format</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="n">preserve_backbuffer</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="n">share_group</span><span class="p">:</span> <span class="kp">nil</span><span class="p">,</span>
+              <span class="n">multi_sampling</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+              <span class="n">number_of_samples</span><span class="p">:</span> <span class="mi">0</span>
+
+  <span class="n">texture_2d</span> <span class="n">default_alpha_pixel_format</span><span class="p">:</span> <span class="no">KCCTexture2DPixelFormat_RGBA8888</span><span class="p">,</span>
+             <span class="n">pvr_images_have_premultiplied_alpha</span><span class="p">:</span> <span class="kp">true</span>
+
+  <span class="n">file_utils</span> <span class="n">enable_fallback_suffixes</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+             <span class="n">set_iphone_retina_display_suffix</span><span class="p">:</span> <span class="s2">"-hd"</span><span class="p">,</span>
+             <span class="n">set_ipad_suffix</span><span class="p">:</span> <span class="s2">"-ipad"</span><span class="p">,</span>
+             <span class="n">set_ipad_retina_display_suffix</span><span class="p">:</span> <span class="s2">"-ipadhd"</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="debug">
+<a name="//apple_ref/cpp/clm/debug" class="dashAnchor"></a>Debug</h3>
+<p>The configuration also allow to enable different kind of debugging tools to help in the development/testing process:</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>These tools are not suitable for production environments, they should be turned off before deployment.</p>
+</div>
+<h4 id="repl">REPL</h4>
+<p>As the same as in a regular UIKit application builded with RubyMotion, it will allow to select the Sprites with the cmd key + mouse click to make them available from the console:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="vi">@director</span> <span class="o">=</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Configuration</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span>
+    <span class="n">debug</span> <span class="ss">repl</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>If the iOS application boots in landscape orientation, it's needed to rotate the iOS Simulator and return it to its original orientation.</p>
+</div>
+<h4 id="physics">Physics</h4>
+<p>This debugging tool will look inside the Layers of the first Scene being presented by the Director for an instance of the World class, then:</p>
+<ul>
+<li><p>It will made it available at the terminal using Joybox::Debug::Physics.world</p></li>
+<li><p>Depending on which keys are passed in the configuration, it will draw the according Physics Environment elements on the screen:</p></li>
+</ul>
+<p><strong>:aabb</strong><br> It will draw the minimum bounding box for each Shape added in the World.</p>
+<p><strong>:center_of_mass</strong> <br> Paints the center of mass of every Body being simulated in the Physics Environment.</p>
+<p><strong>:pairs</strong> <br> Draws the Physics broad-phase pairs.</p>
+<p><strong>:shapes</strong><br> Paints every Shape composed into a Physics Environment Body.</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="vi">@director</span> <span class="o">=</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Configuration</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span>
+    <span class="n">debug</span> <span class="ss">physics</span><span class="p">:</span> <span class="o">[</span><span class="ss">:shapes</span><span class="p">,</span> <span class="ss">:aabb</span><span class="o">]</span>
+<span class="k">end</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>It will only debug the first World instance that it finds in the Scene's Layers.</p>
+</div>
+<h3 id="director">
+<a name="//apple_ref/cpp/clm/director" class="dashAnchor"></a>Director</h3>
+<p>Returns the instance of the Director:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">director</span> <span class="o">=</span> <span class="no">Joybox</span><span class="o">.</span><span class="n">director</span>
+</code></pre></div>
+<h3 id="run-with-scene">
+<a name="//apple_ref/cpp/clm/run_with_scene" class="dashAnchor"></a>Run with Scene</h3>
+<p>Runs the first scene of the game on the Director:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">game_scene</span> <span class="o">=</span> <span class="no">GameScene</span><span class="o">.</span><span class="n">new</span>
+<span class="no">Joybox</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">run_with_scene</span> <span class="n">game_scene</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>Do not call this method if the Director is already presenting a Scene.</p>
+</div>
+<h3 id="push-scene">
+<a name="//apple_ref/cpp/clm/push_scene" class="dashAnchor"></a>Push Scene</h3>
+<p>Presents a new Scene and push it into the Scene Stack:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">game_scene</span> <span class="o">=</span> <span class="no">GameScene</span><span class="o">.</span><span class="n">new</span>
+<span class="no">Joybox</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">push_scene</span> <span class="n">game_scene</span>
+</code></pre></div>
+<h3 id="ltlt">
+<a name="//apple_ref/cpp/clm/&lt;&lt;" class="dashAnchor"></a>&lt;&lt;</h3>
+<p>Presents a new Scene and push it into the Scene stack:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">game_scene</span> <span class="o">=</span> <span class="no">GameScene</span><span class="o">.</span><span class="n">new</span>
+<span class="no">Joybox</span><span class="o">.</span><span class="n">director</span> <span class="o">&lt;&lt;</span> <span class="n">game_scene</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The </p>
+</div>
+<h3 id="pop-scene">
+<a name="//apple_ref/cpp/clm/pop_scene" class="dashAnchor"></a>Pop Scene</h3>
+<p>Dismiss current Scene and pop its out of the Scene stack:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Joybox</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">pop_scene</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>Calling this method without more Scenes in the stack, results in a execution termination.</p>
+</div>
+<h3 id="pop-to-root-scene">
+<a name="//apple_ref/cpp/clm/pop_to_root_scene" class="dashAnchor"></a>Pop to Root Scene</h3>
+<p>Dismiss all the Scenes in front of the first Scene and pop them out of the stack:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Joybox</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">pop_to_root_scene</span>
+</code></pre></div>
+<h3 id="replace-scene">
+<a name="//apple_ref/cpp/clm/replace_scene" class="dashAnchor"></a>Replace Scene</h3>
+<p>Replaces the current displaying Scene and replaces with a new one:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">game_scene</span> <span class="o">=</span> <span class="no">GameScene</span><span class="o">.</span><span class="n">new</span>
+<span class="no">Joybox</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">replace_scene</span> <span class="n">game_scene</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>Do not call this method unless you have a Scene on the stack.</p>
+</div>
+<h3 id="start-animation">
+<a name="//apple_ref/cpp/clm/start_animation" class="dashAnchor"></a>Start Animation</h3>
+<p>Restarts the Game execution and the Game Loop, after their have been paused by the Stop Animation method:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Joybox.director.start_animation
+</code></pre></div>
+<h3 id="stop-animation">
+<a name="//apple_ref/cpp/clm/stop_animation" class="dashAnchor"></a>Stop Animation</h3>
+<p>Pauses the Game execution also the no more calls will be received on the Game Loop:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Joybox</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">stop_animation</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>This method is usually used when a interruption happen, like a phone call, text message or going to background.</p>
+</div>
+<h3 id="purge-cached-data">
+<a name="//apple_ref/cpp/clm/purge_cached_data" class="dashAnchor"></a>Purge Cached Data</h3>
+<p>Destroys all the cached information of the game:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Joybox</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">purge_cached_data</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>This method is should be called when the application receives a memory warning notification.</p>
+</div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The Sprite Frame cache should be purged manually if needed.</p>
+</div>
+<h3 id="set-next-delta-time-zero">
+<a name="//apple_ref/cpp/clm/set_next_delta_time_zero" class="dashAnchor"></a>Set Next Delta Time Zero</h3>
+<p>Sends zero in the next update on the Game Loop delta time:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Joybox</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">set_next_delta_time_zero</span> <span class="kp">true</span>
+</code></pre></div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

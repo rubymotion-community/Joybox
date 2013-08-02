@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>TiledGrid</title>
+<link rel="stylesheet" href="../css/normalize.css">
+<link rel="stylesheet" href="../css/header-footer.css">
+<link rel="stylesheet" href="../css/syntax.css">
+<link rel="stylesheet" href="../css/documentation.css">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<!-- Enable when released --><!--<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-40112459-1', 'joybox.io');
+    ga('send', 'pageview');
+
+  </script>--><script type="text/javascript" src="/scripts/jquery-2.0.3.min.js"></script><script type="text/javascript" src="/scripts/documentation.js"></script>
+</head>
+<body>
+  <section id="blog"><section id="content"><h4>ACTIONS &amp; ANIMATIONS</h4>
+    <article><h2>TiledGrid</h2>
+      <p></p>
+<p>The TiledGrid class . . .</p>
+<h3 id="fadeoutbottomlefttiles">
+<a name="//apple_ref/cpp/clm/fade_out_bottom_left_tiles" class="dashAnchor"></a>fade_out_bottom_left_tiles</h3>
+<p>CCFadeOutBLTiles action. Fades out the tiles in a Bottom-Left direction:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fade_out_bottom_left_tiles_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span> <span class="n">fade_out_bottom_left_tiles</span> <span class="ss">grid</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+<h3 id="fadeouttoprighttiles">
+<a name="//apple_ref/cpp/clm/fade_out_top_right_tiles" class="dashAnchor"></a>fade_out_top_right_tiles</h3>
+<p>CCFadeOutTRTiles action Fades out the tiles in a Top-Right direction:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fade_out_top_right_tiles_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span><span class="n">fade_out_top_right_tiles</span> <span class="ss">grid</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+<h3 id="fadeoutuptiles">
+<a name="//apple_ref/cpp/clm/fade_out_up_tiles" class="dashAnchor"></a>fade_out_up_tiles</h3>
+<p>CCFadeOutUpTiles action. Fades out the tiles in upwards direction:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fade_out_up_tiles_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span><span class="n">fade_out_up_tiles</span> <span class="ss">grid</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+<h3 id="fadeoutdowntiles">
+<a name="//apple_ref/cpp/clm/fade_out_down_tiles" class="dashAnchor"></a>fade_out_down_tiles</h3>
+<p>CCFadeOutDownTiles action. Fades out the tiles in downwards direction:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fade_out_down_tiles_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span><span class="n">fade_out_down_tiles</span> <span class="ss">grid</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+<h3 id="jumptilesd">
+<a name="//apple_ref/cpp/clm/jump_tiles_3_d" class="dashAnchor"></a>jump_tiles_3D</h3>
+<p>CCJumpTiles3D action. A sin function is executed to move the tiles across the Z axis:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">jump_tiles_3D_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span><span class="n">jump_tiles_3D</span> <span class="ss">grid</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>jumps</strong> - Integer - Default: 0<br>
+Sets the total of jumps.<br><strong>amplitude</strong> - Float - Default: 0.0<br>
+Sets the amplitude of the jumps.<br><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+<h3 id="shakytilesd">
+<a name="//apple_ref/cpp/clm/shaky_tiles_3_d" class="dashAnchor"></a>shaky_tiles_3D</h3>
+<p>CCShakyTiles3D action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">shaky_tiles_3D_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span><span class="n">shaky_tiles_3D</span> <span class="ss">grid</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>range</strong> - Integer - Default: 0<br>
+Sets the range.<br><strong>shakeZ</strong> - Boolean - Default: false<br>
+Sets the shakeZ.<br><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+<h3 id="shatteredtilesd">
+<a name="//apple_ref/cpp/clm/shattered_tiles_3_d" class="dashAnchor"></a>shattered_tiles_3D</h3>
+<p>CCShatteredTiles3D action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">shattered_tiles_3D_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span><span class="n">shattered_tiles_3D</span> <span class="ss">grid</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>range</strong> - Integer - Default: 0<br>
+Sets the range.<br><strong>shatterZ</strong> - Boolean - Default: false<br>
+Sets the shatterZ.<br><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+<h3 id="splitcols">
+<a name="//apple_ref/cpp/clm/split_cols" class="dashAnchor"></a>split_cols</h3>
+<p>CCSplitCols action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">split_cols_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span><span class="n">split_cols</span> <span class="ss">cols</span><span class="p">:</span><span class="mi">10</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+<h3 id="splitrows">
+<a name="//apple_ref/cpp/clm/split_rows" class="dashAnchor"></a>split_rows</h3>
+<p>CCSplitRows action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">split_rows_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span><span class="n">split_rows</span> <span class="ss">rows</span><span class="p">:</span><span class="mi">10</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+<h3 id="wavestilesd">
+<a name="//apple_ref/cpp/clm/waves_tiles_3_d" class="dashAnchor"></a>waves_tiles_3D</h3>
+<p>CCWavesTiles3D action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">waves_tiles_3D_action</span> <span class="o">=</span> <span class="no">TiledGrid</span><span class="o">.</span><span class="n">waves_tiles_3D</span> <span class="ss">grid</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>waves:</strong> - Integer - Default: 0<br>
+Sets the waves.<br><strong>amplitude:</strong> - Float - Default: 0.0<br>
+Sets the amplitude of the waves.<br><strong>duration:</strong> - Float - Default: 0.3<br>
+Sets the total duration time of the Action.</p>
+
+    </article></section></section><section id="buildings"><img src="../images/buildings-footer.png"></section>
+</body>
+</html>

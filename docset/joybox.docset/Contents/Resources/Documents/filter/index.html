@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Filter</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>PHYSICS ENVIRONMENT</h4> <article><h2>Filter</h2>
+<p></p>
+<p>The Filter class allows to control which Fixtures should collide with each other, using its 16 bit integers we can set up different scenarios for a collision (actually just 16 different scenarios).</p>
+<h4 id="category-and-mask-bits">Category and Mask Bits</h4>
+<p>The category_bits property defines the type of the object, and the mask_bits set with which type objects it collides, here it is an example:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">space_ship_filter</span><span class="o">.</span><span class="n">category_bits</span> <span class="o">=</span> <span class="mh">0x0002</span>
+<span class="n">asteroids_filter</span><span class="o">.</span><span class="n">category_bits</span> <span class="o">=</span> <span class="mh">0x0004</span>
+
+<span class="n">space_ship_filter</span><span class="o">.</span><span class="n">mask_bits</span> <span class="o">=</span> <span class="mh">0x0004</span>
+<span class="n">asteroids_filter</span><span class="o">.</span><span class="n">mask_bits</span> <span class="o">=</span> <span class="mh">0x0002</span>
+
+<span class="c1"># Internally the collision rule is the following</span>
+<span class="n">space_ship_category_bits</span> <span class="o">=</span> <span class="n">space_ship_filter</span><span class="o">.</span><span class="n">category_bits</span>
+<span class="n">space_ship_mask_bits</span> <span class="o">=</span> <span class="n">space_ship_filter</span><span class="o">.</span><span class="n">mask_bits</span>
+
+<span class="n">asteroids_category_bits</span> <span class="o">=</span> <span class="n">space_ship_filter</span><span class="o">.</span><span class="n">category_bits</span>
+<span class="n">asteroids_mask_bits</span> <span class="o">=</span> <span class="n">space_ship_filter</span><span class="o">.</span><span class="n">mask_bits</span>
+
+<span class="n">collide</span> <span class="o">=</span> <span class="p">(</span><span class="n">space_ship_mask_bits</span> <span class="o">&amp;</span> <span class="n">asteroids_category_bits</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">space_ship_category_bits</span> <span class="o">&amp;</span> <span class="n">asteroids_mask_bits</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
+</code></pre></div>
+<p>In the previous example the Space Ship's (category: 0x0002) cannot collide with each other, only with Asteroid's (category: 0x0004). Thats why Space Ships has as mask the Asteroid's category and the other way around. Finally you may notice that the Asteroid's can collide with each other as well.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The collision Category Bits and Mask Bits must be satisfied in both fixtures.</p>
+</div>
+<h4 id="group-index">Group Index</h4>
+<p>The other way to manage the collision filtering is using the Group Index property which is a signed integer and uses the following rules:</p>
+<ul>
+<li><p>If one of the two Fixtures has a Group Index of zero. =&gt; Use the Category and Mask bits rules.</p></li>
+<li><p>If both Group Index are non zero, but different numbers. =&gt; Use the Category and Mask bit rules.</p></li>
+<li><p>If both Group Index are the same and positive. =&gt; Collide.</p></li>
+<li><p>If the two Fixtures have the same Group Index, but negative. =&gt; Don't Collide.</p></li>
+</ul>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="http://www.iforce2d.net/b2dtut/collision-filtering">iforce2d Collision filtering</a></p>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>For more information about how to update the Fixture's Filter, please refer to the Fixture class documentation page.</p>
+</div>
+<h3 id="category-bits">
+<a name="//apple_ref/cpp/clm/category_bits" class="dashAnchor"></a>Category Bits</h3>
+<p>Gets or Sets the Filter's category bits:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">filter</span> <span class="o">=</span> <span class="n">fixture</span><span class="o">.</span><span class="n">filter_data</span>
+<span class="n">filter</span><span class="o">.</span><span class="n">category_bits</span> <span class="o">=</span> <span class="mh">0x0002</span>
+
+<span class="n">fixture</span><span class="o">.</span><span class="n">filter_data</span> <span class="o">=</span> <span class="n">filter</span>
+</code></pre></div>
+<h3 id="mask-bits">
+<a name="//apple_ref/cpp/clm/mask_bits" class="dashAnchor"></a>Mask Bits</h3>
+<p>Retrieves or updates the mask bits of the filter instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">filter</span> <span class="o">=</span> <span class="n">fixture</span><span class="o">.</span><span class="n">filter_data</span>
+<span class="n">filter</span><span class="o">.</span><span class="n">mask_bits</span> <span class="o">=</span> <span class="mh">0x0004</span>
+
+<span class="n">fixture</span><span class="o">.</span><span class="n">filter_data</span> <span class="o">=</span> <span class="n">filter</span>
+</code></pre></div>
+<h3 id="group-index">
+<a name="//apple_ref/cpp/clm/group_index" class="dashAnchor"></a>Group Index</h3>
+<p>Gets or Sets the Group Index on the Filter:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">filter</span> <span class="o">=</span> <span class="n">fixture</span><span class="o">.</span><span class="n">filter_data</span>
+<span class="n">filter</span><span class="o">.</span><span class="n">group_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">fixture</span><span class="o">.</span><span class="n">filter_data</span> <span class="o">=</span> <span class="n">filter</span>
+</code></pre></div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Sprite</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ESSENTIALS</h4> <article><h2>Sprite</h2>
+<p></p>
+<p>The class Sprite represents a two dimensional image that can be manipulated independently, so they can be moved, rotated or animated without affecting other Sprites in the same scene.</p>
+<p>They can be initialized in multiple ways: with a image file, a frame from a sprite sheet or using a Texture. The recommended way is always try to use a frame from a Sprite Sheet.</p>
+<h4 id="sprite-sheets">Sprite Sheets</h4>
+<p>When the sprite is created not using a Sprite Sheet they should be added into the parent class as follows:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'space_ship.png'</span>
+
+<span class="n">layer</span> <span class="o">&lt;&lt;</span> <span class="n">sprite</span>
+</code></pre></div>
+<p>But when using a Sprite Sheet is different, the sprite needs to be added as a child of the SpriteBatch:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># Load the SpriteBatch with the sprite sheet</span>
+<span class="n">sprite_batch</span> <span class="o">=</span> <span class="no">SpriteBatch</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span> <span class="s1">'sprite_sheet.png'</span>
+
+<span class="c1"># Add the SpriteBatch instance as a child of the parent</span>
+<span class="nb">self</span><span class="o">.</span><span class="n">add_child</span> <span class="n">sprite_batch</span>
+
+<span class="c1"># Load the sprite sheet frames into the SpriteFrameCache</span>
+<span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">add</span> <span class="n">file_name</span> <span class="s1">'sprite_sheet_frames.plist'</span>
+
+<span class="c1"># Using a frame name included in the sprite sheet frames load the Sprite</span>
+<span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="o">.</span><span class="n">new</span> <span class="n">frame_name</span><span class="p">:</span> <span class="s1">'mother_ship_01.png'</span>
+
+<span class="c1"># Add the Sprite as a child of the SpriteBatch instance</span>
+<span class="n">sprite_batch</span><span class="o">.</span><span class="n">add_child</span> <span class="n">sprite</span>
+</code></pre></div>
+<p>In the previous example: first the SpriteBatch is loaded with the sprite sheet image and added to the parent class, next the sprite frames are loaded into the SpriteFrameCache and finally the Sprite is loaded with the name of a sprite sheet frame.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../sprite-batch">Sprite Batch documentation page</a></p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../sprite-frame-cache">Sprite Frame Cache documentation page</a>.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>Using to many Sprites without a Sprite Sheet will affect severely the game performance.</p>
+</div>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Creates a new instance of Sprite:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># Loads the Sprite from an image file</span>
+<span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'space_ship.png'</span>
+
+<span class="c1"># Loads the Sprite from a CCTexture instance</span>
+<span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="o">.</span><span class="n">new</span> <span class="ss">texture</span><span class="p">:</span> <span class="n">space_texture</span>
+
+<span class="c1"># Loads the Sprite from a sprite sheet frame name</span>
+<span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="o">.</span><span class="n">new</span> <span class="n">frame_name</span><span class="p">:</span> <span class="s1">'mother_ship_01.png'</span>
+
+<span class="c1"># Loads the Sprite from a sprite sheet frame</span>
+<span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="o">.</span><span class="n">new</span> <span class="ss">frame</span><span class="p">:</span> <span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">[</span><span class="s1">'mother_ship_02.png'</span><span class="o">]</span>
+
+<span class="c1"># Loads the Sprite from a CGImage</span>
+<span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="o">.</span><span class="n">new</span> <span class="n">cg_image</span><span class="p">:</span> <span class="n">asteroid_image</span><span class="p">,</span> <span class="ss">key</span><span class="p">:</span> <span class="s1">'asteroid'</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>position:</strong> - Point<br> Sets the Sprite's initial position.</p>
+<p><strong>rect:</strong> - Rect <em>Available only on file_name: and texture:</em><br> Sets which portion of the image file or the texture should be loaded into the Sprite.</p>
+<h4 id="custom-options">Custom Options</h4>
+<p>The Sprite initialization supports passing custom arguments that will be stored as properties into the instance for later use:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'space_ship.png'</span><span class="p">,</span> <span class="ss">speed</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="ss">damage</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="ss">health</span><span class="p">:</span> <span class="mi">5</span>
+
+<span class="c1"># The following is 200</span>
+<span class="n">sprite</span><span class="o">[</span><span class="ss">:speed</span><span class="o">]</span>
+
+<span class="c1"># The following is 10</span>
+<span class="n">sprite</span><span class="o">[</span><span class="ss">:damage</span><span class="o">]</span>
+
+<span class="c1"># The following is 5</span>
+<span class="n">sprite</span><span class="o">[</span><span class="ss">:health</span><span class="o">]</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>Very useful to avoid excessive inheritance in the Game Objects.</p>
+</div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/%5B%5D" class="dashAnchor"></a>[]</h3>
+<p>Retrieves a Sprite's property:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'space_ship.png'</span><span class="p">,</span> <span class="ss">speed</span><span class="p">:</span> <span class="mi">200</span>
+
+<span class="c1"># The following is 200</span>
+<span class="n">sprite</span><span class="o">[</span><span class="ss">:speed</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/%5B%5D=" class="dashAnchor"></a>[]=</h3>
+<p>Updates a Sprite property:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">[</span><span class="ss">:life</span><span class="o">]</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># The following is 10</span>
+<span class="n">sprite</span><span class="o">[</span><span class="ss">:life</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="add-child">
+<a name="//apple_ref/cpp/clm/add_child" class="dashAnchor"></a>Add Child</h3>
+<p>Adds a new child to the Sprite instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">other_sprite</span><span class="p">)</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>Only other Sprites are recommended to be added to the Sprite instance.</p>
+</div>
+<h3 id="ltlt">
+<a name="//apple_ref/cpp/clm/&lt;&lt;" class="dashAnchor"></a>&lt;&lt;</h3>
+<p>Push a new child into a Sprite instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span> <span class="o">&lt;&lt;</span> <span class="n">other_sprite</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The </p>
+</div>
+<h3 id="add-children">
+<a name="//apple_ref/cpp/clm/add_children" class="dashAnchor"></a>Add Children</h3>
+<p>Adds multiple children to the Sprite instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">children</span> <span class="o">=</span> <span class="o">[</span><span class="n">sprite_one</span><span class="p">,</span> <span class="n">sprite_two</span><span class="p">,</span> <span class="n">sprite_three</span><span class="o">]</span>
+
+<span class="n">sprite</span><span class="o">.</span><span class="n">add_children</span> <span class="n">children</span>
+</code></pre></div>
+<h3 id="run-action">
+<a name="//apple_ref/cpp/clm/run_action" class="dashAnchor"></a>Run Action</h3>
+<p>Runs an action into the Sprite instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">run_action</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">90</span>
+</code></pre></div>
+<h3 id="stop-action">
+<a name="//apple_ref/cpp/clm/stop_action" class="dashAnchor"></a>Stop Action</h3>
+<p>Stop a Sprite's running action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">rotate</span> <span class="o">=</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">90</span>
+
+<span class="n">sprite</span><span class="o">.</span><span class="n">run_action</span> <span class="n">rotate</span>
+<span class="n">sprite</span><span class="o">.</span><span class="n">stop_action</span> <span class="n">rotate</span>
+</code></pre></div>
+<h3 id="stop-all-actions">
+<a name="//apple_ref/cpp/clm/stop_all_actions" class="dashAnchor"></a>Stop All Actions</h3>
+<p>Stops all actions running on the Sprite's instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">stop_all_actions</span>
+</code></pre></div>
+<h3 id="number-of-running-actions">
+<a name="//apple_ref/cpp/clm/number_of_running_actions" class="dashAnchor"></a>Number of Running Actions</h3>
+<p>Returns the number of actions running on the Sprite:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">run_action</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">90</span>
+
+<span class="c1"># The following is 1</span>
+<span class="n">sprite</span><span class="o">.</span><span class="n">number_of_running_actions</span>
+</code></pre></div>
+<h3 id="running-actions">
+<a name="//apple_ref/cpp/clm/running_actions?" class="dashAnchor"></a>Running Actions?</h3>
+<p>Retrieves if the Sprite is running any action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">run_action</span> <span class="no">Rotate</span><span class="o">.</span><span class="n">by</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">90</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">sprite</span><span class="o">.</span><span class="n">running_actions?</span>
+</code></pre></div>
+<h3 id="schedule-update">
+<a name="//apple_ref/cpp/clm/schedule_update" class="dashAnchor"></a>Schedule Update</h3>
+<p>Starts receiving the Game Loop calls on the Sprite instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">schedule_update</span> <span class="k">do</span> <span class="o">|</span><span class="n">dt</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>dt</strong> - Float<br> The delta time between Game Loop calls.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>Do not execute big time consuming operations on the Game Loop, it will affect drastically the performance of the game.</p>
+</div>
+<h3 id="position">
+<a name="//apple_ref/cpp/clm/position" class="dashAnchor"></a>Position</h3>
+<p>Gets or sets the Sprite position:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The sprite position is: </span><span class="si">#{</span><span class="n">sprite</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">sprite</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="frame">
+<a name="//apple_ref/cpp/clm/frame" class="dashAnchor"></a>Frame</h3>
+<p>Gets or sets the frame that is being displayed in the Sprite:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">[</span><span class="s1">'space_ship_02.png'</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The sprite frame is: </span><span class="si">#{</span><span class="n">sprite</span><span class="o">.</span><span class="n">frame</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>The previous example is the correct way of changing a Sprite image.</p>
+</div>
+<h3 id="displays-frame">
+<a name="//apple_ref/cpp/clm/displays_frame?" class="dashAnchor"></a>Displays Frame?</h3>
+<p>Returns if a frame is being displayed by the Sprite:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">new_frame</span> <span class="o">=</span> <span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">[</span><span class="s1">'space_ship_02.png'</span><span class="o">]</span>
+<span class="n">sprite</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">new_frame</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">sprite</span><span class="o">.</span><span class="n">displays_frame?</span> <span class="n">new_frame</span>
+</code></pre></div>
+<h3 id="file-name">
+<a name="//apple_ref/cpp/clm/file_name" class="dashAnchor"></a>File Name</h3>
+<p>Sets a new image file name for the Sprite:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">'big_asteroid.png'</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method will affect the Game performance, use sprite sheets and the Sprite's frame method to avoid this.</p>
+</div>
+<h3 id="flip">
+<a name="//apple_ref/cpp/clm/flip" class="dashAnchor"></a>Flip</h3>
+<p>Flips the Sprite in the X or Y axis:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">flip</span> <span class="ss">x</span><span class="p">:</span> <span class="kp">true</span>
+<span class="n">sprite</span><span class="o">.</span><span class="n">flip</span> <span class="ss">y</span><span class="p">:</span> <span class="kp">false</span>
+
+<span class="n">sprite</span><span class="o">.</span><span class="n">flip</span> <span class="ss">x</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">y</span><span class="p">:</span> <span class="kp">false</span>
+</code></pre></div>
+<h3 id="bounding-box">
+<a name="//apple_ref/cpp/clm/bounding_box" class="dashAnchor"></a>Bounding Box</h3>
+<p>Returns the rect that contains the entire Sprite:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">bounding_box</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The bounding box does not recognize the alpha channel of the image.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

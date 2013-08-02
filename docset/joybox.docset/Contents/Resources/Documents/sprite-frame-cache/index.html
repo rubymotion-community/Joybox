@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Sprite Frame Cache</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ESSENTIALS</h4> <article><h2>Sprite Frame Cache</h2>
+<p></p>
+<p>The Sprite Frame Cache provides all the related information on every frame inside a sprite sheet, for this to be accomplished a sprite sheet frames file (usually a plist file) needs to be provided.</p>
+<p>It works together with the SpriteBatch class in order to support the sprite sheet functionality, for more information about how to load Sprites from a sprite sheet, see: <a href="../sprite">Sprite documentation page</a>.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../sprite-batch">SpriteBatch documentation page</a></p>
+<h3 id="add">
+<a name="//apple_ref/cpp/clm/add" class="dashAnchor"></a>Add</h3>
+<p>Add frames to the SpriteFrameCache:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># Add frames from a sprite sheet frames file</span>
+<span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">add</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'sprite_frames.plist'</span>
+
+<span class="c1"># Add one particular frame with a name</span>
+<span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">add</span> <span class="ss">frame</span><span class="p">:</span> <span class="n">sprite_frame</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">'star_ship.png'</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>texture:</strong> - CCTexture <em>Available only on file_name:</em><br> Complements a sprite sheet frames file with a texture.</p>
+<p><strong>texture_file:</strong> - String <em>Available only on file_name:</em><br> Adds a texture file into the SpriteFrameCache instance.</p>
+<h3 id="remove">
+<a name="//apple_ref/cpp/clm/remove" class="dashAnchor"></a>Remove</h3>
+<p>Removes one or more frames from the SpriteFrameCache:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># Remove the frame named star_ship.png</span>
+<span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">remove</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">'star_ship.png'</span>
+
+<span class="c1"># Removes all the frames contained in the sprite sheet frames file</span>
+<span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">remove</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'sprite_frames.plist'</span>
+
+<span class="c1"># Removes all the frames related to the texture</span>
+<span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">remove</span> <span class="ss">texture</span><span class="p">:</span> <span class="n">sprite_sheet_texture</span>
+</code></pre></div>
+<h3 id="remove-all">
+<a name="//apple_ref/cpp/clm/remove_all" class="dashAnchor"></a>Remove All</h3>
+<p>Removes all the frames from the SpriteFrameCache:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">remove_all</span>
+</code></pre></div>
+<h3 id="remove-unused-frames">
+<a name="//apple_ref/cpp/clm/remove_unused_frames" class="dashAnchor"></a>Remove Unused Frames</h3>
+<p>Removes all the unused frames from the SpriteFrameCache:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">remove_unused_frames</span>
+</code></pre></div>
+<h3 id="purge">
+<a name="//apple_ref/cpp/clm/purge" class="dashAnchor"></a>Purge</h3>
+<p>Releases all the instances of the frames:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">purge</span>
+</code></pre></div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/%5B%5D" class="dashAnchor"></a>[]</h3>
+<p>Retrieves a frame from a SpriteFrameCache based on its name:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite_frame</span> <span class="o">=</span> <span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">[</span><span class="s1">'star_ship.png'</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The sprite frame is: </span><span class="si">#{</span><span class="n">sprite_frame</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/%5B%5D=" class="dashAnchor"></a>[]=</h3>
+<p>Sets a frame on the SpriteFrameCache:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">SpriteFrameCache</span><span class="o">[</span><span class="s1">'mother_ship_02.png'</span><span class="o">]</span> <span class="o">=</span> <span class="n">mother_ship_frame</span>
+</code></pre></div>
+<h3 id="where">
+<a name="//apple_ref/cpp/clm/where" class="dashAnchor"></a>Where</h3>
+<p>Returns an array of frames result of an iteration in which the iterator index will be placed in the middle of a prefix and a suffix:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite_frames</span> <span class="o">=</span> <span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">where</span> <span class="ss">prefix</span><span class="p">:</span> <span class="s1">'mother_ship'</span><span class="p">,</span> <span class="ss">suffix</span><span class="p">:</span> <span class="s1">'.png'</span>
+</code></pre></div>
+<p>In the previous example the search will begin with 'mother_ship1.png', if found, then it will look for 'mother_ship2.png' and so on, until the requested frame its not found.</p>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>Commonly used to retrieve all the frames related to an animation, for example: 'walk_1.png', 'walk_2.png', 'walk_3.png' are retrieved using 'walk_' as prefix and '.png' as suffix.</p>
+</div>
+<h4 id="options">Options</h4>
+<p><strong>from:</strong> - Number - Defaults: 1<br> From which number the iteration starts.</p>
+<p><strong>to:</strong> - Number<br> In which number the iteration should stop.</p>
+<p><strong>order:</strong> - Array<br> Overrides the iterator allowing the request for particular frames:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite_frames</span> <span class="o">=</span> <span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">where</span> <span class="ss">prefix</span><span class="p">:</span> <span class="s1">'mother_ship'</span><span class="p">,</span> <span class="ss">suffix</span><span class="p">:</span> <span class="s1">'.png'</span><span class="p">,</span> <span class="ss">order</span><span class="p">:</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span>
+</code></pre></div>
+<p>The previous example will return the following frames: ['mother_ship1.png', 'mother_ship2.png', 'mother_ship1.png', 'mother_ship1.png]</p> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

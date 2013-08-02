@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>AABB</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>PHYSICS ENVIRONMENT</h4> <article><h2>AABB</h2>
+<p></p>
+<p>The class AABB (Axis Aligned Bounding Box) represents a box aligned to the world axis. Generally the size of the box is the minimum bounds in which an object (either a Shape or a Fixture) can fit.</p>
+<p>One important thing to note is that even if the object rotates, the AABB will be always aligned to the world axis. In other words it can't rotate.</p>
+<p><img class="more-info" src="../images/moreinfo.png">For more information, see: <a href="http://en.wikipedia.org/wiki/Minimum_bounding_box">Minimum bounding box</a></p>
+<p><img class="more-info" src="../images/moreinfo.png">For more information, see: <a href="http://www.gamasutra.com/view/feature/131833/when_two_hearts_collide_.php">When Two Hearts Collide: Axis-Aligned Bounding Boxes</a></p>
+<h3 id="lower-bound">
+<a name="//apple_ref/cpp/clm/lower_bound" class="dashAnchor"></a>Lower Bound</h3>
+<p>Returns a Point containing the lower bound of the AABB in Pixel coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">aabb</span> <span class="o">=</span> <span class="n">fixture</span><span class="o">.</span><span class="n">aabb</span> <span class="n">child_index</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">aabb</span><span class="o">.</span><span class="n">lower_bound</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture aabb lower_bound is: </span><span class="si">#{</span><span class="n">aabb</span><span class="o">.</span><span class="n">lower_bound</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">aabb</span><span class="o">.</span><span class="n">lower_bound</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="metric-lower-bound">
+<a name="//apple_ref/cpp/clm/metric_lower_bound" class="dashAnchor"></a>Metric Lower Bound</h3>
+<p>Returns the lower bound point of the AABB in Metric coordinates.</p>
+<h3 id="upper-bound">
+<a name="//apple_ref/cpp/clm/upper_bound" class="dashAnchor"></a>Upper Bound</h3>
+<p>Returns the upper bound Point of the AABB in Pixel coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">aabb</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">compute_aabb</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span><span class="p">,</span> <span class="ss">angle</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">child_index</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">aabb</span><span class="o">.</span><span class="n">upper_bound</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture aabb upper_bound is: </span><span class="si">#{</span><span class="n">aabb</span><span class="o">.</span><span class="n">upper_bound</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">aabb</span><span class="o">.</span><span class="n">upper_bound</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="metric-upper-bound">
+<a name="//apple_ref/cpp/clm/metric_upper_bound" class="dashAnchor"></a>Metric Upper Bound</h3>
+<p>The upper bound Point of the AABB in Metric coordinates.</p> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Tile Set</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>TILED MAPS</h4> <article><h2>Tile Set</h2>
+<p></p>
+<p>This class represents the tile set using on the TileLayer class, exposing access to important information such as tile types, rect of a particular tile type, which image file is being used or the image size, among others.</p>
+<p>For more information, see: <a href="../tile-layer">TileLayer documentation page</a>.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The TileSet class cannot be instantiated by itself, it is required to be retrieved using the TileLayer class.</p>
+</div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>In order to use this class is required to include Joybox::TMX.</p>
+</div>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Using the TileLayer's tile set method we can access instance of this class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span><span class="o">.</span><span class="n">tile_set</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>Each TileLayer instance can have a different tile set.</p>
+</div>
+<h3 id="first-tile-type">
+<a name="//apple_ref/cpp/clm/first_tile_type" class="dashAnchor"></a>First Tile Type</h3>
+<p>Gets or sets the first tile type in the TileSet:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_set</span><span class="o">.</span><span class="n">first_tile_type</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="c1"># The following is 12</span>
+<span class="n">tile_set</span><span class="o">.</span><span class="n">first_tile_type</span>
+</code></pre></div>
+<h3 id="image-file-name">
+<a name="//apple_ref/cpp/clm/image_file_name" class="dashAnchor"></a>Image File Name</h3>
+<p>Retrieves or updates the TileSet's image name:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_set</span><span class="o">.</span><span class="n">image_file_name</span> <span class="o">=</span> <span class="s1">'space_tile_set.png'</span>
+
+<span class="nb">p</span> <span class="s2">"The image file name is: </span><span class="si">#{</span><span class="n">tile_set</span><span class="o">.</span><span class="n">image_file_name</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="image-size">
+<a name="//apple_ref/cpp/clm/image_size" class="dashAnchor"></a>Image Size</h3>
+<p>Gets or sets the TileSet's image size:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_set</span><span class="o">.</span><span class="n">image_size</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">768</span><span class="o">]</span>
+
+<span class="c1"># The following is [1024, 768]</span>
+<span class="n">tile_set</span><span class="o">.</span><span class="n">image_size</span>
+</code></pre></div>
+<h3 id="tile-offset">
+<a name="//apple_ref/cpp/clm/tile_offset" class="dashAnchor"></a>Tile Offset</h3>
+<p>Retrieves or updates the tile offset:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_set</span><span class="o">.</span><span class="n">tile_offset</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span>
+
+<span class="c1"># The following is [1, 1]</span>
+<span class="n">tile_set</span><span class="o">.</span><span class="n">tile_offset</span>
+</code></pre></div>
+<h3 id="spacing">
+<a name="//apple_ref/cpp/clm/spacing" class="dashAnchor"></a>Spacing</h3>
+<p>Gets or sets the spacing between tiles:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_set</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="nb">p</span> <span class="s2">"The spacing is: </span><span class="si">#{</span><span class="n">tile_set</span><span class="o">.</span><span class="n">spacing</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="margin">
+<a name="//apple_ref/cpp/clm/margin" class="dashAnchor"></a>Margin</h3>
+<p>Retrieves or updates the margin of the TileSet's tiles:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_set</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nb">p</span> <span class="s2">"The margin is: </span><span class="si">#{</span><span class="n">tile_set</span><span class="o">.</span><span class="n">margin</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="anchor-point">
+<a name="//apple_ref/cpp/clm/anchor_point" class="dashAnchor"></a>Anchor Point</h3>
+<p>Returns the anchor point of the TileSet:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The anchor point is: </span><span class="si">#{</span><span class="n">tile_set</span><span class="o">.</span><span class="n">anchor_point</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="rect-for-tile-type">
+<a name="//apple_ref/cpp/clm/rect_for_tile_type" class="dashAnchor"></a>Rect for Tile Type</h3>
+<p>Retrieves the rect for a particular tile type in the TileSet:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_type</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="n">tile_set</span><span class="o">.</span><span class="n">rect_for_tile_type</span><span class="p">(</span><span class="n">tile_type</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="tile-size">
+<a name="//apple_ref/cpp/clm/tile_size" class="dashAnchor"></a>Tile Size</h3>
+<p>Returns the size of a Tile:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The size of a tile is: </span><span class="si">#{</span><span class="n">tile_set</span><span class="o">.</span><span class="n">tile_size</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">tile_set</span><span class="o">.</span><span class="n">tile_size</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>This method is optimized for Retina Display.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

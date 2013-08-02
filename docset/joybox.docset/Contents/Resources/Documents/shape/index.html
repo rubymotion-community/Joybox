@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Shape</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>PHYSICS ENVIRONMENT</h4> <article><h2>Shape</h2>
+<p></p>
+<p>The Shape class provides the Fixture a geometry but also allow to perform some operations like ray casting, AABB or Mass computing or overlapping point tests.</p>
+<p>This class cannot be initialized directly and must be used through any of the following subclasses: Chain, Circle, Edge or Polygon Shape.</p>
+<p><img class="more-info" src="../images/moreinfo.png">For more information, see: <a href="../chain-shape">Chain Shape documentation page</a>.</p>
+<p><img class="more-info" src="../images/moreinfo.png">For more information, see: <a href="../circle-shape">Circle Shape documentation page</a>.</p>
+<p><img class="more-info" src="../images/moreinfo.png">For more information, see: <a href="../edge-shape">Edge Shape documentation page</a>.</p>
+<p><img class="more-info" src="../images/moreinfo.png">For more information, see: <a href="../polygon-shape">Polygon Shape documentation page</a>.</p>
+<h3 id="circletype">
+<a name="//apple_ref/cpp/Constant/::CircleType" class="dashAnchor"></a>::CircleType</h3>
+<h3 id="edgetype">
+<a name="//apple_ref/cpp/Constant/::EdgeType" class="dashAnchor"></a>::EdgeType</h3>
+<h3 id="polygontype">
+<a name="//apple_ref/cpp/Constant/::PolygonType" class="dashAnchor"></a>::PolygonType</h3>
+<h3 id="chaintype">
+<a name="//apple_ref/cpp/Constant/::ChainType" class="dashAnchor"></a>::ChainType</h3>
+<p>Constants that represent the Shape types.</p>
+<h3 id="type">
+<a name="//apple_ref/cpp/clm/type" class="dashAnchor"></a>Type</h3>
+<p>Gets the Shape type:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The shape type is: </span><span class="si">#{</span><span class="n">shape</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="child-count">
+<a name="//apple_ref/cpp/clm/child_count" class="dashAnchor"></a>Child Count</h3>
+<p>Returns the number of sub-shapes contained into the Shape instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">child_count</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">child_count</span>
+
+<span class="nb">p</span> <span class="s2">"The child count is: </span><span class="si">#{</span><span class="n">child_count</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="radius">
+<a name="//apple_ref/cpp/clm/radius" class="dashAnchor"></a>Radius</h3>
+<p>Retrieves the radius of the Shape's instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The shape radius is: </span><span class="si">#{</span><span class="n">shape</span><span class="o">.</span><span class="n">radius</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="metric-radius">
+<a name="//apple_ref/cpp/clm/metric_radius" class="dashAnchor"></a>Metric Radius</h3>
+<p>Retrieves the radius in Metric coordinates of the Shape's instance.</p>
+<h3 id="contains-point">
+<a name="//apple_ref/cpp/clm/contains_point?" class="dashAnchor"></a>Contains Point?</h3>
+<p>Returns if a point is contained into a Shape:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">shape</span><span class="o">.</span><span class="n">contains_point?</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="ray-cast">
+<a name="//apple_ref/cpp/clm/ray_cast" class="dashAnchor"></a>Ray Cast</h3>
+<p>Casts a ray against the Shape instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">shape</span><span class="o">.</span><span class="n">ray_cast</span> <span class="n">first_point</span><span class="p">:</span><span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span><span class="p">,</span>
+                         <span class="n">second_point</span><span class="p">:</span><span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span><span class="p">,</span>
+                         <span class="n">maximum_fraction</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                         <span class="n">child_index</span><span class="p">:</span> <span class="mi">0</span> <span class="k">do</span> <span class="o">|</span><span class="n">hits</span><span class="p">,</span> <span class="n">normal</span><span class="p">,</span> <span class="n">fraction</span><span class="o">|</span>
+
+                         <span class="k">end</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>first_point:</strong> - Point <em>Required</em><br> The initial point of the ray.</p>
+<p><strong>second_point:</strong> - Point <em>Required</em><br> The final point of the ray.</p>
+<p><strong>maximum_fraction:</strong> - Float <em>Required</em><br> How far the ray should go to check for a intersection.</p>
+<p>The total distance will be a product of the maximum fraction and the distance between the first and second point, in other words: if the double of distance between the first and second point needed to be checked, the maximum fraction should be two.</p>
+<p><strong>child_index:</strong> - Integer <em>Required</em><br> In which of the Shape's Sub-shapes should check for a intersection.</p>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>For Circle, Polygon or Edge Shapes the child_index is zero, in the case of the Chain Shape is from zero to the number of segments minus one.</p>
+</div>
+<h3 id="compute-aabb">
+<a name="//apple_ref/cpp/clm/compute_aabb" class="dashAnchor"></a>Compute AABB</h3>
+<p>Computes the Shape's AABB:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">aabb</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">compute_aabb</span> <span class="n">child_index</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="nb">p</span> <span class="s2">"The shape's AABB is: </span><span class="si">#{</span><span class="n">aabb</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>For Circle, Polygon or Edge Shapes the child_index is zero, in the case of the Chain Shape is from zero to the number of segments minus one.</p>
+</div>
+<h3 id="compute-mass">
+<a name="//apple_ref/cpp/clm/compute_mass" class="dashAnchor"></a>Compute Mass</h3>
+<p>Computes the mass of the Shape based on a density:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">mass</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">compute_mass</span> <span class="ss">density</span><span class="p">:</span> <span class="mi">1</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The density should be in kilograms per meter squared.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

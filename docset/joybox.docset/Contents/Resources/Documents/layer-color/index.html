@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Layer Color</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ESSENTIALS</h4> <article><h2>Layer Color</h2>
+<p></p>
+<p>A regular Layer with support for a background color.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../layer">Layer documentation page</a>.</p>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Creates a new instance of the LayerColor class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">layer_color</span> <span class="o">=</span> <span class="no">LayerColor</span><span class="o">.</span><span class="n">new</span> <span class="ss">color</span><span class="p">:</span> <span class="s2">"800617"</span><span class="o">.</span><span class="n">to_color</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>color:</strong> - Color <em>Required</em><br> An instance of the Color class, which be the background color of the LayerColor.</p>
+<p><strong>opacity:</strong> - Number - <em>0 - 255</em> - Default: 255<br> Sets the LayerColor's opacity.</p>
+<p><strong>position:</strong> - Point<br> Sets the LayerColor instance position.</p>
+<p><strong>width:</strong> - Float - Default: Screen width<br> Width of the Layer Color instance.</p>
+<p><strong>height:</strong> - Float - Default: Screen height<br> Height of the Layer Color instance.</p>
+<h3 id="position">
+<a name="//apple_ref/cpp/clm/position" class="dashAnchor"></a>Position</h3>
+<p>Gets or Sets the LayerColor's position:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">layer_color</span> <span class="o">=</span> <span class="no">LayerColor</span><span class="o">.</span><span class="n">new</span> <span class="ss">color</span><span class="p">:</span> <span class="s2">"800617"</span><span class="o">.</span><span class="n">to_color</span>
+<span class="n">layer_color</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The layer color position is: </span><span class="si">#{</span><span class="n">layer_color</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, layer_color.position.y}"</span>
+</code></pre></div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

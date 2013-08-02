@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Menu Label</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>USER INTERFACE</h4> <article><h2>Menu Label</h2>
+<p></p>
+<p>The Menu Label class represents a menu item with a label, for presenting an instance of this class on the Screen is recommended to use the Menu class.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../menu">Menu documentation page</a>.</p>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Creates a new instance of the MenuLabel class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">menu</span> <span class="o">=</span> <span class="no">MenuLabel</span><span class="o">.</span><span class="n">new</span> <span class="ss">text</span><span class="p">:</span> <span class="s1">'Start the Game!'</span> <span class="k">do</span> <span class="o">|</span><span class="n">menu_item</span><span class="o">|</span>
+    <span class="c1"># This block is called when the Menu Label is selected  </span>
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>color:</strong> - Color - Default: White<br> Sets the ManuLabel's text color.</p>
+<p><strong>position:</strong> - Point - Default: None<br> The position of the menu label on the screen, if not provided it will be determined by the Menu.</p>
+<p><strong>font_name:</strong> - String - Default: 'Marker Felt'<br> Sets the name of the font to be used to render the text.</p>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>All the device's fonts are supported, either OSX or iOS.</p>
+</div>
+<p><strong>font_size:</strong> - Integer - Default: 12<br> The size of the font to be render.</p>
+<h3 id="default-font-name">
+<a name="//apple_ref/cpp/clm/default_font_name" class="dashAnchor"></a>Default Font Name</h3>
+<p>Retrieves or updates the default font name for all the Menu Label instances:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">MenuLabel</span><span class="o">.</span><span class="n">default_font_name</span> <span class="o">=</span> <span class="s1">'Helvetica'</span>
+
+<span class="c1"># The following is Helvetica</span>
+<span class="no">MenuLabel</span><span class="o">.</span><span class="n">default_font_name</span>
+</code></pre></div>
+<h3 id="default-font-size">
+<a name="//apple_ref/cpp/clm/default_font_size" class="dashAnchor"></a>Default Font Size</h3>
+<p>Gets or sets the default font size for all the MenuLabel instances:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">MenuLabel</span><span class="o">.</span><span class="n">default_font_size</span> <span class="o">=</span> <span class="mi">24</span>
+
+<span class="c1"># The following is 24</span>
+<span class="no">MenuLabel</span><span class="o">.</span><span class="n">default_font_size</span>
+</code></pre></div>
+<h3 id="font-name">
+<a name="//apple_ref/cpp/clm/font_name" class="dashAnchor"></a>Font Name</h3>
+<p>Gets or sets the font name of the MenuLabel instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">menu_label</span><span class="o">.</span><span class="n">font_name</span> <span class="o">=</span> <span class="s1">'Marker Felt'</span>
+
+<span class="c1"># The following is Marker Felt</span>
+<span class="n">menu_label</span><span class="o">.</span><span class="n">font_name</span>
+</code></pre></div>
+<h3 id="font-size">
+<a name="//apple_ref/cpp/clm/font_size" class="dashAnchor"></a>Font Size</h3>
+<p>Retrieves or updates the font size of the MenuLabel instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">menu_label</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="mi">14</span>
+
+<span class="c1"># The following is 14</span>
+<span class="n">menu_label</span><span class="o">.</span><span class="n">font_size</span>
+</code></pre></div>
+<h3 id="text">
+<a name="//apple_ref/cpp/clm/text" class="dashAnchor"></a>Text</h3>
+<p>Gets or sets the MenuLabel's text:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">menu_label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">'Mothership Scores'</span>
+
+<span class="nb">p</span> <span class="s2">"The menu label text is: </span><span class="si">#{</span><span class="n">menu_label</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

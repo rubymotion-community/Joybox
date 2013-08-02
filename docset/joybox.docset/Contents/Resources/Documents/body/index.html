@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Body</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>PHYSICS ENVIRONMENT</h4> <article><h2>Body</h2>
+<p></p>
+<p>The Body class represents a chunk of matter in the Physics Environment, and it holds all the properties that cannot be seen or touched, like Mass, Velocity, Location or Angle. To give the body a shape and a density it is required to be complemented with one or more Fixtures. For more information, see the <a href="../fixture">Fixture documentation page</a>.</p>
+<p>They are three different types of bodies:</p>
+<ul>
+<li><p>Static<br> The Static bodies does not react to gravity or forces and behave as if they have infinite mass, though they can be moved manually by changing its position instance variable.</p></li>
+<li><p>Kinematic <br> Similar to the Static Bodies, the Kinematic Bodies do not react to forces, but they move according to their velocity properties. It is common to move them by changing their velocity, but that also can be archived through the position property.</p></li>
+<li><p>Dynamic<br> Different from the Static and Kinematic bodies, the Dynamic bodies have finite mass and react to forces. They can be moved by reacting to gravity, by applying a force, or by changing their velocity or position properties.</p></li>
+</ul>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>When a Body is moved, it's complemented fixtures will move accordingly.</p>
+</div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The Body class cannot be instantiated by itself, it is required to be created using the World's new body method.</p>
+</div>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="http://box2d.org/manual.pdf">Box2D Manual</a></p>
+<h3 id="static">
+<a name="//apple_ref/cpp/Constant/::Static" class="dashAnchor"></a>::Static</h3>
+<h3 id="kinematic">
+<a name="//apple_ref/cpp/Constant/::Kinematic" class="dashAnchor"></a>::Kinematic</h3>
+<h3 id="dynamic">
+<a name="//apple_ref/cpp/Constant/::Dynamic" class="dashAnchor"></a>::Dynamic</h3>
+<p>Constants that represent the types of the bodies:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="vi">@world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">Body</span><span class="p">:</span><span class="ss">:Dynamic</span>
+</code></pre></div>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Using the World's New Body method we can create new instance of the class Body:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="vi">@world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span> <span class="k">do</span>
+    <span class="c1"># This block can be used to complement the body with different fixtures</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>For more information on how to add Fixtures, see the <a href="new-fixture">New Fixture method</a></p>
+<h4 id="options">Options:</h4>
+<p><strong>angle:</strong> - Float - <em>0.0 - 360.0</em> - Default: 0.0<br> Initial angle of the Body.</p>
+<p><strong>linear_velocity:</strong> - Point - Default: [0.0, 0.0]<br> Body's initial linear velocity.</p>
+<p><strong>angular_velocity:</strong> - Float - Default: 0.0<br> Angular velocity for the new instance of the Body.</p>
+<p><strong>linear_damping:</strong> - Float - Default: 0.0<br> Initial linear damping of the body.</p>
+<p><strong>angular_damping:</strong> - Float - Default: 0.0<br> Angular damping for the new instance of the Body.</p>
+<p><strong>allows_sleep:</strong> - Boolean - Default: true<br> Allows the Body to fall sleep when no forces are interacting with it?</p>
+<p><strong>awake:</strong> - Boolean - Default: true<br> Sets if the new Body instance should react to the simulation.</p>
+<p><strong>fixed_rotation:</strong> - Boolean - Default: false<br> The new Body instance is allowed to rotate?</p>
+<p><strong>bullet:</strong> - Boolean - Default: false<br> Bullets are fast moving bodies with collision detection optimizations, please take notice that this only applies to Dynamic bodies.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="http://box2d.org/manual.pdf">Box2D Manual - Page 34</a></p>
+<p><strong>type:</strong> - Constant - Default: Body::Static<br> The type of the new Body instance.</p>
+<p><strong>active:</strong> - Boolean - Default: true<br> The Body will react to the simulation even if it is awake?</p>
+<p><strong>gravity_scale:</strong> - Float - Default: 1.0<br> Increase or Decrease the gravity applied to the new instance of the Body.</p>
+<h3 id="type">
+<a name="//apple_ref/cpp/clm/type" class="dashAnchor"></a>Type</h3>
+<p>Retrieve or Update the Body type:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="ss">Body</span><span class="p">:</span><span class="ss">:Dynamic</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">body</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="ss">Body</span><span class="p">:</span><span class="ss">:Dynamic</span>
+</code></pre></div>
+<h3 id="position">
+<a name="//apple_ref/cpp/clm/position" class="dashAnchor"></a>Position</h3>
+<p>Retrieve and Update the position of the Body:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The position of the Body is: </span><span class="si">#{</span><span class="n">body</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">body</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="metric-position">
+<a name="//apple_ref/cpp/clm/metric_position" class="dashAnchor"></a>Metric Position</h3>
+<p>Get and Set the position of the Body in Metric coordinates.</p>
+<h3 id="angle">
+<a name="//apple_ref/cpp/clm/angle" class="dashAnchor"></a>Angle</h3>
+<p>Retrieve and Update the Body's angle:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">angle</span> <span class="o">=</span> <span class="mi">180</span>
+
+<span class="nb">p</span> <span class="s2">"The angle of the body is: </span><span class="si">#{</span><span class="n">body</span><span class="o">.</span><span class="n">angle</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="radian-angle">
+<a name="//apple_ref/cpp/clm/radian_angle" class="dashAnchor"></a>Radian Angle</h3>
+<p>Gets and Sets the Body's angle in Radians.</p>
+<h3 id="mass-data">
+<a name="//apple_ref/cpp/clm/mass_data" class="dashAnchor"></a>Mass Data</h3>
+<p>Retrieves and Sets the Mass Data of the Body:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">mass_data</span> <span class="o">=</span> <span class="no">MassData</span><span class="o">.</span><span class="n">new</span>
+<span class="n">mass_data</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">mass_data</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="o">]</span>
+<span class="n">mass_data</span><span class="o">.</span><span class="n">rotational_inertia</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+
+<span class="n">body</span><span class="o">.</span><span class="n">mass_data</span> <span class="o">=</span> <span class="n">mass_data</span>
+
+<span class="c1"># The following is 2.0</span>
+<span class="n">body</span><span class="o">.</span><span class="n">mass_data</span><span class="o">.</span><span class="n">mass</span>
+</code></pre></div>
+<h3 id="mass">
+<a name="//apple_ref/cpp/clm/mass" class="dashAnchor"></a>Mass</h3>
+<p>Returns the Body's mass:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The mass of the Body is: </span><span class="si">#{</span><span class="n">body</span><span class="o">.</span><span class="n">mass</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="reset-mass">
+<a name="//apple_ref/cpp/clm/reset_mass" class="dashAnchor"></a>Reset Mass</h3>
+<p>Resets the mass data if it was updated previously using the Mass Data method:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">reset_mass</span>
+</code></pre></div>
+<h3 id="inertia">
+<a name="//apple_ref/cpp/clm/inertia" class="dashAnchor"></a>Inertia</h3>
+<p>Retrieves the Body's inertia:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The inertia of the Body is: </span><span class="si">#{</span><span class="n">body</span><span class="o">.</span><span class="n">inertia</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="local-center">
+<a name="//apple_ref/cpp/clm/local_center" class="dashAnchor"></a>Local Center</h3>
+<p>Returns the Body local center:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">local_center</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">local_center</span>
+
+<span class="nb">p</span> <span class="s2">"The center of the body is: </span><span class="si">#{</span><span class="n">local_center</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">local_center</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="to-local-point">
+<a name="//apple_ref/cpp/clm/to_local_point" class="dashAnchor"></a>To Local Point</h3>
+<p>Converts the point to Local coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="vi">@world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+
+<span class="c1"># The following is [-100, -100]</span>
+<span class="n">body</span><span class="o">.</span><span class="n">to_local_point</span><span class="p">(</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="to-local-vector">
+<a name="//apple_ref/cpp/clm/to_local_vector" class="dashAnchor"></a>To Local Vector</h3>
+<p>Converts a vector to Local coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="vi">@world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+
+<span class="c1"># The following is [0, 0]</span>
+<span class="n">body</span><span class="o">.</span><span class="n">to_local_point</span><span class="p">(</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="world-center">
+<a name="//apple_ref/cpp/clm/world_center" class="dashAnchor"></a>World Center</h3>
+<p>Returns the center of the Body in relation to the world:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world_center</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">world_center</span>
+
+<span class="nb">p</span> <span class="s2">"The center of the body is: </span><span class="si">#{</span><span class="n">world_center</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">world_center</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="to-world-point">
+<a name="//apple_ref/cpp/clm/to_world_point" class="dashAnchor"></a>To World Point</h3>
+<p>Converts the point from local coordinates to World coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="vi">@world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+
+<span class="c1"># The following is [100, 100]</span>
+<span class="n">body</span><span class="o">.</span><span class="n">to_world_point</span><span class="p">(</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="to-world-vector">
+<a name="//apple_ref/cpp/clm/to_world_vector" class="dashAnchor"></a>To World Vector</h3>
+<p>Converts the vector from local coordinates to World coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="vi">@world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span><span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+
+<span class="c1"># The following is [0, 0]</span>
+<span class="n">body</span><span class="o">.</span><span class="n">to_world_vector</span><span class="p">(</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="linear-velocity">
+<a name="//apple_ref/cpp/clm/linear_velocity" class="dashAnchor"></a>Linear Velocity</h3>
+<p>Gets or Sets the Body linear velocity:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">linear_velocity</span> <span class="o">=</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span>
+
+<span class="n">linear_velocity</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">linear_velocity</span>
+
+<span class="nb">p</span> <span class="s2">"The body linear velocity is: </span><span class="si">#{</span><span class="n">linear_velocity</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">linear_velocity</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="linear-velocity-at">
+<a name="//apple_ref/cpp/clm/linear_velocity_at" class="dashAnchor"></a>Linear Velocity At</h3>
+<p>Retrieves the linear velocity of the Body at a point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="vi">@world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+<span class="n">body</span><span class="o">.</span><span class="n">linear_velocity</span> <span class="o">=</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span>
+
+<span class="c1"># The following is [10, 10]</span>
+<span class="n">body</span><span class="o">.</span><span class="n">linear_velocity_at</span> <span class="n">local_point</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span>
+
+<span class="c1"># The following is [10, 10]</span>
+<span class="n">body</span><span class="o">.</span><span class="n">linear_velocity_at</span> <span class="n">world_point</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="angular-velocity">
+<a name="//apple_ref/cpp/clm/angular_velocity" class="dashAnchor"></a>Angular Velocity</h3>
+<p>Gets or Sets the Body angular velocity:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">angular_velocity</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">angular_velocity</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">angular_velocity</span>
+
+<span class="nb">p</span> <span class="s2">"The body angular velocity is: </span><span class="si">#{</span><span class="n">angular_velocity</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="linear-damping">
+<a name="//apple_ref/cpp/clm/linear_damping" class="dashAnchor"></a>Linear Damping</h3>
+<p>Retrieves or Updates the Body linear damping:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">linear_damping</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">linear_damping</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">linear_damping</span>
+
+<span class="nb">p</span> <span class="s2">"The body linear damping is: </span><span class="si">#{</span><span class="n">linear_damping</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="angular-damping">
+<a name="//apple_ref/cpp/clm/angular_damping" class="dashAnchor"></a>Angular Damping</h3>
+<p>Gets or Sets the Body angular damping:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">angular_damping</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="n">angular_damping</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">angular_damping</span>
+
+<span class="nb">p</span> <span class="s2">"The body angular damping is: </span><span class="si">#{</span><span class="n">angular_damping</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="gravity-scale">
+<a name="//apple_ref/cpp/clm/gravity_scale" class="dashAnchor"></a>Gravity Scale</h3>
+<p>Gets or Sets the Body gravity scale:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">gravity_scale</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">gravity_scale</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">gravity_scale</span>
+
+<span class="nb">p</span> <span class="s2">"The body gravity scale is: </span><span class="si">#{</span><span class="n">gravity_scale</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="bullet">
+<a name="//apple_ref/cpp/clm/bullet" class="dashAnchor"></a>Bullet</h3>
+<h3 id="bullet">
+<a name="//apple_ref/cpp/clm/bullet?" class="dashAnchor"></a>Bullet?</h3>
+<p>Gets or Sets if the Body is a bullet:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">bullet</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">body</span><span class="o">.</span><span class="n">bullet?</span>
+</code></pre></div>
+<h3 id="awake">
+<a name="//apple_ref/cpp/clm/awake" class="dashAnchor"></a>Awake</h3>
+<h3 id="awake">
+<a name="//apple_ref/cpp/clm/awake?" class="dashAnchor"></a>Awake?</h3>
+<p>Retrieves and Updates if the Body is awake:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">awake</span> <span class="o">=</span> <span class="kp">false</span>
+
+<span class="c1"># The following is false</span>
+<span class="n">body</span><span class="o">.</span><span class="n">awake?</span>
+</code></pre></div>
+<h3 id="active">
+<a name="//apple_ref/cpp/clm/active" class="dashAnchor"></a>Active</h3>
+<h3 id="active">
+<a name="//apple_ref/cpp/clm/active?" class="dashAnchor"></a>Active?</h3>
+<p>Gets &amp; Sets if the Body is active:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="kp">false</span>
+
+<span class="c1"># The following is false</span>
+<span class="n">body</span><span class="o">.</span><span class="n">active?</span>
+</code></pre></div>
+<h3 id="fixed-rotation">
+<a name="//apple_ref/cpp/clm/fixed_rotation" class="dashAnchor"></a>Fixed Rotation</h3>
+<h3 id="fixed-rotation">
+<a name="//apple_ref/cpp/clm/fixed_rotation?" class="dashAnchor"></a>Fixed Rotation?</h3>
+<p>Retrieves and Updates if the Body can rotate:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">fixed_rotation</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">body</span><span class="o">.</span><span class="n">fixed_rotation?</span>
+</code></pre></div>
+<h3 id="sleeping-allowed">
+<a name="//apple_ref/cpp/clm/sleeping_allowed" class="dashAnchor"></a>Sleeping Allowed</h3>
+<h3 id="sleeping-allowed">
+<a name="//apple_ref/cpp/clm/sleeping_allowed?" class="dashAnchor"></a>Sleeping Allowed?</h3>
+<p>Gets &amp; Sets if the Body is allowed to fall sleep:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">sleeping_allowed</span> <span class="o">=</span> <span class="kp">false</span>
+
+<span class="c1"># The following is false</span>
+<span class="n">body</span><span class="o">.</span><span class="n">sleeping_allowed?</span>
+</code></pre></div>
+<h3 id="fixtures">
+<a name="//apple_ref/cpp/clm/fixtures" class="dashAnchor"></a>Fixtures</h3>
+<p>Returns the list of the Fixtures added to the Body:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">fixture</span><span class="o">|</span>
+    <span class="nb">p</span> <span class="s2">"Body Fixture: </span><span class="si">#{</span><span class="n">fixture</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="new-fixture">
+<a name="//apple_ref/cpp/clm/new_fixture" class="dashAnchor"></a>New Fixture</h3>
+<p>To add a new Fixture to the Body its required to have a Shape. The following Shapes are available:</p>
+<ul>
+<li><p>Edge, see: <a href="../edge-shape">EdgeShape documentation page</a></p></li>
+<li><p>Polygon, see: <a href="../polygon-shape">PolygonShape documentation page</a></p></li>
+<li><p>Circle, see: <a href="../circle-shape">CircleShape documentation page</a></p></li>
+<li><p>Chain, see: <a href="../chain-shape">ChainShape documentation page</a></p></li>
+</ul>
+<p>The New Fixture method combines the creation of the Shape and the Fixture, and takes as parameters the options of both classes:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">new_fixture</span> <span class="k">do</span>
+    <span class="n">edge_fixture</span> <span class="n">start_point</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span>
+                         <span class="n">end_point</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span><span class="p">,</span>
+                         <span class="ss">friction</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                         <span class="ss">restitution</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                         <span class="ss">density</span><span class="p">:</span> <span class="mi">3</span>
+                         <span class="n">is_sensor</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>The options <strong>start_point:</strong> and <strong>end_point:</strong> belong to the EdgeShape class and <strong>friction:</strong>, <strong>restitution:</strong>, <strong>density:</strong> and <strong>is_sensor:</strong> belongs to the Fixture class. Also as you have already notice the method invoked is <em>edge_fixture</em>, which indicates what kind of Shape we are creating. Following this the three other methods are: <em>polygon_fixture</em>, <em>circle_fixture</em>, <em>chain_fixture</em>.</p>
+<p>Here is an example creating a Fixture with a Polygon Shape:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">new_fixture</span> <span class="k">do</span>
+    <span class="n">polygon_fixture</span> <span class="ss">vertices</span><span class="p">:</span> <span class="o">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="o">]]</span><span class="p">,</span>
+                              <span class="ss">friction</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                              <span class="ss">restitution</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                              <span class="ss">density</span><span class="p">:</span> <span class="mi">3</span>
+                              <span class="n">is_sensor</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Or using the Circle Shape options:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">new_fixture</span> <span class="k">do</span>
+    <span class="n">circle_fixture</span> <span class="ss">radius</span><span class="p">:</span> <span class="mi">60</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>To know which parameters are required for each shape visit its documentation page.</p>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>You can create new Fixtures in the block parameter passed at the creation of a Body.</p>
+</div>
+<h4 id="fixture-options">Fixture Options</h4>
+<p><strong>friction:</strong> - Float - Default: 0.2<br> Sets the friction of the Fixture.</p>
+<p><strong>restitution:</strong> - Float - Default: 0.0<br> Initial restitution of the Fixture.</p>
+<p><strong>density:</strong> - Float - Default: 0.0<br> Density the new Fixture.</p>
+<p><strong>is_sensor:</strong> - Boolean - Default: false<br> Sensors are Fixtures which enable knowing when Bodies are touching but not simulating the collision.</p>
+<h3 id="destroy-fixture">
+<a name="//apple_ref/cpp/clm/destroy_fixture" class="dashAnchor"></a>Destroy Fixture</h3>
+<p>Remove an Fixture composed in the Body:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="n">body</span><span class="o">.</span><span class="n">destroy_fixture</span> <span class="n">fixture</span>
+</code></pre></div>
+<h3 id="apply-force">
+<a name="//apple_ref/cpp/clm/apply_force" class="dashAnchor"></a>Apply Force</h3>
+<p>Applies a force to a Body:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">apply_force</span> <span class="ss">force</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>You can apply forces subtracting the end and start point of a User touch on the Screen.</p>
+</div>
+<h4 id="options">Options</h4>
+<p><strong>location:</strong> - Point - Defaults: Body's Center<br> Body location where the force will be applied.</p>
+<p><strong>as_impulse:</strong> - Boolean - Defaults: true<br> When a force is applied as an impulse the Body's linear velocity will change immediately, otherwise the velocity will change gradually over time.</p>
+<h3 id="apply-torque">
+<a name="//apple_ref/cpp/clm/apply_torque" class="dashAnchor"></a>Apply Torque</h3>
+<p>Applies a torque to a Body:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">apply_torque</span> <span class="ss">torque</span><span class="p">:</span> <span class="mi">30</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>as_impulse:</strong> - Boolean - Defaults: true<br> When a torque is applied as an impulse the Body's angular velocity will change immediately, otherwise the velocity will change gradually over time.</p> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

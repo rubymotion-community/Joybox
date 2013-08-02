@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Tile Map</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>TILED MAPS</h4> <article><h2>Tile Map</h2>
+<p></p>
+<p>The TileMap class provides all the necessary functionality to display and manipulate a TMX Map. Once the map is loaded from a single file, it will create the appropriate tile and object layers allowing to access all of its properties, tiles and objects that has been previously created using a Map Editor.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../tile-layer">Tile Layer documentation page</a>.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../object-layer">Object Layer documentation page</a>.</p>
+<h4 id="displaying-a-map">Displaying a Map</h4>
+<p>The TileMap is a subclass of Node allowing it to be added as a child of a Layer or Scene:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_map</span> <span class="o">=</span> <span class="no">TileMap</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'tile_map.tmx'</span>
+<span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="n">tile_map</span>
+</code></pre></div>
+<p>In order to use the TileMap class is needed to include the <strong>Joybox::TMX</strong> module, which will also add the center_at method, allowing it to move to a particular map position even if it is larger than the bounds:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">MapLayer</span> <span class="o">&lt;</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Core</span><span class="o">::</span><span class="no">Layer</span>
+    <span class="kp">include</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:TMX</span>
+
+    <span class="k">def</span> <span class="nf">on_enter</span>
+        <span class="n">tile_map</span> <span class="o">=</span> <span class="no">TileMap</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'tile_map.tmx'</span>
+        <span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="n">tile_map</span>
+
+        <span class="c1"># The following point is outside the Layer bounds</span>
+        <span class="n">outside_point</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">1500</span><span class="o">]</span>
+        <span class="n">center_at</span><span class="p">(</span><span class="n">outside_point</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>In a nutshell this method will provide camera features to your Layer or Scene. For example: If you want the layer to follow the player's character, just center it in it's position.</p>
+</div>
+<h4 id="retina-display">Retina Display</h4>
+<p>The TileMap class has internal optimizations for Retina Display devices: always managing the coordinate system as 1x, this in order to improve the game developing process removing the unnecessary recalculations if the game runs on retina display or not.</p>
+<p>Also Joybox provides a terminal command: <strong>motion joybox:retina</strong> that will convert your saved map file into a retina display compatible. A retina display images of the tiles will be created as well, but only doing it by scaling and should be replaced at production time.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>In order to use this class is required to include Joybox::TMX.</p>
+</div>
+<h3 id="orthogonal">
+<a name="//apple_ref/cpp/Constant/::Orthogonal" class="dashAnchor"></a>::Orthogonal</h3>
+<h3 id="hexagonal">
+<a name="//apple_ref/cpp/Constant/::Hexagonal" class="dashAnchor"></a>::Hexagonal</h3>
+<h3 id="isometric">
+<a name="//apple_ref/cpp/Constant/::Isometric" class="dashAnchor"></a>::Isometric</h3>
+<p>Constants that represent the orientations of the Tile Map.</p>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Returns an instance of the TileMap:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_map</span> <span class="o">=</span> <span class="no">TileMap</span><span class="o">.</span><span class="n">new</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'tile_map.tmx'</span>
+
+<span class="n">tile_map</span> <span class="o">=</span> <span class="no">TileMap</span><span class="o">.</span><span class="n">new</span> <span class="ss">xml</span><span class="p">:</span> <span class="n">map_xml</span><span class="p">,</span> <span class="n">resource_path</span><span class="p">:</span> <span class="s1">'/tiles'</span>
+</code></pre></div>
+<h3 id="tiles-size">
+<a name="//apple_ref/cpp/clm/tiles_size" class="dashAnchor"></a>Tiles Size</h3>
+<p>Retrieves or updates the size of the map in number of tiles:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># The layer is 32 x 32 tiles</span>
+<span class="n">tile_map</span><span class="o">.</span><span class="n">tiles_size</span> <span class="o">=</span> <span class="o">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="o">]</span>
+
+<span class="c1"># The following is [32, 32]</span>
+<span class="n">tile_map</span><span class="o">.</span><span class="n">tiles_size</span>
+</code></pre></div>
+<h3 id="orientation">
+<a name="//apple_ref/cpp/clm/orientation" class="dashAnchor"></a>Orientation</h3>
+<p>Retrieves or updates the TileMap orientation:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_map</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="ss">TileMap</span><span class="p">:</span><span class="ss">:Isometric</span>
+
+<span class="c1"># The following is TileLayer::Isometric</span>
+<span class="n">tile_map</span><span class="o">.</span><span class="n">orientation</span>
+</code></pre></div>
+<h3 id="properties">
+<a name="//apple_ref/cpp/clm/properties" class="dashAnchor"></a>Properties</h3>
+<p>Access the TileMap's properties:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_map</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">keys</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="o">|</span>
+    <span class="nb">p</span> <span class="s2">"The property </span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2"> has the value: </span><span class="si">#{</span><span class="n">tile_map</span><span class="o">.</span><span class="n">properties</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The tile layer properties are set on the TMX Map Editor.</p>
+</div>
+<h3 id="tile-size">
+<a name="//apple_ref/cpp/clm/tile_size" class="dashAnchor"></a>Tile Size</h3>
+<p>Returns the size of a Tile:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The size of a tile is: </span><span class="si">#{</span><span class="n">tile_map</span><span class="o">.</span><span class="n">tile_size</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">tile_map</span><span class="o">.</span><span class="n">tile_size</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>This method is optimized for Retina Display.</p>
+</div>
+<h3 id="size">
+<a name="//apple_ref/cpp/clm/size" class="dashAnchor"></a>Size</h3>
+<p>Returns the size of the TileMap in Pixels:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The size of the TileMap is: </span><span class="si">#{</span><span class="n">tile_map</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">tile_map</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>This method is optimized for Retina Display.</p>
+</div>
+<h3 id="coordinate-for-point">
+<a name="//apple_ref/cpp/clm/coordinate_for_point" class="dashAnchor"></a>Coordinate for Point</h3>
+<p>Gets the tile coordinate for a Pixel coordinates point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># If the tile map is 32 x 32 and the tile size is 10 x 10, the following is 20 x 20</span>
+<span class="n">tile_map</span><span class="o">.</span><span class="n">coordinate_for_point</span><span class="p">(</span><span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="bounding-box">
+<a name="//apple_ref/cpp/clm/bounding_box" class="dashAnchor"></a>Bounding Box</h3>
+<p>Gets the rectangle that contains the entire map:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">bounding_box</span> <span class="o">=</span> <span class="n">tile_map</span><span class="o">.</span><span class="n">bounding_box</span>
+
+<span class="nb">p</span> <span class="s2">"The bounding box is: </span><span class="si">#{</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="contains-point">
+<a name="//apple_ref/cpp/clm/contains_point?" class="dashAnchor"></a>Contains Point?</h3>
+<p>Returns if a point is contained into the Map:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_map</span><span class="o">.</span><span class="n">contains_point?</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="tile-layers">
+<a name="//apple_ref/cpp/clm/tile_layers" class="dashAnchor"></a>Tile Layers</h3>
+<p>Returns a TileLayer instance by its name:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_layer</span> <span class="o">=</span> <span class="n">tile_map</span><span class="o">.</span><span class="n">tile_layers</span><span class="o">[</span><span class="ss">:collectables</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The tile layer is: </span><span class="si">#{</span><span class="n">tile_layer</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The tile layer name is set on the TMX Map Editor.</p>
+</div>
+<h3 id="tile-objects">
+<a name="//apple_ref/cpp/clm/tile_objects" class="dashAnchor"></a>Tile Objects</h3>
+<p>Retrieves a ObjectLayer instance using its name:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_object</span> <span class="o">=</span> <span class="n">tile_map</span><span class="o">.</span><span class="n">object_layers</span><span class="o">[</span><span class="ss">:collision</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The object layer is: </span><span class="si">#{</span><span class="n">tile_object</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The object layer name is set on the TMX Map Editor.</p>
+</div>
+<h3 id="tiles">
+<a name="//apple_ref/cpp/clm/tiles" class="dashAnchor"></a>Tiles</h3>
+<p>Returns a tile properties by its tile type:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tile_type</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="nb">p</span> <span class="s2">"The tile properties are: </span><span class="si">#{</span><span class="n">tile_map</span><span class="o">.</span><span class="n">tiles</span><span class="o">[</span><span class="n">tile_type</span><span class="o">]</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>Each tile type is defined from its position in the tile set from left to right and top to bottom starting with the number one.</p>
+</div>
+<h3 id="step-by">
+<a name="//apple_ref/cpp/clm/step_by" class="dashAnchor"></a>Step By</h3>
+<p>Calculates the next step by one tile given an actual position in Pixels and a new desired position:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># If the tile map is 32 x 32 and the tile size is 10 x 10, the following is [10, 0]</span>
+<span class="n">tile_map</span><span class="o">.</span><span class="n">step_by</span><span class="p">(</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+<p>In the previous example the current position is [0, 0] and the desired position is [100, 0], based on this the step_by method will add only one tile into the x axis returning [10, 0].</p>
+<h3 id="object">
+<a name="//apple_ref/cpp/clm/object" class="dashAnchor"></a>Object</h3>
+<p>Retrieves an object based on a query starting on the object layer name, next on the object name and finally on the property key, all separated by pawns (#):</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># The following assumes that the Map has an object layer named 'collectables', also that the layer contains an object named 'health' with a property with the key 'amount'</span>
+
+<span class="c1"># The following returns the value of amount</span>
+<span class="n">tile_map</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s1">'collectables#health#position'</span><span class="p">)</span>
+
+<span class="c1"># The following returns the object</span>
+<span class="n">tile_map</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s1">'collectables#health'</span><span class="p">)</span>
+
+<span class="c1"># The following returns the object layer</span>
+<span class="n">tile_map</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s1">'collectables'</span><span class="p">)</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The object layer name, object name and the property keys are set on the TMX Map Editor.</p>
+</div>
+<h4 id="custom-keys">Custom Keys</h4>
+<p><strong>position</strong><br> Using the custom key 'position' instead of using 'x' or 'y' to retrieve the object's location on the map will return a point with the retina display optimization.</p> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

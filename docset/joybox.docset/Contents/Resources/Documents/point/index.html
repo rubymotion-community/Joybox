@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Point</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>SUPPORT CLASSES</h4> <article><h2>Point</h2>
+<p></p>
+<p>The RubyMotion's CGPoint class with some convenience methods for performing arithmetic operations required usually for collision detection and physics.</p>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>When needed, an Array can be converted to a Point using the 'to_point' method. For more information see the Array documentation page.</p>
+</div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/==" class="dashAnchor"></a>==</h3>
+<p>Evaluates to true if two points are equal using their X and Y values as reference:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># The following is true</span>
+<span class="o">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">].</span><span class="n">to_point</span> <span class="o">==</span> <span class="o">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">].</span><span class="n">to_point</span>
+</code></pre></div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/+" class="dashAnchor"></a>+</h3>
+<p>Adds a number to both the X and Y values or, if the parameter is a second point, adds the X and Y values of a second point to X and Y:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># The following is [10, 10]</span>
+<span class="o">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">].</span><span class="n">to_point</span> <span class="o">+</span> <span class="mi">7</span>
+
+<span class="c1"># The following is [5, 10]</span>
+<span class="o">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">].</span><span class="n">to_point</span> <span class="o">+</span> <span class="o">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="o">].</span><span class="n">to_point</span>
+</code></pre></div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/_" class="dashAnchor"></a>-</h3>
+<p>Subtracts a number from the both X and Y values or, if the parameter is a second point, subtracts the X and Y values of a second point from X and Y:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># The following is [5, 5]</span>
+<span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">].</span><span class="n">to_point</span> <span class="o">-</span> <span class="mi">5</span>
+
+<span class="c1"># The following is [4, 1]</span>
+<span class="o">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="o">].</span><span class="n">to_point</span> <span class="o">-</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="o">].</span><span class="n">to_point</span>
+</code></pre></div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm/*" class="dashAnchor"></a>*</h3>
+<p>Multiplies a number by both the X and Y values or, if the parameter is a second point, multiplies the X and Y values of a second point by X and Y:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># The following is [25, 25]</span>
+<span class="o">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="o">].</span><span class="n">to_point</span> <span class="o">*</span> <span class="mi">5</span>
+
+<span class="c1"># The following is [5, 25]</span>
+<span class="o">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="o">].</span><span class="n">to_point</span> <span class="o">*</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="o">].</span><span class="n">to_point</span>
+</code></pre></div>
+<h3 id="">
+<a name="//apple_ref/cpp/clm//" class="dashAnchor"></a>/</h3>
+<p>Divides a number by both the X and Y values or, if the parameter is a second point, divides the X and Y values of a second point by X and Y:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># The following is [1, 1]</span>
+<span class="o">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="o">].</span><span class="n">to_point</span> <span class="o">/</span> <span class="mi">4</span>
+
+<span class="c1"># The following is [4, 4]</span>
+<span class="o">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="o">].</span><span class="n">to_point</span> <span class="o">/</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="o">].</span><span class="n">to_point</span>
+</code></pre></div>
+<h3 id="half">
+<a name="//apple_ref/cpp/clm/half" class="dashAnchor"></a>Half</h3>
+<p>Returns the Point dividing X and Y by two:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># The following is [5, 5]</span>
+<span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">].</span><span class="n">to_point</span><span class="o">.</span><span class="n">half</span>
+</code></pre></div>
+<h3 id="to-opengl-coordinates">
+<a name="//apple_ref/cpp/clm/to_open_gl_coordinates" class="dashAnchor"></a>To OpenGL Coordinates</h3>
+<p>Converts the Point from UIKit coordinates to OpenGL coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">touch</span><span class="o">.</span><span class="n">location_in_view</span><span class="o">.</span><span class="n">to_opengl_coordinates</span>
+</code></pre></div>
+<h3 id="from-opengl-coordinates">
+<a name="//apple_ref/cpp/clm/from_open_gl_coordinates" class="dashAnchor"></a>From OpenGL Coordinates</h3>
+<p>Transforms the Point from OpenGL coordinates to UIKit coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">from_opengl_coordinates</span>
+</code></pre></div>
+<h3 id="from-pixel-coordinates">
+<a name="//apple_ref/cpp/clm/from_pixel_coordinates" class="dashAnchor"></a>From Pixel Coordinates</h3>
+<p>Converts the Point from Pixel coordinates to Metric coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">from_pixel_coordinates</span>
+</code></pre></div>
+<h3 id="to-pixel-coordinates">
+<a name="//apple_ref/cpp/clm/to_pixel_coordinates" class="dashAnchor"></a>To Pixel Coordinates</h3>
+<p>Converts the Point from Metric coordinates to Pixel coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">to_pixel_coordinates</span>
+</code></pre></div>
+<h3 id="to-local-coordinates">
+<a name="//apple_ref/cpp/clm/to_local_coordinates" class="dashAnchor"></a>To Local Coordinates</h3>
+<p>Receives a Sprite, Layer or Scene as parameter and will convert the Point to the argument coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">touch</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">to_local_coordinates</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div>
+<div class="flag">
+<h5>Level Up!</h5>
+<br><p>Very useful when the Layer presented is bigger than the Screen</p>
+</div>
+<h3 id="from-local-coordinates">
+<a name="//apple_ref/cpp/clm/from_local_coordinates" class="dashAnchor"></a>From Local Coordinates</h3>
+<p>Converts the Point from the Sprite, Layer or Scene coordinates to World coordinates:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">touch</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">from_local_coordinates</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>Almost every method on Joybox will perform the accordingly coordinate conversions.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

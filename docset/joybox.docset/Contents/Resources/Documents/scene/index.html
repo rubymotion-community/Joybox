@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Scene</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ESSENTIALS</h4> <article><h2>Scene</h2>
+<p></p>
+<p>The Scene classes encapsulates game functionally into stages or levels, providing the required independence in the different parts of the Game: like for example the Intro screen and the Game Level 1.</p>
+<p>The Game flow is composed by many Scenes, but only one is active at the same time. In order to control which scene is presented the Director's push and pop scene are required:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># When the Game starts</span>
+<span class="n">start_game_scene</span> <span class="o">=</span> <span class="no">StartGameScene</span><span class="o">.</span><span class="n">new</span>
+<span class="n">director</span><span class="o">.</span><span class="n">push_scene</span> <span class="n">start_game_scene</span>
+
+<span class="c1"># After the User presses start</span>
+<span class="n">game_level_scene</span> <span class="o">=</span> <span class="no">GameLevelScene</span><span class="o">.</span><span class="n">new</span>
+<span class="n">director</span><span class="o">.</span><span class="n">push_scene</span> <span class="n">game_level_scene</span>
+
+<span class="c1"># After the User wins</span>
+<span class="n">win_cut_scene</span> <span class="o">=</span> <span class="no">WinCutScene</span><span class="o">.</span><span class="n">new</span>
+<span class="n">director</span><span class="o">.</span><span class="n">push_scene</span> <span class="n">win_cut_scene</span>
+</code></pre></div>
+<p>The previous example illustrates a typical Game flow, presenting first a Menu Scene, later the Game Scene and finally a Ending Scene.</p>
+<h4 id="composition">Composition</h4>
+<p>The scenes can be composed by one or more layers, in order to accomplish this is required to subclass the Scene in the following way:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">GameScene</span> <span class="o">&lt;</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Core</span><span class="o">::</span><span class="no">Scene</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<p>It will provide two methods that will be called when the Scene is presented and dismissed:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># Called when the Scene is presented on the screen</span>
+<span class="k">def</span> <span class="nf">on_enter</span>
+
+<span class="k">end</span>
+
+<span class="c1"># Called when the Scene is dismissed from the screen</span>
+<span class="k">def</span> <span class="nf">on_exit</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<p>And finally using the on enter method, the Layers can be initialized and added to the scene:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">on_enter</span>
+    <span class="n">background_layer</span> <span class="o">=</span> <span class="no">BackgroundLayer</span><span class="o">.</span><span class="n">new</span>
+    <span class="nb">self</span><span class="o">.</span><span class="n">add_child</span> <span class="n">background_layer</span>
+
+    <span class="n">space_ship_layer</span> <span class="o">=</span> <span class="no">SpaceShipLayer</span><span class="o">.</span><span class="n">new</span>
+    <span class="nb">self</span><span class="o">.</span><span class="n">add_child</span> <span class="n">space_ship_layer</span>
+<span class="k">end</span>
+</code></pre></div>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information about presenting Scenes, see: <a href="../director">Director documentation page</a>.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information about Layers, visit: <a href="../layer">Layer documentation page</a></p>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Returns a new instance of a Scene class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scene</span> <span class="o">=</span> <span class="no">Scene</span><span class="o">.</span><span class="n">new</span>
+</code></pre></div>
+<h3 id="add-child">
+<a name="//apple_ref/cpp/clm/add_child" class="dashAnchor"></a>Add Child</h3>
+<p>Adds a new child to the Scene instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scene</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The Layers are the recommended classes to be children of a Scene, but it supports also Sprites, Labels, etc.</p>
+</div>
+<h3 id="ltlt">
+<a name="//apple_ref/cpp/clm/&lt;&lt;" class="dashAnchor"></a>&lt;&lt;</h3>
+<p>Push a new child into a Scene instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scene</span> <span class="o">&lt;&lt;</span> <span class="n">layer</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The </p>
+</div>
+<h3 id="add-children">
+<a name="//apple_ref/cpp/clm/add_children" class="dashAnchor"></a>Add Children</h3>
+<p>Adds multiple children to the Layer instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">children</span> <span class="o">=</span> <span class="o">[</span><span class="n">game_layer</span><span class="p">,</span> <span class="n">background_layer</span><span class="o">]</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">add_children</span> <span class="n">children</span>
+</code></pre></div>
+<h3 id="run-action">
+<a name="//apple_ref/cpp/clm/run_action" class="dashAnchor"></a>Run Action</h3>
+<p>Runs an action into the Scene instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scene</span><span class="o">.</span><span class="n">run_action</span> <span class="no">Blink</span><span class="o">.</span><span class="n">by</span> <span class="ss">times</span><span class="p">:</span> <span class="mi">10</span>
+</code></pre></div>
+<h3 id="stop-action">
+<a name="//apple_ref/cpp/clm/stop_action" class="dashAnchor"></a>Stop Action</h3>
+<p>Stop a Scenes's running action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">blink</span> <span class="o">=</span> <span class="no">Blink</span><span class="o">.</span><span class="n">by</span> <span class="ss">times</span><span class="p">:</span> <span class="mi">10</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="n">run_action</span> <span class="n">blink</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">stop_action</span> <span class="n">blink</span>
+</code></pre></div>
+<h3 id="stop-all-actions">
+<a name="//apple_ref/cpp/clm/stop_all_actions" class="dashAnchor"></a>Stop All Actions</h3>
+<p>Stops all actions running on the Scenes's instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scene</span><span class="o">.</span><span class="n">stop_all_actions</span>
+</code></pre></div>
+<h3 id="number-of-running-actions">
+<a name="//apple_ref/cpp/clm/number_of_running_actions" class="dashAnchor"></a>Number of Running Actions</h3>
+<p>Returns the number of actions running on the Scene:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scene</span><span class="o">.</span><span class="n">run_action</span> <span class="no">Blink</span><span class="o">.</span><span class="n">by</span> <span class="ss">times</span><span class="p">:</span> <span class="mi">10</span>
+
+<span class="c1"># The following is 1</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">number_of_running_actions</span>
+</code></pre></div>
+<h3 id="running-actions">
+<a name="//apple_ref/cpp/clm/running_actions?" class="dashAnchor"></a>Running Actions?</h3>
+<p>Retrieves if the Scene is running any action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">scene</span><span class="o">.</span><span class="n">run_action</span> <span class="no">Blink</span><span class="o">.</span><span class="n">by</span> <span class="ss">times</span><span class="p">:</span> <span class="mi">10</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">running_actions?</span>
+</code></pre></div>
+<h3 id="schedule-update">
+<a name="//apple_ref/cpp/clm/schedule_update" class="dashAnchor"></a>Schedule Update</h3>
+<p>Starts receiving the Game Loop calls on the Scene instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">schedule_update</span> <span class="k">do</span> <span class="o">|</span><span class="n">dt</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>dt</strong> - Float<br> The delta time between Game Loop calls.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>Do not execute big time consuming operations on the Game Loop, it will affect drastically the performance of the game.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

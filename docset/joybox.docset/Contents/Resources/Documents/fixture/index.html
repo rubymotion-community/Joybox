@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Fixture</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>PHYSICS ENVIRONMENT</h4> <article><h2>Fixture</h2>
+<p></p>
+<p>The Fixture class provides the following physics properties to the Body class: Shape, Density, Friction and Restitution. Also they contain all the necessary information to simulate or not a collision.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The Fixture class cannot be instantiated by itself, it is required to be created using the Body's new fixture method.</p>
+</div>
+<h3 id="circletype">
+<a name="//apple_ref/cpp/Constant/::CircleType" class="dashAnchor"></a>::CircleType</h3>
+<h3 id="edgetype">
+<a name="//apple_ref/cpp/Constant/::EdgeType" class="dashAnchor"></a>::EdgeType</h3>
+<h3 id="polygontype">
+<a name="//apple_ref/cpp/Constant/::PolygonType" class="dashAnchor"></a>::PolygonType</h3>
+<h3 id="chaintype">
+<a name="//apple_ref/cpp/Constant/::ChainType" class="dashAnchor"></a>::ChainType</h3>
+<p>Constants that represent the types of the fixtures according to its inner shape.</p>
+<h3 id="new">
+<a name="//apple_ref/cpp/Constant/::new" class="dashAnchor"></a>::new</h3>
+<p>Using the Body's new fixture method we can create a new instance of a Fixture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span><span class="o">.</span><span class="n">new_fixture</span> <span class="k">do</span>
+    <span class="n">polygon_fixture</span> <span class="ss">box</span><span class="p">:</span> <span class="o">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="o">]</span><span class="p">,</span>
+                              <span class="ss">friction</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                              <span class="ss">restitution</span><span class="p">:</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span>
+                              <span class="ss">density</span><span class="p">:</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                              <span class="n">is_sensor</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+
+<span class="n">fixture</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</code></pre></div>
+<p>In the previous scenario a new Fixture is created with a Polygon shape, friction of 1.0, restitution of 0.5 and density of 0.0.</p>
+<p><img class="more-info" src="../images/moreinfo.png">For more information, see: <a href="body/">Body documentation page</a>.</p>
+<h3 id="type">
+<a name="//apple_ref/cpp/clm/type" class="dashAnchor"></a>Type</h3>
+<p>Gets the Fixture type:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture type is: </span><span class="si">#{</span><span class="n">fixture</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="body">
+<a name="//apple_ref/cpp/clm/body" class="dashAnchor"></a>Body</h3>
+<p>Gets the Fixture's body:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">Body</span><span class="p">:</span><span class="ss">:Dynamic</span> <span class="k">do</span>
+      <span class="n">polygon_fixture</span> <span class="ss">box</span><span class="p">:</span> <span class="o">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="o">]</span><span class="p">,</span>
+                               <span class="ss">density</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                               <span class="ss">friction</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                               <span class="ss">restitution</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+<span class="k">end</span>
+
+<span class="n">fixture</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">fixture</span><span class="o">.</span><span class="n">body</span> <span class="o">==</span> <span class="n">body</span>
+</code></pre></div>
+<h3 id="shape">
+<a name="//apple_ref/cpp/clm/shape" class="dashAnchor"></a>Shape</h3>
+<p>Returns the Shape of the Fixture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture shape is: </span><span class="si">#{</span><span class="n">fixture</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="density">
+<a name="//apple_ref/cpp/clm/density" class="dashAnchor"></a>Density</h3>
+<p>Gets or Sets the Fixture's density:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span><span class="o">.</span><span class="n">density</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">3</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture density is: </span><span class="si">#{</span><span class="n">fixture</span><span class="o">.</span><span class="n">density</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="friction">
+<a name="//apple_ref/cpp/clm/friction" class="dashAnchor"></a>Friction</h3>
+<p>Retrieves or updates the friction of the Fixture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span><span class="o">.</span><span class="n">friction</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture friction is: </span><span class="si">#{</span><span class="n">fixture</span><span class="o">.</span><span class="n">friction</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="restitution">
+<a name="//apple_ref/cpp/clm/restitution" class="dashAnchor"></a>Restitution</h3>
+<p>Gets or Sets the Fixture's restitution:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span><span class="o">.</span><span class="n">restitution</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture restitution is: </span><span class="si">#{</span><span class="n">fixture</span><span class="o">.</span><span class="n">restitution</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="sensor">
+<a name="//apple_ref/cpp/clm/sensor" class="dashAnchor"></a>Sensor</h3>
+<h3 id="sensor">
+<a name="//apple_ref/cpp/clm/sensor?" class="dashAnchor"></a>Sensor?</h3>
+<p>Retrieves or updates if the Fixture is a sensor:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span><span class="o">.</span><span class="n">sensor</span> <span class="o">=</span> <span class="kp">false</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture is a sensor: </span><span class="si">#{</span><span class="n">fixture</span><span class="o">.</span><span class="n">sensor?</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="mass-data">
+<a name="//apple_ref/cpp/clm/mass_data" class="dashAnchor"></a>Mass Data</h3>
+<p>Retrieves the Fixture mass data:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture mass data is: </span><span class="si">#{</span><span class="n">fixture</span><span class="o">.</span><span class="n">mass_data</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="contains-point">
+<a name="//apple_ref/cpp/clm/contains_point?" class="dashAnchor"></a>Contains Point?</h3>
+<p>Determinate if the Fixture contains a point:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">Body</span><span class="p">:</span><span class="ss">:Dynamic</span> <span class="k">do</span>
+      <span class="n">polygon_fixture</span> <span class="ss">box</span><span class="p">:</span> <span class="o">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="o">]</span><span class="p">,</span>
+                               <span class="ss">density</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                               <span class="ss">friction</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                               <span class="ss">restitution</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+<span class="k">end</span>
+
+<span class="n">fixture</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">fixture</span><span class="o">.</span><span class="n">contains_point?</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="refilter">
+<a name="//apple_ref/cpp/clm/refilter" class="dashAnchor"></a>Refilter</h3>
+<p>Enables a collision that was previously disabled by the when collide method of the World's class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="n">fixture</span><span class="o">.</span><span class="n">refilter</span>
+</code></pre></div>
+<h3 id="aabb">
+<a name="//apple_ref/cpp/clm/aabb" class="dashAnchor"></a>AABB</h3>
+<p>Retrieves the AABB of the Fixture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">fixtures</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="n">aabb</span> <span class="o">=</span> <span class="n">fixture</span><span class="o">.</span><span class="n">aabb</span> <span class="n">child_index</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="nb">p</span> <span class="s2">"The fixture AABB is: </span><span class="si">#{</span><span class="n">aabb</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>For circle, polygon or edge Fixtures the child_index is zero, in the case of the chain Fixture is from zero to the number of segments minus one.</p>
+</div>
+<h3 id="ray-cast">
+<a name="//apple_ref/cpp/clm/ray_cast" class="dashAnchor"></a>Ray Cast</h3>
+<p>Casts a ray against the Fixture shape:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span><span class="o">.</span><span class="n">ray_cast</span> <span class="n">first_point</span><span class="p">:</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span><span class="p">,</span>
+                     <span class="n">second_point</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span><span class="p">,</span>
+                     <span class="n">maximum_fraction</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="n">child_index</span><span class="p">:</span> <span class="mi">0</span> <span class="k">do</span> <span class="o">|</span><span class="n">hits</span><span class="p">,</span> <span class="n">normal</span><span class="p">,</span> <span class="n">fraction</span><span class="o">|</span>
+
+                     <span class="k">end</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>first_point:</strong> - Point <em>Required</em><br> The initial point of the ray.</p>
+<p><strong>second_point:</strong> - Point <em>Required</em><br> The final point of the ray.</p>
+<p><strong>maximum_fraction:</strong> - Float <em>Required</em><br> How far the ray should go to check for a intersection.</p>
+<p>The total distance will be a product of the maximum fraction and the distance between the first and second point, in other words: if the double of distance between the first and second point needed to be checked, the maximum fraction should be two.</p>
+<p><strong>child_index:</strong> - Integer <em>Required</em><br> In which of the Fixture's Sub-shapes should check for a intersection.</p>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>For circle, polygon or edge Fixtures the child_index is zero, in the case of the chain Fixture is from zero to the number of segments minus one.</p>
+</div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>hits</strong> - Boolean <br> If the ray found a intersection.</p>
+<p><strong>normal</strong> - Point<br> Normal of the ray at the point of intersection.</p>
+<p><strong>fraction</strong> - Float<br> How far the ray go to found a intersection.</p>
+<p><img class="more-info" src="../images/moreinfo.png">For more information, see: <a href="http://www.iforce2d.net/b2dtut/raycasting">iforce2d Ray casting</a></p> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

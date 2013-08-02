@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Skew</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ACTIONS &amp; ANIMATIONS</h4> <article><h2>Skew</h2>
+<p></p>
+<p>The Skew class provides an action that skews an object by given angles, modifying its skewX and skewY attributes.</p>
+<h3 id="by">
+<a name="//apple_ref/cpp/clm/by" class="dashAnchor"></a>By</h3>
+<p>Skews an object by x and y degrees:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># Character skewX will be modified by 5.0 degrees and skewY will be modified by 10.0 degrees</span>
+<span class="n">skew_by_action</span> <span class="o">=</span> <span class="no">Skew</span><span class="o">.</span><span class="n">by</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">y</span><span class="p">:</span> <span class="mi">10</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">skew_by_action</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>duration:</strong> - Float - Default: 0.3<br> Sets the total duration time of the Action.</p>
+<h3 id="to">
+<a name="//apple_ref/cpp/clm/to" class="dashAnchor"></a>To</h3>
+<p>Skews an object to x and y degrees:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># Character properties skewX and skewY will be set to 5.0 degrees and 10.0 degrees respectively</span>
+<span class="n">skew_to_action</span> <span class="o">=</span> <span class="no">Skew</span><span class="o">.</span><span class="n">to</span> <span class="ss">x</span><span class="p">:</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">y</span><span class="p">:</span> <span class="mi">10</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">skew_to_action</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>duration:</strong> - Float - Default: 0.3<br> Sets the total duration time of the Action.</p> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

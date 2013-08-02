@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>World</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>PHYSICS ENVIRONMENT</h4> <article><h2>World</h2>
+<p></p>
+<p>The World class is the heart of all the physics environment because the Bodies are created, contain and destroyed inside it. Also it is responsible for all the aspects of the simulation, from defining the gravity to cast a ray to find fixtures.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information about the Bodies, see: <a href="../body">Body documentation page</a>.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information about the World, see: <a href="http://box2d.org/manual.pdf">Box2d Manual</a></p>
+<h4 id="physics-simulation">Physics Simulation</h4>
+<p>In order to simulate the all the physics is required to execute the World's step method, which will update all the bodies and joints according to the gravity, forces or collisions. The usual way to step forward into the simulation is to use the game loop as follows:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">schedule_update</span> <span class="k">do</span> <span class="o">|</span><span class="n">dt</span><span class="o">|</span>
+    <span class="vi">@world</span><span class="o">.</span><span class="n">step</span> <span class="ss">delta</span><span class="p">:</span> <span class="n">dt</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>In the previous example we are passing the delta time between the game loop calls, because the world needs to know how much time it has been passed after the last step.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>The bodies must not be destroyed in the middle of an step execution.</p>
+</div>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Returns a new instance of the World class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span> <span class="o">=</span> <span class="no">World</span><span class="o">.</span><span class="n">new</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>gravity</strong> - Point - Default: 0.0<br> Sets the gravity for the World</p>
+<p><strong>allows_sleeping:</strong> - Boolean - Default: true<br> Allows the bodies to fall sleep for performance optimization.</p>
+<h3 id="bodies">
+<a name="//apple_ref/cpp/clm/bodies" class="dashAnchor"></a>Bodies</h3>
+<p>Returns the list of the bodies that belong to the World's instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">bodies</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">body</span><span class="o">|</span>
+    <span class="nb">p</span> <span class="s2">"The body is: </span><span class="si">#{</span><span class="n">body</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="body-count">
+<a name="//apple_ref/cpp/clm/body_count" class="dashAnchor"></a>Body Count</h3>
+<p>Returns the number of bodies contained in the World:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The number of bodies in the world is: </span><span class="si">#{</span><span class="n">world</span><span class="o">.</span><span class="n">body_count</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="allows-sleeping">
+<a name="//apple_ref/cpp/clm/allows_sleeping" class="dashAnchor"></a>Allows Sleeping</h3>
+<h3 id="allows-sleeping">
+<a name="//apple_ref/cpp/clm/allows_sleeping?" class="dashAnchor"></a>Allows Sleeping?</h3>
+<p>Gets or sets if the Bodies are allowed to sleep:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">allows_sleeping</span> <span class="o">=</span> <span class="kp">false</span>
+
+<span class="c1"># The following is false</span>
+<span class="n">world</span><span class="o">.</span><span class="n">allows_sleeping?</span>
+</code></pre></div>
+<h3 id="contact-count">
+<a name="//apple_ref/cpp/clm/contact_count" class="dashAnchor"></a>Contact Count</h3>
+<p>Retrieves the number of contacts happening in the World:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The number of contacts in the world is: </span><span class="si">#{</span><span class="n">world</span><span class="o">.</span><span class="n">contact_count</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="tree-height">
+<a name="//apple_ref/cpp/clm/tree_height" class="dashAnchor"></a>Tree Height</h3>
+<p>Gets the World's dynamic tree height:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The dynamic tree height is: </span><span class="si">#{</span><span class="n">world</span><span class="o">.</span><span class="n">dynamic_tree_height</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="tree-balance">
+<a name="//apple_ref/cpp/clm/tree_balance" class="dashAnchor"></a>Tree Balance</h3>
+<p>Retrieves the dynamic tree balance of the World:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The dynamic tree balance is: </span><span class="si">#{</span><span class="n">world</span><span class="o">.</span><span class="n">dynamic_tree_balance</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="tree-quality">
+<a name="//apple_ref/cpp/clm/tree_quality" class="dashAnchor"></a>Tree Quality</h3>
+<p>Returns the World's dynamic tree quality:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">p</span> <span class="s2">"The dynamic tree quality is: </span><span class="si">#{</span><span class="n">world</span><span class="o">.</span><span class="n">tree_quality</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="locked">
+<a name="//apple_ref/cpp/clm/locked?" class="dashAnchor"></a>Locked?</h3>
+<p>Returns if the World is in the middle of an step execution:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">locked?</span>
+</code></pre></div>
+<h3 id="auto-clear-forces">
+<a name="//apple_ref/cpp/clm/auto_clear_forces" class="dashAnchor"></a>Auto Clear Forces</h3>
+<h3 id="auto-clear-forces">
+<a name="//apple_ref/cpp/clm/auto_clear_forces?" class="dashAnchor"></a>Auto Clear Forces?</h3>
+<p>Gets or sets if the World should auto clear forces after a time step:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">auto_clear_forces</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">world</span><span class="o">.</span><span class="n">auto_clear_forces?</span>
+</code></pre></div>
+<h3 id="clear-forces">
+<a name="//apple_ref/cpp/clm/clear_forces" class="dashAnchor"></a>Clear Forces</h3>
+<p>Clears the forces being simulated in the World:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">clear_forces</span>
+</code></pre></div>
+<h3 id="step">
+<a name="//apple_ref/cpp/clm/step" class="dashAnchor"></a>Step</h3>
+<p>Steps forward into the physics simulation:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">step</span> <span class="ss">delta</span><span class="p">:</span> <span class="mi">0</span><span class="o">.</span><span class="mi">1</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>velocity_interactions:</strong> - Integer - Default: 8<br> Sets how strongly the world should correct the velocity in a collision resolution.</p>
+<p><strong>position_interactions:</strong> - Integer - Default: 1<br> Defines how many times the collision resolution should iterate for a position result.</p>
+<h3 id="new-body">
+<a name="//apple_ref/cpp/clm/new_body" class="dashAnchor"></a>New Body</h3>
+<p>Creates a new instance of the Body class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">body</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">new_body</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+</code></pre></div>
+<p>Please refer to the <a href="../body">Body documentation page</a> for more information about how to create new bodies.</p>
+<h3 id="destroy-body">
+<a name="//apple_ref/cpp/clm/destroy_body" class="dashAnchor"></a>Destroy Body</h3>
+<p>Destroys an instance of a Body class and removes it from the simulation:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">destroy_body</span> <span class="n">body</span>
+</code></pre></div>
+<h3 id="should-collide">
+<a name="//apple_ref/cpp/clm/should_collide" class="dashAnchor"></a>Should Collide</h3>
+<p>Called when two fixtures are about to collide to retrieve if they should:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">should_collide</span> <span class="k">do</span> <span class="o">|</span><span class="n">first_fixture</span><span class="p">,</span> <span class="n">second_fixture</span><span class="o">|</span>
+    <span class="c1"># This method should always return a boolean</span>
+    <span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>first_fixture</strong> - Fixture<br> The first fixture that is going to collide.</p>
+<p><strong>second_fixture</strong> - Fixture<br> The other fixture that is involved in the collision.</p>
+<h3 id="on-collision">
+<a name="//apple_ref/cpp/clm/on_collision" class="dashAnchor"></a>On Collision</h3>
+<p>Notifies when two bodies are colliding:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">on_collision</span> <span class="k">do</span> <span class="o">|</span><span class="n">first_body</span><span class="p">,</span> <span class="n">second_body</span><span class="p">,</span> <span class="n">is_touching</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>first_body</strong> - Body<br> The first body that is colliding.</p>
+<p><strong>second_body</strong> - Body<br> The other body involved in the collision.</p>
+<p><strong>is_touching</strong> - Boolean<br> Returns if the fixtures of the bodies touching or just the AABBs.</p>
+<h3 id="when-collide">
+<a name="//apple_ref/cpp/clm/when_collide" class="dashAnchor"></a>When Collide</h3>
+<p>Called when a specific physics sprite is colliding:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">when_collide</span> <span class="n">physics_sprite</span> <span class="k">do</span> <span class="o">|</span><span class="n">collision_sprite</span><span class="p">,</span> <span class="n">is_touching</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameterss">Block Parameterss</h4>
+<p><strong>collision_sprite</strong> - PhysicsSprite<br> The other physics sprite involved in the collision.</p>
+<p><strong>is_touching</strong> - Boolean<br> Returns if the fixtures of the bodies inside the physics sprites are touching or just the AABBs.</p>
+<h3 id="on-fixture-destroyed">
+<a name="//apple_ref/cpp/clm/on_fixture_destroyed" class="dashAnchor"></a>On Fixture Destroyed</h3>
+<p>Called when a fixture is destroyed:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">on_fixture_destroyed</span> <span class="k">do</span> <span class="o">|</span><span class="n">fixture</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>fixture</strong> - Fixture<br> The World's destroyed fixture.</p>
+<h3 id="query">
+<a name="//apple_ref/cpp/clm/query" class="dashAnchor"></a>Query</h3>
+<p>Search for fixtures placed inside a lower bound and upper bound:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">world</span><span class="o">.</span><span class="n">query</span> <span class="n">lower_bound</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span> <span class="k">do</span> <span class="o">|</span><span class="n">fixture</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This block does not get called if a fixture is not found.</p>
+</div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>fixture</strong> - Fixture<br> The fixture found inside the lower bound and upper bound.</p>
+<h3 id="ray-cast">
+<a name="//apple_ref/cpp/clm/ray_cast" class="dashAnchor"></a>Ray Cast</h3>
+<p>Casts a ray against the World to find a Fixture intersection:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">fixture</span><span class="o">.</span><span class="n">ray_cast</span> <span class="n">first_point</span><span class="p">:</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span><span class="p">,</span> <span class="n">second_point</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span> <span class="k">do</span> <span class="o">|</span><span class="n">fixture</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">,</span> <span class="n">fraction</span><span class="o">|</span>
+    <span class="c1"># This method should always return a float          </span>
+    <span class="mi">0</span><span class="o">.</span><span class="mi">0</span>
+<span class="k">end</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>For each time a fixture is found this block will get called.</p>
+</div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>For efficiency the block does not return the Fixtures in any order.</p>
+</div>
+<h4 id="options">Options</h4>
+<p><strong>first_point:</strong> - Point <em>Required</em><br> The initial point of the ray.</p>
+<p><strong>second_point:</strong> - Point <em>Required</em><br> The final point of the ray.</p>
+<h4 id="return">Return</h4>
+<p>The block should return the adjustment to the length of the ray:</p>
+<ul>
+<li><p>To find the closest intersection: return the fraction parameter from the block call.</p></li>
+<li><p>To find all the intersections: return 1.0.</p></li>
+<li><p>To find if it hits anything not matter if its close or not: return 0.</p></li>
+</ul>
+<p>This common scenarios were extracted from: <a href="http://www.iforce2d.net/b2dtut/world-querying">iforce2d World querying</a>.</p>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>fixture</strong> - Fixture <br> The fixture that has been hit by the ray.</p>
+<p><strong>point</strong> - Point<br> The point of the ray's hit.</p>
+<p><strong>normal</strong> - Point<br> Normal of the ray at the point of intersection.</p>
+<p><strong>fraction</strong> - Float<br> How far the ray go to found a intersection.</p> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

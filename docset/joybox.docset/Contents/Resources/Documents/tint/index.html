@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Tint</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ACTIONS &amp; ANIMATIONS</h4> <article><h2>Tint</h2>
+<p></p>
+<p>The Tint class provides an action that modifies an object's color.</p>
+<h3 id="by">
+<a name="//apple_ref/cpp/clm/by" class="dashAnchor"></a>By</h3>
+<p>Creates an action that tints an object by combining its current color with the one that is passed as an argument:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tint_by_action</span> <span class="o">=</span> <span class="no">Tint</span><span class="o">.</span><span class="n">by</span> <span class="ss">color</span><span class="p">:</span> <span class="no">Color</span><span class="o">.</span><span class="n">from_hex</span><span class="p">(</span><span class="s1">'5269d6'</span><span class="p">)</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">tint_by_action</span>
+</code></pre></div>
+<h3 id="to">
+<a name="//apple_ref/cpp/clm/to" class="dashAnchor"></a>To</h3>
+<p>Creates an action that tints an object to the color that is provided as an argument:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">tint_to_action</span> <span class="o">=</span> <span class="no">Tint</span><span class="o">.</span><span class="n">to</span> <span class="ss">color</span><span class="p">:</span> <span class="no">Color</span><span class="o">.</span><span class="n">from_hex</span><span class="p">(</span><span class="s1">'5269d6'</span><span class="p">)</span>
+<span class="n">character</span><span class="o">.</span><span class="n">run_action</span> <span class="n">tint_to_action</span>
+</code></pre></div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This action doesn't support "reverse".</p>
+</div>
+<h4 id="options">Options</h4>
+<p><strong>duration:</strong> - Float - Default: 0.3<br> Sets the total duration time of the Action.</p> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Animation</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ACTIONS &amp; ANIMATIONS</h4> <article><h2>Animation</h2>
+<p></p>
+<p>The Animation class provides the frame by frame animations to Sprites, the frames should be retrieved using a Sprite Sheet and a sprite frame Cache for optimal performance.</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">add</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'animation.plist'</span>
+
+<span class="n">flying_frames</span> <span class="o">=</span> <span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">.</span><span class="n">where</span> <span class="ss">prefix</span><span class="p">:</span> <span class="s1">'ship'</span><span class="p">,</span> <span class="ss">suffix</span><span class="p">:</span> <span class="s1">'.png'</span>
+
+<span class="n">animation</span> <span class="o">=</span> <span class="no">Animation</span><span class="o">.</span><span class="n">new</span> <span class="ss">frames</span><span class="p">:</span> <span class="n">flying_frames</span>
+</code></pre></div>
+<p>In the previous example the sprite sheet plist file is loaded into the Sprite Frame Cache, and using its where method is retrieving an array of frames that will become the key-frames for the animation.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="/sprite-frame-cache">Sprite Frame Cache documentation page</a>.</p>
+<h4 id="run-a-animation">Run a Animation</h4>
+<p>The Animation cannot be run by itself in the Sprite, it needs to be wrapped into an Action, the following is the appropriate way of archiving this:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">animation</span> <span class="o">=</span> <span class="no">Animation</span><span class="o">.</span><span class="n">new</span> <span class="ss">frames</span><span class="p">:</span> <span class="n">flying_frames</span>
+
+<span class="n">sprite</span><span class="o">.</span><span class="n">run_action</span> <span class="n">animation</span><span class="o">.</span><span class="n">action</span>
+</code></pre></div>
+<p>The Animation's action can be combined with other actions as well, like the Delay or Callback.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="/callback">Delay documentation page</a>.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="/callback">Callback documentation page</a>.</p>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Returns a new instance of the Animation class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Animation</span><span class="o">.</span><span class="n">new</span> <span class="ss">frames</span><span class="p">:</span> <span class="n">animation_frames</span>
+</code></pre></div>
+<h4 id="options">Options</h4>
+<p><strong>delay_per_unit:</strong> - Float - Default: 0.1<br> Number of seconds of delay per unit.</p>
+<p><strong>delay_units:</strong> - Float - Default: The number of frames<br> Number of delay units in the Animation.</p>
+<p><strong>restore_original_frame:</strong> - Boolean<br> Should restore the original frame after completion?</p>
+<p><strong>loops:</strong> - Integer<br> How many times the animation is going to loop.</p>
+<h3 id="delay-per-unit">
+<a name="//apple_ref/cpp/clm/delay_per_unit" class="dashAnchor"></a>Delay per Unit</h3>
+<p>Retrieve or update the delay per unit:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">animation</span><span class="o">.</span><span class="n">delay_per_unit</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span>
+
+<span class="c1"># The following is 0.5</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">delay_per_unit</span>
+</code></pre></div>
+<h3 id="delay-units">
+<a name="//apple_ref/cpp/clm/delay_units" class="dashAnchor"></a>Delay Units</h3>
+<p>Gets or sets the total delay units of the Animation:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">animation</span><span class="o">.</span><span class="n">delay_units</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="c1"># The following is 18</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">delay_units</span>
+</code></pre></div>
+<h3 id="duration">
+<a name="//apple_ref/cpp/clm/duration" class="dashAnchor"></a>Duration</h3>
+<p>Retrieves the Animation's duration:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">animation</span><span class="o">.</span><span class="n">delay_per_unit</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">delay_units</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="c1"># The following is 3.6</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">duration</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The Animation duration is the product of Delay Units and Delay per Unit.</p>
+</div>
+<h3 id="loops">
+<a name="//apple_ref/cpp/clm/loops" class="dashAnchor"></a>Loops</h3>
+<p>Gets or sets how many times the Animation is going to loop:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">animation</span><span class="o">.</span><span class="n">loops</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># The following is 2</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">loops</span>
+</code></pre></div>
+<h3 id="restore-original-frame">
+<a name="//apple_ref/cpp/clm/restore_original_frame" class="dashAnchor"></a>Restore Original Frame</h3>
+<p>Retrieves or updates if the Animation should restore the original frame:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">animation</span><span class="o">.</span><span class="n">restore_original_frame</span> <span class="o">=</span> <span class="kp">false</span>
+
+<span class="c1"># The following is false</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">restore_original_frame</span>
+</code></pre></div>
+<h3 id="add-frame">
+<a name="//apple_ref/cpp/clm/add_frame" class="dashAnchor"></a>Add Frame</h3>
+<p>Adds a new frame into the Animation:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">animation</span><span class="o">.</span><span class="n">add_frame</span> <span class="ss">frame</span><span class="p">:</span> <span class="no">SpriteFrameCache</span><span class="o">.</span><span class="n">frames</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+
+<span class="n">animation</span><span class="o">.</span><span class="n">add_frame</span> <span class="n">file_name</span><span class="p">:</span> <span class="s1">'speed_of_light.png'</span>
+
+<span class="n">animation</span><span class="o">.</span><span class="n">add_frame</span> <span class="ss">texture</span><span class="p">:</span> <span class="n">mother_ship_texture</span><span class="p">,</span> <span class="ss">rect</span><span class="p">:</span> <span class="o">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]]</span>
+</code></pre></div>
+<h3 id="action">
+<a name="//apple_ref/cpp/clm/action" class="dashAnchor"></a>Action</h3>
+<p>Returns the Animation wrapped into an Action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">sprite</span><span class="o">.</span><span class="n">run_action</span> <span class="n">animation</span><span class="o">.</span><span class="n">action</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>This is the proper way to run an Animation into a Sprite.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>

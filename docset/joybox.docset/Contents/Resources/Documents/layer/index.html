@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Layer</title>
+<link rel="stylesheet" href="..//css/normalize.css">
+<link rel="stylesheet" href="..//css/header-footer.css">
+<link rel="stylesheet" href="..//css/syntax.css">
+<link rel="stylesheet" href="..//css/documentation.css">
+<link rel="icon" type="image/png" href="//images/favicon.png">
+<link href="..http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300,200" rel="stylesheet" type="text/css">
+<script>!function(e,a,n,t,o,c,s){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=a.createElement(n),s=a.getElementsByTagName(n)[0],c.async=1,c.src=t,s.parentNode.insertBefore(c,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40112459-1","joybox.io"),ga("send","pageview")</script><script src="//scripts/jquery-2.0.3.min.js"></script><script src="//scripts/documentation.js"></script>
+</head>
+<body> <section id="blog"><section id="content"><h4>ESSENTIALS</h4> <article><h2>Layer</h2>
+<p></p>
+<p>The Layer class represents the drawing canvas for the Game, they can contain Sprites, Labels and other Layers like Menus as children. Also they receive the user interaction: like the touches on the screen on iOS or the mouse clicks on OSX.</p>
+<p>Because of their characteristics the most of the Game logic must be placed inside a subclass of a Layer:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">MotherShipLayer</span> <span class="o">&lt;</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Core</span><span class="o">::</span><span class="no">Layer</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<p>The previous example is the correct way of subclassing a Layer, also when inherited it will include all the needed modules to create a basic game. You can include the other modules as well using the regular include method.</p>
+<h4 id="tear-up-tear-down">Tear Up &amp; Tear Down</h4>
+<p>The Layer provides two methods that need to be overrided in order to do a proper Game Logic initialization and clean up:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1"># Called when the Layer is presented on the screen</span>
+<span class="k">def</span> <span class="nf">on_enter</span>
+
+<span class="k">end</span>
+
+<span class="c1"># Called when the Layer is dismissed from the screen</span>
+<span class="k">def</span> <span class="nf">on_exit</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="present-a-layer">Present a Layer</h4>
+<p>In order to present a Layer on the screen its needed to be contained into a Scene, but if the Scene will be composed by only one Layer is unnecessary to create a subclass just to accomplish it.</p>
+<p>To make more easy to present a single Layer on the screen, it provides a method named scene, that will create an Scene for our layer automatically:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">MotherShipLayer</span> <span class="o">&lt;</span> <span class="ss">Joybox</span><span class="p">:</span><span class="ss">:Core</span><span class="o">::</span><span class="no">Layer</span>
+    <span class="n">scene</span>
+<span class="k">end</span>
+
+<span class="no">Joybox</span><span class="o">.</span><span class="n">director</span> <span class="o">&lt;&lt;</span> <span class="no">MotherShipLayer</span><span class="o">.</span><span class="n">scene</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The scene method will create a new instance of the Layer and place it inside a Scene instance.</p>
+</div>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../scene">Scene documentation page</a>.</p>
+<p><img class="more-info" src="../images/moreinfo.png"> For more information, see: <a href="../director">Director documentation page</a>.</p>
+<h3 id="new">
+<a name="//apple_ref/cpp/clm/new" class="dashAnchor"></a>New</h3>
+<p>Returns a new instance of a Layer class:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">layer</span> <span class="o">=</span> <span class="no">Layer</span><span class="o">.</span><span class="n">new</span>
+</code></pre></div>
+<h3 id="add-child">
+<a name="//apple_ref/cpp/clm/add_child" class="dashAnchor"></a>Add Child</h3>
+<p>Adds a new child to the Layer instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">layer</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">sprite</span><span class="p">)</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>A lot of classes can be children of a Layer: Sprites, Labels, Menus, TileMaps, etc.</p>
+</div>
+<h3 id="ltlt">
+<a name="//apple_ref/cpp/clm/&lt;&lt;" class="dashAnchor"></a>&lt;&lt;</h3>
+<p>Push a new child into a Layer instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">layer</span> <span class="o">&lt;&lt;</span> <span class="n">sprite</span>
+</code></pre></div>
+<div class="flag info">
+<h5>More intel!</h5>
+<br><p>The </p>
+</div>
+<h3 id="add-children">
+<a name="//apple_ref/cpp/clm/add_children" class="dashAnchor"></a>Add Children</h3>
+<p>Adds multiple children to the Layer instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">children</span> <span class="o">=</span> <span class="o">[</span><span class="n">sprite</span><span class="p">,</span> <span class="n">tile_map</span><span class="p">,</span> <span class="n">menu</span><span class="o">]</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">add_children</span> <span class="n">children</span>
+</code></pre></div>
+<h3 id="run-action">
+<a name="//apple_ref/cpp/clm/run_action" class="dashAnchor"></a>Run Action</h3>
+<p>Runs an action into the Layer instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">layer</span><span class="o">.</span><span class="n">run_action</span> <span class="no">Move</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="stop-action">
+<a name="//apple_ref/cpp/clm/stop_action" class="dashAnchor"></a>Stop Action</h3>
+<p>Stop a Layer's running action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">move</span> <span class="o">=</span> <span class="no">Move</span><span class="o">.</span><span class="n">to</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="o">]</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">run_action</span> <span class="n">move</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">stop_action</span> <span class="n">move</span>
+</code></pre></div>
+<h3 id="stop-all-actions">
+<a name="//apple_ref/cpp/clm/stop_all_actions" class="dashAnchor"></a>Stop All Actions</h3>
+<p>Stops all actions running on the Layer's instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">layer</span><span class="o">.</span><span class="n">stop_all_actions</span>
+</code></pre></div>
+<h3 id="number-of-running-actions">
+<a name="//apple_ref/cpp/clm/number_of_running_actions" class="dashAnchor"></a>Number of Running Actions</h3>
+<p>Returns the number of actions running on the Layer:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">layer</span><span class="o">.</span><span class="n">run_action</span> <span class="no">Move</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+
+<span class="c1"># The following is 1</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">number_of_running_actions</span>
+</code></pre></div>
+<h3 id="running-actions">
+<a name="//apple_ref/cpp/clm/running_actions?" class="dashAnchor"></a>Running Actions?</h3>
+<p>Retrieves if the Layer is running any action:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">layer</span><span class="o">.</span><span class="n">run_action</span> <span class="no">Move</span><span class="o">.</span><span class="n">by</span> <span class="ss">position</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span>
+
+<span class="c1"># The following is true</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">running_actions?</span>
+</code></pre></div>
+<h3 id="schedule-update">
+<a name="//apple_ref/cpp/clm/schedule_update" class="dashAnchor"></a>Schedule Update</h3>
+<p>Starts receiving the Game Loop calls on the Layer instance:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">schedule_update</span> <span class="k">do</span> <span class="o">|</span><span class="n">dt</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>dt</strong> - Float<br> The delta time between Game Loop calls.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>Do not execute big time consuming operations on the Game Loop, it will affect drastically the performance of the game.</p>
+</div>
+<h3 id="on-touches-began">
+<a name="//apple_ref/cpp/clm/on_touches_began" class="dashAnchor"></a>On Touches Began</h3>
+<p>Triggered when the User starts touching the screen:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_touches_began</span> <span class="k">do</span> <span class="o">|</span><span class="n">touches</span><span class="p">,</span> <span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>touches</strong> - Set<br> Set of the touches occurring on the Event.</p>
+<p><strong>event</strong> - UIEvent<br> Instance of the event which touches belong.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in iOS.</p>
+</div>
+<h3 id="on-touches-moved">
+<a name="//apple_ref/cpp/clm/on_touches_moved" class="dashAnchor"></a>On Touches Moved</h3>
+<p>Called when the User moves its fingers through the screen:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_touches_moved</span> <span class="k">do</span> <span class="o">|</span><span class="n">touches</span><span class="p">,</span> <span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>touches</strong> - Set<br> Set of the touches occurring on the Event.</p>
+<p><strong>event</strong> - UIEvent<br> Instance of the event which touches belong.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in iOS.</p>
+</div>
+<h3 id="on-touches-ended">
+<a name="//apple_ref/cpp/clm/on_touches_ended" class="dashAnchor"></a>On Touches Ended</h3>
+<p>Triggered when the User raises its fingers from the screen:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_touches_ended</span> <span class="k">do</span> <span class="o">|</span><span class="n">touches</span><span class="p">,</span> <span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>touches</strong> - Set<br> Set of the touches occurring on the Event.</p>
+<p><strong>event</strong> - UIEvent<br> Instance of the event which touches belong.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in iOS.</p>
+</div>
+<h3 id="on-touches-cancelled">
+<a name="//apple_ref/cpp/clm/on_touches_cancelled" class="dashAnchor"></a>On Touches Cancelled</h3>
+<p>Received when a system event cancels the touch event:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_touches_canceled</span> <span class="k">do</span> <span class="o">|</span><span class="n">touches</span><span class="p">,</span> <span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>touches</strong> - Set<br> Set of the touches occurring on the Event.</p>
+<p><strong>event</strong> - UIEvent<br> Instance of the event which touches belong.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in iOS.</p>
+</div>
+<h3 id="on-mouse-down">
+<a name="//apple_ref/cpp/clm/on_mouse_down" class="dashAnchor"></a>On Mouse Down</h3>
+<p>Triggered when the User has pressed a mouse button:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_mouse_down</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="p">,</span> <span class="n">button</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<p><strong>button</strong> - Symbol<br> The mouse button related to the event, the possible values are :left, :right, :other.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-mouse-dragged">
+<a name="//apple_ref/cpp/clm/on_mouse_dragged" class="dashAnchor"></a>On Mouse Dragged</h3>
+<p>Received when the User drags a mouse button through the Screen:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_mouse_dragged</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="p">,</span> <span class="n">button</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<p><strong>button</strong> - Symbol<br> The mouse button related to the event, the possible values are :left, :right, :other.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-mouse-up">
+<a name="//apple_ref/cpp/clm/on_mouse_up" class="dashAnchor"></a>On Mouse Up</h3>
+<p>Called when the User releases a mouse button:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_mouse_up</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="p">,</span> <span class="n">button</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<p><strong>button</strong> - Symbol<br> The mouse button related to the event, the possible values are :left, :right, :other.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-mouse-moved">
+<a name="//apple_ref/cpp/clm/on_mouse_moved" class="dashAnchor"></a>On Mouse Moved</h3>
+<p>Received when the User moves the mouse:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_mouse_moved</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-mouse-entered">
+<a name="//apple_ref/cpp/clm/on_mouse_entered" class="dashAnchor"></a>On Mouse Entered</h3>
+<p>Triggered when the Mouse pointer enters into the Layer:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_mouse_entered</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-mouse-exited">
+<a name="//apple_ref/cpp/clm/on_mouse_exited" class="dashAnchor"></a>On Mouse Exited</h3>
+<p>Called when the Mouse pointer exits the Layer:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_mouse_exited</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-mouse-scroll">
+<a name="//apple_ref/cpp/clm/on_mouse_scroll" class="dashAnchor"></a>On Mouse Scroll</h3>
+<p>Received when the User scrolls into the Layer:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_mouse_scroll</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-key-down">
+<a name="//apple_ref/cpp/clm/on_key_down" class="dashAnchor"></a>On Key Down</h3>
+<p>Received when the User presses a keyboard key:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_key_down</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-key-up">
+<a name="//apple_ref/cpp/clm/on_key_up" class="dashAnchor"></a>On Key Up</h3>
+<p>Called when the User releases a keyboard key:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_key_up</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-key-flag-changed">
+<a name="//apple_ref/cpp/clm/on_key_flag_changed" class="dashAnchor"></a>On Key Flag Changed</h3>
+<p>Triggered when the User presses or releases a modifier key: like Shift, Command or Control:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_key_flag_changed</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-gesture-begin">
+<a name="//apple_ref/cpp/clm/on_gesture_begin" class="dashAnchor"></a>On Gesture Begin</h3>
+<p>Called when the User begins a touch gesture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_gesture_begin</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-gesture-magnify">
+<a name="//apple_ref/cpp/clm/on_gesture_magnify" class="dashAnchor"></a>On Gesture Magnify</h3>
+<p>Called when the User performs a magnify gesture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_gesture_magnify</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-gesture-smart-magnify">
+<a name="//apple_ref/cpp/clm/on_gesture_smart_magnify" class="dashAnchor"></a>On Gesture Smart Magnify</h3>
+<p>Triggered when the User performs a smart magnify gesture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_gesture_smart_magnify</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-gesture-rotate">
+<a name="//apple_ref/cpp/clm/on_gesture_rotate" class="dashAnchor"></a>On Gesture Rotate</h3>
+<p>Received when the User executes a rotate gesture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_gesture_rotate</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-gesture-swipe">
+<a name="//apple_ref/cpp/clm/on_gesture_swipe" class="dashAnchor"></a>On Gesture Swipe</h3>
+<p>Called when the User executes a swipe gesture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_gesture_swipe</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This gesture only work when the three fingers gesture is not be mapped in the Trackpad System Preferences.</p>
+</div>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div>
+<h3 id="on-gesture-end">
+<a name="//apple_ref/cpp/clm/on_gesture_end" class="dashAnchor"></a>On Gesture End</h3>
+<p>Received when the User ends a touch gesture:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">on_gesture_end</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<h4 id="block-parameters">Block Parameters</h4>
+<p><strong>event</strong> - Event<br> The event resulting from the user action.</p>
+<div class="flag warning">
+<h5>Watch out!</h5>
+<br><p>This method is only available in OSX.</p>
+</div> </article></section></section><section id="buildings"><img src="..//images/buildings-footer.png"></section>
+</body>
+</html>
