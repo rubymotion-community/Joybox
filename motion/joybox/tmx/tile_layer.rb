@@ -35,6 +35,7 @@ class CCTMXLayer
   end
 
   def coordinate_for_point(point)
+    point = point.to_point unless point.is_a? (CGPoint)
     x = point.x / tile_size.width
     y = (size.height - point.y) / tile_size.height
     [x.floor, y.floor].to_point

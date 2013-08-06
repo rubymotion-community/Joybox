@@ -14,7 +14,7 @@ module Joybox
         options = options.nil? ? default_configuration : default_configuration.merge!(options)
         options[:repl] = true if options[:bounding_box]
 
-        Object.send(:include, Joybox) if options[:repl]
+        Object.send(:include, Joybox) if options[:repl] or options[:physics]
         Sprite.send(:include, Joybox::Debug::REPL) if options[:repl]
         Layer.send(:include, Joybox::Debug::Physics) if options.has_key? :physics
 

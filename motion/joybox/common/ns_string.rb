@@ -1,7 +1,7 @@
 class NSString
 
   def to_color
-    Color.from_hex(self)
+    Joybox::Common::Color.from_hex(self)
   end
   
 end

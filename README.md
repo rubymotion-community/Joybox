@@ -3,34 +3,61 @@ Introduced at [#Inspect 2013](http://www.rubymotion.com/conference/), Joybox is 
 
 For more information, see the presentation: [Cocos2D, an Easier Way](https://speakerdeck.com/curveberyl/cocos2d-an-easier-way).
 
-## Warning for the Repository Version
+## Latest version (1.1.0)
+**Physics**
 
-### Critical change on Physics Collisions
+* Support for all Shapes and Listeners.
+* Filters, AABB computations, Queries and Ray Casts.
+* Collision support for Physics Sprites.
+* Experimental support for actions on Physics Sprites.
+* Physics Debug Draw.
 
-Now for use when_collide method of the World instance, you need to pass an instance of a PhysicsSprite and it will return in the block the colliding physics sprite if available, or the body that is colliding. Example:
+**Effects and Background Music**
 
-```ruby
-@world.when_colide physics_sprite do |collision_sprite, is_touching|
-end
-```
+* AudioEffect and BackgroundAudio to playback background music and special effects.
 
-If you still need to get the collisions of the physics bodies you can use the following:
+**Tile Maps Support**
 
-```ruby
-@world.on_collision do |first_body, second_body, is_touching|
-end
-```
+* Support for TMX Maps using the TileMap class.
 
-## Latest version (1.0.0)
-* Added REPL Support for iOS and OSX :D
-* NOTE: If the iOS simulator starts on landscape orientation, please rotate and return it. (cmd + => and cmd + <=)
-* Added REPL Example Template. Use 'motion create --template=joybox-ios-example-repl <name>' or 'motion create --template=joybox-osx-example-repl <name>'
-* IMPORTANT: Typo fix in World class (Joybox, Box2D and Website), changing to continuous_physics the configuration, thank you David Czarnecki!
-* IMPORTANT: Typo fix in Macros, changing jbpLenght to jpbLength, thank you David Czarnecki!
-* Added: Clear extra lines in iOS Template. Thank you Willrax!
-* Added: Examples iPhone 5 support
-* Added: iOS Template iPhone 5 support
-* Joybox is stopping the madness! Thanks all for your support!
+**Actions**
+
+* Complete actions
+
+**Gestures**
+
+* Support the default gestures on OSX.
+
+**Commands**
+
+* Adds joybox:retina command to create a Retina version of a TMX Map. 
+
+**Sprites**
+
+* Support for custom options on the Sprite initialization.
+
+**Source Code**
+
+* The commands and templates now install automatically.
+* Added 218 specifications and 617 requirements.
+
+**Critical Changes**
+
+* Node: The method add_childs is now add_children.
+
+* SpriteFrameCache: The method where now starts from 1 instead of 0.
+
+* Animation: The delay method is now delay_units, and total_delay is now delay_per_unit.
+
+* Menu: The method align_items_in_columns now receive an array for defining how many columns and how many items in which of them.
+
+* Physics: Now every object returns their values in pixel coordinates and degrees, if you still need to use the metric values you can access them with the prefix metric_. For example: metric_position.
+
+* World: The Method continuos_physics is now deprecated.
+
+* Physics Collisions: Now for use when_collide method of the World instance, you need to pass an instance of a PhysicsSprite and it will return in the block the colliding physics sprite if available, or the body that is colliding.
+
+* Point: The methods to and from pixel coordinates are now inverted, there was an incorrect naming.
 
 ## Documentation and Getting Started
 If you are looking for the installation process and the documentation, please visit: [joybox.io](http://joybox.io)
@@ -56,14 +83,12 @@ If the iOS application starts in landscape orientation, please rotate and return
 
 (cmd + <= & cmd + =>) 
 
-
 ## Feedback and Help
 For questions and feedback use the project's [Google Group](https://groups.google.com/forum/?fromgroups#!forum/joybox-wrapper)
 
 For bug reports use the project's [Issue Tracker](https://github.com/rubymotion/Joybox/issues).
 
 ## Contributions
-
 If you wish to help us to stop the madness, there are some ways you can do it:
 
 * Joybox Wrapper (Ruby): This repository ;)
@@ -79,12 +104,9 @@ To contribute just:
 5. Create new Pull Request
 
 ## License
-
 Joybox is released under the MIT License.
- 
 
 ## Authors
-
 **Cocos2D**: Ricardo Quesada, Zynga and contributors [cocos2d for iPhone](http://www.cocos2d-iphone.org)
 
 **Box2D**: Erin Catto [Box2D | A 2D Physics Engine for Games](http://box2d.org)

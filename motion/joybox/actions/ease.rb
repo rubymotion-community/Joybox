@@ -6,8 +6,8 @@ module Joybox
       def self.defaults
         {
           action: nil,
-          rate: 0.0,
-          period: 0.0
+          rate: 1.0,
+          period: 1.0
         }
       end
 

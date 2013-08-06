@@ -7,7 +7,7 @@ module Joybox
         {
           duration: 0.3,
           twirls: 1,
-          amplitude: 10
+          amplitude: 3
         }
       end
 
@@ -16,7 +16,7 @@ module Joybox
         return unless options.has_key? :grid_size
 
         options = options.nil? ? defaults : defaults.merge!(options)
-        position = options.delete(:position) || [Screen.half_width, Screen.half_height]
+        position = options.delete(:position) || [Common::Screen.half_width, Common::Screen.half_height]
         CCTwirl.actionWithPosition(position,
                                    twirls: options[:twirls],
                                    amplitude: options[:amplitude],

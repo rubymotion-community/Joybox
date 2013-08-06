@@ -6,9 +6,7 @@ module Joybox
 
         def self.defaults
           {
-            duration: 0.3,
-            range: 10,
-            shake_z: true
+            duration: 0.3
           }
         end
 
@@ -17,8 +15,8 @@ module Joybox
           return unless options.has_key? :grid_size
 
           options = options.nil? ? defaults : defaults.merge!(options)
-          position = options.delete(:position) || [Screen.half_width, Screen.half_height]
-          radius = options.delete(:radius) || Screen.half_width
+          position = options.delete(:position) || [Common::Screen.half_width, Common::Screen.half_height]
+          radius = options.delete(:radius) || Common::Screen.half_width
           CCLens3D.actionWithPosition(position,
                                       radius: radius,
                                       grid: options[:grid_size],

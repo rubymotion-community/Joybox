@@ -25,7 +25,7 @@ module Joybox
       alias_method :orientation, :mapOrientation
       alias_method :objects, :objectGroups
       alias_method :objects=, :setObjectGroups
-      alias_method :properties_for_gid, :propertiesForGID
+      alias_method :properties_for_tile_type, :propertiesForGID
 
       Orthogonal = 0
       Hexagonal = 1
@@ -83,10 +83,12 @@ module Joybox
       end
 
       def contains_point?(point)
+        point = point.to_point unless point.is_a? (CGPoint)
         CGRectContainsPoint(bounding_box, point)
       end
 
       def coordinate_for_point(point)
+        point = point.to_point unless point.is_a? (CGPoint)
         x = point.x / tile_size.width
         y = (size.height - point.y) / tile_size.height
         [x.floor, y.floor].to_point
