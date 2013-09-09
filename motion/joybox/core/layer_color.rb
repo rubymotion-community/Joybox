@@ -3,6 +3,8 @@ module Joybox
 
     class LayerColor < CCLayerColor
 
+      include Joybox::Common
+
       def self.scene
         define_singleton_method(:scene) do 
           scene = CCScene.new
