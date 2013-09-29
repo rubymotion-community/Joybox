@@ -6,10 +6,10 @@ module Joybox
       include Joybox::Common
 
       def self.scene
-        define_singleton_method(:scene) do 
+        define_singleton_method(:scene) do |options = {}|
           scene = CCScene.new
-          menu_layer = self.new
-          scene << menu_layer
+          layer = self.new(options)
+          scene << layer
         end
       end
 
@@ -32,17 +32,17 @@ module Joybox
       end
 
       def self.new(options = {})
-        options = options.nil? ? defaults : defaults.merge!(options)
+        options = defaults.merge(options)
         options[:color] << options[:opacity]
 
-        layer = CCLayerColor.layerWithColor(options[:color], 
-                                            width: options[:width], 
-                                            height: options[:height])
+        layer = self.layerWithColor(options[:color],
+                                    width: options[:width],
+                                    height: options[:height])
 
         layer.position = options[:position] if options.has_key? :position
         layer
       end
-      
+
     end
 
   end
