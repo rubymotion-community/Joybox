@@ -4,7 +4,7 @@ module Joybox
     class Wiggle
       def self.defaults
         {
-          duration: 0.5,
+          duration: 3.0,
           count: 5,
           angle: 180
         }
