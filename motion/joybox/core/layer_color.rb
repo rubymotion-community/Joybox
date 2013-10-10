@@ -33,9 +33,8 @@ module Joybox
 
       def self.new(options = {})
         opts = defaults.merge(options)
-        opts[:color] << opts[:opacity]
 
-        layer = self.layerWithColor(opts[:color],
+        layer = self.layerWithColor(Array[*opts[:color], opts[:opacity]],
                                     width: opts[:width],
                                     height: opts[:height])
 
