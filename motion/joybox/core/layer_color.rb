@@ -24,22 +24,22 @@ module Joybox
       end
 
       def self.defaults
-      {
-        opacity: 255,
-        width: Screen.width,
-        height: Screen.height
-      }
+        {
+          opacity: 255,
+          width: Screen.width,
+          height: Screen.height
+        }
       end
 
       def self.new(options = {})
-        options = defaults.merge(options)
-        options[:color] << options[:opacity]
+        opts = defaults.merge(options)
+        opts[:color] << opts[:opacity]
 
-        layer = self.layerWithColor(options[:color],
-                                    width: options[:width],
-                                    height: options[:height])
+        layer = self.layerWithColor(opts[:color],
+                                    width: opts[:width],
+                                    height: opts[:height])
 
-        layer.position = options[:position] if options.has_key? :position
+        layer.position = opts[:position] if opts[:position]
         layer
       end
 
