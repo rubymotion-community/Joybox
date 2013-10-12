@@ -1,7 +1,7 @@
 module Joybox
   module Core
 
-    module LayerTouchable
+    module TouchEvent
 
       touch_states = [:began, :moved, :ended, :cancelled]
       touch_states.each do |touch_state|
