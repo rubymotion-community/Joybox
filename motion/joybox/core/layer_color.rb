@@ -32,13 +32,14 @@ module Joybox
       end
 
       def self.new(options = {})
-        opts = defaults.merge(options)
+        options = defaults.merge(options)
+        color_with_opacity = options[:color].dup << options[:opacity]
 
-        layer = self.layerWithColor(Array[*opts[:color], opts[:opacity]],
-                                    width: opts[:width],
-                                    height: opts[:height])
+        layer = self.layerWithColor(color_with_opacity,
+                                    width: options[:width],
+                                    height: options[:height])
 
-        layer.position = opts[:position] if opts[:position]
+        layer.position = options[:position] if options[:position]
         layer
       end
 
