@@ -1,7 +1,7 @@
 module Joybox
   module Core
 
-    class Layer < CCLayer
+    class LayerColor < CCLayerColor
       include TouchEvent
     end
 
