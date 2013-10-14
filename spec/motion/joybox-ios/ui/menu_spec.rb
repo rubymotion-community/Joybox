@@ -7,7 +7,7 @@ describe Joybox::UI::Menu do
     @items[0].position.should == CGPointMake(0, 0)
     @items[1].position.should == CGPointMake(0, 0)
     @items[2].position.should == CGPointMake(0, 0)
-    
+
     menu.align_items_vertically
 
     @items[0].position.should == CGPointMake(0, 40)
@@ -21,8 +21,8 @@ describe Joybox::UI::Menu do
     @items[0].position.should == CGPointMake(0, 0)
     @items[1].position.should == CGPointMake(0, 0)
     @items[2].position.should == CGPointMake(0, 0)
-    
-    menu.align_items_vertically_width_padding(100)
+
+    menu.align_items_vertically_with_padding(100)
 
     @items[0].position.should == CGPointMake(0, 135)
     @items[1].position.should == CGPointMake(0, 0)
@@ -35,7 +35,7 @@ describe Joybox::UI::Menu do
     @items[0].position.should == CGPointMake(0, 0)
     @items[1].position.should == CGPointMake(0, 0)
     @items[2].position.should == CGPointMake(0, 0)
-    
+
     menu.align_items_horizontally
 
     @items[0].position.should == CGPointMake(-86.0, 0)
@@ -49,7 +49,7 @@ describe Joybox::UI::Menu do
     @items[0].position.should == CGPointMake(0, 0)
     @items[1].position.should == CGPointMake(0, 0)
     @items[2].position.should == CGPointMake(0, 0)
-    
+
     menu.align_items_horizontally_with_padding(100)
 
     @items[0].position.should == CGPointMake(-181.0, 0)
@@ -63,7 +63,7 @@ describe Joybox::UI::Menu do
     @items[0].position.should == CGPointMake(0, 0)
     @items[1].position.should == CGPointMake(0, 0)
     @items[2].position.should == CGPointMake(0, 0)
-    
+
     menu.align_items_in_columns [2, 1]
 
     @items[0].position.should == CGPointMake(-80.0, 19.5)
@@ -77,7 +77,7 @@ describe Joybox::UI::Menu do
     @items[0].position.should == CGPointMake(0, 0)
     @items[1].position.should == CGPointMake(0, 0)
     @items[2].position.should == CGPointMake(0, 0)
-    
+
     menu.align_items_in_rows [2, 1]
 
     @items[0].position.should == CGPointMake(-46.0, 37.5)
