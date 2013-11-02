@@ -7,7 +7,7 @@ module Motion
     class JoyboxRetinaCommand < Command
 
       include Joybox::Command
-      
+
       RetinaSuffix = '-hd'
       RetinaScaleFactor = 2.0
 
@@ -27,9 +27,9 @@ module Motion
       EOF
 
       @@example = <<-EOF
-    motion jb:retina tile_map.tmx
+    motion joybox:retina tile_map.tmx
 
-    This will create a new file named tile_map-hd.tmx, update its Map, Tileset 
+    This will create a new file named tile_map-hd.tmx, update its Map, Tileset
     and Object properties and create the according retina images with the -hd
     suffix.
     EOF
