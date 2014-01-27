@@ -1,6 +1,6 @@
 require 'optparse'
-require File.expand_path('../command/tmx.rb', File.readlink(__FILE__))
-require File.expand_path('../command/image.rb', File.readlink(__FILE__))
+require 'command/tmx'
+require 'command/image'
 
 module Motion
   module Project

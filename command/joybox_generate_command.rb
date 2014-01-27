@@ -1,6 +1,6 @@
 require 'optparse'
-require File.expand_path('../command/string.rb', File.readlink(__FILE__))
-require File.expand_path('../command/template.rb', File.readlink(__FILE__))
+require 'command/string'
+require 'command/template'
 
 module Motion
   module Project
