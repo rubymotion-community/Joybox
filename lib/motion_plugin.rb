@@ -1,6 +1,5 @@
 # Load Joybox plugin commands.
-require 'joybox_generate_command'
-require 'joybox_retina_command'
+require 'joybox_command'
 
 # Register Joybox project templates.
 require 'motion/project/template'
