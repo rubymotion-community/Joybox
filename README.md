@@ -1,4 +1,7 @@
 # Joybox [![Build Status](https://travis-ci.org/rubymotion/Joybox.png?branch=master)](https://travis-ci.org/rubymotion/Joybox)
+
+Currently this project is unmaintained, if you are interested in picking it up please open an issue and let us know!  In the meantime take a look at SpriteKit and SceneKit for iOS and OS X.
+
 Introduced at [#Inspect 2013](http://www.rubymotion.com/conference/), Joybox is the easiest way to build 2D games for iPhones and iPads using [RubyMotion](http://www.rubymotion.com/). Joybox combines the most popular and widely used 2D game engine for iOS, [Cocos2D](http://www.cocos2d-iphone.org/), folds in the amazing [Box2D](http://box2d.org/) physics engine, and then wraps them up into a clean Ruby API that will make game development faster and more enjoyable for both beginners and experts alike.
 
 For more information, see the presentation: [Cocos2D, an Easier Way](https://speakerdeck.com/curveberyl/cocos2d-an-easier-way).
