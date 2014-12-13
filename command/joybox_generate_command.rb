@@ -1,66 +1,49 @@
 require 'optparse'
-require File.expand_path('../command/string.rb', File.readlink(__FILE__))
-require File.expand_path('../command/template.rb', File.readlink(__FILE__))
+require 'command/string'
+require 'command/template'
 
-module Motion
-  module Project
-    class JoyboxGenerateCommand < Command
+module Joybox
+  module Command
+    class Generate < Base
 
-      self.name = 'joybox:generate'
-      self.help = 'Joybox: Class Generator'
-
-      @@description = <<-EOF
+      self.arguments = 'CLASS-TYPE FILE-NAME'
+      self.summary = 'Class Generator'
+      self.description = <<-EOF
     Generates a new class according to the class type and name, those 
     parameters can be sended either CamelCased or snake_cased. Also a 
     test class will be generated and placed inside the spec folder.
 
     Supported Classes: Sprite, Layer, Scene
-      EOF
 
-      @@example = <<-EOF
-    'motion jb:generate layer game'
+    Example: $ motion joybox generate layer game
 
-    This will generate a Layer class named 'GameLayer' with the 
+    This will generate a Layer class named 'GameLayer' with the
     following files:
         class:  'app/layers/game_layer.rb'
         spec:   'spec/layers/game_layer_spec.rb'
-      
+
     The list of posible paths according to the class type:
         Sprite: app/sprites/ - spec/sprites/
         Layer:  app/layers/ - spec/layers/
         Scene:  app/scenes/ - spec/scenes/
       EOF
 
-      def run(args)
-        opt_parser = OptionParser.new do |opt|
-          opt.banner = "Usage:"
-          opt.separator "    motion joybox:generate <class-type> <file-name>"
-          opt.separator ""
-          opt.separator "Options:"
+      def initialize(argv)
+        @class_type = argv.shift_argument
+        @file_name = argv.shift_argument
+        super
+      end
 
-          opt.on('-h', '--help', 'Shows this screen')
+      def validate!
+        super
+        help! "A CLASS-TYPE is required." unless @class_type
+        help! "Invalid CLASS-TYPE specified." unless @class_type =~ /(\bsprite\b|\blayer\b|\bscene\b)/i
+        help! "A FILE-NAME is required." unless @file_name
+      end
 
-          opt.separator ""
-          opt.separator "Description:"
-          opt.separator @@description
-          opt.separator ""
-          opt.separator "Example:"
-          opt.separator @@example
-        end
-
-        opt_parser.parse!
-        return puts opt_parser if args.size != 2
-
-        klass = args[0]
-        name = args[1]
-
-        case klass
-        when /(\bsprite\b|\blayer\b|\bscene\b)/i
-          template = Joybox::Command::Template.new(name, klass)
-          template.save
-        else
-          puts opt_parser
-        end
+      def run
+        template = Joybox::Command::Template.new(@file_name, @class_type)
+        template.save
       end
 
     end
